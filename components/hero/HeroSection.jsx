@@ -13,15 +13,13 @@ const HeroSection = () => {
           },
         }}
       >
-        <SplideSlide>
-          <HeroItem />
-        </SplideSlide>
-        <SplideSlide>
-          <HeroItem />
-        </SplideSlide>
-        <SplideSlide>
-          <HeroItem />
-        </SplideSlide>
+        {[1, 2, 3].map((_, i) => {
+          return (
+            <SplideSlide key={i}>
+              <HeroItem />
+            </SplideSlide>
+          );
+        })}
       </Splide>
     </section>
   );

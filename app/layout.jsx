@@ -14,6 +14,7 @@ import "@splidejs/react-splide/css";
 
 // ===== Google Fonts import =====
 import { Jost, Lora } from "next/font/google";
+import HeaderComponent from "@/components/header/HeaderComponent";
 
 // import WhatsappButton from "@/components/WhatsappButton";
 // import Script from "next/script";
@@ -94,6 +95,7 @@ export default async function RootLayout({ children }) {
       </head>
       <body>
         <NextTopLoader color="#DEA057" />
+        <HeaderComponent />
         <main className="theme-dark overflow-hidden">
           <StyledJsxRegistry>
             {/* <Header data={header?.data} /> */}
