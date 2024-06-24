@@ -29,11 +29,31 @@ section {
 .section-category .full-height-video {
   height: 100%;
 }
+.features-icon {
+  font-size: 60px;
+}
+.header_sticky {
+  position: sticky !important;
+  top: 0;
+}
+.countdown-timer {
+  font-size: 24px;
+}
 @media (max-width: 575px) {
+  section {
+    padding: 30px 0;
+  }
   .video-container {
     padding: 15px 0;
   }
   .section-category .col-lg-4 img {
     height: 200px;
+  }
+  .fs-60 {
+    font-size: 24px;
+    line-height: 20px;
+  }
+  .countdown-timer {
+    font-size: 14px;
   }
 }

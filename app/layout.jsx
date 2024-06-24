@@ -93,7 +93,7 @@ export default async function RootLayout({ children }) {
         <link rel="stylesheet" href="/styles/dark-theme.css" />
         <link rel="stylesheet" href="/styles/styles.css" />
       </head>
-      <body>
+      <body style={{ marginBottom: 200 }}>
         <NextTopLoader color="#DEA057" />
         <HeaderComponent />
         <main className="theme-dark overflow-hidden">

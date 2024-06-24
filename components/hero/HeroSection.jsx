@@ -3,7 +3,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 
 const HeroSection = () => {
   return (
-    <section className="slideshow-md">
+    <section className="slideshow-md pt-0">
       <Splide
         options={{
           breakpoints: {
@@ -55,7 +55,7 @@ const HeroItem = () => {
             >
               LATEST TRENDS
             </h6>
-            <h2 className="fw-normal mb-0">Newest Arrivals</h2>
+            <h1 className="fw-normal mb-0">Newest Arrivals</h1>
             <p>Lorem ipsum dolor sit amet, consectetur elit.</p>
             <a
               href="./shop1.html"
@@ -70,7 +70,7 @@ const HeroItem = () => {
         h6 {
           font-size: 20px;
         }
-        h2 {
+        h1 {
           font-size: 5.3rem;
         }
         p {
@@ -85,7 +85,7 @@ const HeroItem = () => {
           h6 {
             font-size: 18px;
           }
-          h2 {
+          h1 {
             font-size: 4.5rem;
           }
           p {
@@ -100,7 +100,7 @@ const HeroItem = () => {
           h6 {
             font-size: 16px;
           }
-          h2 {
+          h1 {
             font-size: 4rem;
           }
           p {
@@ -115,7 +115,7 @@ const HeroItem = () => {
           h6 {
             font-size: 14px;
           }
-          h2 {
+          h1 {
             font-size: 2.5rem;
           }
           p {
@@ -130,7 +130,7 @@ const HeroItem = () => {
           h6 {
             font-size: 12px !important;
           }
-          h2 {
+          h1 {
             font-size: 1.8rem;
           }
           p {

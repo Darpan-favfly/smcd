@@ -1,6 +1,9 @@
 import CategoriesSection from "@/components/category/CategoriesSection";
+import CollectionSection from "@/components/collection/CollectionSection";
+import OfferCtaSection from "@/components/cta/OfferCtaSection";
 import FeaturesSection from "@/components/features/FeaturesSection";
 import HeroSection from "@/components/hero/HeroSection";
+import FeaturedProductSection from "@/components/product/FeaturedProductSection";
 import SliderProductsSection from "@/components/product/SliderProductsSection";
 
 const Home = () => {
@@ -10,6 +13,9 @@ const Home = () => {
       {/* <SliderProductsSection /> */}
       <CategoriesSection />
       <FeaturesSection />
+      <OfferCtaSection />
+      <FeaturedProductSection />
+      <CollectionSection />
     </>
   );
 };

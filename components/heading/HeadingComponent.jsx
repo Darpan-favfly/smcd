@@ -18,14 +18,14 @@
 
 // export default Heading;
 
-const HeadingComponent = () => {
+const HeadingComponent = ({ data }) => {
   return (
     <>
       <h2 className="section-title fw-normal fs-30 text-center mb-2">
-        Shop By Category
+        {data.heading}
       </h2>
       <p className="font-special fs-13 mb-3 pb-2 text-secondary text-center">
-        The World's Premium Brands In One Destination.
+        {data.description}
       </p>
     </>
   );
