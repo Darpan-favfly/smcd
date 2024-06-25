@@ -56,4 +56,12 @@ section {
   .countdown-timer {
     font-size: 14px;
   }
+  .collections-grid_masonry .collection-grid__item {
+    height: 27rem !important;
+  }
+}
+@media (max-width: 1120px) {
+  .collections-grid_masonry {
+    height: 30rem !important;
+  }
 }

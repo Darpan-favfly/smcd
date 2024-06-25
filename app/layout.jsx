@@ -15,6 +15,7 @@ import "@splidejs/react-splide/css";
 // ===== Google Fonts import =====
 import { Jost, Lora } from "next/font/google";
 import HeaderComponent from "@/components/header/HeaderComponent";
+import FooterComponent from "@/components/footer/FooterComponent";
 
 // import WhatsappButton from "@/components/WhatsappButton";
 // import Script from "next/script";
@@ -93,7 +94,7 @@ export default async function RootLayout({ children }) {
         <link rel="stylesheet" href="/styles/dark-theme.css" />
         <link rel="stylesheet" href="/styles/styles.css" />
       </head>
-      <body style={{ marginBottom: 200 }}>
+      <body>
         <NextTopLoader color="#DEA057" />
         <HeaderComponent />
         <main className="theme-dark overflow-hidden">
@@ -104,6 +105,7 @@ export default async function RootLayout({ children }) {
             {/* <WhatsappButton number={number?.[0]?.text} text={text?.[0]?.text} /> */}
           </StyledJsxRegistry>
         </main>
+        <FooterComponent />
         {/* <script
           id="ruttl-site-embed-script"
           src="https://app.ruttl.com/plugin.js?id=z8oD0qWJ7C4lozxdrV1o&e=1"
