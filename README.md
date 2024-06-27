@@ -26,4 +26,4 @@ Next js
 v"14.2.4"
 ```
 
-Deploy Link
+Deploy Link:
