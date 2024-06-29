@@ -17379,10 +17379,10 @@ textarea.form-control.is-invalid {
 .header.header_dark .header-tools__item {
   color: #fff;
 }
-
 .header-desk {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .header-fullwidth {

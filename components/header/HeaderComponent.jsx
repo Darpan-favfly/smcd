@@ -4,12 +4,12 @@ import { CiSearch, CiUser, CiHeart } from "react-icons/ci";
 import { IoBagOutline } from "react-icons/io5";
 
 const menuItems = [
-  { name: "About", link: "./about.html" },
-  { name: "Collections", link: "./collections.html" },
-  { name: "Appointment", link: "./appointment.html" },
-  { name: "Customize", link: "./customize.html" },
-  { name: "Blogs", link: "./blogs.html" },
-  { name: "Contact", link: "./contact.html" },
+  { name: "About", link: "/about" },
+  { name: "Collections", link: "/collection" },
+  { name: "Customize", link: "/customize" },
+  { name: "Blogs", link: "/blogs" },
+  { name: "Contact", link: "/contact" },
+  { name: "Appointment", link: "/appointment", className: "tt-logo" },
 ];
 
 const HeaderComponent = () => {
@@ -24,7 +24,7 @@ const HeaderComponent = () => {
         <div className="container">
           <div className="header-desk header-desk_type_5 pb-2 pt-2">
             <div className="logo">
-              <a href="./index.html">
+              <a href="/">
                 <img
                   src="https://uomo-html.flexkitux.com/images/logo-black.png"
                   alt="Uomo"
@@ -35,7 +35,7 @@ const HeaderComponent = () => {
             <form
               action="./"
               method="GET"
-              className="header-search search-field d-none d-xxl-flex"
+              className="header-search search-field d-none "
             >
               <button className="btn header-search__btn" type="submit">
                 <i style={{ fontSize: 24 }}>
@@ -63,8 +63,11 @@ const HeaderComponent = () => {
             <nav className="navigation mx-auto mx-xxl-0">
               <ul className="navigation__list list-unstyled d-flex">
                 {menuItems.map((item) => (
-                  <li className="navigation__item" key={item.name}>
-                    <a href={item.link} className="navigation__link">
+                  <li className={`navigation__item`} key={item.name}>
+                    <a
+                      href={item.link}
+                      className={`navigation__link ${item.className}`}
+                    >
                       {item.name}
                     </a>
                   </li>
@@ -72,7 +75,7 @@ const HeaderComponent = () => {
               </ul>
             </nav>
             <div className="header-tools d-flex align-items-center">
-              <div className="header-tools__item hover-container d-block d-xxl-none">
+              <div className="header-tools__item hover-container d-block">
                 <div className="js-hover__open position-relative">
                   <a
                     className="js-search-popup search-field__actor"
@@ -139,11 +142,11 @@ const HeaderComponent = () => {
                   </i>
                 </a>
               </div>
-              <a className="header-tools__item" href="./account_wishlist.html">
+              {/* <a className="header-tools__item" href="./account_wishlist.html">
                 <i>
                   <CiHeart />
                 </i>
-              </a>
+              </a> */}
               <a
                 href="./cart.html"
                 className="header-tools__item header-tools__cart js-open-aside"

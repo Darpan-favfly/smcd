@@ -222,11 +222,15 @@ const ProductDetailsSection = () => {
           </div>
           <div className="product-single__policy">
             <a href="#">
-              <FaShippingFast className="me-2 mb-2px" size={12} />
+              <i>
+                <FaShippingFast className="me-2 mb-2px" />
+              </i>
               <span>Shipping policy</span>
             </a>
             <a href="#">
-              <FaUndo className="me-2 mb-2px" size={12} />
+              <i>
+                <FaUndo className="me-2 mb-2px" />
+              </i>
               <span>Return policy</span>
             </a>
           </div>

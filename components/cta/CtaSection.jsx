@@ -28,7 +28,7 @@ const CtaSection = () => {
               Get styled with the high-fashion products and transform yourself.
             </p>
             <a
-              href="./shop1.html"
+              href="/collection"
               className="btn-link btn-link_md default-underline text-uppercase fw-medium"
             >
               Shop Now
@@ -54,10 +54,10 @@ const CtaSection = () => {
           font-size: 15px;
         }
         .img-1 {
-          border-radius: 10px 0 0 10px;
+          border-radius: 15px 0 0 15px;
         }
         .img-2 {
-          border-radius: 0 10px 10px 0;
+          border-radius: 0 15px 15px 0;
         }
         .color-gray-5a5a5a {
           color: #5a5a5a;
@@ -74,10 +74,10 @@ const CtaSection = () => {
             font-size: 14px;
           }
           .img-1 {
-            border-radius: 10px 10px 0 0;
+            border-radius: 15px 15px 0 0;
           }
           .img-2 {
-            border-radius: 0 0 10px 10px;
+            border-radius: 0 0 15px 15px;
           }
           .btn-link_md {
             font-size: 0.875rem;

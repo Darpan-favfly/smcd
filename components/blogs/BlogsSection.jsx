@@ -11,7 +11,7 @@ const BlogsSection = () => {
       title: "Woman with good shoes is never be ugly place",
       description:
         "Midst one brought greater also morning green saying had good. Open stars day let over gathered, grass face one every light of under.",
-      link: "/blog_single.html",
+      link: "/blog-post",
     },
     {
       image: "https://uomo-html.flexkitux.com/images/blog/blog-6.jpg",
@@ -21,7 +21,7 @@ const BlogsSection = () => {
       title: " Heaven upon heaven moveth every have.",
       description:
         "Midst one brought greater also morning green saying had good. Open stars day let over gathered, grass face one every light of under.",
-      link: "/blog_single.html",
+      link: "/blog-post",
     },
     {
       image: "https://uomo-html.flexkitux.com/images/blog/blog-7.jpg",
@@ -31,7 +31,7 @@ const BlogsSection = () => {
       title: "Tree doesn't good void, waters without created",
       description:
         "Midst one brought greater also morning green saying had good. Open stars day let over gathered, grass face one every light of under.",
-      link: "/blog_single.html",
+      link: "/blog-post",
     },
   ];
   return (

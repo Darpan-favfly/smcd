@@ -15,6 +15,7 @@ const FooterComponent = () => {
                 type="email"
                 name="email"
                 placeholder="Your email address"
+                style={{ borderWidth: 1, borderColor: "#666",borderStyle:"solid" }}
               />
               <button className="btn btn-secondary fw-medium" type="submit">
                 JOIN

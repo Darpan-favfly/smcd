@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@splidejs/react-splide": "^0.7.12",
-    "dayjs": "^1.11.9",
+    "dayjs": "^1.11.11",
     "fslightbox-react": "^1.7.6",
     "next": "14.2.4",
     "nextjs-toploader": "^1.6.12",

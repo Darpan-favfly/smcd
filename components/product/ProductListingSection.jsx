@@ -95,7 +95,7 @@ const ProductListingSection = () => {
       primaryImage:
         "https://htmldemo.net/corano/corano/assets/img/product/product-12.jpg",
       secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-19.jpg",
+        "https://htmldemo.net/corano/corano/assets/img/product/product-18.jpg",
       labelNew: true,
       labelDiscount: "10%",
       labelDiscount: "10%",
@@ -109,7 +109,7 @@ const ProductListingSection = () => {
       primaryImage:
         "https://htmldemo.net/corano/corano/assets/img/product/product-13.jpg",
       secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-20.jpg",
+        "https://htmldemo.net/corano/corano/assets/img/product/product-10.jpg",
       labelNew: true,
       labelDiscount: "10%",
       labelDiscount: "10%",
@@ -123,7 +123,7 @@ const ProductListingSection = () => {
       primaryImage:
         "https://htmldemo.net/corano/corano/assets/img/product/product-14.jpg",
       secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-21.jpg",
+        "https://htmldemo.net/corano/corano/assets/img/product/product-12.jpg",
       labelNew: true,
       labelDiscount: "10%",
       labelDiscount: "10%",
@@ -137,7 +137,7 @@ const ProductListingSection = () => {
       primaryImage:
         "https://htmldemo.net/corano/corano/assets/img/product/product-15.jpg",
       secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-22.jpg",
+        "https://htmldemo.net/corano/corano/assets/img/product/product-18.jpg",
       labelNew: true,
       labelDiscount: "10%",
       labelDiscount: "10%",
@@ -151,7 +151,7 @@ const ProductListingSection = () => {
       primaryImage:
         "https://htmldemo.net/corano/corano/assets/img/product/product-16.jpg",
       secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-23.jpg",
+        "https://htmldemo.net/corano/corano/assets/img/product/product-15.jpg",
       labelNew: true,
       labelDiscount: "10%",
       labelDiscount: "10%",
@@ -165,7 +165,7 @@ const ProductListingSection = () => {
       primaryImage:
         "https://htmldemo.net/corano/corano/assets/img/product/product-17.jpg",
       secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-24.jpg",
+        "https://htmldemo.net/corano/corano/assets/img/product/product-16.jpg",
       labelNew: true,
       labelDiscount: "10%",
       labelDiscount: "10%",
@@ -214,7 +214,7 @@ const ProductListingSection = () => {
                     <div key={product.id} className="col-md-3 col-6 ">
                       <div className="product-item">
                         <figure className="product-thumb">
-                          <a href="product-details.html">
+                          <a href="/diamond-ring">
                             <img
                               className="pri-img"
                               src={product.primaryImage}
@@ -264,13 +264,11 @@ const ProductListingSection = () => {
                         <div className="product-caption text-center">
                           <div className="product-identity">
                             <p className="manufacturer-name">
-                              <a href="product-details.html">
-                                {product.manufacturer}
-                              </a>
+                              <a href="/diamond-ring">{product.manufacturer}</a>
                             </p>
                           </div>
                           <h6 className="product-name">
-                            <a href="product-details.html">{product.name}</a>
+                            <a href="/diamond-ring">{product.name}</a>
                           </h6>
                           <div className="price-box">
                             <span className="price-regular">

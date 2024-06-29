@@ -8,7 +8,7 @@ const CountdownTimer = dynamic(
 );
 
 const OfferCtaSection = () => {
-  const targetDate = new Date("2024-06-28T06:50:00");
+  const targetDate = new Date("2024-07-01T06:50:00");
 
   return (
     <section
@@ -32,7 +32,7 @@ const OfferCtaSection = () => {
               <h2 className="fs-60 fw-normal">Summer Collection</h2>
               <CountdownTimer date={targetDate} />
               <a
-                href="./shop1.html"
+                href="/collection"
                 className="btn-link default-underline text-uppercase fw-medium mt-3"
               >
                 Shop Now
