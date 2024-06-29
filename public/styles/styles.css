@@ -611,6 +611,10 @@ h3.special-block:after {
 .special-block-wrapper {
   border-radius: 15px;
 }
+.special-block-wrapper iframe {
+  height: 765px;
+  padding: 15px;
+}
 @keyframes lightning {
   0% {
     top: -100%;
@@ -709,6 +713,9 @@ h3.special-block:after {
   }
   .shop-top-bar {
     flex-direction: column;
+  }
+  .special-block-wrapper iframe {
+    height: 840px;
   }
 }
 @media (max-width: 991px) {
