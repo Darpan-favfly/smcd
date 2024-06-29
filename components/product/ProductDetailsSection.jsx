@@ -147,7 +147,7 @@ const ProductDetailsSection = () => {
                   Size Guide
                 </a>
               </div>
-              <div className="product-swatch color-swatches">
+              {/* <div className="product-swatch color-swatches">
                 <label>Color</label>
                 <div className="swatch-list">
                   <input type="radio" name="color" id="swatch-11" />
@@ -166,7 +166,7 @@ const ProductDetailsSection = () => {
                     style={{ color: "#E4E4E4" }}
                   />
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className="product-single__addtocart">
               <div className="qty-control position-relative qty-initialized">
