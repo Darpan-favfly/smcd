@@ -614,7 +614,28 @@ h3.special-block:after {
 .special-block-wrapper iframe {
   height: 765px;
   padding: 15px;
+} /* Add this to your CSS file */
+.mobile-nav-activator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  position: relative;
 }
+
+.mobile-nav-activator svg,
+.mobile-nav-activator span {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.btn-close-lg {
+  font-size: 24px;
+  line-height: 1;
+}
+
 @keyframes lightning {
   0% {
     top: -100%;
@@ -693,11 +714,11 @@ h3.special-block:after {
     height: 200px;
   }
   .fs-60 {
-    font-size: 24px;
+    font-size: 22px;
     line-height: 20px;
   }
   .countdown-timer {
-    font-size: 14px;
+    font-size: 12px;
   }
   .collections-grid_masonry .collection-grid__item {
     height: 27rem !important;

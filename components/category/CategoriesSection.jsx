@@ -17,8 +17,7 @@ const CategoriesSection = () => {
         <HeadingComponent
           data={{
             heading: "Shop By Category",
-            description:
-              "Shop from our wide range of categories and find the perfect piece for you.",
+            description: "Shop from our wide range of categories.",
           }}
         />
         <div className="container">

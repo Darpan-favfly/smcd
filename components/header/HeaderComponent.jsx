@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { CiSearch, CiUser, CiHeart } from "react-icons/ci";
 import { IoBagOutline } from "react-icons/io5";
@@ -26,7 +27,7 @@ const HeaderComponent = () => {
             <div className="logo">
               <a href="/">
                 <img
-                  src="https://uomo-html.flexkitux.com/images/logo-black.png"
+                  src="https://i.ibb.co/d2Vj1n7/Luxury-Jewellery-Branding-Logo-2.png"
                   alt="Uomo"
                   className="logo__image d-block"
                 />
@@ -168,8 +169,11 @@ const HeaderComponent = () => {
 };
 
 const MobileMenu = () => {
-  const openMobileMenu = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
     document.body.classList.toggle("mobile-menu-opened");
+    setMenuOpen(!menuOpen);
   };
 
   return (
@@ -181,15 +185,20 @@ const MobileMenu = () => {
         >
           <div
             className="mobile-nav-activator d-block position-relative"
-            onClick={openMobileMenu}
+            onClick={toggleMobileMenu}
           >
-            <RxHamburgerMenu />
-            <span className="btn-close-lg position-absolute top-0 start-0 w-100" />
+            {menuOpen ? (
+              <span className="btn-close-lg position-absolute top-0 start-0 w-100">
+                ×
+              </span>
+            ) : (
+              <RxHamburgerMenu />
+            )}
           </div>
           <div className="logo">
-            <a href="./index.html">
+            <a href="/">
               <img
-                src="https://uomo-html.flexkitux.com/images/logo.png"
+                src="https://i.ibb.co/2WbkR2S/Luxury-Jewellery-Branding-Logo.png"
                 alt="Uomo"
                 className="logo__image d-block"
               />
@@ -207,7 +216,9 @@ const MobileMenu = () => {
           </a>
         </div>
         <nav
-          className="header-mobile__navigation navigation d-flex flex-column w-100 position-absolute top-100 bg-body overflow-auto"
+          className={`header-mobile__navigation navigation d-flex flex-column w-100 position-absolute top-100 bg-body overflow-auto ${
+            menuOpen ? "open" : ""
+          }`}
           style={{ paddingRight: 17 }}
         >
           <div className="container">

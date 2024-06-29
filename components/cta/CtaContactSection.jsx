@@ -4,7 +4,7 @@ const CtaContactSection = () => {
       <section
         className="mb-100"
         style={{
-          backgroundColor: "rgb(233, 242, 246)",
+          backgroundColor: "#ebe2d6",
           paddingTop: 32,
           paddingBottom: 32,
           maxWidth: "100%",
@@ -18,7 +18,7 @@ const CtaContactSection = () => {
                 textAlign: "center",
                 marginBottom: 24,
                 fontSize: 24,
-                fontFamily: "Poppins, arial, sans-serif",
+
                 color: "rgb(51, 51, 51)",
               }}
             >
