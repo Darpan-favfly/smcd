@@ -195,10 +195,10 @@ const ProductDetailsSection = () => {
               <FaHeart size={16} />
               <span>Add to Wishlist</span>
             </a>
-            <a href="#" className="menu-link menu-link_us-s add-to-compare">
+            {/* <a href="#" className="menu-link menu-link_us-s add-to-compare">
               <FaExchangeAlt size={16} />
               <span>Add to Compare</span>
-            </a>
+            </a> */}
           </div>
           <div className="social-sharing__label d-flex align-items-center">
             <span className="social-sharing__title">Share:</span>
