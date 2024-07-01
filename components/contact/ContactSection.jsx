@@ -18,7 +18,7 @@ const ContactSection = () => {
               </div>
               <div className="item">
                 <span className="icon contact-icon">
-                  <img src="https://images.prismic.io/shlokatattoo/ZmlA45m069VX1qL9_maps-and-flags-1-.png?auto=format,compress" />
+                  <img src="https://images.prismic.io/complymyrera/ZlG-uiol0Zci9cS6_maps-and-flags.png?auto=format,compress" />
                 </span>
                 <div className="cont">
                   <h5>Address</h5>
@@ -27,7 +27,7 @@ const ContactSection = () => {
               </div>
               <div className="item">
                 <span className="icon contact-icon">
-                  <img src="https://images.prismic.io/shlokatattoo/ZmlA4Zm069VX1qL7_phone-receiver-silhouette.png?auto=format,compress" />
+                  <img src="https://images.prismic.io/complymyrera/ZlG-uyol0Zci9cS7_call.png?auto=format,compress" />
                 </span>
                 <div className="cont">
                   <h5>Phone</h5>
@@ -36,7 +36,7 @@ const ContactSection = () => {
               </div>
               <div className="item">
                 <span className="icon contact-icon">
-                  <img src="https://images.prismic.io/shlokatattoo/ZmlA4pm069VX1qL8_email-1-.png?auto=format,compress" />
+                  <img src="https://images.prismic.io/complymyrera/ZlG-uSol0Zci9cS5_email.png?auto=format,compress" />
                 </span>
                 <div className="cont">
                   <h5>Email</h5>

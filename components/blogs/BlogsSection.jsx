@@ -33,6 +33,16 @@ const BlogsSection = () => {
         "Midst one brought greater also morning green saying had good. Open stars day let over gathered, grass face one every light of under.",
       link: "/blog-post",
     },
+    {
+      image: "https://uomo-html.flexkitux.com/images/blog/blog-6.jpg",
+      subHeading: "By Admin",
+
+      published_date: "Aprial 05, 2023",
+      title: " Heaven upon heaven moveth every have.",
+      description:
+        "Midst one brought greater also morning green saying had good. Open stars day let over gathered, grass face one every light of under.",
+      link: "/blog-post",
+    },
   ];
   return (
     <>
@@ -46,7 +56,7 @@ const BlogsSection = () => {
           }}
         />
         <div className="container">
-          <div className="blog-grid row row-cols-1 row-cols-md-2 row-cols-xl-3">
+          <div className="blog-grid row row-cols-2 row-cols-md-2 row-cols-xl-4">
             {data.map((item, index) => {
               return (
                 <div className="blog-grid__item" key={index}>
@@ -74,7 +84,7 @@ const BlogsSection = () => {
                       <a href={item.link}>{item.title}</a>
                     </div>
                     <div className="blog-grid__item-content">
-                      <p>{item.description}</p>
+                      {/* <p>{item.description}</p> */}
                       <a href={item.link} className="readmore-link">
                         Continue Reading
                       </a>

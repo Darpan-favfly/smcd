@@ -21162,10 +21162,11 @@ a.add-to-wishlist.active .flaticon.flaticon-heart {
   margin-bottom: 0.25rem;
   white-space: nowrap;
 }
+
 .blog-grid__item-title {
-  font-size: 1.625rem;
+  font-size: 24px;
   margin-bottom: 1.875rem;
-  line-height: 1.5;
+  line-height: 34px;
 }
 @media (max-width: 991.98px) {
   .blog-grid__item-title {
@@ -21196,8 +21197,12 @@ a.add-to-wishlist.active .flaticon.flaticon-heart {
   width: 100%;
 }
 .blog-grid.row-cols-xl-3 .blog-grid__item-title {
-  font-size: 1.125rem;
-  margin-bottom: 1.25rem;
+
+    font-size: 24px;
+    margin-bottom: 1.875rem;
+    line-height: 34px;
+
+
 }
 .blog-list {
   margin-bottom: 3.125rem;
