@@ -16,6 +16,7 @@ import "@splidejs/react-splide/css";
 import { Jost, Lora } from "next/font/google";
 import HeaderComponent from "@/components/header/HeaderComponent";
 import FooterComponent from "@/components/footer/FooterComponent";
+import AppBar from "@/components/footer/AppBar";
 
 // import WhatsappButton from "@/components/WhatsappButton";
 // import Script from "next/script";
@@ -105,6 +106,7 @@ export default async function RootLayout({ children }) {
             {/* <WhatsappButton number={number?.[0]?.text} text={text?.[0]?.text} /> */}
           </StyledJsxRegistry>
         </main>
+        <AppBar />
         <FooterComponent />
         {/* <script
           id="ruttl-site-embed-script"

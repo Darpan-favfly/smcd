@@ -146,9 +146,21 @@ const ProductDetailsSection = () => {
                   <label className="swatch js-swatch">M</label>
                   <input type="radio" name="size" id="swatch-4" />
                 </div>
-                <a href="#" className="sizeguide-link">
+                {/* <a href="#" className="sizeguide-link">
                   Size Guide
-                </a>
+                </a> */}
+              </div>{" "}
+              <div className="product-swatch text-swatches">
+                <label>Color Grade</label>
+                <div className="swatch-list" style={{ borderRadius: "15px" }}>
+                  <input type="radio" name="size" id="swatch-1" />
+                  <label className="swatch js-swatch">A</label>
+                  <input type="radio" name="size" id="swatch-2" />
+                  <label className="swatch js-swatch">C</label>
+                  <input type="radio" name="size" id="swatch-3" />
+                  <label className="swatch js-swatch">D</label>
+                  <input type="radio" name="size" id="swatch-4" />
+                </div>
               </div>
               {/* <div className="product-swatch color-swatches">
                 <label>Color</label>

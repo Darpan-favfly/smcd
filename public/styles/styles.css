@@ -614,7 +614,6 @@ h3.special-block:after {
 }
 .special-block-wrapper iframe {
   height: 765px;
-  padding: 15px;
 } /* Add this to your CSS file */
 .mobile-nav-activator {
   display: flex;
@@ -664,6 +663,12 @@ h3.special-block:after {
 }
 .service-promotion .row {
   gap: 15px;
+}
+.footer-mobile__link {
+  font-size: 16px;
+}
+.footer-mobile__link svg {
+  font-size: 24px;
 }
 @media (max-width: 1200px) {
   .service-promotion .col-md-3 {
