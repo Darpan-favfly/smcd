@@ -193,14 +193,9 @@ const ProductDetailsSection = () => {
               </button>
             </div>
           </form>
-          {/* <div className="product-single__addtolinks">
-            <a href="#" className="menu-link menu-link_us-s add-to-wishlist">
-              <FaHeart size={16} />
-              <span>Add to Wishlist</span>
-            </a>
-         
+          <div className="product-single__addtolinks">
             <ShareSection />
-          </div> */}
+          </div>
           {/* <div className="social-sharing__label d-flex align-items-center">
             <span className="social-sharing__title">Share:</span>
             <div className="social-sharing__list">
