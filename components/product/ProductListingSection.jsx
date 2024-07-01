@@ -184,9 +184,9 @@ const ProductListingSection = () => {
     <section>
       <div className="container">
         <div className="shop-top-bar d-flex justify-content-between align-items-center">
-          <div className="top-bar-left">
+          {/* <div className="top-bar-left">
             <p>Showing 1–16 of 21 results</p>
-          </div>
+          </div> */}
           <div className="top-bar-right flex  align-items-center justify-content-center">
             <span>Sort By: </span>
             <select
@@ -286,7 +286,7 @@ const ProductListingSection = () => {
                   ))}
                 </div>
 
-                <div className="paginatoin-area text-center">
+                {/* <div className="paginatoin-area text-center">
                   <ul className="pagination-box">
                     <li>
                       <a className="previous" href="#">
@@ -308,7 +308,7 @@ const ProductListingSection = () => {
                       </a>
                     </li>
                   </ul>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
