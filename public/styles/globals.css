@@ -17212,6 +17212,7 @@ textarea.form-control.is-invalid {
   padding: 0.5em 0;
   color: #222222;
   line-height: 1.5em;
+  font-size: 16px;
 }
 
 .menu-link_us-s:after {
@@ -19701,6 +19702,7 @@ textarea.form-control.is-invalid {
   align-items: center;
   gap: 2rem;
   margin-bottom: 2rem;
+  justify-content: space-between;
 }
 .product-single__addtolinks > a,
 .product-single__addtolinks > .share-button > button {
@@ -19712,6 +19714,7 @@ textarea.form-control.is-invalid {
   border: 0;
   background-color: transparent;
   font-weight: 500;
+  font-size: 16px;
 }
 .product-single__addtolinks > a:hover:after,
 .product-single__addtolinks > .share-button > button:hover:after {

@@ -4,8 +4,8 @@ import { FaHeart } from "react-icons/fa";
 
 const BrandMark = () => {
   const colors = {
-    primary: "#fff",
-    secondary: "#ffffff96",
+    primary: "#b9a16b",
+    secondary: "#b9a16b",
   };
 
   return (
@@ -22,7 +22,8 @@ const BrandMark = () => {
           rel="noreferrer"
           title="Best digital marketing company in kolkata"
           href={`https://favfly.com?ref=${process.env.PRISMIC_ID}.${process.env.TLD}`}
-          className="container pt-3 d-block">
+          className="container pt-3 d-block"
+        >
           Growing with Favfly
         </a>
       </div>
@@ -73,8 +74,6 @@ const BrandMark = () => {
           position: absolute;
           top: 50%;
           left: 50%;
-          -webkit-transform: translate(-50%, -50%);
-          -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
           font-size: 18px;
           transition: all 0.3s ease-in-out;

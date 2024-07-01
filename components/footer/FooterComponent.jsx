@@ -5,6 +5,7 @@ import {
   FaYoutube,
   FaPinterestP,
 } from "react-icons/fa";
+import BrandMark from "../favfly/BrandMark";
 
 const socialMediaLinks = [
   { href: "https://www.facebook.com", icon: <FaFacebookF /> },
@@ -156,6 +157,7 @@ const FooterComponent = () => {
             <div className="footer-settings d-md-flex align-items-center"></div>
           </div>
         </div>
+        <BrandMark />
       </footer>
     </>
   );

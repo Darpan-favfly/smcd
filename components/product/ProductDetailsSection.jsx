@@ -16,6 +16,7 @@ import {
   FaArrowLeft,
   FaArrowRight,
 } from "react-icons/fa";
+import ShareSection from "../global/ShareSection";
 
 const ProductDetailsSection = () => {
   const images = [
@@ -89,7 +90,7 @@ const ProductDetailsSection = () => {
                 The Shop
               </a>
             </div>
-            <div className="product-single__prev-next d-flex align-items-center justify-content-between justify-content-md-end flex-grow-1">
+            {/* <div className="product-single__prev-next d-flex align-items-center justify-content-between justify-content-md-end flex-grow-1">
               <a
                 href="./product1_simple.html"
                 className="text-uppercase fw-medium"
@@ -104,7 +105,7 @@ const ProductDetailsSection = () => {
                 <span className="menu-link menu-link_us-s">Next</span>
                 <FaArrowRight className="mb-1px" size={10} />
               </a>
-            </div>
+            </div> */}
           </div>
           <h1 className="product-single__name">
             Lightweight Puffer Jacket With a Hood
@@ -127,7 +128,9 @@ const ProductDetailsSection = () => {
           <div className="product-single__short-desc">
             <p>
               Phasellus sed volutpat orci. Fusce eget lore mauris vehicula
-              elementum gravida nec dui
+              elementum gravida nec dui. Aenean aliquam varius ipsum, non
+              ultricies tellus sodales eu. Donec dignissim viverra nunc, ut
+              aliquet magna posuere eget.
             </p>
           </div>
           <form name="addtocart-form" method="post">
@@ -190,17 +193,15 @@ const ProductDetailsSection = () => {
               </button>
             </div>
           </form>
-          <div className="product-single__addtolinks">
+          {/* <div className="product-single__addtolinks">
             <a href="#" className="menu-link menu-link_us-s add-to-wishlist">
               <FaHeart size={16} />
               <span>Add to Wishlist</span>
             </a>
-            {/* <a href="#" className="menu-link menu-link_us-s add-to-compare">
-              <FaExchangeAlt size={16} />
-              <span>Add to Compare</span>
-            </a> */}
-          </div>
-          <div className="social-sharing__label d-flex align-items-center">
+         
+            <ShareSection />
+          </div> */}
+          {/* <div className="social-sharing__label d-flex align-items-center">
             <span className="social-sharing__title">Share:</span>
             <div className="social-sharing__list">
               <a href="#" className="social-sharing__link">
@@ -219,20 +220,35 @@ const ProductDetailsSection = () => {
                 <FaEnvelope size={10} />
               </a>
             </div>
-          </div>
+          </div> */}
+
           <div className="product-single__policy">
-            <a href="#">
+            <a href="/shipping-policy">
               <i>
                 <FaShippingFast className="me-2 mb-2px" />
               </i>
               <span>Shipping policy</span>
             </a>
-            <a href="#">
+            <a href="/return-exchange-policy">
               <i>
                 <FaUndo className="me-2 mb-2px" />
               </i>
               <span>Return policy</span>
             </a>
+          </div>
+          <div className="product-single__meta-info mt-4">
+            <div className="meta-item">
+              <label>SKU:</label>
+              <span>N/A</span>
+            </div>
+            <div className="meta-item">
+              <label>Categories:</label>
+              <span>Casual &amp; Urban Wear, Jackets, Men</span>
+            </div>
+            <div className="meta-item">
+              <label>Tags:</label>
+              <span>biker, black, bomber, leather</span>
+            </div>
           </div>
         </div>
       </div>

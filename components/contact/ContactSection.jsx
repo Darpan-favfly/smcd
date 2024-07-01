@@ -117,7 +117,7 @@ const ContactSection = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="col-md-12 form-group">
+                      <div className="col-md-12 form-group mt-4">
                         <textarea
                           name="message"
                           id="message"
