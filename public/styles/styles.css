@@ -670,6 +670,16 @@ h3.special-block:after {
 .footer-mobile__link svg {
   font-size: 24px;
 }
+.footer-mobile {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 15px;
+}
+span.wishlist-amount.d-block.position-absolute.js-wishlist-count {
+  top: -1px;
+  left: calc(100% - 8px);
+  background-color: #d70a0a;
+  width: 12px;
+  height: 12px;
+}
 @media (max-width: 1200px) {
   .service-promotion .col-md-3 {
     width: 23%;

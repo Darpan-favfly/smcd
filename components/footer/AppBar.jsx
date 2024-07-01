@@ -1,6 +1,7 @@
 import { CiHome } from "react-icons/ci";
 import { CiShop } from "react-icons/ci";
 import { CiGrid41 } from "react-icons/ci";
+import { CiChat1 } from "react-icons/ci";
 
 const AppBar = () => {
   return (
@@ -20,7 +21,7 @@ const AppBar = () => {
           {/* /.col-3 */}
           <div className="col-4">
             <a
-              href="/"
+              href="/collection"
               className="footer-mobile__link d-flex flex-column align-items-center"
             >
               <CiShop />
@@ -34,12 +35,10 @@ const AppBar = () => {
               className="footer-mobile__link d-flex flex-column align-items-center"
             >
               <div className="position-relative">
-                <CiGrid41 />
-                {/* <span className="wishlist-amount d-block position-absolute js-wishlist-count">
-                  New
-                </span> */}
+                <CiChat1 />
+                <span className="wishlist-amount d-block position-absolute js-wishlist-count"></span>
               </div>
-              <span>Collection</span>
+              <span>Connect</span>
             </a>
           </div>
           {/* /.col-3 */}
