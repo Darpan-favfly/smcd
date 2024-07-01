@@ -20,7 +20,7 @@ const FeaturedProductSection = () => {
         <div className="container">
           <div className="row" style={{ rowGap: 15 }}>
             {featuredProducts.map((image, index) => (
-              <div className="col-lg-3" key={index}>
+              <div className="col-lg-3 col-6" key={index}>
                 <img
                   src={image}
                   alt={`Featured Product ${index + 1}`}

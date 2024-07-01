@@ -27,10 +27,11 @@ const CtaContactSection = () => {
             <p
               className="center-block"
               style={{
-                width: "auto",
+                maxWidth: 600,
                 fontSize: 16,
                 paddingLeft: 16,
                 paddingRight: 16,
+                margin: "0px auto",
               }}
             >
               We’re a proud, independent company that takes every correspondence

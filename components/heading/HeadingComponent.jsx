@@ -21,12 +21,14 @@
 const HeadingComponent = ({ data }) => {
   return (
     <>
-      <h2 className="section-title fw-normal fs-40 text-center mb-2">
-        {data.heading}
-      </h2>
-      <p className="font-special fs-18 mb-5 pb-2 text-secondary text-center">
-        {data.description}
-      </p>
+      <div className="mt-3">
+        <h2 className="section-title fw-normal fs-40 text-center ">
+          {data.heading}
+        </h2>
+        <p className="font-special fs-18 mb-4 text-secondary text-center">
+          {data.description}
+        </p>
+      </div>
     </>
   );
 };

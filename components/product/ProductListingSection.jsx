@@ -240,16 +240,16 @@ const ProductListingSection = () => {
                             )} */}
                           </div>
                           <div className="button-group">
-                            <a
+                            {/* <a
                               className="d-flex justify-content-center align-items-center "
                               href="wishlist.html "
                               title="Add to wishlist"
                             >
                               <PiHeartStraightLight />
-                            </a>
+                            </a> */}
                             <a
                               className="d-flex justify-content-center align-items-center"
-                              href="compare.html"
+                              href="/slug"
                               title="Add to Compare"
                             >
                               <IoEyeOutline />
