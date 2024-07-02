@@ -17,6 +17,7 @@ import {
   FaArrowRight,
 } from "react-icons/fa";
 import ShareSection from "../global/ShareSection";
+import Link from "next/link";
 
 const ProductDetailsSection = () => {
   const images = [
@@ -74,37 +75,31 @@ const ProductDetailsSection = () => {
         <div className="col-lg-6">
           <div className="d-flex justify-content-between mb-4 pb-md-2">
             <div className="breadcrumb mb-0 d-none d-md-block flex-grow-1">
-              <a
+              <Link
                 href="#"
                 className="menu-link menu-link_us-s text-uppercase fw-medium"
               >
                 Home
-              </a>
+              </Link>
               <span className="breadcrumb-separator menu-link fw-medium ps-1 pe-1">
                 /
               </span>
-              <a
+              <Link
                 href="#"
                 className="menu-link menu-link_us-s text-uppercase fw-medium"
               >
                 The Shop
-              </a>
+              </Link>
             </div>
             {/* <div className="product-single__prev-next d-flex align-items-center justify-content-between justify-content-md-end flex-grow-1">
-              <a
-                href="./product1_simple.html"
-                className="text-uppercase fw-medium"
-              >
+              <Link href="./product1_simple.html" className="text-uppercase fw-medium">
                 <FaArrowLeft className="mb-1px" size={10} />
                 <span className="menu-link menu-link_us-s">Prev</span>
-              </a>
-              <a
-                href="./product3_external.html"
-                className="text-uppercase fw-medium"
-              >
+              </Link>
+              <Link href="./product3_external.html" className="text-uppercase fw-medium">
                 <span className="menu-link menu-link_us-s">Next</span>
                 <FaArrowRight className="mb-1px" size={10} />
-              </a>
+              </Link>
             </div> */}
           </div>
           <h1 className="product-single__name">
@@ -146,9 +141,9 @@ const ProductDetailsSection = () => {
                   <label className="swatch js-swatch">M</label>
                   <input type="radio" name="size" id="swatch-4" />
                 </div>
-                {/* <a href="#" className="sizeguide-link">
+                {/* <Link href="#" className="sizeguide-link">
                   Size Guide
-                </a> */}
+                </Link> */}
               </div>{" "}
               <div className="product-swatch text-swatches">
                 <label>Color Grade</label>
@@ -211,37 +206,37 @@ const ProductDetailsSection = () => {
           {/* <div className="social-sharing__label d-flex align-items-center">
             <span className="social-sharing__title">Share:</span>
             <div className="social-sharing__list">
-              <a href="#" className="social-sharing__link">
+              <Link href="#" className="social-sharing__link">
                 <FaFacebook size={10} />
-              </a>
-              <a href="#" className="social-sharing__link">
+              </Link>
+              <Link href="#" className="social-sharing__link">
                 <FaTwitter size={10} />
-              </a>
-              <a href="#" className="social-sharing__link">
+              </Link>
+              <Link href="#" className="social-sharing__link">
                 <FaInstagram size={10} />
-              </a>
-              <a href="#" className="social-sharing__link">
+              </Link>
+              <Link href="#" className="social-sharing__link">
                 <FaPinterest size={10} />
-              </a>
-              <a href="#" className="social-sharing__link">
+              </Link>
+              <Link href="#" className="social-sharing__link">
                 <FaEnvelope size={10} />
-              </a>
+              </Link>
             </div>
           </div> */}
 
           <div className="product-single__policy">
-            <a href="/shipping-policy">
+            <Link href="/shipping-policy">
               <i>
                 <FaShippingFast className="me-2 mb-2px" />
               </i>
               <span>Shipping policy</span>
-            </a>
-            <a href="/return-exchange-policy">
+            </Link>
+            <Link href="/return-exchange-policy">
               <i>
                 <FaUndo className="me-2 mb-2px" />
               </i>
               <span>Return policy</span>
-            </a>
+            </Link>
           </div>
           <div className="product-single__meta-info mt-4">
             <div className="meta-item">

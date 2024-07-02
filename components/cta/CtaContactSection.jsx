@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const CtaContactSection = () => {
   return (
     <>
@@ -42,12 +44,12 @@ const CtaContactSection = () => {
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <div>
-            <a
+            <Link
               href="/contact"
               className="btn-link btn-link_md default-underline text-uppercase fw-medium mt-4"
             >
               Contact Us
-            </a>
+            </Link>
             {/**/}
           </div>
         </div>

@@ -1,5 +1,6 @@
 "use client";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -57,12 +58,12 @@ const HeroItem = () => {
             </h6>
             <h1 className="fw-normal mb-0">Newest Arrivals</h1>
             <p>Lorem ipsum dolor sit amet, consectetur elit.</p>
-            <a
+            <Link
               href="./shop1.html"
               className="btn-link btn-link_sm default-underline text-uppercase fw-medium"
             >
               Shop Now
-            </a>
+            </Link>
           </div>
         </div>
       </div>

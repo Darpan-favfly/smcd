@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { FaHeart } from "react-icons/fa";
 
 const BrandMark = () => {
@@ -11,13 +12,13 @@ const BrandMark = () => {
   return (
     <>
       {/* ========== FAVFLY ========= */}
-      <div className="favfly pb-3">
+      <div className="favfly pb-3 mb-6">
         <div className="divider-icon pt-0 m-0 border-0 position-relative">
           <i className="fa">
             <FaHeart />
           </i>
         </div>
-        <a
+        <Link
           target="_blank"
           rel="noreferrer"
           title="Best digital marketing company in kolkata"
@@ -25,7 +26,7 @@ const BrandMark = () => {
           className="container pt-3 d-block"
         >
           Growing with Favfly
-        </a>
+        </Link>
       </div>
       <style jsx>{`
         .favfly i,

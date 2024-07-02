@@ -1,4 +1,7 @@
 "use client";
+
+import Link from "next/link";
+
 const CtaSection = () => {
   return (
     <>
@@ -27,12 +30,12 @@ const CtaSection = () => {
             <p className="fs-15 color-gray-5a5a5a mb-2 desc">
               Get styled with the high-fashion products and transform yourself.
             </p>
-            <a
+            <Link
               href="/collection"
               className="btn-link btn-link_md default-underline text-uppercase fw-medium"
             >
               Shop Now
-            </a>
+            </Link>
           </div>
         </div>
       </section>

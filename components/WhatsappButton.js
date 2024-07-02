@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { FaWhatsapp } from "react-icons/fa";
 
 const WhatsappButton = ({ number, text }) => {
@@ -7,25 +8,27 @@ const WhatsappButton = ({ number, text }) => {
       {number && (
         <>
           {/* ===== FOR MOBILE & TABLET */}
-          <a
+          <Link
             href={`https://api.whatsapp.com/send?phone=${number}&text=${text}`}
             target="_blank"
             rel="noreferrer nofollow"
-            className="btn-whatsapp-pulse d-lg-none">
+            className="btn-whatsapp-pulse d-lg-none"
+          >
             <i className="fab">
               <FaWhatsapp style={{ verticalAlign: "top" }} />
             </i>
-          </a>
+          </Link>
           {/* ===== FOR LAPTOP */}
-          <a
+          <Link
             href={`https://web.whatsapp.com/send?phone=${number}&text=${text}`}
             target="_blank"
             rel="noreferrer nofollow"
-            className="btn-whatsapp-pulse d-none d-lg-flex">
+            className="btn-whatsapp-pulse d-none d-lg-flex"
+          >
             <i className="fab">
               <FaWhatsapp style={{ verticalAlign: "top" }} />
             </i>
-          </a>
+          </Link>
         </>
       )}
 

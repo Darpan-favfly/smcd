@@ -5,6 +5,7 @@ import { PiHeartStraightLight } from "react-icons/pi";
 import { IoEyeOutline } from "react-icons/io5";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
+import Link from "next/link";
 
 const ProductListingSection = () => {
   const [sort, setSort] = useState("Relevance");
@@ -214,7 +215,7 @@ const ProductListingSection = () => {
                     <div key={product.id} className="col-md-3 col-6 ">
                       <div className="product-item">
                         <figure className="product-thumb">
-                          <a href="/diamond-ring">
+                          <Link href="/diamond-ring">
                             <img
                               className="pri-img"
                               src={product.primaryImage}
@@ -226,7 +227,7 @@ const ProductListingSection = () => {
                               src={product.secondaryImage}
                               alt="product"
                             />
-                          </a>
+                          </Link>
                           <div className="product-badge">
                             {product.labelNew && (
                               <div className="product-label new">
@@ -246,14 +247,14 @@ const ProductListingSection = () => {
                               title="Add to wishlist"
                             >
                               <PiHeartStraightLight />
-                            </a> */}
-                            <a
+                            </Link> */}
+                            {/* <a
                               className="d-flex justify-content-center align-items-center"
                               href="/slug"
                               title="Add to Compare"
                             >
                               <IoEyeOutline />
-                            </a>
+                            </Link> */}
                           </div>
                           <div className="cart-hover">
                             <button className="btn btn-cart">
@@ -264,11 +265,13 @@ const ProductListingSection = () => {
                         <div className="product-caption text-center">
                           <div className="product-identity">
                             <p className="manufacturer-name">
-                              <a href="/diamond-ring">{product.manufacturer}</a>
+                              <Link href="/diamond-ring">
+                                {product.manufacturer}
+                              </Link>
                             </p>
                           </div>
                           <h6 className="product-name">
-                            <a href="/diamond-ring">{product.name}</a>
+                            <Link href="/diamond-ring">{product.name}</Link>
                           </h6>
                           <div className="price-box">
                             <span className="price-regular">
@@ -289,23 +292,23 @@ const ProductListingSection = () => {
                 {/* <div className="paginatoin-area text-center">
                   <ul className="pagination-box">
                     <li>
-                      <a className="previous" href="#">
+                      <Link className="previous" href="#">
                         <IoIosArrowBack />
-                      </a>
+                      </Link>
                     </li>
                     <li className="active">
-                      <a href="#">1</a>
+                      <Link href="#">1</Link>
                     </li>
                     <li>
-                      <a href="#">2</a>
+                      <Link href="#">2</Link>
                     </li>
                     <li>
-                      <a href="#">3</a>
+                      <Link href="#">3</Link>
                     </li>
                     <li>
-                      <a className="next" href="#">
+                      <Link className="next" href="#">
                         <IoIosArrowForward />
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div> */}

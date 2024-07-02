@@ -4,6 +4,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import { PiHeartStraightLight } from "react-icons/pi";
 import { IoEyeOutline } from "react-icons/io5";
+import Link from "next/link";
 
 const RecommendedProductsSection = () => {
   const products = [
@@ -202,7 +203,7 @@ const RecommendedProductsSection = () => {
               <SplideSlide key={product.id}>
                 <div className="product-item">
                   <figure className="product-thumb">
-                    <a href="product-details.html">
+                    <Link href="product-details.html">
                       <img
                         className="pri-img"
                         src={product.primaryImage}
@@ -214,7 +215,7 @@ const RecommendedProductsSection = () => {
                         src={product.secondaryImage}
                         alt="product"
                       />
-                    </a>
+                    </Link>
                     <div className="product-badge">
                       {product.labelNew && (
                         <div className="product-label new">
@@ -223,20 +224,20 @@ const RecommendedProductsSection = () => {
                       )}
                     </div>
                     <div className="button-group">
-                      <a
+                      <Link
                         className="d-flex justify-content-center align-items-center"
                         href="wishlist.html"
                         title="Add to wishlist"
                       >
                         <PiHeartStraightLight />
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         className="d-flex justify-content-center align-items-center"
                         href="compare.html"
                         title="Add to Compare"
                       >
                         <IoEyeOutline />
-                      </a>
+                      </Link>
                     </div>
                     <div className="cart-hover">
                       <button className="btn btn-cart">add to cart</button>
@@ -245,13 +246,13 @@ const RecommendedProductsSection = () => {
                   <div className="product-caption text-center">
                     <div className="product-identity">
                       <p className="manufacturer-name">
-                        <a href="product-details.html">
+                        <Link href="product-details.html">
                           {product.manufacturer}
-                        </a>
+                        </Link>
                       </p>
                     </div>
                     <h6 className="product-name">
-                      <a href="product-details.html">{product.name}</a>
+                      <Link href="product-details.html">{product.name}</Link>
                     </h6>
                     <div className="price-box">
                       <span className="price-regular">{product.price}</span>

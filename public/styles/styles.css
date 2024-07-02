@@ -829,6 +829,9 @@ span.wishlist-amount.d-block.position-absolute.js-wishlist-count {
   .secondary-hero-section h2 {
     font-size: 26px;
   }
+  .favfly {
+    margin-bottom: 65px;
+  }
 }
 @media (max-width: 991px) {
   .special-block-img-left {

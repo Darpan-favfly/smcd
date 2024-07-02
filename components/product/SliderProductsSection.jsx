@@ -1,5 +1,6 @@
 "use client";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import Link from "next/link";
 
 const SliderProductsSection = () => {
   return (
@@ -45,12 +46,12 @@ const SliderProductItem = ({ index }) => {
         alt=""
       />
       <h3 className="text-center m-0">
-        <a
+        <Link
           href="./shop1.html"
           className="menu-link fw-normal text-uppercase fs-15"
         >
           Bracelets
-        </a>
+        </Link>
       </h3>
     </div>
   );

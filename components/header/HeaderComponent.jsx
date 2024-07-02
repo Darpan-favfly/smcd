@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { CiSearch, CiUser, CiHeart } from "react-icons/ci";
 import { IoBagOutline } from "react-icons/io5";
@@ -25,13 +26,13 @@ const HeaderComponent = () => {
         <div className="container">
           <div className="header-desk header-desk_type_5 pb-2 pt-2">
             <div className="logo">
-              <a href="/">
+              <Link href="/">
                 <img
                   src="https://i.ibb.co/d2Vj1n7/Luxury-Jewellery-Branding-Logo-2.png"
                   alt="Uomo"
                   className="logo__image d-block"
                 />
-              </a>
+              </Link>
             </div>
             <form
               action="./"
@@ -65,12 +66,11 @@ const HeaderComponent = () => {
               <ul className="navigation__list list-unstyled d-flex">
                 {menuItems.map((item) => (
                   <li className={`navigation__item`} key={item.name}>
-                    <a
-                      href={item.link}
-                      className={`navigation__link ${item.className}`}
-                    >
-                      {item.name}
-                    </a>
+                    <Link href={item.link}>
+                      <div className={`navigation__link ${item.className}`}>
+                        {item.name}
+                      </div>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -78,13 +78,13 @@ const HeaderComponent = () => {
             <div className="header-tools d-flex align-items-center">
               <div className="header-tools__item hover-container d-block">
                 <div className="js-hover__open position-relative">
-                  <a
-                    className="js-search-popup search-field__actor"
+                  <Link
                     href="./search.html"
+                    className="js-search-popup search-field__actor"
                   >
                     <CiSearch />
                     <i className="btn-icon btn-close-lg" />
-                  </a>
+                  </Link>
                 </div>
                 <div className="search-popup js-hidden-content">
                   <form
@@ -133,33 +133,27 @@ const HeaderComponent = () => {
                 </div>
               </div>
               <div className="header-tools__item hover-container">
-                <a
-                  className="header-tools__item js-open-aside"
+                <Link
                   href="./account.html"
+                  className="header-tools__item js-open-aside"
                   data-aside="customerForms"
                 >
-                  <i>
-                    <CiUser />
-                  </i>
-                </a>
+                  <CiUser />
+                </Link>
               </div>
-              {/* <a className="header-tools__item" href="./account_wishlist.html">
-                <i>
-                  <CiHeart />
-                </i>
-              </a> */}
-              <a
+              {/* <Link className="header-tools__item" href="./account_wishlist.html">
+                <CiHeart />
+              </Link> */}
+              <Link
                 href="./cart.html"
                 className="header-tools__item header-tools__cart js-open-aside"
                 data-aside="cartDrawer"
               >
-                <i>
-                  <IoBagOutline />
-                </i>
+                <IoBagOutline />
                 <span className="cart-amount d-block position-absolute js-cart-items-count">
                   3
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -174,6 +168,11 @@ const MobileMenu = () => {
   const toggleMobileMenu = () => {
     document.body.classList.toggle("mobile-menu-opened");
     setMenuOpen(!menuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    document.body.classList.remove("mobile-menu-opened");
+    setMenuOpen(false);
   };
 
   return (
@@ -196,15 +195,15 @@ const MobileMenu = () => {
             )}
           </div>
           <div className="logo">
-            <a href="/">
+            <Link href="/">
               <img
                 src="https://i.ibb.co/2WbkR2S/Luxury-Jewellery-Branding-Logo.png"
                 alt="Uomo"
                 className="logo__image d-block"
               />
-            </a>
+            </Link>
           </div>
-          <a
+          <Link
             href="./cart.html"
             className="header-tools__item header-tools__cart js-open-aside"
             data-aside="cartDrawer"
@@ -213,7 +212,7 @@ const MobileMenu = () => {
             <span className="cart-amount d-block position-absolute js-cart-items-count">
               3
             </span>
-          </a>
+          </Link>
         </div>
         <nav
           className={`header-mobile__navigation navigation d-flex flex-column w-100 position-absolute top-100 bg-body overflow-auto ${
@@ -255,9 +254,14 @@ const MobileMenu = () => {
               <ul className="navigation__list list-unstyled position-relative">
                 {menuItems.map((item) => (
                   <li className="navigation__item" key={item.name}>
-                    <a href={item.link} className="navigation__link">
-                      {item.name}
-                    </a>
+                    <Link href={item.link}>
+                      <div
+                        className="navigation__link"
+                        onClick={closeMobileMenu}
+                      >
+                        {item.name}
+                      </div>
+                    </Link>
                   </li>
                 ))}
               </ul>

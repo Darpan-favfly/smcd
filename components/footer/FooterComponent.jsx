@@ -6,6 +6,7 @@ import {
   FaPinterestP,
 } from "react-icons/fa";
 import BrandMark from "../favfly/BrandMark";
+import Link from "next/link";
 
 const socialMediaLinks = [
   { href: "https://www.facebook.com", icon: <FaFacebookF /> },
@@ -68,20 +69,18 @@ const FooterComponent = () => {
             </form>
           </div>
         </div>
-        {/* /.footer-top container */}
         <div className="footer-middle container">
-          <div className="row row-cols-lg-3 row-cols-3">
+          <div className="row row-cols-lg-3 row-cols-12">
             <div className="footer-column footer-store-info font-heading col-12 mb-4 mb-lg-0">
               <div className="logo">
-                <a href="/">
+                <Link href="/">
                   <img
                     src="https://i.ibb.co/d2Vj1n7/Luxury-Jewellery-Branding-Logo-2.png"
                     alt="Uomo"
                     className="logo__image d-block"
                   />
-                </a>
+                </Link>
               </div>
-              {/* /.logo */}
               <p className="footer-address body-color">
                 409 Granville St , Vancouver
               </p>
@@ -98,9 +97,11 @@ const FooterComponent = () => {
               <ul className="social-links list-unstyled d-flex flex-wrap mb-0">
                 {socialMediaLinks.map((link, index) => (
                   <li key={index}>
-                    <a href={link.href} className="footer__social-link d-block">
-                      {link.icon}
-                    </a>
+                    <Link href={link.href}>
+                      <div className="footer__social-link d-block">
+                        {link.icon}
+                      </div>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -113,9 +114,11 @@ const FooterComponent = () => {
               <ul className="sub-menu__list list-unstyled font-heading">
                 {menuItems.company.map((item, index) => (
                   <li className="sub-menu__item" key={index}>
-                    <a href={item.link} className="menu-link menu-link_us-s">
-                      {item.name}
-                    </a>
+                    <Link href={item.link}>
+                      <div className="menu-link menu-link_us-s">
+                        {item.name}
+                      </div>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -126,9 +129,11 @@ const FooterComponent = () => {
               <ul className="sub-menu__list list-unstyled font-heading">
                 {menuItems.shop.map((item, index) => (
                   <li className="sub-menu__item" key={index}>
-                    <a href={item.link} className="menu-link menu-link_us-s">
-                      {item.name}
-                    </a>
+                    <Link href={item.link}>
+                      <div className="menu-link menu-link_us-s">
+                        {item.name}
+                      </div>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -141,9 +146,11 @@ const FooterComponent = () => {
               <ul className="sub-menu__list list-unstyled font-heading">
                 {menuItems.policies.map((item, index) => (
                   <li className="sub-menu__item" key={index}>
-                    <a href={item.link} className="menu-link menu-link_us-s">
-                      {item.name}
-                    </a>
+                    <Link href={item.link}>
+                      <div className="menu-link menu-link_us-s">
+                        {item.name}
+                      </div>
+                    </Link>
                   </li>
                 ))}
               </ul>

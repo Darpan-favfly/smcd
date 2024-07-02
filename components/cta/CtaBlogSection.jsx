@@ -1,3 +1,4 @@
+import Link from "next/link";
 const BlogCtaSection = () => {
   // Hardcoded data
   const data = {
@@ -26,9 +27,9 @@ const BlogCtaSection = () => {
                 </p>
               </div>
               <div className="cta-blog-button ">
-                <a target="" rel="noreferrer" href="https://www.google.com">
+                <Link target="" rel="noreferrer" href="https://www.google.com">
                   Get Connected!
-                </a>
+                </Link>
               </div>
             </div>
           </div>

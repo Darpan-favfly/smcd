@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import HeadingComponent from "../heading/HeadingComponent";
+import Link from "next/link";
 
 const CountdownTimer = dynamic(
   () => import("@/components/global/CountdownTimer"),
@@ -39,12 +40,12 @@ const OfferCtaSection = () => {
                 </p>
                 <h2 className="fs-60 fw-normal">Summer Collection</h2>
                 <CountdownTimer date={targetDate} />
-                <a
+                <Link
                   href="/collection"
                   className="btn-link default-underline text-uppercase fw-medium mt-3"
                 >
                   Shop Now
-                </a>
+                </Link>
               </div>
             </div>
           </div>
