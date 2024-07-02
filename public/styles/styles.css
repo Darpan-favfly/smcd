@@ -471,7 +471,7 @@ p:last-child {
   width: 60px;
   height: 60px;
   text-align: center;
-  background-color: #a59407;
+  background-color: #000;
 
   border-radius: 100%;
 }
@@ -679,6 +679,12 @@ span.wishlist-amount.d-block.position-absolute.js-wishlist-count {
   background-color: #d70a0a;
   width: 12px;
   height: 12px;
+}
+.contact-form {
+  border-radius: 15px;
+}
+.booking-inner iframe {
+  height: 540px;
 }
 @media (max-width: 1200px) {
   .service-promotion .col-md-3 {

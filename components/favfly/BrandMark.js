@@ -12,7 +12,7 @@ const BrandMark = () => {
   return (
     <>
       {/* ========== FAVFLY ========= */}
-      <div className="favfly pb-3 mb-6">
+      <div className="favfly pb-3">
         <div className="divider-icon pt-0 m-0 border-0 position-relative">
           <i className="fa">
             <FaHeart />

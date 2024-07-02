@@ -47,93 +47,11 @@ const ContactSection = () => {
             <div className="col-md-5 offset-md-1">
               <div className="contact-form bg-darkbrown">
                 <div className="booking-inner clearfix">
-                  <form
-                    method="post"
-                    className="form1 clearfix contact__form"
-                    action="https://duruthemes.com/demo/html/perukar/multipage-video/mail.php"
-                  >
-                    <div className="row">
-                      <div className="col-md-12 text-center mb-20">
-                        <h4 className="white">Contact Form</h4>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-12">
-                        <div
-                          className="alert alert-success contact__msg"
-                          role="alert"
-                          style={{ display: "none" }}
-                        >
-                          Your message was sent successfully.
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-6">
-                        <div className="input1_wrapper">
-                          <label>Name</label>
-                          <div className="input2_inner">
-                            <input
-                              className="form-control input"
-                              placeholder="Name"
-                              type="text"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-md-6">
-                        <div className="input1_wrapper">
-                          <label>Phone</label>
-                          <div className="input2_inner">
-                            <input
-                              className="form-control input"
-                              placeholder="Phone"
-                              type="text"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-md-6">
-                        <div className="input1_wrapper">
-                          <label>e-Mail</label>
-                          <div className="input2_inner">
-                            <input
-                              className="form-control input"
-                              placeholder="e-Mail"
-                              type="email"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-md-6">
-                        <div className="input1_wrapper">
-                          <label>Subject</label>
-                          <div className="input2_inner">
-                            <input
-                              className="form-control input"
-                              placeholder="Subject"
-                              type="text"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-md-12 form-group mt-4">
-                        <textarea
-                          name="message"
-                          id="message"
-                          cols={30}
-                          rows={4}
-                          placeholder="Message"
-                          defaultValue={""}
-                        />
-                      </div>
-                      <div className="col-md-12 mb-30">
-                        <button type="submit" className="btn-form2-submit">
-                          Send Message
-                        </button>
-                      </div>
-                    </div>
-                  </form>
+                  <iframe
+                    style={{ border: "none", width: "100%" }}
+                    id="contact-form-5hj56y"
+                    src="https://opnform.com/forms/contact-form-5hj56y"
+                  />
                 </div>
               </div>
             </div>
