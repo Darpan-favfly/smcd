@@ -1,0 +1,56 @@
+{
+  "id": "top_bar",
+  "label": "Top Bar",
+  "format": "custom",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "phone_title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Phone Title",
+          "placeholder": "Phone Title",
+          "allowTargetBlank": false,
+          "single": "paragraph"
+        }
+      },
+      "phone_number": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Phone Number",
+          "placeholder": "Phone Number",
+          "allowTargetBlank": true,
+          "single": "paragraph,hyperlink"
+        }
+      },
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Title",
+          "placeholder": "Title",
+          "allowTargetBlank": true,
+          "single": "paragraph,hyperlink"
+        }
+      },
+      "email_title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Email Title",
+          "placeholder": "Email Title",
+          "allowTargetBlank": false,
+          "single": "paragraph"
+        }
+      },
+      "email": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Email",
+          "placeholder": "Email",
+          "allowTargetBlank": true,
+          "single": "paragraph,hyperlink"
+        }
+      }
+    }
+  }
+}

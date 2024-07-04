@@ -1,0 +1,135 @@
+{
+  "id": "service_page",
+  "label": "Service Page",
+  "format": "page",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "heading": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Heading",
+          "placeholder": "Heading",
+          "allowTargetBlank": false,
+          "single": "heading2"
+        }
+      },
+      "uid": {
+        "config": {
+          "label": "UID",
+          "placeholder": "Slug"
+        },
+        "type": "UID"
+      },
+      "published_date": {
+        "type": "Date",
+        "config": {
+          "label": "Published Date",
+          "placeholder": "Published Date"
+        }
+      },
+      "description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Description",
+          "placeholder": "Description",
+          "allowTargetBlank": true,
+          "single": "paragraph,hyperlink,strong"
+        }
+      },
+      "image": {
+        "type": "Image",
+        "config": {
+          "label": "Image",
+          "constraint": {
+            "width": 510,
+            "height": 370
+          },
+          "thumbnails": []
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "service_detail_section": {
+              "type": "SharedSlice"
+            },
+            "faq_section": {
+              "type": "SharedSlice"
+            },
+            "hero_section": {
+              "type": "SharedSlice"
+            },
+            "about_section": {
+              "type": "SharedSlice"
+            },
+            "cta_section": {
+              "type": "SharedSlice"
+            },
+            "services_section": {
+              "type": "SharedSlice"
+            },
+            "blogs_section": {
+              "type": "SharedSlice"
+            },
+            "counter_section": {
+              "type": "SharedSlice"
+            },
+            "details_section": {
+              "type": "SharedSlice"
+            },
+            "testimonial_section": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "Meta Title [40-65 chars]"
+        },
+        "type": "Text"
+      },
+      "meta_description": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "Page Description [70-155 chars]"
+        },
+        "type": "Text"
+      },
+      "featured_image": {
+        "type": "Image",
+        "config": {
+          "label": "Featured Image",
+          "constraint": {
+            "width": 1200,
+            "height": 600
+          },
+          "thumbnails": [
+            {
+              "name": "large",
+              "width": 1024,
+              "height": 524
+            },
+            {
+              "name": "medium",
+              "width": 300,
+              "height": 150
+            },
+            {
+              "name": "thumbnail",
+              "width": 150,
+              "height": 150
+            }
+          ]
+        }
+      }
+    }
+  }
+}

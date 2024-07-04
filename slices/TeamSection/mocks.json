@@ -1,0 +1,36 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"name",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "heading6",
+									"content": {
+										"text": "Please"
+									}
+								}
+							]
+						}
+					],
+					[
+						"designation",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "difference",
+							"type": "Text"
+						}
+					]
+				]
+			}
+		]
+	}
+]

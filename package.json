@@ -6,9 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "slicemachine": "start-slicemachine"
   },
   "dependencies": {
+    "@prismicio/client": "^7.5.0",
+    "@prismicio/next": "^1.6.0",
+    "@prismicio/react": "^2.8.0",
     "@splidejs/react-splide": "^0.7.12",
     "dayjs": "^1.11.11",
     "fslightbox-react": "^1.7.6",
@@ -20,5 +24,11 @@
     "react-dom": "^18",
     "react-icons": "^4.12.0",
     "react-share": "^5.1.0"
+  },
+  "devDependencies": {
+    "@slicemachine/adapter-next": "^0.3.41",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3",
+    "slice-machine-ui": "^2.2.0"
   }
 }

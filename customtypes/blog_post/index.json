@@ -1,0 +1,102 @@
+{
+  "format": "page",
+  "id": "blog_post",
+  "label": "Blog Post",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "heading": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Heading",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading1"
+        }
+      },
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Description",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,hyperlink,em"
+        }
+      },
+      "published_date": {
+        "type": "Date",
+        "config": {
+          "label": "Published Date",
+          "placeholder": ""
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "hero_section": {
+              "type": "SharedSlice"
+            },
+            "cta_section": {
+              "type": "SharedSlice"
+            },
+            "details_section": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        },
+        "type": "Text"
+      },
+      "meta_description": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
+      },
+      "featured_image": {
+        "config": {
+          "label": "Featured Image",
+          "constraint": {
+            "height": 600,
+            "width": 1200
+          },
+          "thumbnails": [
+            {
+              "name": "large",
+              "width": 1024,
+              "height": 524
+            },
+            {
+              "name": "medium",
+              "width": 300,
+              "height": 150
+            },
+            {
+              "name": "thumbnail",
+              "width": 150,
+              "height": 150
+            }
+          ]
+        },
+        "type": "Image"
+      }
+    }
+  }
+}
