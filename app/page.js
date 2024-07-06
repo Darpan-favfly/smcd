@@ -1,6 +1,6 @@
 import BlogsSection from "@/components/blogs/BlogsSection";
 import CategoriesSection from "@/components/category/CategoriesSection";
-import CollectionSection from "@/components/collection/CollectionSection";
+import CollectionsSection from "@/components/collections/CollectionsSection";
 import CtaSection from "@/components/cta/CtaSection";
 import OfferCtaSection from "@/components/cta/OfferCtaSection";
 import FeaturesSection from "@/components/features/FeaturesSection";
@@ -18,7 +18,7 @@ const Home = () => {
       <FeaturesSection />
       <OfferCtaSection />
       <FeaturedProductSection />
-      <CollectionSection />
+      <CollectionsSection />
       <CtaSection />
       <InstagramSection />
       <BlogsSection />

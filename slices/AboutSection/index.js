@@ -1,13 +1,18 @@
-import DefaultSection from "@/components/about/AboutSection";
-import WhyChooseUsSection from "@/components/whychooseus/WhyChooseUsSection";
-
+/**
+ * @typedef {import("@prismicio/client").Content.AboutSectionSlice} AboutSectionSlice
+ * @typedef {import("@prismicio/react").SliceComponentProps<AboutSectionSlice>} AboutSectionProps
+ * @param {AboutSectionProps}
+ */
 const AboutSection = ({ slice }) => {
-  switch (slice.variation) {
-    case "whyUs":
-      return <WhyChooseUsSection slice={slice} />;
-    default:
-      return <DefaultSection slice={slice} />;
-  }
+  return (
+    <section
+      data-slice-type={slice.slice_type}
+      data-slice-variation={slice.variation}
+    >
+      Placeholder component for about_section (variation: {slice.variation})
+      Slices
+    </section>
+  );
 };
 
 export default AboutSection;

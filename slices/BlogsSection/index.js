@@ -1,10 +1,18 @@
-import DefaultSection from "@/components/blogs/BlogsSection";
-
+/**
+ * @typedef {import("@prismicio/client").Content.BlogsSectionSlice} BlogsSectionSlice
+ * @typedef {import("@prismicio/react").SliceComponentProps<BlogsSectionSlice>} BlogsSectionProps
+ * @param {BlogsSectionProps}
+ */
 const BlogsSection = ({ slice }) => {
-  switch (slice.variation) {
-    default:
-      return <DefaultSection slice={slice} />;
-  }
+  return (
+    <section
+      data-slice-type={slice.slice_type}
+      data-slice-variation={slice.variation}
+    >
+      Placeholder component for blogs_section (variation: {slice.variation})
+      Slices
+    </section>
+  );
 };
 
 export default BlogsSection;

@@ -1,0 +1,36 @@
+{
+  "id": "blog_details_section",
+  "type": "SharedSlice",
+  "name": "BlogDetailsSection",
+  "description": "BlogDetailsSection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "details": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Details",
+            "placeholder": "Details",
+            "allowTargetBlank": true,
+            "multi": "paragraph,heading2,heading3,heading4,heading5,heading6,strong,hyperlink,list-item"
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

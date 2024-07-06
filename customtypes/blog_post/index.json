@@ -42,13 +42,13 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "blog_details_section": {
+              "type": "SharedSlice"
+            },
             "hero_section": {
               "type": "SharedSlice"
             },
             "cta_section": {
-              "type": "SharedSlice"
-            },
-            "details_section": {
               "type": "SharedSlice"
             }
           }

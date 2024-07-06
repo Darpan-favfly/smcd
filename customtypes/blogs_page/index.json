@@ -11,12 +11,6 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "cta_section": {
-              "type": "SharedSlice"
-            },
-            "pagination_section": {
-              "type": "SharedSlice"
-            },
             "blogs_section": {
               "type": "SharedSlice"
             },
@@ -28,6 +22,13 @@
       }
     },
     "SEO & Metadata": {
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        },
+        "type": "Text"
+      },
       "meta_description": {
         "config": {
           "label": "Meta Description",
@@ -45,13 +46,6 @@
           "thumbnails": []
         },
         "type": "Image"
-      },
-      "meta_title": {
-        "config": {
-          "label": "Meta Title",
-          "placeholder": "A title of the page used for social media and search engines"
-        },
-        "type": "Text"
       }
     }
   }

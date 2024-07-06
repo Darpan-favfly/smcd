@@ -11,7 +11,7 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "contact_section": {
+            "contact_form_section": {
               "type": "SharedSlice"
             },
             "hero_section": {
@@ -22,6 +22,13 @@
       }
     },
     "SEO & Metadata": {
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        },
+        "type": "Text"
+      },
       "meta_description": {
         "config": {
           "label": "Meta Description",
@@ -39,13 +46,6 @@
           "thumbnails": []
         },
         "type": "Image"
-      },
-      "meta_title": {
-        "config": {
-          "label": "Meta Title",
-          "placeholder": "A title of the page used for social media and search engines"
-        },
-        "type": "Text"
       }
     }
   }

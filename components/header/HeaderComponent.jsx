@@ -7,7 +7,7 @@ import { IoBagOutline } from "react-icons/io5";
 
 const menuItems = [
   { name: "About", link: "/about" },
-  { name: "Collections", link: "/collection" },
+  { name: "Collections", link: "/collections" },
   { name: "Customize", link: "/customize" },
   { name: "Blogs", link: "/blogs" },
   { name: "Contact", link: "/contact" },

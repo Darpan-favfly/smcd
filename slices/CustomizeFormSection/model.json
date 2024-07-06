@@ -1,0 +1,37 @@
+{
+  "id": "customize_form_section",
+  "type": "SharedSlice",
+  "name": "CustomizeFormSection",
+  "description": "CustomizeFormSection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "form_id": {
+          "type": "Text",
+          "config": {
+            "label": "Form Id",
+            "placeholder": ""
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {
+              "width": 1000,
+              "height": 1250
+            },
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

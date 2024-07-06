@@ -1,0 +1,35 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"form_id": {
+				"__TYPE__": "FieldContent",
+				"value": "season",
+				"type": "Text"
+			},
+			"image": {
+				"__TYPE__": "ImageContent",
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef",
+					"width": 4000,
+					"height": 6000
+				},
+				"url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?rect=0%2C500%2C4000%2C5000&w=1000&h=1250",
+				"width": 1000,
+				"height": 1250,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 500
+					},
+					"background": "transparent"
+				},
+				"thumbnails": {}
+			}
+		},
+		"items": []
+	}
+]

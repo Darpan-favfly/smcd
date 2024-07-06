@@ -1629,8 +1629,11 @@ progress {
   width: 100%;
   border-radius: 0;
   overflow-anchor: none;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+  transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out,
     border-radius 0.15s ease;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1646,7 +1649,9 @@ progress {
   background-repeat: no-repeat;
   background-size: contain;
   transform: rotate(90deg);
-  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  transition:
+    transform 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
   .accordion-button::after {
@@ -1733,8 +1738,11 @@ progress {
   color: #222222;
   background-color: #fff;
   border: 1px solid #dee2e6;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
   .page-link {
@@ -9912,7 +9920,8 @@ h6,
   color: #eeeeee;
   font-size: 2.25rem;
   opacity: 0.4;
-  text-shadow: var(--stroke-width) 0 0 var(--stroke-color),
+  text-shadow:
+    var(--stroke-width) 0 0 var(--stroke-color),
     calc(var(--stroke-width) * -1) 0 0 var(--stroke-color),
     0 var(--stroke-width) 0 var(--stroke-color),
     0 calc(var(--stroke-width) * -1) 0 var(--stroke-color);
@@ -9930,7 +9939,8 @@ h6,
 }
 
 .smooth-16 {
-  text-shadow: calc(var(--stroke-width) * 1) calc(var(--stroke-width) * 0) 0
+  text-shadow:
+    calc(var(--stroke-width) * 1) calc(var(--stroke-width) * 0) 0
       var(--stroke-color),
     calc(var(--stroke-width) * 0.9239) calc(var(--stroke-width) * 0.3827) 0
       var(--stroke-color),
@@ -12011,7 +12021,9 @@ img {
   margin-left: auto;
   fill: #222222;
   transform: rotate(90deg);
-  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  transition:
+    transform 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
   .accordion-button__icon {
@@ -12023,7 +12035,9 @@ img {
   transform-origin: center;
 }
 .accordion-button__icon .svg-path-horizontal {
-  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  transition:
+    transform 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
   opacity: 0;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -12070,7 +12084,9 @@ img {
   font-weight: 500;
   line-height: 1.375;
   outline: none;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+  transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -13694,7 +13710,9 @@ fieldset:disabled .btn {
   appearance: none;
   border-radius: 0;
   box-shadow: none;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition:
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
   .form-control {
@@ -13988,8 +14006,10 @@ textarea.form-control-lg {
   border: 0.125rem solid #e4e4e4;
   appearance: none;
   color-adjust: exact;
-  transition: background-color 0.15s ease-in-out,
-    background-position 0.15s ease-in-out, border-color 0.15s ease-in-out,
+  transition:
+    background-color 0.15s ease-in-out,
+    background-position 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
     box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -14108,10 +14128,14 @@ textarea.form-control-lg {
   outline: none;
 }
 .form-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #fff, none;
+  box-shadow:
+    0 0 0 1px #fff,
+    none;
 }
 .form-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #fff, none;
+  box-shadow:
+    0 0 0 1px #fff,
+    none;
 }
 .form-range::-moz-focus-outer {
   border: 0;
@@ -14124,7 +14148,9 @@ textarea.form-control-lg {
   border: 0;
   border-radius: 1rem;
   box-shadow: 0 0.1rem 0.25rem rgba(0, 0, 0, 0.1);
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+  transition:
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
     box-shadow 0.15s ease-in-out;
   appearance: none;
 }
@@ -14153,7 +14179,9 @@ textarea.form-control-lg {
   border: 0;
   border-radius: 1rem;
   box-shadow: 0 0.1rem 0.25rem rgba(0, 0, 0, 0.1);
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+  transition:
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
     box-shadow 0.15s ease-in-out;
   appearance: none;
 }
@@ -14201,7 +14229,9 @@ textarea.form-control-lg {
   pointer-events: none;
   border: 0.125rem solid transparent;
   transform-origin: 0 0;
-  transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+  transition:
+    opacity 0.1s ease-in-out,
+    transform 0.1s ease-in-out;
   color: #767676;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -14389,8 +14419,12 @@ textarea.form-control.is-valid {
   padding-right: calc(0.75em + 2.3125rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%232F2D51' stroke-linecap='round' stroke-linejoin='round' stroke-width='1' d='M2 5l6 6 6-6'/%3e%3c/svg%3e"),
     url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
-  background-position: right 0.9375rem center, center right 1.75rem;
-  background-size: 16px 12px, calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+  background-position:
+    right 0.9375rem center,
+    center right 1.75rem;
+  background-size:
+    16px 12px,
+    calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
 .was-validated .form-select:valid:focus,
 .form-select.is-valid:focus {
@@ -14476,8 +14510,12 @@ textarea.form-control.is-invalid {
   padding-right: calc(0.75em + 2.3125rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%232F2D51' stroke-linecap='round' stroke-linejoin='round' stroke-width='1' d='M2 5l6 6 6-6'/%3e%3c/svg%3e"),
     url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
-  background-position: right 0.9375rem center, center right 1.75rem;
-  background-size: 16px 12px, calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+  background-position:
+    right 0.9375rem center,
+    center right 1.75rem;
+  background-size:
+    16px 12px,
+    calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
 .was-validated .form-select:invalid:focus,
 .form-select.is-invalid:focus {
@@ -17827,7 +17865,9 @@ textarea.form-control.is-invalid {
   flex-direction: column;
   height: 0;
   max-height: 0;
-  transition: max-height 0.35s, height 0.35s;
+  transition:
+    max-height 0.35s,
+    height 0.35s;
   z-index: 1030;
 }
 .header-mobile__navigation .search-field__input {
@@ -17884,7 +17924,9 @@ textarea.form-control.is-invalid {
 .mobile-menu-opened .header-mobile__navigation {
   height: calc(100vh - 100%);
   max-height: calc(100vh - 100%);
-  transition: max-height 0.35s, height 0.35s;
+  transition:
+    max-height 0.35s,
+    height 0.35s;
   border-top: 1px solid #e4e4e4;
 }
 .mobile-menu-opened .navigation__list {
@@ -19025,7 +19067,9 @@ textarea.form-control.is-invalid {
   max-width: 100%;
   height: 100vh;
   padding: 0 1.25rem 1.75rem;
-  transition: left 0.35s, right 0.35s;
+  transition:
+    left 0.35s,
+    right 0.35s;
   overflow-x: hidden;
   overflow-y: auto;
   z-index: 1050;
@@ -19845,7 +19889,7 @@ textarea.form-control.is-invalid {
   flex-wrap: wrap;
   align-items: center;
   gap: 2.5rem;
-  margin-bottom: 1.875rem;
+  margin-bottom: 16px;
 }
 @media (max-width: 1499.98px) {
   .product-single__swatches .product-swatch {
@@ -21197,12 +21241,9 @@ a.add-to-wishlist.active .flaticon.flaticon-heart {
   width: 100%;
 }
 .blog-grid.row-cols-xl-3 .blog-grid__item-title {
-
-    font-size: 24px;
-    margin-bottom: 1.875rem;
-    line-height: 34px;
-
-
+  font-size: 24px;
+  margin-bottom: 1.875rem;
+  line-height: 34px;
 }
 .blog-list {
   margin-bottom: 3.125rem;

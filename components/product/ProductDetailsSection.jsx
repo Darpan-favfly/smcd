@@ -131,7 +131,7 @@ const ProductDetailsSection = () => {
           <form name="addtocart-form" method="post">
             <div className="product-single__swatches">
               <div className="product-swatch text-swatches">
-                <label>Sizes</label>
+                <label>Diamond Sizes</label>
                 <div className="swatch-list" style={{ borderRadius: "15px" }}>
                   <input type="radio" name="size" id="swatch-1" />
                   <label className="swatch js-swatch">XS</label>
@@ -157,26 +157,54 @@ const ProductDetailsSection = () => {
                   <input type="radio" name="size" id="swatch-4" />
                 </div>
               </div>
-              {/* <div className="product-swatch color-swatches">
-                <label>Color</label>
-                <div className="swatch-list">
-                  <input type="radio" name="color" id="swatch-11" />
-                  <label
-                    className="swatch swatch-color js-swatch"
-                    style={{ color: "#222" }}
-                  />
-                  <input type="radio" name="color" id="swatch-12" />
-                  <label
-                    className="swatch swatch-color js-swatch"
-                    style={{ color: "#C93A3E" }}
-                  />
-                  <input type="radio" name="color" id="swatch-13" />
-                  <label
-                    className="swatch swatch-color js-swatch"
-                    style={{ color: "#E4E4E4" }}
-                  />
+              <div className="product-swatch text-swatches">
+                <label>Carrot Size</label>
+                <div className="swatch-list" style={{ borderRadius: "15px" }}>
+                  <input type="radio" name="size" id="swatch-1" />
+                  <label className="swatch js-swatch">A</label>
+                  <input type="radio" name="size" id="swatch-2" />
+                  <label className="swatch js-swatch">C</label>
+                  <input type="radio" name="size" id="swatch-3" />
+                  <label className="swatch js-swatch">D</label>
+                  <input type="radio" name="size" id="swatch-4" />
                 </div>
-              </div> */}
+              </div>{" "}
+              <div className="product-swatch text-swatches">
+                <label>Gold Color</label>
+                <div className="swatch-list" style={{ borderRadius: "15px" }}>
+                  <input type="radio" name="size" id="swatch-1" />
+                  <label className="swatch js-swatch">Yellow</label>
+                  <input type="radio" name="size" id="swatch-2" />
+                  <label className="swatch js-swatch">White</label>
+                  <input type="radio" name="size" id="swatch-3" />
+                  <label className="swatch js-swatch">Rose Gold</label>
+                  <input type="radio" name="size" id="swatch-4" />
+                </div>
+              </div>{" "}
+              <div className="product-swatch text-swatches">
+                <label>Carat Tone</label>
+                <div className="swatch-list" style={{ borderRadius: "15px" }}>
+                  <input type="radio" name="size" id="swatch-1" />
+                  <label className="swatch js-swatch">Yellow</label>
+                  <input type="radio" name="size" id="swatch-2" />
+                  <label className="swatch js-swatch">White</label>
+                  <input type="radio" name="size" id="swatch-3" />
+                  <label className="swatch js-swatch">Rose Gold</label>
+                  <input type="radio" name="size" id="swatch-4" />
+                </div>
+              </div>
+              <div className="product-swatch text-swatches">
+                <label>Cut</label>
+                <div className="swatch-list" style={{ borderRadius: "15px" }}>
+                  <input
+                    type="radio"
+                    name="size"
+                    id="swatch-1"
+                    defaultValue={"Exellent"}
+                  />
+                  <label className="swatch js-swatch">Exellent</label>
+                </div>
+              </div>
             </div>
             <div className="product-single__addtocart">
               <div className="qty-control position-relative qty-initialized">

@@ -3,13 +3,133 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
+			"items": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"image",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6",
+										"width": 3212,
+										"height": 3880
+									},
+									"url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?rect=0%2C1298%2C3212%2C1285&w=2000&h=800",
+									"width": 2000,
+									"height": 800,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 1298
+										},
+										"background": "transparent"
+									},
+									"credits": null,
+									"alt": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"heading",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading1",
+											"content": {
+												"text": "Charge"
+											}
+										}
+									]
+								}
+							],
+							[
+								"sub_heading",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "chain",
+									"type": "Text"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Lorem Lorem ut proident Lorem consequat qui qui eu mollit quis qui. In aliqua non pariatur officia sunt ipsum incididunt id incididunt."
+											}
+										}
+									]
+								}
+							],
+							[
+								"button_label",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "let",
+									"type": "Text"
+								}
+							],
+							[
+								"button_link",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://twitter.com"
+									}
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "secondary",
+		"primary": {
+			"image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
+					"width": 5616,
+					"height": 3744
+				},
+				"url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?rect=0%2C1161%2C5616%2C1423&w=1500&h=380",
+				"width": 1500,
+				"height": 380,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 1161
+					},
+					"background": "transparent"
+				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
 			"heading": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
 					{
 						"type": "heading1",
 						"content": {
-							"text": "Trail"
+							"text": "Related"
 						}
 					}
 				]
@@ -20,40 +140,10 @@
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Occaecat non veniam irure consectetur qui duis culpa officia occaecat aliquip esse nisi adipisicing labore incididunt."
+							"text": "Sit reprehenderit pariatur ipsum consequat dolore magna magna laborum. Proident in commodo minim id voluptate dolore quis sint veniam pariatur."
 						}
 					}
 				]
-			},
-			"button_label": {
-				"__TYPE__": "FieldContent",
-				"value": "some",
-				"type": "Text"
-			},
-			"button_link": {
-				"__TYPE__": "LinkContent",
-				"value": {
-					"__TYPE__": "ExternalLink",
-					"url": "https://slicemachine.dev"
-				}
-			},
-			"sub_heading": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Cillum sint excepteur eu eu eu excepteur sit pariatur mollit laborum culpa officia."
-						}
-					}
-				]
-			},
-			"video_link": {
-				"__TYPE__": "LinkContent",
-				"value": {
-					"__TYPE__": "ExternalLink",
-					"url": "https://slicemachine.dev"
-				}
 			}
 		},
 		"items": [
@@ -65,34 +155,23 @@
 	},
 	{
 		"__TYPE__": "SharedSliceContent",
-		"variation": "secondary",
+		"variation": "blog",
 		"primary": {
-			"heading": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Officia ullamco incididunt voluptate magna."
-						}
-					}
-				]
-			},
 			"image": {
 				"origin": {
 					"id": "main",
-					"url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db",
-					"width": 4380,
-					"height": 2895
+					"url": "https://images.unsplash.com/photo-1587653915936-5623ea0b949a",
+					"width": 4000,
+					"height": 4000
 				},
-				"url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db",
-				"width": 4380,
-				"height": 2895,
+				"url": "https://images.unsplash.com/photo-1587653915936-5623ea0b949a?rect=0%2C1493%2C4000%2C1013&w=1500&h=380",
+				"width": 1500,
+				"height": 380,
 				"edit": {
 					"zoom": 1,
 					"crop": {
 						"x": 0,
-						"y": 0
+						"y": 1493
 					},
 					"background": "transparent"
 				},
@@ -100,6 +179,38 @@
 				"alt": null,
 				"__TYPE__": "ImageContent",
 				"thumbnails": {}
+			},
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Stared"
+						}
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Est do sunt ea sint laboris nisi laboris irure eu. Tempor sit eu velit est esse aute non aliquip eu."
+						}
+					}
+				]
+			},
+			"published_date": {
+				"__TYPE__": "FieldContent",
+				"type": "Date",
+				"value": "2020-06-12"
+			},
+			"author": {
+				"__TYPE__": "FieldContent",
+				"value": "sometime",
+				"type": "Text"
 			}
 		},
 		"items": [

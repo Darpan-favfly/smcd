@@ -1,0 +1,26 @@
+{
+  "id": "instagram_section",
+  "type": "SharedSlice",
+  "name": "InstagramSection",
+  "description": "InstagramSection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "woxo_id": {
+          "type": "Text",
+          "config": {
+            "label": "Woxo Id",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

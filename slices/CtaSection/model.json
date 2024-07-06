@@ -12,47 +12,13 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "heading": {
+        "title": {
           "type": "StructuredText",
           "config": {
-            "label": "Heading",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "multi": "heading3,strong"
-          }
-        },
-        "number": {
-          "type": "Text",
-          "config": {
-            "label": "Number",
-            "placeholder": ""
-          }
-        },
-        "email": {
-          "type": "Text",
-          "config": {
-            "label": "Email",
-            "placeholder": ""
-          }
-        }
-      },
-      "items": {}
-    },
-    {
-      "id": "blog",
-      "name": "Blog",
-      "docURL": "...",
-      "version": "initial",
-      "description": "Default",
-      "imageUrl": "",
-      "primary": {
-        "heading": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Heading",
-            "placeholder": "Heading",
-            "allowTargetBlank": true,
-            "multi": "strong,heading2"
+            "label": "Title",
+            "placeholder": "Title",
+            "allowTargetBlank": false,
+            "single": "heading3,strong"
           }
         },
         "description": {
@@ -60,8 +26,84 @@
           "config": {
             "label": "Description",
             "placeholder": "Description",
-            "allowTargetBlank": true,
-            "multi": "paragraph,hyperlink,strong,em"
+            "allowTargetBlank": false,
+            "single": "paragraph,strong"
+          }
+        },
+        "button_label": {
+          "type": "Text",
+          "config": {
+            "label": "Button Label",
+            "placeholder": ""
+          }
+        },
+        "button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Button Link",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "left_image": {
+          "type": "Image",
+          "config": {
+            "label": "Left Image",
+            "constraint": {
+              "width": 700,
+              "height": 600
+            },
+            "thumbnails": []
+          }
+        },
+        "right_image": {
+          "type": "Image",
+          "config": {
+            "label": "Right Image",
+            "constraint": {
+              "width": 700,
+              "height": 600
+            },
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "offer",
+      "name": "Offer",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {}
+    },
+    {
+      "id": "contact",
+      "name": "Contact",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "Title",
+            "allowTargetBlank": false,
+            "single": "heading3,strong"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Description",
+            "allowTargetBlank": false,
+            "single": "paragraph,strong"
           }
         },
         "button_label": {
@@ -83,20 +125,36 @@
       "items": {}
     },
     {
-      "id": "video",
-      "name": "Video",
+      "id": "blog",
+      "name": "Blog",
       "docURL": "...",
       "version": "initial",
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "heading": {
+        "title": {
           "type": "StructuredText",
           "config": {
-            "label": "Heading",
-            "placeholder": "Heading",
-            "allowTargetBlank": true,
-            "multi": "strong,heading2"
+            "label": "Title",
+            "placeholder": "Title",
+            "allowTargetBlank": false,
+            "single": "heading3,strong"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Description",
+            "allowTargetBlank": false,
+            "single": "paragraph,strong"
+          }
+        },
+        "button_label": {
+          "type": "Text",
+          "config": {
+            "label": "Button Label",
+            "placeholder": ""
           }
         },
         "button_link": {
@@ -105,14 +163,6 @@
             "label": "Button Link",
             "placeholder": "",
             "select": null
-          }
-        },
-        "image": {
-          "type": "Image",
-          "config": {
-            "label": "Image",
-            "constraint": {},
-            "thumbnails": []
           }
         }
       },
