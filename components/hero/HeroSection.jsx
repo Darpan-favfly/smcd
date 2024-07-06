@@ -1,8 +1,11 @@
 "use client";
+import { PrismicNextImage } from "@prismicio/next";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import Link from "next/link";
 
-const HeroSection = () => {
+const HeroSection = ({ slice }) => {
+  console.log(slice);
+
   return (
     <section className="slideshow-md pt-0">
       <Splide
@@ -14,10 +17,10 @@ const HeroSection = () => {
           },
         }}
       >
-        {[1, 2, 3].map((_, i) => {
+        {slice?.primary?.items.map((item, index) => {
           return (
-            <SplideSlide key={i}>
-              <HeroItem />
+            <SplideSlide key={index}>
+              <HeroItem data={item} />
             </SplideSlide>
           );
         })}
@@ -26,17 +29,13 @@ const HeroSection = () => {
   );
 };
 
-const HeroItem = () => {
+const HeroItem = ({ data }) => {
   return (
     <>
       <div className="overflow-hidden position-relative h-100">
         <div className="slideshow-bg">
-          <img
-            loading="lazy"
-            src="https://moissani.in/assets/uploads/2023/02/diamond-ring-1.webp"
-            width={1600}
-            height={600}
-            alt
+          <PrismicNextImage
+            field={data.image}
             className="slideshow-bg__img object-fit-cover object-position-right"
           />
         </div>
@@ -54,15 +53,15 @@ const HeroItem = () => {
                 width: "max-content",
               }}
             >
-              LATEST TRENDS
+              {data.heading[0].text}
             </h6>
             <h1 className="fw-normal mb-0">Newest Arrivals</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur elit.</p>
+            <p>{data.description[0].text}</p>
             <Link
-              href="./shop1.html"
+              href={data.button_link.url}
               className="btn-link btn-link_sm default-underline text-uppercase fw-medium"
             >
-              Shop Now
+              {data.button_label}
             </Link>
           </div>
         </div>

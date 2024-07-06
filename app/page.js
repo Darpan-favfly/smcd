@@ -8,22 +8,30 @@ import HeroSection from "@/components/hero/HeroSection";
 import InstagramSection from "@/components/instagramgallery/InstagramSection";
 import FeaturedProductSection from "@/components/product/FeaturedProductSection";
 import SliderProductsSection from "@/components/product/SliderProductsSection";
+import Seo from "@/lib/seo/Seo";
+import { createClient } from "@/prismicio";
+import { components } from "@/slices";
+import { SliceZone } from "@prismicio/react";
 
-const Home = () => {
+const HomePage = async () => {
+  const client = createClient();
+
+  const doc = await client.getSingle("home_page");
+
   return (
     <>
-      <HeroSection />
+      <SliceZone slices={doc.data.slices} components={components} />
       {/* <SliderProductsSection /> */}
-      <CategoriesSection />
+      {/* <CategoriesSection />
       <FeaturesSection />
       <OfferCtaSection />
       <FeaturedProductSection />
       <CollectionsSection />
       <CtaSection />
       <InstagramSection />
-      <BlogsSection />
+      <BlogsSection /> */}
     </>
   );
 };
 
-export default Home;
+export default HomePage;
