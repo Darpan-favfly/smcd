@@ -27,6 +27,13 @@
             "label": "Sub Heading",
             "placeholder": ""
           }
+        },
+        "number": {
+          "type": "Number",
+          "config": {
+            "label": "Number",
+            "placeholder": ""
+          }
         }
       },
       "items": {}

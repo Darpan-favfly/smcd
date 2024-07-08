@@ -835,6 +835,16 @@ export interface BlogsSectionSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   sub_heading: prismic.KeyTextField;
+
+  /**
+   * Number field in *BlogsSection → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogs_section.default.primary.number
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  number: prismic.NumberField;
 }
 
 /**
@@ -937,6 +947,16 @@ export interface CategoriesSectionSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   video: prismic.LinkToMediaField;
+
+  /**
+   * Link field in *CategoriesSection → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categories_section.default.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
 }
 
 /**

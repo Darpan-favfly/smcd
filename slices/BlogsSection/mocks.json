@@ -18,6 +18,11 @@
 				"__TYPE__": "FieldContent",
 				"value": "cell",
 				"type": "Text"
+			},
+			"number": {
+				"__TYPE__": "FieldContent",
+				"value": "41",
+				"type": "Number"
 			}
 		},
 		"items": []

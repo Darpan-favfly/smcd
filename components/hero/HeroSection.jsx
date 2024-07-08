@@ -4,8 +4,6 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import Link from "next/link";
 
 const HeroSection = ({ slice }) => {
-  console.log(slice);
-
   return (
     <section className="slideshow-md pt-0">
       <Splide
@@ -37,6 +35,7 @@ const HeroItem = ({ data }) => {
           <PrismicNextImage
             field={data.image}
             className="slideshow-bg__img object-fit-cover object-position-right"
+            alt={data.image.alt}
           />
         </div>
         <div

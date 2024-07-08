@@ -1,68 +1,50 @@
 import HeadingComponent from "../heading/HeadingComponent";
-import Link from "next/link";
+import { createClient } from "@/prismicio";
+import dayjs from "dayjs";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+const BlogsSection = async ({ slice }) => {
+  const { sub_heading, heading, number } = slice?.primary || {};
 
-const BlogsSection = () => {
-  const data = [
-    {
-      image: "https://uomo-html.flexkitux.com/images/blog/blog-5.jpg",
-      subHeading: "By Admin",
-      published_date: "April 05, 2023",
-      title: "Woman with good shoes is never be ugly place",
-      description:
-        "Midst one brought greater also morning green saying had good. Open stars day let over gathered, grass face one every light of under.",
-      link: "/blog-post",
-    },
-    {
-      image: "https://uomo-html.flexkitux.com/images/blog/blog-6.jpg",
-      subHeading: "By Admin",
-      published_date: "April 05, 2023",
-      title: "Heaven upon heaven moveth every have.",
-      description:
-        "Midst one brought greater also morning green saying had good. Open stars day let over gathered, grass face one every light of under.",
-      link: "/blog-post",
-    },
-    {
-      image: "https://uomo-html.flexkitux.com/images/blog/blog-7.jpg",
-      subHeading: "By Admin",
-      published_date: "April 05, 2023",
-      title: "Tree doesn't good void, waters without created",
-      description:
-        "Midst one brought greater also morning green saying had good. Open stars day let over gathered, grass face one every light of under.",
-      link: "/blog-post",
-    },
-    {
-      image: "https://uomo-html.flexkitux.com/images/blog/blog-6.jpg",
-      subHeading: "By Admin",
-      published_date: "April 05, 2023",
-      title: "Heaven upon heaven moveth every have.",
-      description:
-        "Midst one brought greater also morning green saying had good. Open stars day let over gathered, grass face one every light of under.",
-      link: "/blog-post",
-    },
-  ];
+  const client = createClient();
+  let doc = null;
 
+  if (number) {
+    let tempDoc = await client.getByType("blog_post", {
+      orderings: {
+        field: "my.blog_post.published_date",
+        direction: "desc",
+      },
+      pageSize: number,
+    });
+    doc = tempDoc?.results;
+  } else {
+    doc = await client.getAllByType("blog_post", {
+      orderings: {
+        field: "my.blog_post.published_date",
+        direction: "desc",
+      },
+    });
+  }
+  console.log("sub_heading", sub_heading);
   return (
     <>
       <section>
         <HeadingComponent
           data={{
-            subHeading: "Latest Blogs",
-            heading: "From Our Blog",
-            description:
-              "Checkout our latest blogs and stay updated with the latest trends.",
+            sub_heading: sub_heading,
+            heading: heading[0].text,
           }}
         />
         <div className="container">
           <div className="blog-grid row row-cols-2 row-cols-md-2 row-cols-xl-4">
-            {data.map((item, index) => (
+            {doc.map((item, index) => (
               <div className="blog-grid__item" key={index}>
                 <div className="blog-grid__item-image">
-                  <img
+                  <PrismicNextImage
                     loading="lazy"
                     className="h-auto"
-                    src={item.image}
+                    field={item.data.featured_image}
                     width={450}
-                    height={400}
                     alt=""
                     style={{ borderRadius: "10px" }}
                   />
@@ -73,22 +55,25 @@ const BlogsSection = () => {
                       {item.subHeading}
                     </span>
                     <span className="blog-grid__item-meta__date">
-                      {item.published_date}
+                      {dayjs(item.data.published_date).format("MMMM DD, YYYY")}
                     </span>
                   </div>
                   <div className="blog-grid__item-title">
                     <div className="link-container">
-                      <Link href={item.link} className="blog-link">
-                        {item.title}
-                      </Link>
+                      <PrismicNextLink href={item.uid} className="blog-link">
+                        {item.data.heading[0].text}
+                      </PrismicNextLink>
                     </div>
                   </div>
                   <div className="blog-grid__item-content">
                     {/* <p>{item.description}</p> */}
                     <div className="link-container">
-                      <Link href={item.link} className="readmore-link">
+                      <PrismicNextLink
+                        href={item.uid}
+                        className="readmore-link"
+                      >
                         Continue Reading
-                      </Link>
+                      </PrismicNextLink>
                     </div>
                   </div>
                 </div>

@@ -805,6 +805,10 @@ span.wishlist-amount.d-block.position-absolute.js-wishlist-count {
   row-gap: 10px;
   margin-bottom: 6px;
 }
+.features-icon img {
+  width: 60px;
+  height: auto;
+}
 @media (max-width: 1200px) {
   .service-promotion .col-md-3 {
     width: 23%;

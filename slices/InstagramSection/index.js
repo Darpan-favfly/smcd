@@ -1,18 +1,10 @@
-/**
- * @typedef {import("@prismicio/client").Content.InstagramSectionSlice} InstagramSectionSlice
- * @typedef {import("@prismicio/react").SliceComponentProps<InstagramSectionSlice>} InstagramSectionProps
- * @param {InstagramSectionProps}
- */
+import DefaultSection from "@/components/instagramgallery/InstagramSection";
+
 const InstagramSection = ({ slice }) => {
-  return (
-    <section
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
-    >
-      Placeholder component for instagram_section (variation: {slice.variation})
-      Slices
-    </section>
-  );
+  switch (slice.variation) {
+    default:
+      return <DefaultSection slice={slice} />;
+  }
 };
 
 export default InstagramSection;
