@@ -1,4 +1,9 @@
-const ContactSection = () => {
+import { PrismicRichText } from "@prismicio/react";
+
+const ContactFormSection = ({ slice }) => {
+  const { heading, sub_heading, description, address, phone, email, form_id } =
+    slice.primary || {};
+  console.log(sub_heading);
   return (
     <>
       <section className="info-box section-padding">
@@ -6,14 +11,12 @@ const ContactSection = () => {
           <div className="row">
             <div className="col-md-6">
               <div className="section-head mb-30">
-                <div className="section-subtitle">CONTACT INFO</div>
-                <div className="section-title mb-20">Get In Touch</div>
+                <div className="section-subtitle">{sub_heading}</div>
+                <div className="section-title mb-20">
+                  <PrismicRichText field={heading} />
+                </div>
                 <div className="section-description">
-                  <p>
-                    Barber utate ons amet ravida haretra nuam the duru miss
-                    uctus the drana accumsan justo aliquam sit amet auctor orci
-                    done vitae.
-                  </p>
+                  <PrismicRichText field={description} />
                 </div>
               </div>
               <div className="item">
@@ -22,7 +25,7 @@ const ContactSection = () => {
                 </span>
                 <div className="cont">
                   <h5>Address</h5>
-                  <p>0665 Broadway NY, 10001 USA</p>
+                  <p>{address}</p>
                 </div>
               </div>
               <div className="item">
@@ -31,7 +34,7 @@ const ContactSection = () => {
                 </span>
                 <div className="cont">
                   <h5>Phone</h5>
-                  <p>+917718420098</p>
+                  <p>{phone}</p>
                 </div>
               </div>
               <div className="item">
@@ -40,7 +43,7 @@ const ContactSection = () => {
                 </span>
                 <div className="cont">
                   <h5>Email</h5>
-                  <p>favfly.arindam@gmail.com</p>
+                  <p>{email}</p>
                 </div>
               </div>
             </div>
@@ -50,7 +53,7 @@ const ContactSection = () => {
                   <iframe
                     style={{ border: "none", width: "100%" }}
                     id="contact-form-5hj56y"
-                    src="https://opnform.com/forms/contact-form-5hj56y"
+                    src={form_id}
                   />
                 </div>
               </div>
@@ -62,4 +65,4 @@ const ContactSection = () => {
   );
 };
 
-export default ContactSection;
+export default ContactFormSection;

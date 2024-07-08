@@ -1,12 +1,18 @@
-import CollectionsSection from "@/components/collections/CollectionsSection";
-import SecondaryHeroSection from "@/components/hero/SecondaryHeroSection";
-const CollectionPage = () => {
+import { createClient } from "@/prismicio";
+import { components } from "@/slices";
+import { SliceZone } from "@prismicio/react";
+
+import RecommendedProductsSection from "@/components/product/RecommendedProductSection";
+
+const CollectionsPage = async () => {
+  const client = createClient();
+
+  const doc = await client.getSingle("collections_page");
   return (
     <>
-      <SecondaryHeroSection />
-      <CollectionsSection />
+      <SliceZone slices={doc.data.slices} components={components} />
     </>
   );
 };
 
-export default CollectionPage;
+export default CollectionsPage;

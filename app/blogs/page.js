@@ -1,11 +1,14 @@
-import BlogsSection from "@/components/blogs/BlogsSection";
-import SecondaryHeroSection from "@/components/hero/SecondaryHeroSection";
+import { createClient } from "@/prismicio";
+import { components } from "@/slices";
+import { SliceZone } from "@prismicio/react";
 
-const BlogsPage = () => {
+const BlogsPage = async () => {
+  const client = createClient();
+  const doc = await client.getSingle("blogs_page");
+
   return (
     <>
-      <SecondaryHeroSection />
-      <BlogsSection />
+      <SliceZone slices={doc.data.slices} components={components} />
     </>
   );
 };

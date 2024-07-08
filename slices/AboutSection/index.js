@@ -1,18 +1,10 @@
-/**
- * @typedef {import("@prismicio/client").Content.AboutSectionSlice} AboutSectionSlice
- * @typedef {import("@prismicio/react").SliceComponentProps<AboutSectionSlice>} AboutSectionProps
- * @param {AboutSectionProps}
- */
+import DefaultSection from "@/components/about/AboutSection";
+
 const AboutSection = ({ slice }) => {
-  return (
-    <section
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
-    >
-      Placeholder component for about_section (variation: {slice.variation})
-      Slices
-    </section>
-  );
+  switch (slice.variation) {
+    default:
+      return <DefaultSection slice={slice} />;
+  }
 };
 
 export default AboutSection;

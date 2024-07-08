@@ -2,6 +2,7 @@ import HeadingComponent from "../heading/HeadingComponent";
 import { createClient } from "@/prismicio";
 import dayjs from "dayjs";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+
 const BlogsSection = async ({ slice }) => {
   const { sub_heading, heading, number } = slice?.primary || {};
 
@@ -25,7 +26,7 @@ const BlogsSection = async ({ slice }) => {
       },
     });
   }
-  console.log("sub_heading", sub_heading);
+
   return (
     <>
       <section>

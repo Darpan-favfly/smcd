@@ -1,13 +1,17 @@
-import ContactSection from "@/components/contact/ContactSection";
-import SecondaryHeroSection from "@/components/hero/SecondaryHeroSection";
+import { createClient } from "@/prismicio";
+import { components } from "@/slices";
+import { SliceZone } from "@prismicio/react";
 import MapSection from "@/components/map/MapSection";
 
-const ContactPage = () => {
+const ContactPage = async () => {
+  const client = createClient();
+  const doc = await client.getSingle("contact_page");
   return (
     <>
-      <SecondaryHeroSection />
-      <ContactSection />
-      <MapSection />
+      {/* <SecondaryHeroSection />
+      <ContactSection /> */}
+      <SliceZone slices={doc.data.slices} components={components} />
+      <MapSection data={doc.data.slices[1]} />
     </>
   );
 };

@@ -1,12 +1,16 @@
-import CustomizeFormSection from "@/components/customize/CustomizeFormSection";
-import SecondaryHeroSection from "@/components/hero/SecondaryHeroSection";
+import { createClient } from "@/prismicio";
+import { components } from "@/slices";
+import { SliceZone } from "@prismicio/react";
+
 import RecommendedProductsSection from "@/components/product/RecommendedProductSection";
 
-const CustomizePage = () => {
+const CustomizePage = async () => {
+  const client = createClient();
+
+  const doc = await client.getSingle("customize_page");
   return (
     <>
-      <SecondaryHeroSection />
-      <CustomizeFormSection />
+      <SliceZone slices={doc.data.slices} components={components} />
       <RecommendedProductsSection />
     </>
   );

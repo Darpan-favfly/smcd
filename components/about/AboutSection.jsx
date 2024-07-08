@@ -1,58 +1,57 @@
+"use client";
+import { PrismicRichText } from "@prismicio/react";
 import HeadingComponent from "../heading/HeadingComponent";
+import { PrismicNextImage } from "@prismicio/next";
 
-const AboutSection = () => {
+const AboutSection = ({ slice }) => {
+  const { heading, sub_heading, items } = slice.primary;
+
   return (
     <>
       <section className="container mb-100">
         <HeadingComponent
           data={{
-            heading: "Know About Us",
-            description:
-              " We are passionate about creating high-quality engagement rings and fine jewelry",
+            heading: heading[0].text,
+            sub_heading: sub_heading[0].text,
           }}
         />
-        <div className="row">
-          <div className="col-lg-6 special-block-grid-left">
-            <div
-              className="special-block-wrapper"
-              style={{
-                backgroundColor: "rgb(28, 99, 146)",
-                display: "flex",
-                alignItems: "center",
-                minHeight: "auto",
-              }}
-            >
-              <div>
-                <h3 className="special-block under-bar-white">
-                  Our Ethical Standards
-                </h3>
-                <p>
-                  At smcjewels, we prioritize ethical practices in everything we
-                  do. Our dedication to sourcing
-                  <strong>conflict-free diamonds</strong> and ensuring our
-                  materials are is paramount.
-                </p>
-                <p>
-                  You can trust the origins of every jewelry item we make,
-                  knowing it's been crafted with respect for our planet. We
-                  believe true brilliance shines from within, and we proudly
-                  uphold the
-                  <strong>highest ethical standards in the industry</strong>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-6 special-block-img-left flex-center d-flex">
-            <img
-              alt="Our Ethical Standards"
-              className="img-responsive"
-              src="https://i.ibb.co/vhyx3Jg/our-ethical-standards-edad6d72.png"
-            />
-          </div>
-        </div>
+        {items.map((item, index) => (
+          <AboutItem key={index} data={item} />
+        ))}
       </section>
     </>
   );
 };
 
+const AboutItem = ({ data }) => {
+  return (
+    <div className="row">
+      <div className="col-lg-6 special-block-grid-left">
+        <div
+          className="special-block-wrapper"
+          style={{
+            backgroundColor: "rgb(28, 99, 146)",
+            display: "flex",
+            alignItems: "center",
+            minHeight: "auto",
+          }}
+        >
+          <div>
+            <h3 className="special-block under-bar-white">
+              {data.title[0].text}
+            </h3>
+            <PrismicRichText field={data.description} />
+          </div>
+        </div>
+      </div>
+      <div className="col-lg-6 special-block-img-left flex-center d-flex">
+        <PrismicNextImage
+          alt="Our Ethical Standards"
+          className="img-responsive"
+          field={data.image}
+        />
+      </div>
+    </div>
+  );
+};
 export default AboutSection;

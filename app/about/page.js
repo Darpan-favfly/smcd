@@ -1,14 +1,16 @@
-import AboutSection from "@/components/about/AboutSection";
-import CtaContactSection from "@/components/cta/CtaContactSection";
-import CtaSection from "@/components/cta/CtaSection";
-import SecondaryHeroSection from "@/components/hero/SecondaryHeroSection";
+import { createClient } from "@/prismicio";
+import { components } from "@/slices";
+import { SliceZone } from "@prismicio/react";
 
-const AboutPage = () => {
+const AboutPage = async () => {
+  const client = createClient();
+
+  const doc = await client.getSingle("about_page");
   return (
     <>
-      <SecondaryHeroSection />
-      <AboutSection />
-      <CtaContactSection />
+      <SliceZone slices={doc.data.slices} components={components} />
+      {/* <AboutSection />
+      <CtaContactSection /> */}
     </>
   );
 };

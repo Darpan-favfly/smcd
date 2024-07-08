@@ -1,18 +1,10 @@
-/**
- * @typedef {import("@prismicio/client").Content.CustomizeFormSectionSlice} CustomizeFormSectionSlice
- * @typedef {import("@prismicio/react").SliceComponentProps<CustomizeFormSectionSlice>} CustomizeFormSectionProps
- * @param {CustomizeFormSectionProps}
- */
+import DefaultSection from "@/components/customize/CustomizeFormSection";
+
 const CustomizeFormSection = ({ slice }) => {
-  return (
-    <section
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
-    >
-      Placeholder component for customize_form_section (variation:{" "}
-      {slice.variation}) Slices
-    </section>
-  );
+  switch (slice.variation) {
+    default:
+      return <DefaultSection slice={slice} />;
+  }
 };
 
 export default CustomizeFormSection;

@@ -1,7 +1,9 @@
-const CustomizeFormSection = () => {
+import { PrismicNextImage } from "@prismicio/next";
+
+const CustomizeFormSection = ({ slice }) => {
+  const { form_id, image } = slice?.primary;
   return (
     <>
-      {" "}
       <section className="container mb-100">
         <div className="row">
           <div className="col-lg-6 special-block-grid-left">
@@ -18,15 +20,15 @@ const CustomizeFormSection = () => {
               <iframe
                 style={{ border: "none", width: "100%" }}
                 id="form-simple-form-uokpse"
-                src="https://opnform.com/forms/simple-form-uokpse"
+                src={form_id}
               />
             </div>
           </div>
           <div className="col-lg-6 special-block-img-left flex-center d-flex">
-            <img
+            <PrismicNextImage
               alt="Our Ethical Standards"
-              className="img-responsive"
-              src="https://api.woxo.tech/instagram/proxy?url=https%3A%2F%2Fscontent-iad3-2.cdninstagram.com%2Fv%2Ft51.29350-15%2F449145706_990061839431476_5620369195934165269_n.webp%3Fstp%3Ddst-jpg%26_nc_cat%3D103%26ccb%3D1-7%26_nc_sid%3D18de74%26_nc_ohc%3DhJjJyQzs7iYQ7kNvgFyUQ1s%26_nc_ht%3Dscontent-iad3-2.cdninstagram.com%26edm%3DANo9K5cEAAAA%26oh%3D00_AYB6F3dkGsYvVONzbh-OBBxdEekz_U6HKYtME9B1DtkpdQ%26oe%3D6685C1C1"
+              className="img-responsive h-auto w-100"
+              field={image}
             />
           </div>
         </div>
