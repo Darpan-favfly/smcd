@@ -203,7 +203,7 @@ const RecommendedProductsSection = () => {
               <SplideSlide key={product.id}>
                 <div className="product-item">
                   <figure className="product-thumb">
-                    <Link href="product-details.html">
+                    <Link href="/silver-diamond">
                       <img
                         className="pri-img"
                         src={product.primaryImage}
