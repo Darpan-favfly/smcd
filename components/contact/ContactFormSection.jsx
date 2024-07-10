@@ -3,7 +3,7 @@ import { PrismicRichText } from "@prismicio/react";
 const ContactFormSection = ({ slice }) => {
   const { heading, sub_heading, description, address, phone, email, form_id } =
     slice.primary || {};
-  console.log(sub_heading);
+
   return (
     <>
       <section className="info-box section-padding">

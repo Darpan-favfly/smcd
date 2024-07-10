@@ -18,13 +18,58 @@ export const repositoryName =
 // TODO: Update the routes array to match your project's route structure.
 const routes = [
   // Examples:
+  {
+    type: "home_page",
+    path: "/",
+  },
+  {
+    type: "about_page",
+    path: "/about",
+  },
+  {
+    type: "collections_page",
+    path: "/collections",
+  },
+  {
+    type: "blogs_page",
+    path: "/blogs",
+  },
+  {
+    type: "blog_post",
+    path: "/blog/:uid",
+  },
+  {
+    type: "product_page",
+    path: "/:uid",
+  },
+  {
+    type: "customize_page",
+    path: "/customize",
+  },
+  {
+    type: "contact_page",
+    path: "/contact",
+  },
+
   // {
-  // 	type: "homepage",
-  // 	path: "/",
+  //   type: "category_page",
+  //   path: "/categories/:slug",
   // },
   // {
-  // 	type: "page",
-  // 	path: "/:uid",
+  //   type: "privacy_policy_page",
+  //   path: "/privacy-policy",
+  // },
+  // {
+  //   type: "terms_and_conditions_page",
+  //   path: "/terms-conditions",
+  // },
+  // {
+  //   type: "return_exchange_policy_page",
+  //   path: "/return-exchange-policy",
+  // },
+  // {
+  //   type: "shipping_policy_page",
+  //   path: "/shipping-policy",
   // },
 ];
 
@@ -36,11 +81,12 @@ const routes = [
  */
 export const createClient = (config = {}) => {
   const client = prismic.createClient(repositoryName, {
+    accessToken: process.env.PRISMIC_ACCESS_TOKEN,
     routes,
-    fetchOptions:
-      process.env.NODE_ENV === "production"
-        ? { next: { tags: ["prismic"] }, cache: "force-cache" }
-        : { next: { revalidate: 5 } },
+    fetchOptions: {
+      // cache: "no-store",
+      next: { tags: ["prismic"], revalidate: 5 },
+    },
     ...config,
   });
 

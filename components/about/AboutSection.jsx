@@ -4,7 +4,7 @@ import HeadingComponent from "../heading/HeadingComponent";
 import { PrismicNextImage } from "@prismicio/next";
 
 const AboutSection = ({ slice }) => {
-  const { heading, sub_heading, items } = slice.primary;
+  const { heading, sub_heading, items } = slice?.primary;
 
   return (
     <>

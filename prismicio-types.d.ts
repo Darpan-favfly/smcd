@@ -238,6 +238,73 @@ export type BlogsPageDocument<Lang extends string = string> =
     Lang
   >;
 
+type CategoriesPageDocumentDataSlicesSlice =
+  | HeroSectionSlice
+  | CategoriesSectionSlice;
+
+/**
+ * Content for Categories Page documents
+ */
+interface CategoriesPageDocumentData {
+  /**
+   * Slice Zone field in *Categories Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categories_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<CategoriesPageDocumentDataSlicesSlice> /**
+   * Meta Title field in *Categories Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: categories_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Categories Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: categories_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Categories Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categories_page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Categories Page document from Prismic
+ *
+ * - **API ID**: `categories_page`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CategoriesPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<CategoriesPageDocumentData>,
+    "categories_page",
+    Lang
+  >;
+
 type CollectionsPageDocumentDataSlicesSlice =
   | CollectionsSectionSlice
   | HeroSectionSlice;
@@ -651,6 +718,7 @@ export type AllDocumentTypes =
   | AboutPageDocument
   | BlogPostDocument
   | BlogsPageDocument
+  | CategoriesPageDocument
   | CollectionsPageDocument
   | ContactPageDocument
   | CustomizePageDocument
@@ -1947,6 +2015,9 @@ declare module "@prismicio/client" {
       BlogsPageDocument,
       BlogsPageDocumentData,
       BlogsPageDocumentDataSlicesSlice,
+      CategoriesPageDocument,
+      CategoriesPageDocumentData,
+      CategoriesPageDocumentDataSlicesSlice,
       CollectionsPageDocument,
       CollectionsPageDocumentData,
       CollectionsPageDocumentDataSlicesSlice,

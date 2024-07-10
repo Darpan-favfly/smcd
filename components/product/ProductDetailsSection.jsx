@@ -18,8 +18,10 @@ import {
 } from "react-icons/fa";
 import ShareSection from "../global/ShareSection";
 import Link from "next/link";
+import { PrismicRichText } from "@prismicio/react";
 
-const ProductDetailsSection = () => {
+const ProductDetailsSection = ({ slice }) => {
+  const { title, description, items, new_price, old_price } = slice;
   const images = [
     "https://htmldemo.net/corano/corano/assets/img/product/product-details-img4.jpg",
     "https://htmldemo.net/corano/corano/assets/img/product/product-details-img5.jpg",
@@ -27,7 +29,7 @@ const ProductDetailsSection = () => {
     "https://htmldemo.net/corano/corano/assets/img/product/product-details-img6.jpg",
   ];
 
-  const [mainImage, setMainImage] = useState(images[0]);
+  const [mainImage, setMainImage] = useState(items[0].image.url);
 
   return (
     <section className="product-single container">
@@ -49,18 +51,18 @@ const ProductDetailsSection = () => {
                     gap: 10,
                   }}
                 >
-                  {images.map((image, index) => (
+                  {items.map((item, index) => (
                     <SplideSlide key={index}>
                       <div
                         className={`product-single__image-item ${
-                          mainImage === image ? "active" : ""
+                          mainImage === item.image.url ? "active" : ""
                         }`}
-                        onClick={() => setMainImage(image)}
+                        onClick={() => setMainImage(item.image.url)}
                       >
                         <img
                           loading="lazy"
                           className="h-auto"
-                          src={image}
+                          src={item.image.url}
                           style={{ borderRadius: "15px" }}
                           alt={`Thumbnail ${index + 1}`}
                         />
@@ -102,9 +104,7 @@ const ProductDetailsSection = () => {
               </Link>
             </div> */}
           </div>
-          <h1 className="product-single__name">
-            Lightweight Puffer Jacket With a Hood
-          </h1>
+          <h1 className="product-single__name">{title[0].text}</h1>
           <div className="product-single__rating">
             <div className="reviews-group d-flex">
               {Array(5)
@@ -121,12 +121,7 @@ const ProductDetailsSection = () => {
             <span className="current-price">$449</span>
           </div>
           <div className="product-single__short-desc">
-            <p>
-              Phasellus sed volutpat orci. Fusce eget lore mauris vehicula
-              elementum gravida nec dui. Aenean aliquam varius ipsum, non
-              ultricies tellus sodales eu. Donec dignissim viverra nunc, ut
-              aliquet magna posuere eget.
-            </p>
+            <PrismicRichText field={description} />
           </div>
           <form name="addtocart-form" method="post">
             <div className="product-single__swatches">
@@ -252,7 +247,7 @@ const ProductDetailsSection = () => {
             </div>
           </div> */}
 
-          <div className="product-single__policy">
+          {/* <div className="product-single__policy">
             <Link href="/shipping-policy">
               <i>
                 <FaShippingFast className="me-2 mb-2px" />
@@ -265,7 +260,7 @@ const ProductDetailsSection = () => {
               </i>
               <span>Return policy</span>
             </Link>
-          </div>
+          </div> */}
           <div className="product-single__meta-info mt-4">
             <div className="meta-item">
               <label>SKU:</label>

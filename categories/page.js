@@ -2,10 +2,10 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { SliceZone } from "@prismicio/react";
 
-const AboutPage = async () => {
+const CustomizePage = async () => {
   const client = createClient();
 
-  const doc = await client.getSingle("about_page");
+  const doc = await client.getSingle("categories_page");
   return (
     <>
       <SliceZone slices={doc.data.slices} components={components} />
@@ -13,4 +13,4 @@ const AboutPage = async () => {
   );
 };
 
-export default AboutPage;
+export default CustomizePage;

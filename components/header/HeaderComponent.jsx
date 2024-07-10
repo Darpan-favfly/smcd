@@ -11,7 +11,7 @@ const menuItems = [
   { name: "Customize", link: "/customize" },
   { name: "Blogs", link: "/blogs" },
   { name: "Contact", link: "/contact" },
-  { name: "Appointment", link: "/appointment", className: "tt-logo" },
+  { name: "Appointment", link: "/", className: "tt-logo" },
 ];
 
 const HeaderComponent = () => {

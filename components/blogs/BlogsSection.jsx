@@ -61,7 +61,10 @@ const BlogsSection = async ({ slice }) => {
                   </div>
                   <div className="blog-grid__item-title">
                     <div className="link-container">
-                      <PrismicNextLink href={item.uid} className="blog-link">
+                      <PrismicNextLink
+                        href={`blog/${item.uid}`}
+                        className="blog-link"
+                      >
                         {item.data.heading[0].text}
                       </PrismicNextLink>
                     </div>
@@ -70,7 +73,7 @@ const BlogsSection = async ({ slice }) => {
                     {/* <p>{item.description}</p> */}
                     <div className="link-container">
                       <PrismicNextLink
-                        href={item.uid}
+                        href={`blog/${item.uid}`}
                         className="readmore-link"
                       >
                         Continue Reading

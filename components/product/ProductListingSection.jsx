@@ -215,7 +215,7 @@ const ProductListingSection = () => {
                     <div key={product.id} className="col-md-3 col-6 ">
                       <div className="product-item">
                         <figure className="product-thumb">
-                          <Link href="/diamond-ring">
+                          <Link href="/silver-diamond">
                             <img
                               className="pri-img"
                               src={product.primaryImage}
@@ -265,13 +265,13 @@ const ProductListingSection = () => {
                         <div className="product-caption text-center">
                           <div className="product-identity">
                             <p className="manufacturer-name">
-                              <Link href="/diamond-ring">
+                              <Link href="/silver-diamond">
                                 {product.manufacturer}
                               </Link>
                             </p>
                           </div>
                           <h6 className="product-name">
-                            <Link href="/diamond-ring">{product.name}</Link>
+                            <Link href="/silver-diamond">{product.name}</Link>
                           </h6>
                           <div className="price-box">
                             <span className="price-regular">
