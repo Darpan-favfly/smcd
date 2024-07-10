@@ -11,6 +11,7 @@ export const components = {
   contact_form_section: dynamic(() => import("./ContactFormSection")),
   cta_section: dynamic(() => import("./CtaSection")),
   customize_form_section: dynamic(() => import("./CustomizeFormSection")),
+  faq_section: dynamic(() => import("./FaqSection")),
   featured_products_section: dynamic(() => import("./FeaturedProductsSection")),
   features_section: dynamic(() => import("./FeaturesSection")),
   hero_section: dynamic(() => import("./HeroSection")),

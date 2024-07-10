@@ -7,175 +7,9 @@ import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import Link from "next/link";
 
-const ProductListingSection = () => {
+const ProductListingSection = ({ data }) => {
   const [sort, setSort] = useState("Relevance");
-
-  const products = [
-    {
-      id: 1,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-6.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-13.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
-    },
-    // Add more product objects here
-    {
-      id: 2,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-7.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-14.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
-    },
-    {
-      id: 3,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-8.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-15.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
-    },
-    {
-      id: 4,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-9.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-16.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
-    },
-    {
-      id: 5,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-10.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-17.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
-    },
-    {
-      id: 6,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-11.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-18.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
-    },
-    {
-      id: 7,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-12.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-18.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
-    },
-    {
-      id: 8,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-13.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-10.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
-    },
-    {
-      id: 9,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-14.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-12.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
-    },
-    {
-      id: 10,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-15.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-18.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
-    },
-    {
-      id: 11,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-16.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-15.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
-    },
-    {
-      id: 12,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-17.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-16.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
-    },
-  ];
+  console.log(data);
 
   const handleSortChange = (event) => {
     setSort(event.target.value);
@@ -211,29 +45,29 @@ const ProductListingSection = () => {
             <div className="col-lg-12">
               <div className="shop-product-wrapper">
                 <div className="shop-product-wrap grid-view row mbn-30">
-                  {products.map((product) => (
-                    <div key={product.id} className="col-md-3 col-6 ">
+                  {data.map((item) => (
+                    <div key={item.id} className="col-md-3 col-6 ">
                       <div className="product-item">
                         <figure className="product-thumb">
-                          <Link href="/silver-diamond">
+                          <Link href={item.url}>
                             <img
                               className="pri-img"
-                              src={product.primaryImage}
+                              src={item.data.items[0].image.url}
                               alt="product"
                               style={{ borderRadius: "15px" }}
                             />
                             <img
                               className="sec-img"
-                              src={product.secondaryImage}
+                              src={item.data.items[1].image.url}
                               alt="product"
                             />
                           </Link>
                           <div className="product-badge">
-                            {product.labelNew && (
+                            {/* {product.labelNew && (
                               <div className="product-label new">
                                 <span>new</span>
                               </div>
-                            )}
+                            )} */}
                             {/* {product.labelDiscount && (
                               <div className="product-label discount">
                                 <span>{product.labelDiscount}</span>
@@ -263,23 +97,26 @@ const ProductListingSection = () => {
                           </div>
                         </figure>
                         <div className="product-caption text-center">
-                          <div className="product-identity">
+                          {/* <div className="product-identity">
                             <p className="manufacturer-name">
                               <Link href="/silver-diamond">
-                                {product.manufacturer}
+                                {item.manufacturer}
                               </Link>
                             </p>
-                          </div>
+                          </div> */}
                           <h6 className="product-name">
-                            <Link href="/silver-diamond">{product.name}</Link>
+                            <Link href="/silver-diamond">
+                              {item.data.title[0].text}
+                            </Link>
                           </h6>
                           <div className="price-box">
                             <span className="price-regular">
-                              {product.price}
+                              ${item.data.old_price}
                             </span>
-                            {product.oldPrice && (
+
+                            {item.data.new_price && (
                               <span className="price-old">
-                                <del>{product.oldPrice}</del>
+                                <span>${item.data.new_price}</span>
                               </span>
                             )}
                           </div>

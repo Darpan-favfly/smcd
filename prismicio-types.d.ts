@@ -507,6 +507,7 @@ export type CustomizePageDocument<Lang extends string = string> =
   >;
 
 type HomePageDocumentDataSlicesSlice =
+  | FaqSectionSlice
   | BlogsSectionSlice
   | InstagramSectionSlice
   | CtaSectionSlice
@@ -1558,6 +1559,51 @@ export type CustomizeFormSectionSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *FaqSection → Default → Primary*
+ */
+export interface FaqSectionSliceDefaultPrimary {
+  /**
+   * Heading field in *FaqSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq_section.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+}
+
+/**
+ * Default variation for FaqSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FaqSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FaqSectionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *FaqSection*
+ */
+type FaqSectionSliceVariation = FaqSectionSliceDefault;
+
+/**
+ * FaqSection Shared Slice
+ *
+ * - **API ID**: `faq_section`
+ * - **Description**: FaqSection
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FaqSectionSlice = prismic.SharedSlice<
+  "faq_section",
+  FaqSectionSliceVariation
+>;
+
+/**
  * Item in *FeaturedProductsSection → Default → Primary → Items*
  */
 export interface FeaturedProductsSectionSliceDefaultPrimaryItemsItem {
@@ -2075,6 +2121,10 @@ declare module "@prismicio/client" {
       CustomizeFormSectionSliceDefaultPrimary,
       CustomizeFormSectionSliceVariation,
       CustomizeFormSectionSliceDefault,
+      FaqSectionSlice,
+      FaqSectionSliceDefaultPrimary,
+      FaqSectionSliceVariation,
+      FaqSectionSliceDefault,
       FeaturedProductsSectionSlice,
       FeaturedProductsSectionSliceDefaultPrimaryItemsItem,
       FeaturedProductsSectionSliceDefaultPrimary,

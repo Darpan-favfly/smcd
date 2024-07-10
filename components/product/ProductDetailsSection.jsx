@@ -262,18 +262,18 @@ const ProductDetailsSection = ({ slice }) => {
             </Link>
           </div> */}
           <div className="product-single__meta-info mt-4">
-            <div className="meta-item">
+            {/* <div className="meta-item">
               <label>SKU:</label>
               <span>N/A</span>
-            </div>
+            </div> */}
             <div className="meta-item">
               <label>Categories:</label>
               <span>Casual &amp; Urban Wear, Jackets, Men</span>
             </div>
-            <div className="meta-item">
+            {/* <div className="meta-item">
               <label>Tags:</label>
               <span>biker, black, bomber, leather</span>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
