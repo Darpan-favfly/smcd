@@ -217,6 +217,7 @@ const MobileMenu = ({
     e.preventDefault();
     handleSearch(e);
     toggleMobileMenu();
+    togglePageOverlay();
   };
 
   return (
