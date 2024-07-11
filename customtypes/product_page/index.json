@@ -6,32 +6,6 @@
   "status": true,
   "json": {
     "Main": {
-      "uid": {
-        "config": {
-          "label": "UID"
-        },
-        "type": "UID"
-      },
-      "items": {
-        "type": "Group",
-        "config": {
-          "label": "Items",
-          "repeat": true,
-          "fields": {
-            "image": {
-              "type": "Image",
-              "config": {
-                "label": "Image",
-                "constraint": {
-                  "width": 1080,
-                  "height": 1028
-                },
-                "thumbnails": []
-              }
-            }
-          }
-        }
-      },
       "title": {
         "type": "StructuredText",
         "config": {
@@ -40,6 +14,12 @@
           "allowTargetBlank": false,
           "single": "strong,heading1"
         }
+      },
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
       },
       "old_price": {
         "type": "Text",
@@ -64,6 +44,41 @@
           "multi": "paragraph,strong"
         }
       },
+      "items": {
+        "type": "Group",
+        "config": {
+          "label": "Items",
+          "repeat": true,
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Image",
+                "constraint": {
+                  "width": 1080,
+                  "height": 1028
+                },
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      },
+      "category": {
+        "type": "Link",
+        "config": {
+          "label": "Category",
+          "select": "document",
+          "customtypes": ["category_page"]
+        }
+      },
+      "collection": {
+        "type": "Link",
+        "config": {
+          "label": "Collection",
+          "select": "document"
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
@@ -76,27 +91,43 @@
       "meta_title": {
         "config": {
           "label": "Meta Title",
-          "placeholder": "A title of the page used for social media and search engines"
+          "placeholder": "Meta Title [40-65 chars]"
         },
         "type": "Text"
       },
       "meta_description": {
         "config": {
           "label": "Meta Description",
-          "placeholder": "A brief summary of the page"
+          "placeholder": "Page Description [70-155 chars]"
         },
         "type": "Text"
       },
-      "meta_image": {
+      "featured_image": {
+        "type": "Image",
         "config": {
+          "label": "Featured Image",
           "constraint": {
-            "height": 1260,
-            "width": 2400
+            "width": 1200,
+            "height": 600
           },
-          "label": "Meta Image",
-          "thumbnails": []
-        },
-        "type": "Image"
+          "thumbnails": [
+            {
+              "name": "large",
+              "width": 1024,
+              "height": 524
+            },
+            {
+              "name": "medium",
+              "width": 300,
+              "height": 150
+            },
+            {
+              "name": "thumbnail",
+              "width": 150,
+              "height": 150
+            }
+          ]
+        }
       }
     }
   }

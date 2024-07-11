@@ -1,6 +1,9 @@
 {
   "format": "page",
   "id": "category_page",
+  "label": "Category Page",
+  "repeatable": true,
+  "status": true,
   "json": {
     "Main": {
       "uid": {
@@ -9,43 +12,69 @@
         },
         "type": "UID"
       },
-      "slices": {
+      "name": {
+        "type": "StructuredText",
         "config": {
-          "choices": {}
-        },
+          "label": "Name",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "slices": {
+        "type": "Slices",
         "fieldset": "Slice Zone",
-        "type": "Slices"
+        "config": {
+          "choices": {
+            "hero_section": {
+              "type": "SharedSlice"
+            }
+          }
+        }
       }
     },
     "SEO & Metadata": {
       "meta_title": {
         "config": {
           "label": "Meta Title",
-          "placeholder": "A title of the page used for social media and search engines"
+          "placeholder": "Meta Title [40-65 chars]"
         },
         "type": "Text"
       },
       "meta_description": {
         "config": {
           "label": "Meta Description",
-          "placeholder": "A brief summary of the page"
+          "placeholder": "Page Description [70-155 chars]"
         },
         "type": "Text"
       },
-      "meta_image": {
+      "featured_image": {
+        "type": "Image",
         "config": {
+          "label": "Featured Image",
           "constraint": {
-            "height": 1260,
-            "width": 2400
+            "width": 1200,
+            "height": 600
           },
-          "label": "Meta Image",
-          "thumbnails": []
-        },
-        "type": "Image"
+          "thumbnails": [
+            {
+              "name": "large",
+              "width": 1024,
+              "height": 524
+            },
+            {
+              "name": "medium",
+              "width": 300,
+              "height": 150
+            },
+            {
+              "name": "thumbnail",
+              "width": 150,
+              "height": 150
+            }
+          ]
+        }
       }
     }
-  },
-  "label": "Category Page",
-  "repeatable": true,
-  "status": true
+  }
 }

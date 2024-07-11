@@ -26,7 +26,7 @@ interface AboutPageDocumentData {
    * Meta Title field in *About Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **Placeholder**: Meta Title [40-65 chars]
    * - **API ID Path**: about_page.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -37,7 +37,7 @@ interface AboutPageDocumentData {
    * Meta Description field in *About Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
+   * - **Placeholder**: Page Description [70-155 chars]
    * - **API ID Path**: about_page.meta_description
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -45,15 +45,15 @@ interface AboutPageDocumentData {
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *About Page*
+   * Featured Image field in *About Page*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: about_page.meta_image
+   * - **API ID Path**: about_page.featured_image
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  meta_image: prismic.ImageField<never>;
+  featured_image: prismic.ImageField<"large" | "medium" | "thumbnail">;
 }
 
 /**
@@ -192,7 +192,7 @@ interface BlogsPageDocumentData {
    * Meta Title field in *Blogs Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **Placeholder**: Meta Title [40-65 chars]
    * - **API ID Path**: blogs_page.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -203,7 +203,7 @@ interface BlogsPageDocumentData {
    * Meta Description field in *Blogs Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
+   * - **Placeholder**: Page Description [70-155 chars]
    * - **API ID Path**: blogs_page.meta_description
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -211,15 +211,15 @@ interface BlogsPageDocumentData {
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *Blogs Page*
+   * Featured Image field in *Blogs Page*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: blogs_page.meta_image
+   * - **API ID Path**: blogs_page.featured_image
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  meta_image: prismic.ImageField<never>;
+  featured_image: prismic.ImageField<"large" | "medium" | "thumbnail">;
 }
 
 /**
@@ -259,7 +259,7 @@ interface CategoriesPageDocumentData {
    * Meta Title field in *Categories Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **Placeholder**: Meta Title [40-65 chars]
    * - **API ID Path**: categories_page.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -270,7 +270,7 @@ interface CategoriesPageDocumentData {
    * Meta Description field in *Categories Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
+   * - **Placeholder**: Page Description [70-155 chars]
    * - **API ID Path**: categories_page.meta_description
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -278,15 +278,15 @@ interface CategoriesPageDocumentData {
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *Categories Page*
+   * Featured Image field in *Categories Page*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: categories_page.meta_image
+   * - **API ID Path**: categories_page.featured_image
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  meta_image: prismic.ImageField<never>;
+  featured_image: prismic.ImageField<"large" | "medium" | "thumbnail">;
 }
 
 /**
@@ -305,12 +305,23 @@ export type CategoriesPageDocument<Lang extends string = string> =
     Lang
   >;
 
-type CategoryPageDocumentDataSlicesSlice = never;
+type CategoryPageDocumentDataSlicesSlice = HeroSectionSlice;
 
 /**
  * Content for Category Page documents
  */
 interface CategoryPageDocumentData {
+  /**
+   * Name field in *Category Page*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category_page.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  name: prismic.RichTextField;
+
   /**
    * Slice Zone field in *Category Page*
    *
@@ -324,7 +335,7 @@ interface CategoryPageDocumentData {
    * Meta Title field in *Category Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **Placeholder**: Meta Title [40-65 chars]
    * - **API ID Path**: category_page.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -335,7 +346,7 @@ interface CategoryPageDocumentData {
    * Meta Description field in *Category Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
+   * - **Placeholder**: Page Description [70-155 chars]
    * - **API ID Path**: category_page.meta_description
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -343,15 +354,15 @@ interface CategoryPageDocumentData {
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *Category Page*
+   * Featured Image field in *Category Page*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: category_page.meta_image
+   * - **API ID Path**: category_page.featured_image
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  meta_image: prismic.ImageField<never>;
+  featured_image: prismic.ImageField<"large" | "medium" | "thumbnail">;
 }
 
 /**
@@ -391,7 +402,7 @@ interface CollectionsPageDocumentData {
    * Meta Title field in *Collections Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **Placeholder**: Meta Title [40-65 chars]
    * - **API ID Path**: collections_page.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -402,7 +413,7 @@ interface CollectionsPageDocumentData {
    * Meta Description field in *Collections Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
+   * - **Placeholder**: Page Description [70-155 chars]
    * - **API ID Path**: collections_page.meta_description
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -410,15 +421,15 @@ interface CollectionsPageDocumentData {
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *Collections Page*
+   * Featured Image field in *Collections Page*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: collections_page.meta_image
+   * - **API ID Path**: collections_page.featured_image
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  meta_image: prismic.ImageField<never>;
+  featured_image: prismic.ImageField<"large" | "medium" | "thumbnail">;
 }
 
 /**
@@ -458,7 +469,7 @@ interface ContactPageDocumentData {
    * Meta Title field in *Contact Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **Placeholder**: Meta Title [40-65 chars]
    * - **API ID Path**: contact_page.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -469,7 +480,7 @@ interface ContactPageDocumentData {
    * Meta Description field in *Contact Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
+   * - **Placeholder**: Page Description [70-155 chars]
    * - **API ID Path**: contact_page.meta_description
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -477,15 +488,15 @@ interface ContactPageDocumentData {
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *Contact Page*
+   * Featured Image field in *Contact Page*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: contact_page.meta_image
+   * - **API ID Path**: contact_page.featured_image
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  meta_image: prismic.ImageField<never>;
+  featured_image: prismic.ImageField<"large" | "medium" | "thumbnail">;
 }
 
 /**
@@ -525,7 +536,7 @@ interface CustomizePageDocumentData {
    * Meta Title field in *Customize Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **Placeholder**: Meta Title [40-65 chars]
    * - **API ID Path**: customize_page.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -536,7 +547,7 @@ interface CustomizePageDocumentData {
    * Meta Description field in *Customize Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
+   * - **Placeholder**: Page Description [70-155 chars]
    * - **API ID Path**: customize_page.meta_description
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -544,15 +555,15 @@ interface CustomizePageDocumentData {
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *Customize Page*
+   * Featured Image field in *Customize Page*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: customize_page.meta_image
+   * - **API ID Path**: customize_page.featured_image
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  meta_image: prismic.ImageField<never>;
+  featured_image: prismic.ImageField<"large" | "medium" | "thumbnail">;
 }
 
 /**
@@ -666,7 +677,7 @@ interface PrivacyPolicyPageDocumentData {
    * Meta Title field in *Privacy Policy Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **Placeholder**: Meta Title [40-65 chars]
    * - **API ID Path**: privacy_policy_page.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -677,7 +688,7 @@ interface PrivacyPolicyPageDocumentData {
    * Meta Description field in *Privacy Policy Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
+   * - **Placeholder**: Page Description [70-155 chars]
    * - **API ID Path**: privacy_policy_page.meta_description
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -685,15 +696,15 @@ interface PrivacyPolicyPageDocumentData {
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *Privacy Policy Page*
+   * Featured Image field in *Privacy Policy Page*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: privacy_policy_page.meta_image
+   * - **API ID Path**: privacy_policy_page.featured_image
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  meta_image: prismic.ImageField<never>;
+  featured_image: prismic.ImageField<"large" | "medium" | "thumbnail">;
 }
 
 /**
@@ -733,17 +744,6 @@ type ProductPageDocumentDataSlicesSlice = never;
  * Content for Product Page documents
  */
 interface ProductPageDocumentData {
-  /**
-   * Items field in *Product Page*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: product_page.items[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  items: prismic.GroupField<Simplify<ProductPageDocumentDataItemsItem>>;
-
   /**
    * Title field in *Product Page*
    *
@@ -789,6 +789,39 @@ interface ProductPageDocumentData {
   description: prismic.RichTextField;
 
   /**
+   * Items field in *Product Page*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_page.items[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  items: prismic.GroupField<Simplify<ProductPageDocumentDataItemsItem>>;
+
+  /**
+   * Category field in *Product Page*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_page.category
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  category: prismic.ContentRelationshipField<"category_page">;
+
+  /**
+   * Collection field in *Product Page*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_page.collection
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  collection: prismic.ContentRelationshipField;
+
+  /**
    * Slice Zone field in *Product Page*
    *
    * - **Field Type**: Slice Zone
@@ -801,7 +834,7 @@ interface ProductPageDocumentData {
    * Meta Title field in *Product Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **Placeholder**: Meta Title [40-65 chars]
    * - **API ID Path**: product_page.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -812,7 +845,7 @@ interface ProductPageDocumentData {
    * Meta Description field in *Product Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
+   * - **Placeholder**: Page Description [70-155 chars]
    * - **API ID Path**: product_page.meta_description
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -820,15 +853,15 @@ interface ProductPageDocumentData {
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *Product Page*
+   * Featured Image field in *Product Page*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: product_page.meta_image
+   * - **API ID Path**: product_page.featured_image
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  meta_image: prismic.ImageField<never>;
+  featured_image: prismic.ImageField<"large" | "medium" | "thumbnail">;
 }
 
 /**
@@ -868,7 +901,7 @@ interface ReturnExchangePolicyDocumentData {
    * Meta Title field in *Return Exchange Policy*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **Placeholder**: Meta Title [40-65 chars]
    * - **API ID Path**: return_exchange_policy.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -879,7 +912,7 @@ interface ReturnExchangePolicyDocumentData {
    * Meta Description field in *Return Exchange Policy*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
+   * - **Placeholder**: Page Description [70-155 chars]
    * - **API ID Path**: return_exchange_policy.meta_description
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -887,15 +920,15 @@ interface ReturnExchangePolicyDocumentData {
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *Return Exchange Policy*
+   * Featured Image field in *Return Exchange Policy*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: return_exchange_policy.meta_image
+   * - **API ID Path**: return_exchange_policy.featured_image
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  meta_image: prismic.ImageField<never>;
+  featured_image: prismic.ImageField<"large" | "medium" | "thumbnail">;
 }
 
 /**
@@ -935,7 +968,7 @@ interface ShippingPolicyPageDocumentData {
    * Meta Title field in *Shipping Policy Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **Placeholder**: Meta Title [40-65 chars]
    * - **API ID Path**: shipping_policy_page.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -946,7 +979,7 @@ interface ShippingPolicyPageDocumentData {
    * Meta Description field in *Shipping Policy Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
+   * - **Placeholder**: Page Description [70-155 chars]
    * - **API ID Path**: shipping_policy_page.meta_description
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -954,15 +987,15 @@ interface ShippingPolicyPageDocumentData {
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *Shipping Policy Page*
+   * Featured Image field in *Shipping Policy Page*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: shipping_policy_page.meta_image
+   * - **API ID Path**: shipping_policy_page.featured_image
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  meta_image: prismic.ImageField<never>;
+  featured_image: prismic.ImageField<"large" | "medium" | "thumbnail">;
 }
 
 /**
@@ -1002,7 +1035,7 @@ interface TermsConditionPageDocumentData {
    * Meta Title field in *Terms Condition Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **Placeholder**: Meta Title [40-65 chars]
    * - **API ID Path**: terms_condition_page.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -1013,7 +1046,7 @@ interface TermsConditionPageDocumentData {
    * Meta Description field in *Terms Condition Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
+   * - **Placeholder**: Page Description [70-155 chars]
    * - **API ID Path**: terms_condition_page.meta_description
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
@@ -1021,15 +1054,15 @@ interface TermsConditionPageDocumentData {
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *Terms Condition Page*
+   * Featured Image field in *Terms Condition Page*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: terms_condition_page.meta_image
+   * - **API ID Path**: terms_condition_page.featured_image
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  meta_image: prismic.ImageField<never>;
+  featured_image: prismic.ImageField<"large" | "medium" | "thumbnail">;
 }
 
 /**

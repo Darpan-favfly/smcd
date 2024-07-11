@@ -1,3 +1,4 @@
+import Seo from "@/lib/seo/Seo";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { SliceZone } from "@prismicio/react";
@@ -10,18 +11,14 @@ const HomePage = async () => {
   return (
     <>
       <SliceZone slices={doc.data.slices} components={components} />
-
-      {/* <SliderProductsSection /> */}
-      {/* <CategoriesSection />
-      <FeaturesSection />
-      <OfferCtaSection />
-      <FeaturedProductSection />
-      <CollectionsSection />
-      <CtaSection />
-      <InstagramSection />
-      <BlogsSection /> */}
     </>
   );
 };
+export async function generateMetadata() {
+  const client = createClient();
 
+  const page = await client.getSingle("home_page");
+
+  return Seo(page);
+}
 export default HomePage;

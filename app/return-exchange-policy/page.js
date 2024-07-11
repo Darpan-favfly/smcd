@@ -1,3 +1,4 @@
+import Seo from "@/lib/seo/Seo";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { SliceZone } from "@prismicio/react";
@@ -11,5 +12,13 @@ const ReturnExchangePolicyPage = async () => {
     </>
   );
 };
+
+export async function generateMetadata() {
+  const client = createClient();
+
+  const page = await client.getSingle("return_exchange_policy");
+
+  return Seo(page);
+}
 
 export default ReturnExchangePolicyPage;

@@ -18183,11 +18183,10 @@ textarea.form-control.is-invalid {
 }
 .footer-mobile {
   max-width: 100%;
-  padding-top: 0.625rem;
-  padding-bottom: 0.125rem;
+
   z-index: 1000;
   opacity: 0;
-  bottom: -6.25rem;
+  padding: 10px;
   transition: all 0.32s;
 }
 .footer-mobile .flaticon {

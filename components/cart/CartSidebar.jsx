@@ -28,10 +28,8 @@ const CartSideBar = ({
             <IoClose />
           </button>
         </div>
-        {/* /.aside-header */}
+
         <div className="aside-content cart-drawer-items-list">
-          {/* /.cart-drawer-item d-flex */}
-          {/* /.cart-drawer-item d-flex */}
           <div className="cart-drawer-item d-flex position-relative">
             <div className="position-relative">
               <a href="./product1_simple.html">
