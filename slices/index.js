@@ -16,4 +16,5 @@ export const components = {
   features_section: dynamic(() => import("./FeaturesSection")),
   hero_section: dynamic(() => import("./HeroSection")),
   instagram_section: dynamic(() => import("./InstagramSection")),
+  policy_section: dynamic(() => import("./PolicySection")),
 };

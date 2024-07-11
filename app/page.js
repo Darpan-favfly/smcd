@@ -1,4 +1,3 @@
-import QnaSection from "@/components/qna/QnaSection";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { SliceZone } from "@prismicio/react";
@@ -11,7 +10,7 @@ const HomePage = async () => {
   return (
     <>
       <SliceZone slices={doc.data.slices} components={components} />
-      <QnaSection />
+
       {/* <SliderProductsSection /> */}
       {/* <CategoriesSection />
       <FeaturesSection />

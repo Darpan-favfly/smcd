@@ -810,6 +810,27 @@ span.wishlist-amount.d-block.position-absolute.js-wishlist-count {
   width: 60px;
   height: auto;
 }
+.section-category img {
+  transition: ease-in-out 0.15s;
+}
+.section-category img:hover {
+  transform: scale(1.05);
+}
+.section-category video {
+  transition: ease-in-out 0.15s;
+}
+.section-category video:hover {
+  transform: scale(1.05);
+}
+.cart-drawer::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 15px solid transparent;
+  border-bottom-color: #fff;
+}
 @media (max-width: 1200px) {
   .service-promotion .col-md-3 {
     width: 23%;
@@ -961,6 +982,9 @@ span.wishlist-amount.d-block.position-absolute.js-wishlist-count {
   }
   .favfly {
     margin-bottom: 65px;
+  }
+  .cart-drawer-actions {
+    bottom: 90px !important;
   }
 }
 @media (max-width: 991px) {

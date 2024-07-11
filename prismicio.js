@@ -31,6 +31,14 @@ const routes = [
     path: "/collections",
   },
   {
+    type: "categories_page",
+    path: "/categories",
+  },
+  {
+    type: "category_page",
+    path: "/categories/:uid",
+  },
+  {
     type: "blogs_page",
     path: "/blogs",
   },
@@ -49,6 +57,22 @@ const routes = [
   {
     type: "contact_page",
     path: "/contact",
+  },
+  {
+    type: "return_exchange_policy",
+    path: "/return-exchange-policy",
+  },
+  {
+    type: "shipping_policy_page",
+    path: "/shipping-policy",
+  },
+  {
+    type: "privacy_policy_page",
+    path: "/privacy-policy",
+  },
+  {
+    type: "terms_condition_page",
+    path: "/terms-conditions",
   },
 
   // {

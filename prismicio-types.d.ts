@@ -305,6 +305,71 @@ export type CategoriesPageDocument<Lang extends string = string> =
     Lang
   >;
 
+type CategoryPageDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Category Page documents
+ */
+interface CategoryPageDocumentData {
+  /**
+   * Slice Zone field in *Category Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<CategoryPageDocumentDataSlicesSlice> /**
+   * Meta Title field in *Category Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: category_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Category Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: category_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Category Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category_page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Category Page document from Prismic
+ *
+ * - **API ID**: `category_page`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CategoryPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<CategoryPageDocumentData>,
+    "category_page",
+    Lang
+  >;
+
 type CollectionsPageDocumentDataSlicesSlice =
   | CollectionsSectionSlice
   | HeroSectionSlice;
@@ -580,6 +645,73 @@ export type HomePageDocument<Lang extends string = string> =
     Lang
   >;
 
+type PrivacyPolicyPageDocumentDataSlicesSlice =
+  | HeroSectionSlice
+  | PolicySectionSlice;
+
+/**
+ * Content for Privacy Policy Page documents
+ */
+interface PrivacyPolicyPageDocumentData {
+  /**
+   * Slice Zone field in *Privacy Policy Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: privacy_policy_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<PrivacyPolicyPageDocumentDataSlicesSlice> /**
+   * Meta Title field in *Privacy Policy Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: privacy_policy_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Privacy Policy Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: privacy_policy_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Privacy Policy Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: privacy_policy_page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Privacy Policy Page document from Prismic
+ *
+ * - **API ID**: `privacy_policy_page`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PrivacyPolicyPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<PrivacyPolicyPageDocumentData>,
+    "privacy_policy_page",
+    Lang
+  >;
+
 /**
  * Item in *Product Page → Items*
  */
@@ -715,16 +847,222 @@ export type ProductPageDocument<Lang extends string = string> =
     Lang
   >;
 
+type ReturnExchangePolicyDocumentDataSlicesSlice =
+  | HeroSectionSlice
+  | PolicySectionSlice;
+
+/**
+ * Content for Return Exchange Policy documents
+ */
+interface ReturnExchangePolicyDocumentData {
+  /**
+   * Slice Zone field in *Return Exchange Policy*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: return_exchange_policy.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ReturnExchangePolicyDocumentDataSlicesSlice> /**
+   * Meta Title field in *Return Exchange Policy*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: return_exchange_policy.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Return Exchange Policy*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: return_exchange_policy.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Return Exchange Policy*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: return_exchange_policy.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Return Exchange Policy document from Prismic
+ *
+ * - **API ID**: `return_exchange_policy`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ReturnExchangePolicyDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ReturnExchangePolicyDocumentData>,
+    "return_exchange_policy",
+    Lang
+  >;
+
+type ShippingPolicyPageDocumentDataSlicesSlice =
+  | PolicySectionSlice
+  | HeroSectionSlice;
+
+/**
+ * Content for Shipping Policy Page documents
+ */
+interface ShippingPolicyPageDocumentData {
+  /**
+   * Slice Zone field in *Shipping Policy Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: shipping_policy_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ShippingPolicyPageDocumentDataSlicesSlice> /**
+   * Meta Title field in *Shipping Policy Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: shipping_policy_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Shipping Policy Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: shipping_policy_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Shipping Policy Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: shipping_policy_page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Shipping Policy Page document from Prismic
+ *
+ * - **API ID**: `shipping_policy_page`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ShippingPolicyPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ShippingPolicyPageDocumentData>,
+    "shipping_policy_page",
+    Lang
+  >;
+
+type TermsConditionPageDocumentDataSlicesSlice =
+  | PolicySectionSlice
+  | HeroSectionSlice;
+
+/**
+ * Content for Terms Condition Page documents
+ */
+interface TermsConditionPageDocumentData {
+  /**
+   * Slice Zone field in *Terms Condition Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: terms_condition_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<TermsConditionPageDocumentDataSlicesSlice> /**
+   * Meta Title field in *Terms Condition Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: terms_condition_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Terms Condition Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: terms_condition_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Terms Condition Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: terms_condition_page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Terms Condition Page document from Prismic
+ *
+ * - **API ID**: `terms_condition_page`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type TermsConditionPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<TermsConditionPageDocumentData>,
+    "terms_condition_page",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | AboutPageDocument
   | BlogPostDocument
   | BlogsPageDocument
   | CategoriesPageDocument
+  | CategoryPageDocument
   | CollectionsPageDocument
   | ContactPageDocument
   | CustomizePageDocument
   | HomePageDocument
-  | ProductPageDocument;
+  | PrivacyPolicyPageDocument
+  | ProductPageDocument
+  | ReturnExchangePolicyDocument
+  | ShippingPolicyPageDocument
+  | TermsConditionPageDocument;
 
 /**
  * Item in *AboutSection → Default → Primary → Items*
@@ -1559,6 +1897,31 @@ export type CustomizeFormSectionSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *FaqSection → Default → Primary → Items*
+ */
+export interface FaqSectionSliceDefaultPrimaryItemsItem {
+  /**
+   * Question field in *FaqSection → Default → Primary → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq_section.default.primary.items[].question
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  question: prismic.RichTextField;
+
+  /**
+   * answer field in *FaqSection → Default → Primary → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq_section.default.primary.items[].answer
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  answer: prismic.RichTextField;
+}
+
+/**
  * Primary content in *FaqSection → Default → Primary*
  */
 export interface FaqSectionSliceDefaultPrimary {
@@ -1571,6 +1934,16 @@ export interface FaqSectionSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   heading: prismic.RichTextField;
+
+  /**
+   * Items field in *FaqSection → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq_section.default.primary.items[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  items: prismic.GroupField<Simplify<FaqSectionSliceDefaultPrimaryItemsItem>>;
 }
 
 /**
@@ -2042,6 +2415,61 @@ export type InstagramSectionSlice = prismic.SharedSlice<
   InstagramSectionSliceVariation
 >;
 
+/**
+ * Primary content in *PolicySection → Default → Primary*
+ */
+export interface PolicySectionSliceDefaultPrimary {
+  /**
+   * Heading field in *PolicySection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Heading
+   * - **API ID Path**: policy_section.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Description field in *PolicySection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Description
+   * - **API ID Path**: policy_section.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Default variation for PolicySection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PolicySectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<PolicySectionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *PolicySection*
+ */
+type PolicySectionSliceVariation = PolicySectionSliceDefault;
+
+/**
+ * PolicySection Shared Slice
+ *
+ * - **API ID**: `policy_section`
+ * - **Description**: PolicySection
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PolicySectionSlice = prismic.SharedSlice<
+  "policy_section",
+  PolicySectionSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -2064,6 +2492,9 @@ declare module "@prismicio/client" {
       CategoriesPageDocument,
       CategoriesPageDocumentData,
       CategoriesPageDocumentDataSlicesSlice,
+      CategoryPageDocument,
+      CategoryPageDocumentData,
+      CategoryPageDocumentDataSlicesSlice,
       CollectionsPageDocument,
       CollectionsPageDocumentData,
       CollectionsPageDocumentDataSlicesSlice,
@@ -2076,10 +2507,22 @@ declare module "@prismicio/client" {
       HomePageDocument,
       HomePageDocumentData,
       HomePageDocumentDataSlicesSlice,
+      PrivacyPolicyPageDocument,
+      PrivacyPolicyPageDocumentData,
+      PrivacyPolicyPageDocumentDataSlicesSlice,
       ProductPageDocument,
       ProductPageDocumentData,
       ProductPageDocumentDataItemsItem,
       ProductPageDocumentDataSlicesSlice,
+      ReturnExchangePolicyDocument,
+      ReturnExchangePolicyDocumentData,
+      ReturnExchangePolicyDocumentDataSlicesSlice,
+      ShippingPolicyPageDocument,
+      ShippingPolicyPageDocumentData,
+      ShippingPolicyPageDocumentDataSlicesSlice,
+      TermsConditionPageDocument,
+      TermsConditionPageDocumentData,
+      TermsConditionPageDocumentDataSlicesSlice,
       AllDocumentTypes,
       AboutSectionSlice,
       AboutSectionSliceDefaultPrimaryItemsItem,
@@ -2122,6 +2565,7 @@ declare module "@prismicio/client" {
       CustomizeFormSectionSliceVariation,
       CustomizeFormSectionSliceDefault,
       FaqSectionSlice,
+      FaqSectionSliceDefaultPrimaryItemsItem,
       FaqSectionSliceDefaultPrimary,
       FaqSectionSliceVariation,
       FaqSectionSliceDefault,
@@ -2148,6 +2592,10 @@ declare module "@prismicio/client" {
       InstagramSectionSliceDefaultPrimary,
       InstagramSectionSliceVariation,
       InstagramSectionSliceDefault,
+      PolicySectionSlice,
+      PolicySectionSliceDefaultPrimary,
+      PolicySectionSliceVariation,
+      PolicySectionSliceDefault,
     };
   }
 }

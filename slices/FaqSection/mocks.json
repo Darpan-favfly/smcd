@@ -13,6 +13,44 @@
 						}
 					}
 				]
+			},
+			"items": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"question",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Deserunt officia consequat commodo deserunt nisi sit anim nulla."
+											}
+										}
+									]
+								}
+							],
+							[
+								"answer",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Reprehenderit anim cillum est aliquip enim exercitation quis consectetur ea tempor sunt et. Officia exercitation aliquip veniam consequat ut dolor cillum deserunt exercitation dolore est est irure irure."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
 			}
 		},
 		"items": []

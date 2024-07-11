@@ -9,7 +9,6 @@ import Link from "next/link";
 
 const ProductListingSection = ({ data }) => {
   const [sort, setSort] = useState("Relevance");
-  console.log(data);
 
   const handleSortChange = (event) => {
     setSort(event.target.value);
@@ -60,6 +59,7 @@ const ProductListingSection = ({ data }) => {
                               className="sec-img"
                               src={item.data.items[1].image.url}
                               alt="product"
+                              style={{ borderRadius: "15px" }}
                             />
                           </Link>
                           <div className="product-badge">

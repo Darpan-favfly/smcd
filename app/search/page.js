@@ -17,7 +17,7 @@ const SearchPage = async ({ searchParams }) => {
     const doc = await client.getAllByType("product_page", {
       filters: [prismic.filter.fulltext("my.product_page.title", searchKey)],
     });
-    console.log(doc);
+
     const data = doc;
 
     return (

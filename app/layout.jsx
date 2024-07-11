@@ -17,6 +17,7 @@ import { Jost, Lora } from "next/font/google";
 import HeaderComponent from "@/components/header/HeaderComponent";
 import FooterComponent from "@/components/footer/FooterComponent";
 import AppBar from "@/components/footer/AppBar";
+import CartSideBar from "@/components/cart/CartSidebar";
 
 // import WhatsappButton from "@/components/WhatsappButton";
 // import Script from "next/script";
@@ -108,6 +109,8 @@ export default async function RootLayout({ children }) {
         </main>
         <AppBar />
         <FooterComponent />
+        <div className="page-overlay" id="pageOverlay" />
+
         {/* <script
           id="ruttl-site-embed-script"
           src="https://app.ruttl.com/plugin.js?id=z8oD0qWJ7C4lozxdrV1o&e=1"

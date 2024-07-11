@@ -3,8 +3,9 @@ import { useState } from "react";
 import Link from "next/link";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { CiSearch, CiUser } from "react-icons/ci";
-import { IoBagOutline } from "react-icons/io5";
-import { useRouter } from "next/navigation"; // Correct import from 'next/router'
+import { IoBagOutline, IoClose } from "react-icons/io5";
+import { useRouter } from "next/navigation";
+import CartSideBar from "../cart/CartSidebar";
 
 const menuItems = [
   { name: "About", link: "/about" },
@@ -18,15 +19,29 @@ const menuItems = [
 const HeaderComponent = () => {
   const [openSearch, setOpenSearch] = useState(false);
   const [query, setQuery] = useState("");
+  const [openCart, setOpenCart] = useState(false);
   const router = useRouter();
 
-  const handleSearchVisibility = () => {
+  const togglePageOverlay = () => {
+    document
+      .getElementById("pageOverlay")
+      .classList.toggle("page-overlay_visible");
+  };
+
+  const toggleSearch = () => {
     setOpenSearch(!openSearch);
+    togglePageOverlay();
+  };
+
+  const toggleCart = () => {
+    setOpenCart(!openCart);
+    togglePageOverlay();
   };
 
   const handleSearch = (e) => {
     e.preventDefault();
     router.push(`/search?q=${query}`);
+    toggleSearch();
   };
 
   return (
@@ -34,9 +49,12 @@ const HeaderComponent = () => {
       <MobileMenu
         query={query}
         setQuery={setQuery}
-        openSearch={openSearch}
         handleSearch={handleSearch}
-        handleSearchVisibility={handleSearchVisibility}
+        toggleSearch={toggleSearch}
+        toggleCart={toggleCart}
+        openCart={openCart}
+        setOpenCart={setOpenCart}
+        togglePageOverlay={togglePageOverlay}
       />
 
       <header
@@ -45,123 +63,143 @@ const HeaderComponent = () => {
       >
         <div className="container">
           <div className="header-desk header-desk_type_5 pb-2 pt-2">
-            <div className="logo">
-              <Link href="/">
-                <img
-                  src="https://i.ibb.co/d2Vj1n7/Luxury-Jewellery-Branding-Logo-2.png"
-                  alt="Uomo"
-                  className="logo__image d-block"
-                />
-              </Link>
-            </div>
-
-            <nav className="navigation mx-auto mx-xxl-0">
-              <ul className="navigation__list list-unstyled d-flex">
-                {menuItems.map((item) => (
-                  <li className={`navigation__item`} key={item.name}>
-                    <Link href={item.link}>
-                      <div className={`navigation__link ${item.className}`}>
-                        {item.name}
-                      </div>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-            <div className="header-tools d-flex align-items-center">
-              <div
-                className={`header-tools__item hover-container ${openSearch ? "js-content_visible" : ""}`}
-              >
-                <div
-                  className="js-hover__open position-relative"
-                  onClick={handleSearchVisibility}
-                  style={{ cursor: "pointer" }}
-                >
-                  <CiSearch />
-                  <i className="btn-icon btn-close-lg" />
-                </div>
-
-                <div
-                  className={`search-popup js-hidden-content ${openSearch ? "js-content_visible" : ""}`}
-                >
-                  <form className="search-field container">
-                    <p className="text-uppercase text-secondary fw-medium mb-4">
-                      What are you looking for?
-                    </p>
-                    <div className="position-relative">
-                      <input
-                        className="search-field__input search-popup__input w-100 fw-medium"
-                        type="text"
-                        name="search-keyword"
-                        placeholder="Search products"
-                        style={{ borderBottom: "1px solid #000" }}
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                      />
-                      <button
-                        className="btn-icon search-popup__submit"
-                        type="submit"
-                        style={{ cursor: "pointer" }}
-                        onClick={handleSearch}
-                      >
-                        <CiSearch />
-                      </button>
-                      <button
-                        className="btn-icon btn-close-lg search-popup__reset"
-                        type="reset"
-                        onClick={() => setQuery("")}
-                      />
-                    </div>
-                    <div className="search-popup__results">
-                      {/* <div className="sub-menu search-suggestion">
-                        <h6 className="sub-menu__title fs-base">Quicklinks</h6>
-                        <ul className="sub-menu__list list-unstyled">
-                          <li className="sub-menu__item">
-                            <a
-                              href="./sweatshirt.html"
-                              className="menu-link menu-link_us-s"
-                            >
-                              Sweatshirt
-                            </a>
-                          </li>
-                        </ul>
-                      </div> */}
-                      <div className="search-result row row-cols-5" />
-                    </div>
-                  </form>
-                </div>
-              </div>
-              <Link
-                href="/"
-                className="header-tools__item header-tools__cart js-open-aside"
-                data-aside="cartDrawer"
-              >
-                <IoBagOutline />
-                <span className="cart-amount d-block position-absolute js-cart-items-count">
-                  3
-                </span>
-              </Link>
-              <Link
-                href="/"
-                className="header-tools__item js-open-aside"
-                data-aside="customerForms"
-              >
-                <CiUser />
-              </Link>
-            </div>
+            <Logo />
+            <Navigation />
+            <HeaderTools
+              openSearch={openSearch}
+              toggleSearch={toggleSearch}
+              toggleCart={toggleCart}
+              query={query}
+              setQuery={setQuery}
+              handleSearch={handleSearch}
+            />
           </div>
         </div>
+        <CartSideBar
+          openCart={openCart}
+          setOpenCart={setOpenCart}
+          togglePageOverlay={togglePageOverlay}
+        />
       </header>
     </>
   );
 };
 
+const Logo = () => (
+  <div className="logo">
+    <Link href="/">
+      <img
+        src="https://i.ibb.co/d2Vj1n7/Luxury-Jewellery-Branding-Logo-2.png"
+        alt="Uomo"
+        className="logo__image d-block"
+      />
+    </Link>
+  </div>
+);
+
+const Navigation = () => (
+  <nav className="navigation mx-auto mx-xxl-0">
+    <ul className="navigation__list list-unstyled d-flex">
+      {menuItems.map((item) => (
+        <li className="navigation__item" key={item.name}>
+          <Link href={item.link}>
+            <div className={`navigation__link ${item.className}`}>
+              {item.name}
+            </div>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </nav>
+);
+
+const HeaderTools = ({
+  openSearch,
+  toggleSearch,
+  toggleCart,
+  query,
+  setQuery,
+  handleSearch,
+}) => (
+  <div className="header-tools d-flex align-items-center">
+    <div
+      className={`header-tools__item hover-container ${openSearch ? "js-content_visible" : ""}`}
+    >
+      <div
+        className="js-hover__open position-relative"
+        onClick={toggleSearch}
+        style={{ cursor: "pointer" }}
+      >
+        {openSearch ? <IoClose /> : <CiSearch />}
+
+        <i className="btn-icon btn-close-lg" />
+      </div>
+
+      <div
+        className={`search-popup js-hidden-content ${openSearch ? "js-content_visible" : ""}`}
+      >
+        <form className="search-field container" onSubmit={handleSearch}>
+          <p className="text-uppercase text-secondary fw-medium mb-4">
+            What are you looking for?
+          </p>
+          <div className="position-relative">
+            <input
+              className="search-field__input search-popup__input w-100 fw-medium"
+              type="text"
+              name="search-keyword"
+              placeholder="Search products"
+              style={{ borderBottom: "1px solid #000" }}
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <button
+              className="btn-icon search-popup__submit"
+              type="submit"
+              style={{ cursor: "pointer" }}
+            >
+              <CiSearch />
+            </button>
+            <button
+              className="btn-icon btn-close-lg search-popup__reset"
+              type="reset"
+              onClick={() => setQuery("")}
+            />
+          </div>
+          <div className="search-popup__results">
+            <div className="search-result row row-cols-5" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <button
+      onClick={toggleCart}
+      className="header-tools__item header-tools__cart js-open-aside"
+      data-aside="cartDrawer"
+    >
+      <IoBagOutline />
+      <span className="cart-amount d-block position-absolute js-cart-items-count">
+        3
+      </span>
+    </button>
+    <Link
+      href="/"
+      className="header-tools__item js-open-aside"
+      data-aside="customerForms"
+    >
+      <CiUser />
+    </Link>
+  </div>
+);
+
 const MobileMenu = ({
   query,
   setQuery,
-  openSearch,
   handleSearch,
-  handleSearchVisibility,
+  toggleSearch,
+  toggleCart,
+  openCart,
+  setOpenCart,
+  togglePageOverlay,
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -199,32 +237,26 @@ const MobileMenu = ({
             <RxHamburgerMenu />
           )}
         </div>
-        <div className="logo">
-          <Link href="/">
-            <img
-              src="https://i.ibb.co/2WbkR2S/Luxury-Jewellery-Branding-Logo.png"
-              alt="Uomo"
-              className="logo__image d-block"
-            />
-          </Link>
-        </div>
-        <Link
-          href="./cart.html"
+        <Logo />
+        <button
           className="header-tools__item header-tools__cart js-open-aside"
-          data-aside="cartDrawer"
+          onClick={toggleCart}
         >
           <IoBagOutline />
           <span className="cart-amount d-block position-absolute js-cart-items-count">
             3
           </span>
-        </Link>
+        </button>
       </div>
       <nav
         className={`header-mobile__navigation navigation d-flex flex-column w-100 position-absolute top-100 bg-body overflow-auto ${menuOpen ? "open" : ""}`}
         style={{ paddingRight: 17 }}
       >
         <div className="container">
-          <form className="search-field position-relative mt-4 mb-3">
+          <form
+            className="search-field position-relative mt-4 mb-3"
+            onSubmit={handleMobileSearch}
+          >
             <div className="position-relative">
               <input
                 className="search-field__input w-100 border rounded-1"
@@ -237,7 +269,6 @@ const MobileMenu = ({
               <button
                 className="btn-icon search-popup__submit pb-0 me-2"
                 type="submit"
-                onClick={handleMobileSearch}
               >
                 <CiSearch />
               </button>
@@ -268,6 +299,11 @@ const MobileMenu = ({
           </div>
         </div>
       </nav>
+      <CartSideBar
+        openCart={openCart}
+        setOpenCart={setOpenCart}
+        togglePageOverlay={togglePageOverlay}
+      />
     </div>
   );
 };
