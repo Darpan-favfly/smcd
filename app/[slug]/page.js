@@ -22,7 +22,7 @@ const CustomPage = async ({ params }) => {
 
   return (
     <>
-      <ProductDetailsSection slice={doc.data} />
+      <ProductDetailsSection slice={doc.data} uid={doc} />
       <RecommendedProductsSection />
     </>
   );

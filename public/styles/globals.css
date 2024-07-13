@@ -18458,6 +18458,9 @@ textarea.form-control.is-invalid {
 .slideshow-number-pagination .swiper-pagination-bullet-active {
   color: #222222;
 }
+.swatch-list .js-swatch-active {
+  border: 1px solid #222222 !important;
+}
 @media (min-width: 1500px) {
   .slideshow-number-pagination.position-xxl-right-center {
     right: 0 !important;

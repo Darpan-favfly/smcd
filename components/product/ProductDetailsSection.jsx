@@ -1,35 +1,73 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
-import {
-  FaHeart,
-  FaExchangeAlt,
-  FaShippingFast,
-  FaUndo,
-  FaStar,
-  FaFacebook,
-  FaTwitter,
-  FaInstagram,
-  FaPinterest,
-  FaEnvelope,
-  FaArrowLeft,
-  FaArrowRight,
-} from "react-icons/fa";
+import useCartStore from "@/store/cartStore";
+
 import ShareSection from "../global/ShareSection";
 import Link from "next/link";
 import { PrismicRichText } from "@prismicio/react";
 
-const ProductDetailsSection = ({ slice }) => {
+const ProductDetailsSection = ({ slice, uid }) => {
+  const addToCart = useCartStore((state) => state.addToCart);
+  let productId = uid?.uid;
+
   const { title, description, items, new_price, old_price } = slice;
-  const images = [
-    "https://htmldemo.net/corano/corano/assets/img/product/product-details-img4.jpg",
-    "https://htmldemo.net/corano/corano/assets/img/product/product-details-img5.jpg",
-    "https://htmldemo.net/corano/corano/assets/img/product/product-details-img3.jpg",
-    "https://htmldemo.net/corano/corano/assets/img/product/product-details-img6.jpg",
-  ];
 
   const [mainImage, setMainImage] = useState(items[0].image.url);
+  const [quantity, setQuantity] = useState(1);
+  const [productAttributes, setProductAttributes] = useState({
+    size: "XS",
+    color: "A",
+    carat: "A",
+    goldColor: "Yellow",
+    caratTone: "Yellow",
+    cut: "Excellent",
+  });
+
+  const [product, setProduct] = useState();
+  useEffect(() => {
+    setProduct({
+      id: productId,
+      title: title[0].text,
+      price: new_price,
+      image: mainImage,
+      totalPrice: new_price * quantity,
+      quantity: quantity,
+      ...productAttributes,
+    });
+  }, []);
+
+  const handleQuantityChange = (e) => {
+    const newQuantity =
+      e.target.innerText === "+" ? quantity + 1 : Math.max(1, quantity - 1);
+    setQuantity(newQuantity);
+    setProduct((prev) => ({
+      ...prev,
+      quantity: newQuantity,
+      totalPrice: new_price * newQuantity,
+    }));
+  };
+
+  const handleAttributeChange = (attribute, value) => {
+    setProductAttributes((prev) => ({
+      ...prev,
+      [attribute]: value,
+    }));
+    setProduct((prev) => ({
+      ...prev,
+      [attribute]: value,
+    }));
+  };
+
+  const attributeOptions = {
+    size: ["XS", "S", "M", "L"],
+    color: ["A", "B", "C", "D"],
+    carat: ["A", "B", "C", "D"],
+    goldColor: ["Yellow", "White", "Rose Gold"],
+    caratTone: ["Yellow", "White", "Rose Gold"],
+    cut: ["Excellent"],
+  };
 
   return (
     <section className="product-single container">
@@ -93,131 +131,78 @@ const ProductDetailsSection = ({ slice }) => {
                 The Shop
               </Link>
             </div>
-            {/* <div className="product-single__prev-next d-flex align-items-center justify-content-between justify-content-md-end flex-grow-1">
-              <Link href="./product1_simple.html" className="text-uppercase fw-medium">
-                <FaArrowLeft className="mb-1px" size={10} />
-                <span className="menu-link menu-link_us-s">Prev</span>
-              </Link>
-              <Link href="./product3_external.html" className="text-uppercase fw-medium">
-                <span className="menu-link menu-link_us-s">Next</span>
-                <FaArrowRight className="mb-1px" size={10} />
-              </Link>
-            </div> */}
           </div>
           <h1 className="product-single__name">{title[0].text}</h1>
-          {/* <div className="product-single__rating">
-            <div className="reviews-group d-flex">
-              {Array(5)
-                .fill()
-                .map((_, i) => (
-                  <FaStar key={i} className="review-star" size={9} />
-                ))}
-            </div>
-            <span className="reviews-note text-lowercase text-secondary ms-1">
-              8k+ reviews
-            </span>
-          </div> */}
           <div className="product-single__price">
-            <span className="current-price">$449</span>
+            <span
+              className="old-price"
+              style={{
+                textDecoration: "line-through",
+                color: "black",
+              }}
+            >
+              $ {old_price}
+            </span>
+            <span className="current-price"> ${new_price}</span>
           </div>
           <div className="product-single__short-desc">
             <PrismicRichText field={description} />
           </div>
-          <form name="addtocart-form" method="post">
+          <form name="addtocart-form">
             <div className="product-single__swatches">
-              <div className="product-swatch text-swatches">
-                <label>Diamond Sizes</label>
-                <div className="swatch-list" style={{ borderRadius: "15px" }}>
-                  <input type="radio" name="size" id="swatch-1" />
-                  <label className="swatch js-swatch">XS</label>
-                  <input type="radio" name="size" id="swatch-2" />
-                  <label className="swatch js-swatch">S</label>
-                  <input type="radio" name="size" id="swatch-3" />
-                  <label className="swatch js-swatch">M</label>
-                  <input type="radio" name="size" id="swatch-4" />
+              {Object.entries(attributeOptions).map(([attribute, options]) => (
+                <div key={attribute} className="product-swatch text-swatches">
+                  <label>
+                    {attribute.charAt(0).toUpperCase() + attribute.slice(1)}
+                  </label>
+                  <div className="swatch-list" style={{ borderRadius: "15px" }}>
+                    {options.map((option, index) => (
+                      <label
+                        key={index}
+                        className={`swatch js-swatch ${
+                          productAttributes[attribute] === option
+                            ? "js-swatch-active"
+                            : ""
+                        }`}
+                        onClick={() => handleAttributeChange(attribute, option)}
+                      >
+                        {option}
+                      </label>
+                    ))}
+                  </div>
                 </div>
-                {/* <Link href="#" className="sizeguide-link">
-                  Size Guide
-                </Link> */}
-              </div>{" "}
-              <div className="product-swatch text-swatches">
-                <label>Color Grade</label>
-                <div className="swatch-list" style={{ borderRadius: "15px" }}>
-                  <input type="radio" name="size" id="swatch-1" />
-                  <label className="swatch js-swatch">A</label>
-                  <input type="radio" name="size" id="swatch-2" />
-                  <label className="swatch js-swatch">C</label>
-                  <input type="radio" name="size" id="swatch-3" />
-                  <label className="swatch js-swatch">D</label>
-                  <input type="radio" name="size" id="swatch-4" />
-                </div>
-              </div>
-              <div className="product-swatch text-swatches">
-                <label>Carrot Size</label>
-                <div className="swatch-list" style={{ borderRadius: "15px" }}>
-                  <input type="radio" name="size" id="swatch-1" />
-                  <label className="swatch js-swatch">A</label>
-                  <input type="radio" name="size" id="swatch-2" />
-                  <label className="swatch js-swatch">C</label>
-                  <input type="radio" name="size" id="swatch-3" />
-                  <label className="swatch js-swatch">D</label>
-                  <input type="radio" name="size" id="swatch-4" />
-                </div>
-              </div>{" "}
-              <div className="product-swatch text-swatches">
-                <label>Gold Color</label>
-                <div className="swatch-list" style={{ borderRadius: "15px" }}>
-                  <input type="radio" name="size" id="swatch-1" />
-                  <label className="swatch js-swatch">Yellow</label>
-                  <input type="radio" name="size" id="swatch-2" />
-                  <label className="swatch js-swatch">White</label>
-                  <input type="radio" name="size" id="swatch-3" />
-                  <label className="swatch js-swatch">Rose Gold</label>
-                  <input type="radio" name="size" id="swatch-4" />
-                </div>
-              </div>{" "}
-              <div className="product-swatch text-swatches">
-                <label>Carat Tone</label>
-                <div className="swatch-list" style={{ borderRadius: "15px" }}>
-                  <input type="radio" name="size" id="swatch-1" />
-                  <label className="swatch js-swatch">Yellow</label>
-                  <input type="radio" name="size" id="swatch-2" />
-                  <label className="swatch js-swatch">White</label>
-                  <input type="radio" name="size" id="swatch-3" />
-                  <label className="swatch js-swatch">Rose Gold</label>
-                  <input type="radio" name="size" id="swatch-4" />
-                </div>
-              </div>
-              <div className="product-swatch text-swatches">
-                <label>Cut</label>
-                <div className="swatch-list" style={{ borderRadius: "15px" }}>
-                  <input
-                    type="radio"
-                    name="size"
-                    id="swatch-1"
-                    defaultValue={"Exellent"}
-                  />
-                  <label className="swatch js-swatch">Exellent</label>
-                </div>
-              </div>
+              ))}
             </div>
             <div className="product-single__addtocart">
               <div className="qty-control position-relative qty-initialized">
                 <input
                   type="number"
                   name="quantity"
-                  defaultValue={1}
-                  min={1}
+                  value={quantity}
                   style={{ borderRadius: "15px" }}
                   className="qty-control__number text-center"
                 />
-                <div className="qty-control__reduce">-</div>
-                <div className="qty-control__increase">+</div>
+                <div
+                  className="qty-control__reduce"
+                  onClick={handleQuantityChange}
+                >
+                  -
+                </div>
+                <div
+                  className="qty-control__increase"
+                  onClick={handleQuantityChange}
+                >
+                  +
+                </div>
               </div>
               <button
                 type="submit"
                 className="btn btn-primary btn-addtocart js-open-aside"
                 style={{ borderRadius: "15px" }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  addToCart(product);
+                }}
               >
                 Add to Cart
               </button>
@@ -232,10 +217,6 @@ const ProductDetailsSection = ({ slice }) => {
               <label>Categories:</label>
               <span>Casual &amp; Urban Wear, Jackets, Men</span>
             </div>
-            {/* <div className="meta-item">
-              <label>Tags:</label>
-              <span>biker, black, bomber, leather</span>
-            </div> */}
           </div>
         </div>
       </div>
@@ -276,7 +257,7 @@ const ProductDetailsSection = ({ slice }) => {
                 <div className="col-lg-6">
                   <h3 className="block-title">Sample Number List</h3>
                   <ol className="list text-list">
-                    <li>Create Store-specific attrittbutes on the fly</li>
+                    <li>Create Store-specific attributes on the fly</li>
                   </ol>
                 </div>
               </div>
