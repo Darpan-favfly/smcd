@@ -2,7 +2,7 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { SliceZone } from "@prismicio/react";
 
-const CustomizePage = async () => {
+const CategoriesPage = async () => {
   const client = createClient();
 
   const doc = await client.getSingle("categories_page");
@@ -13,4 +13,4 @@ const CustomizePage = async () => {
   );
 };
 
-export default CustomizePage;
+export default CategoriesPage;

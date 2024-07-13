@@ -31,6 +31,10 @@ const routes = [
     path: "/collections",
   },
   {
+    type: "collection_page",
+    path: "/collections/:uid",
+  },
+  {
     type: "categories_page",
     path: "/categories",
   },
@@ -57,6 +61,10 @@ const routes = [
   {
     type: "contact_page",
     path: "/contact",
+  },
+  {
+    type: "shop_page",
+    path: "/shop",
   },
   {
     type: "return_exchange_policy",

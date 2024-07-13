@@ -12,7 +12,7 @@ const CategoriesProductPage = async () => {
     // filters: [prismic.filter.fulltext("my.product_page.title", searchKey)],
     fetchLinks: ["category.name", "category.uid"],
   });
-  console.log("products", products[1].data.category.uid);
+
   const product = products.filter((product) => {
     return product.data.category.uid === uid;
   });

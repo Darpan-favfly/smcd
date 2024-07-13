@@ -381,6 +381,82 @@ export type CategoryPageDocument<Lang extends string = string> =
     Lang
   >;
 
+type CollectionPageDocumentDataSlicesSlice = HeroSectionSlice;
+
+/**
+ * Content for Collection Page documents
+ */
+interface CollectionPageDocumentData {
+  /**
+   * Name field in *Collection Page*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: collection_page.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  name: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *Collection Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: collection_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<CollectionPageDocumentDataSlicesSlice> /**
+   * Meta Title field in *Collection Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Meta Title [40-65 chars]
+   * - **API ID Path**: collection_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Collection Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Page Description [70-155 chars]
+   * - **API ID Path**: collection_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Featured Image field in *Collection Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: collection_page.featured_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  featured_image: prismic.ImageField<"large" | "medium" | "thumbnail">;
+}
+
+/**
+ * Collection Page document from Prismic
+ *
+ * - **API ID**: `collection_page`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CollectionPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<CollectionPageDocumentData>,
+    "collection_page",
+    Lang
+  >;
+
 type CollectionsPageDocumentDataSlicesSlice =
   | CollectionsSectionSlice
   | HeroSectionSlice;
@@ -1014,6 +1090,71 @@ export type ShippingPolicyPageDocument<Lang extends string = string> =
     Lang
   >;
 
+type ShopPageDocumentDataSlicesSlice = HeroSectionSlice;
+
+/**
+ * Content for Shop Page documents
+ */
+interface ShopPageDocumentData {
+  /**
+   * Slice Zone field in *Shop Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: shop_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ShopPageDocumentDataSlicesSlice> /**
+   * Meta Title field in *Shop Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: shop_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Shop Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: shop_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Shop Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: shop_page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Shop Page document from Prismic
+ *
+ * - **API ID**: `shop_page`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ShopPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ShopPageDocumentData>,
+    "shop_page",
+    Lang
+  >;
+
 type TermsConditionPageDocumentDataSlicesSlice =
   | PolicySectionSlice
   | HeroSectionSlice;
@@ -1087,6 +1228,7 @@ export type AllDocumentTypes =
   | BlogsPageDocument
   | CategoriesPageDocument
   | CategoryPageDocument
+  | CollectionPageDocument
   | CollectionsPageDocument
   | ContactPageDocument
   | CustomizePageDocument
@@ -1095,6 +1237,7 @@ export type AllDocumentTypes =
   | ProductPageDocument
   | ReturnExchangePolicyDocument
   | ShippingPolicyPageDocument
+  | ShopPageDocument
   | TermsConditionPageDocument;
 
 /**
@@ -2528,6 +2671,9 @@ declare module "@prismicio/client" {
       CategoryPageDocument,
       CategoryPageDocumentData,
       CategoryPageDocumentDataSlicesSlice,
+      CollectionPageDocument,
+      CollectionPageDocumentData,
+      CollectionPageDocumentDataSlicesSlice,
       CollectionsPageDocument,
       CollectionsPageDocumentData,
       CollectionsPageDocumentDataSlicesSlice,
@@ -2553,6 +2699,9 @@ declare module "@prismicio/client" {
       ShippingPolicyPageDocument,
       ShippingPolicyPageDocumentData,
       ShippingPolicyPageDocumentDataSlicesSlice,
+      ShopPageDocument,
+      ShopPageDocumentData,
+      ShopPageDocumentDataSlicesSlice,
       TermsConditionPageDocument,
       TermsConditionPageDocumentData,
       TermsConditionPageDocumentDataSlicesSlice,

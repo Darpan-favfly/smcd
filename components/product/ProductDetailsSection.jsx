@@ -105,7 +105,7 @@ const ProductDetailsSection = ({ slice }) => {
             </div> */}
           </div>
           <h1 className="product-single__name">{title[0].text}</h1>
-          <div className="product-single__rating">
+          {/* <div className="product-single__rating">
             <div className="reviews-group d-flex">
               {Array(5)
                 .fill()
@@ -116,7 +116,7 @@ const ProductDetailsSection = ({ slice }) => {
             <span className="reviews-note text-lowercase text-secondary ms-1">
               8k+ reviews
             </span>
-          </div>
+          </div> */}
           <div className="product-single__price">
             <span className="current-price">$449</span>
           </div>
@@ -226,46 +226,8 @@ const ProductDetailsSection = ({ slice }) => {
           <div className="product-single__addtolinks">
             <ShareSection />
           </div>
-          {/* <div className="social-sharing__label d-flex align-items-center">
-            <span className="social-sharing__title">Share:</span>
-            <div className="social-sharing__list">
-              <Link href="#" className="social-sharing__link">
-                <FaFacebook size={10} />
-              </Link>
-              <Link href="#" className="social-sharing__link">
-                <FaTwitter size={10} />
-              </Link>
-              <Link href="#" className="social-sharing__link">
-                <FaInstagram size={10} />
-              </Link>
-              <Link href="#" className="social-sharing__link">
-                <FaPinterest size={10} />
-              </Link>
-              <Link href="#" className="social-sharing__link">
-                <FaEnvelope size={10} />
-              </Link>
-            </div>
-          </div> */}
 
-          {/* <div className="product-single__policy">
-            <Link href="/shipping-policy">
-              <i>
-                <FaShippingFast className="me-2 mb-2px" />
-              </i>
-              <span>Shipping policy</span>
-            </Link>
-            <Link href="/return-exchange-policy">
-              <i>
-                <FaUndo className="me-2 mb-2px" />
-              </i>
-              <span>Return policy</span>
-            </Link>
-          </div> */}
           <div className="product-single__meta-info mt-4">
-            {/* <div className="meta-item">
-              <label>SKU:</label>
-              <span>N/A</span>
-            </div> */}
             <div className="meta-item">
               <label>Categories:</label>
               <span>Casual &amp; Urban Wear, Jackets, Men</span>

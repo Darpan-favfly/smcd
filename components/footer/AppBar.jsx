@@ -6,7 +6,6 @@ import { NextDataPathnameNormalizer } from "next/dist/server/future/normalizers/
 
 const AppBar = () => {
   const pathName = usePathname();
-  console.log(pathName);
 
   return (
     <>

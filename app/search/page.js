@@ -22,7 +22,13 @@ const SearchPage = async ({ searchParams }) => {
 
     return (
       <>
-        <ProductListingSection data={data} />
+        {doc.length === 0 ? (
+          <h4 className="text-center mt-5 mb-5">
+            No results found for "{searchKey}"
+          </h4>
+        ) : (
+          <ProductListingSection data={data} />
+        )}
       </>
     );
   } catch (error) {
