@@ -33,10 +33,21 @@ const cartStore = (set) => ({
     }));
   },
 
+  updateQuantity: (productId, quantity) => {
+    set((state) => {
+      const updatedCart = state.cart.map((item) =>
+        item.id === productId ? { ...item, quantity } : item
+      );
+      return { cart: updatedCart };
+    });
+  },
   getCartDetails: () => {
-    return localStorage.getItem("cart")
-      ? JSON.parse(localStorage.getItem("cart"))
-      : [];
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("cart")
+        ? JSON.parse(localStorage.getItem("cart"))
+        : [];
+    }
+    return [];
   },
 });
 

@@ -658,6 +658,71 @@ export type CustomizePageDocument<Lang extends string = string> =
     Lang
   >;
 
+type DealsPageDocumentDataSlicesSlice = HeroSectionSlice;
+
+/**
+ * Content for Deals Page documents
+ */
+interface DealsPageDocumentData {
+  /**
+   * Slice Zone field in *Deals Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: deals_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<DealsPageDocumentDataSlicesSlice> /**
+   * Meta Title field in *Deals Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: deals_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Deals Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: deals_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Deals Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: deals_page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Deals Page document from Prismic
+ *
+ * - **API ID**: `deals_page`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type DealsPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<DealsPageDocumentData>,
+    "deals_page",
+    Lang
+  >;
+
 type HomePageDocumentDataSlicesSlice =
   | FaqSectionSlice
   | BlogsSectionSlice
@@ -896,6 +961,17 @@ interface ProductPageDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   collection: prismic.ContentRelationshipField;
+
+  /**
+   * Deal field in *Product Page*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_page.deal
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  deal: prismic.LinkField;
 
   /**
    * Slice Zone field in *Product Page*
@@ -1232,6 +1308,7 @@ export type AllDocumentTypes =
   | CollectionsPageDocument
   | ContactPageDocument
   | CustomizePageDocument
+  | DealsPageDocument
   | HomePageDocument
   | PrivacyPolicyPageDocument
   | ProductPageDocument
@@ -1868,6 +1945,61 @@ export type CtaSectionSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *CtaSection → Offer → Primary*
+ */
+export interface CtaSectionSliceOfferPrimary {
+  /**
+   * Image field in *CtaSection → Offer → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cta_section.offer.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Heading field in *CtaSection → Offer → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cta_section.offer.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Sub Heading field in *CtaSection → Offer → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cta_section.offer.primary.sub_heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  sub_heading: prismic.RichTextField;
+
+  /**
+   * Button Label field in *CtaSection → Offer → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cta_section.offer.primary.button_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_label: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *CtaSection → Offer → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cta_section.offer.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+}
+
+/**
  * Offer variation for CtaSection Slice
  *
  * - **API ID**: `offer`
@@ -1876,7 +2008,7 @@ export type CtaSectionSliceDefault = prismic.SharedSliceVariation<
  */
 export type CtaSectionSliceOffer = prismic.SharedSliceVariation<
   "offer",
-  Record<string, never>,
+  Simplify<CtaSectionSliceOfferPrimary>,
   never
 >;
 
@@ -2683,6 +2815,9 @@ declare module "@prismicio/client" {
       CustomizePageDocument,
       CustomizePageDocumentData,
       CustomizePageDocumentDataSlicesSlice,
+      DealsPageDocument,
+      DealsPageDocumentData,
+      DealsPageDocumentDataSlicesSlice,
       HomePageDocument,
       HomePageDocumentData,
       HomePageDocumentDataSlicesSlice,
@@ -2735,6 +2870,7 @@ declare module "@prismicio/client" {
       ContactFormSectionSliceDefault,
       CtaSectionSlice,
       CtaSectionSliceDefaultPrimary,
+      CtaSectionSliceOfferPrimary,
       CtaSectionSliceContactPrimary,
       CtaSectionSliceBlogPrimary,
       CtaSectionSliceVariation,

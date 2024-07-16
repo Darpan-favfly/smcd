@@ -79,6 +79,14 @@
           "select": "document"
         }
       },
+      "deal": {
+        "type": "Link",
+        "config": {
+          "label": "Deal",
+          "placeholder": "",
+          "select": null
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

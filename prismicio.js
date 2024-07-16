@@ -43,6 +43,10 @@ const routes = [
     path: "/categories/:uid",
   },
   {
+    type: "deals_page",
+    path: "/deals",
+  },
+  {
     type: "blogs_page",
     path: "/blogs",
   },

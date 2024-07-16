@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import useCartStore from "@/store/cartStore";
-
+import { toast, Toaster } from "react-hot-toast";
 import ShareSection from "../global/ShareSection";
 import Link from "next/link";
 import { PrismicRichText } from "@prismicio/react";
@@ -26,6 +26,9 @@ const ProductDetailsSection = ({ slice, uid }) => {
   });
 
   const [product, setProduct] = useState();
+  const [buttonText, setButtonText] = useState("Add to Cart");
+  const [buttonColor, setButtonColor] = useState("btn-primary");
+
   useEffect(() => {
     setProduct({
       id: productId,
@@ -60,6 +63,18 @@ const ProductDetailsSection = ({ slice, uid }) => {
     }));
   };
 
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    addToCart(product);
+    toast.success("Product added to cart!");
+    setButtonText("Added");
+    setButtonColor("btn-success");
+    setTimeout(() => {
+      setButtonText("Add to Cart");
+      setButtonColor("btn-primary");
+    }, 2000);
+  };
+
   const attributeOptions = {
     size: ["XS", "S", "M", "L"],
     color: ["A", "B", "C", "D"],
@@ -71,6 +86,7 @@ const ProductDetailsSection = ({ slice, uid }) => {
 
   return (
     <section className="product-single container">
+      <Toaster />
       <div className="row">
         <div className="col-lg-6">
           <div className="product-single__media">
@@ -197,14 +213,11 @@ const ProductDetailsSection = ({ slice, uid }) => {
               </div>
               <button
                 type="submit"
-                className="btn btn-primary btn-addtocart js-open-aside"
-                style={{ borderRadius: "15px" }}
-                onClick={(e) => {
-                  e.preventDefault();
-                  addToCart(product);
-                }}
+                className={`btn ${buttonColor} btn-addtocart js-open-aside`}
+                style={{ borderRadius: "15px", transition: "all 0.3s" }}
+                onClick={handleAddToCart}
               >
-                Add to Cart
+                {buttonText}
               </button>
             </div>
           </form>

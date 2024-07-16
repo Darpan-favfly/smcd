@@ -831,6 +831,13 @@ span.wishlist-amount.d-block.position-absolute.js-wishlist-count {
   border: 15px solid transparent;
   border-bottom-color: #fff;
 }
+
+.btn-added {
+  background-color: #c29958;
+  color: #fff;
+
+  transition: 0.15s;
+}
 @media (max-width: 1200px) {
   .service-promotion .col-md-3 {
     width: 23%;
