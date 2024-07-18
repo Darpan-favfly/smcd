@@ -182,7 +182,7 @@ const HeaderTools = ({
       </span>
     </button>
     <Link
-      href="/"
+      href="/profile/orders"
       className="header-tools__item js-open-aside"
       data-aside="customerForms"
     >
