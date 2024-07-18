@@ -63,7 +63,11 @@ const FooterComponent = () => {
                   borderStyle: "solid",
                 }}
               />
-              <button className="btn btn-secondary fw-medium" type="submit">
+              <button
+                className="btn btn-secondary fw-medium"
+                type="submit"
+                style={{ borderRadius: 15 }}
+              >
                 JOIN
               </button>
             </form>

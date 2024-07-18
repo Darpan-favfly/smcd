@@ -838,6 +838,10 @@ span.wishlist-amount.d-block.position-absolute.js-wishlist-count {
 
   transition: 0.15s;
 }
+
+.form-floating.my-3 {
+  border: 1px solid #666;
+}
 @media (max-width: 1200px) {
   .service-promotion .col-md-3 {
     width: 23%;
