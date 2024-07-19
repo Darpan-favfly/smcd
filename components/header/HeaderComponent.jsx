@@ -7,7 +7,7 @@ import { IoBagOutline, IoClose } from "react-icons/io5";
 import { useRouter } from "next/navigation";
 import CartSideBar from "../cart/CartSidebar";
 import useCartStore from "@/store/cartStore";
-import LoginAndRegister from "../login&register/LoginAndRegisterSideBar";
+import LoginAndRegister from "../auth/LoginAndRegisterSideBar";
 
 const menuItems = [
   { name: "About", link: "/about" },
@@ -45,7 +45,7 @@ const HeaderComponent = () => {
     togglePageOverlay();
   };
 
-  const toggleSignUp = () => {
+  const toggleAuthSideBar = () => {
     setOpenSignUp(!openSignUp);
     togglePageOverlay();
   };
@@ -67,7 +67,7 @@ const HeaderComponent = () => {
         openCart={openCart}
         setOpenCart={setOpenCart}
         togglePageOverlay={togglePageOverlay}
-        toggleSignUp={toggleSignUp}
+        toggleAuthSideBar={toggleAuthSideBar}
         cartQuantity={cartQuantity}
         openSignUp={openSignUp}
         setOpenSignUp={setOpenSignUp}
@@ -85,7 +85,7 @@ const HeaderComponent = () => {
               openSearch={openSearch}
               toggleSearch={toggleSearch}
               toggleCart={toggleCart}
-              toggleSignUp={toggleSignUp}
+              toggleAuthSideBar={toggleAuthSideBar}
               query={query}
               setQuery={setQuery}
               handleSearch={handleSearch}
@@ -102,7 +102,7 @@ const HeaderComponent = () => {
           openSignUp={openSignUp}
           setOpenSignUp={setOpenSignUp}
           togglePageOverlay={togglePageOverlay}
-          toggleSignUp={toggleSignUp}
+          toggleAuthSideBar={toggleAuthSideBar}
         />
       </header>
       <div id="pageOverlay" className="page-overlay"></div>
@@ -146,7 +146,7 @@ const HeaderTools = ({
   setQuery,
   handleSearch,
   cartQuantity,
-  toggleSignUp,
+  toggleAuthSideBar,
 }) => (
   <div className="header-tools d-flex align-items-center">
     <div
@@ -209,7 +209,7 @@ const HeaderTools = ({
       )}
     </button>
     <button
-      onClick={toggleSignUp}
+      onClick={toggleAuthSideBar}
       className="header-tools__item js-open-aside"
       data-aside="customerForms"
     >
@@ -227,7 +227,7 @@ const MobileMenu = ({
   openCart,
   setOpenCart,
   togglePageOverlay,
-  toggleSignUp,
+  toggleAuthSideBar,
   cartQuantity,
   openSignUp,
   setOpenSignUp,
@@ -283,7 +283,7 @@ const MobileMenu = ({
         </button>
         <button
           className="header-tools__item js-open-aside"
-          onClick={toggleSignUp}
+          onClick={toggleAuthSideBar}
         >
           <CiUser />
         </button>
@@ -348,7 +348,7 @@ const MobileMenu = ({
         openSignUp={openSignUp}
         setOpenSignUp={setOpenSignUp}
         togglePageOverlay={togglePageOverlay}
-        toggleSignUp={toggleSignUp}
+        toggleAuthSideBar={toggleAuthSideBar}
       />
     </div>
   );

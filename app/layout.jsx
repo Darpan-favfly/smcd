@@ -18,6 +18,7 @@ import HeaderComponent from "@/components/header/HeaderComponent";
 import FooterComponent from "@/components/footer/FooterComponent";
 import AppBar from "@/components/footer/AppBar";
 import CartSideBar from "@/components/cart/CartSidebar";
+import FirebaseAuthProvider from "@/lib/provider/authProvider/FirebaseAuthProvider";
 
 // import WhatsappButton from "@/components/WhatsappButton";
 // import Script from "next/script";
@@ -99,10 +100,13 @@ export default async function RootLayout({ children }) {
       <body>
         <NextTopLoader color="#DEA057" />
         <HeaderComponent />
+
         <main className="theme-dark overflow-hidden">
           <StyledJsxRegistry>
-            {/* <Header data={header?.data} /> */}
-            <div>{children}</div>
+            <FirebaseAuthProvider>
+              {/* <Header data={header?.data} /> */}
+              <div>{children}</div>
+            </FirebaseAuthProvider>
             {/* <Footer data={footer?.data} /> */}
             {/* <WhatsappButton number={number?.[0]?.text} text={text?.[0]?.text} /> */}
           </StyledJsxRegistry>

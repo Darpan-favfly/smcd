@@ -1,16 +1,28 @@
 "use client";
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
+import { Toaster } from "react-hot-toast";
+import { userProfileStore } from "@/store/userStore";
 
 const LoginAndRegister = ({
   openSignUp,
   setOpenSignUp,
   togglePageOverlay,
-  toggleSignUp,
+  toggleAuthSideBar,
 }) => {
   const [isLoginVisible, setIsLoginVisible] = useState(true);
   const [isResetPasswordVisible, setIsResetPasswordVisible] = useState(false);
   const [isRegisterVisible, setIsRegisterVisible] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const {
+    handleEmailPasswordSignUp,
+    handleEmailPasswordLogin,
+    handleForgotPassword,
+  } = userProfileStore();
 
   const showLogin = () => {
     setIsLoginVisible(true);
@@ -28,8 +40,28 @@ const LoginAndRegister = ({
     setIsLoginVisible(false);
     setIsRegisterVisible(false);
   };
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    await handleEmailPasswordSignUp({ name, email, password });
+    setIsSuccess(true);
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    await handleEmailPasswordLogin({ email, password });
+    setIsSuccess(true);
+    toggleAuthSideBar();
+  };
+  const handleResetPassword = async (e) => {
+    e.preventDefault();
+    await handleForgotPassword({ email });
+    setIsResetPasswordVisible(false);
+    setIsLoginVisible(true);
+  };
   return (
     <>
+      <Toaster />
       <div
         className={`aside aside_right overflow-hidden customer-forms ${openSignUp ? "aside_visible" : ""}`}
         id="customerForms"
@@ -41,14 +73,15 @@ const LoginAndRegister = ({
                 <h3 className="text-uppercase fs-6 mb-0">Login</h3>
                 <button
                   className="btn-close-lg js-close-aside ms-auto"
-                  onClick={toggleSignUp}
+                  onClick={toggleAuthSideBar}
                 >
                   <IoClose />
                 </button>
               </div>
-              <form className="aside-content">
+              <form className="aside-content" onSubmit={handleLogin}>
                 <div className="form-floating mb-3">
                   <input
+                    onchange={(e) => setEmail(e.target.value)}
                     name="email"
                     type="email"
                     className="form-control form-control_gray"
@@ -65,6 +98,7 @@ const LoginAndRegister = ({
                     Password *
                   </label>
                   <input
+                    onChange={(e) => setPassword(e.target.value)}
                     name="password"
                     id="customerPasswordInput"
                     className="form-control form-control_gray"
@@ -117,7 +151,7 @@ const LoginAndRegister = ({
                     <h3 className="text-uppercase fs-6 mb-0">Reset Password</h3>
                     <button
                       className="btn-close-lg js-close-aside ms-auto"
-                      onClick={toggleSignUp}
+                      onClick={toggleAuthSideBar}
                     >
                       <IoClose />
                     </button>
@@ -163,25 +197,27 @@ const LoginAndRegister = ({
                 <h3 className="text-uppercase fs-6 mb-0">Create an account</h3>
                 <button
                   className="btn-close-lg js-close-aside btn-close-aside ms-auto"
-                  onClick={toggleSignUp}
+                  onClick={toggleAuthSideBar}
                 >
                   <IoClose />
                 </button>
               </div>
-              <form className="aside-content">
+              <form className="aside-content" onSubmit={handleSignUp}>
                 <div className="form-floating mb-4">
                   <input
-                    name="username"
+                    onChange={(e) => setName(e.target.value)}
+                    name="name"
                     type="text"
                     className="form-control form-control_gray"
                     id="registerUserNameInput"
-                    placeholder="Username"
+                    placeholder="Enter Your Full Name"
                   />
-                  <label htmlFor="registerUserNameInput">Username</label>
+                  <label htmlFor="registerUserNameInput">Full Name</label>
                 </div>
                 <div className="pb-1" />
                 <div className="form-floating mb-4">
                   <input
+                    onChange={(e) => setEmail(e.target.value)}
                     name="email"
                     type="email"
                     className="form-control form-control_gray"
@@ -198,6 +234,7 @@ const LoginAndRegister = ({
                     Password *
                   </label>
                   <input
+                    onChange={(e) => setPassword(e.target.value)}
                     name="password"
                     id="registerPasswordInput"
                     className="form-control form-control_gray"
@@ -220,13 +257,12 @@ const LoginAndRegister = ({
                   <span className="text-secondary">
                     Already have an account?
                   </span>
-                  <a
-                    href="#"
+                  <button
                     className="btn-text js-show-login"
                     onClick={showLogin}
                   >
                     Login
-                  </a>
+                  </button>
                 </div>
               </form>
             </div>
@@ -239,14 +275,15 @@ const LoginAndRegister = ({
                 </h3>
                 <button
                   className="btn-close-lg js-close-aside ms-auto"
-                  onClick={toggleSignUp}
+                  onClick={toggleAuthSideBar}
                 >
                   <IoClose />
                 </button>
               </div>
-              <form className="aside-content">
+              <form className="aside-content" onSubmit={handleResetPassword}>
                 <div className="form-floating mb-3">
                   <input
+                    onChange={(e) => setEmail(e.target.value)}
                     name="email"
                     type="email"
                     className="form-control form-control_gray"
