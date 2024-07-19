@@ -6,11 +6,14 @@ import { CiSearch, CiUser } from "react-icons/ci";
 import { IoBagOutline, IoClose } from "react-icons/io5";
 import { useRouter } from "next/navigation";
 import CartSideBar from "../cart/CartSidebar";
+import useCartStore from "@/store/cartStore";
+import LoginAndRegister from "../login&register/LoginAndRegisterSideBar";
 
 const menuItems = [
   { name: "About", link: "/about" },
   { name: "Collections", link: "/collections" },
   { name: "Customize", link: "/customize" },
+  { name: "Shop", link: "/shop" },
   { name: "Blogs", link: "/blogs" },
   { name: "Contact", link: "/contact" },
   { name: "Appointment", link: "/", className: "tt-logo" },
@@ -20,7 +23,11 @@ const HeaderComponent = () => {
   const [openSearch, setOpenSearch] = useState(false);
   const [query, setQuery] = useState("");
   const [openCart, setOpenCart] = useState(false);
+  const [openSignUp, setOpenSignUp] = useState(false);
   const router = useRouter();
+
+  const cartDetails = useCartStore((state) => state.cart);
+  const cartQuantity = cartDetails.length;
 
   const togglePageOverlay = () => {
     document
@@ -35,6 +42,11 @@ const HeaderComponent = () => {
 
   const toggleCart = () => {
     setOpenCart(!openCart);
+    togglePageOverlay();
+  };
+
+  const toggleSignUp = () => {
+    setOpenSignUp(!openSignUp);
     togglePageOverlay();
   };
 
@@ -55,6 +67,10 @@ const HeaderComponent = () => {
         openCart={openCart}
         setOpenCart={setOpenCart}
         togglePageOverlay={togglePageOverlay}
+        toggleSignUp={toggleSignUp}
+        cartQuantity={cartQuantity}
+        openSignUp={openSignUp}
+        setOpenSignUp={setOpenSignUp}
       />
 
       <header
@@ -69,9 +85,11 @@ const HeaderComponent = () => {
               openSearch={openSearch}
               toggleSearch={toggleSearch}
               toggleCart={toggleCart}
+              toggleSignUp={toggleSignUp}
               query={query}
               setQuery={setQuery}
               handleSearch={handleSearch}
+              cartQuantity={cartQuantity}
             />
           </div>
         </div>
@@ -80,7 +98,14 @@ const HeaderComponent = () => {
           setOpenCart={setOpenCart}
           togglePageOverlay={togglePageOverlay}
         />
+        <LoginAndRegister
+          openSignUp={openSignUp}
+          setOpenSignUp={setOpenSignUp}
+          togglePageOverlay={togglePageOverlay}
+          toggleSignUp={toggleSignUp}
+        />
       </header>
+      <div id="pageOverlay" className="page-overlay"></div>
     </>
   );
 };
@@ -120,6 +145,8 @@ const HeaderTools = ({
   query,
   setQuery,
   handleSearch,
+  cartQuantity,
+  toggleSignUp,
 }) => (
   <div className="header-tools d-flex align-items-center">
     <div
@@ -131,10 +158,8 @@ const HeaderTools = ({
         style={{ cursor: "pointer" }}
       >
         {openSearch ? <IoClose /> : <CiSearch />}
-
         <i className="btn-icon btn-close-lg" />
       </div>
-
       <div
         className={`search-popup js-hidden-content ${openSearch ? "js-content_visible" : ""}`}
       >
@@ -177,17 +202,19 @@ const HeaderTools = ({
       data-aside="cartDrawer"
     >
       <IoBagOutline />
-      <span className="cart-amount d-block position-absolute js-cart-items-count">
-        3
-      </span>
+      {cartQuantity > 0 && (
+        <span className="cart-amount d-block position-absolute js-cart-items-count">
+          {cartQuantity}
+        </span>
+      )}
     </button>
-    <Link
-      href="/profile/orders"
+    <button
+      onClick={toggleSignUp}
       className="header-tools__item js-open-aside"
       data-aside="customerForms"
     >
       <CiUser />
-    </Link>
+    </button>
   </div>
 );
 
@@ -200,6 +227,10 @@ const MobileMenu = ({
   openCart,
   setOpenCart,
   togglePageOverlay,
+  toggleSignUp,
+  cartQuantity,
+  openSignUp,
+  setOpenSignUp,
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -244,9 +275,17 @@ const MobileMenu = ({
           onClick={toggleCart}
         >
           <IoBagOutline />
-          <span className="cart-amount d-block position-absolute js-cart-items-count">
-            3
-          </span>
+          {cartQuantity > 0 && (
+            <span className="cart-amount d-block position-absolute js-cart-items-count">
+              {cartQuantity}
+            </span>
+          )}
+        </button>
+        <button
+          className="header-tools__item js-open-aside"
+          onClick={toggleSignUp}
+        >
+          <CiUser />
         </button>
       </div>
       <nav
@@ -304,6 +343,12 @@ const MobileMenu = ({
         openCart={openCart}
         setOpenCart={setOpenCart}
         togglePageOverlay={togglePageOverlay}
+      />
+      <LoginAndRegister
+        openSignUp={openSignUp}
+        setOpenSignUp={setOpenSignUp}
+        togglePageOverlay={togglePageOverlay}
+        toggleSignUp={toggleSignUp}
       />
     </div>
   );

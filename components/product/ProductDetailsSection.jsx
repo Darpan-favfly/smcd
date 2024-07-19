@@ -174,6 +174,7 @@ const ProductDetailsSection = ({ slice, uid }) => {
                   <div className="swatch-list" style={{ borderRadius: "15px" }}>
                     {options.map((option, index) => (
                       <label
+                        style={{ cursor: "pointer" }}
                         key={index}
                         className={`swatch js-swatch ${
                           productAttributes[attribute] === option

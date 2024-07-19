@@ -14,8 +14,6 @@ const DealPage = async () => {
     return product.data.deal.uid === uid;
   });
 
-  console.log(product);
-
   return (
     <>
       <SliceZone slices={doc.data.slices} components={components} />

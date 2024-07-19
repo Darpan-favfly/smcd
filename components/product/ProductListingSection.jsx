@@ -90,11 +90,11 @@ const ProductListingSection = ({ data }) => {
                               <IoEyeOutline />
                             </Link> */}
                           </div>
-                          <div className="cart-hover">
+                          {/* <div className="cart-hover">
                             <button className="btn btn-cart">
                               add to cart
                             </button>
-                          </div>
+                          </div> */}
                         </figure>
                         <div className="product-caption text-center">
                           {/* <div className="product-identity">

@@ -9,7 +9,10 @@ const AppBar = () => {
 
   return (
     <>
-      <footer className="footer-mobile container w-100 px-3 d-md-none bg-body position-fixed footer-mobile_initialized">
+      <footer
+        className="footer-mobile container w-100 px-3 d-md-none bg-body position-fixed footer-mobile_initialized"
+        style={{ zIndex: 8 }}
+      >
         <div className="row text-center">
           <div className="col-3">
             <Link href="/">
@@ -36,10 +39,10 @@ const AppBar = () => {
             </Link>
           </div>
           <div className="col-3">
-            <Link href="/">
+            <Link href="/deals">
               <div
                 className={`footer-mobile__link d-flex flex-column align-items-center ${
-                  pathName === "/offers" ? "active" : ""
+                  pathName === "/deals" ? "active" : ""
                 }`}
               >
                 <div className="position-relative">
