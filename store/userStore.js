@@ -253,7 +253,20 @@ const userProfileStore = create((set, get) => ({
       return false;
     }
   },
-
+  handleUpdateUserAddress: async (data) => {
+    try {
+      const { uid, address } = data;
+      const date = Date.now();
+      await updateDoc(doc(db, "users", uid), {
+        address,
+        updatedAt: date,
+      });
+    } catch (error) {
+      console.error("Error updating user:", error);
+      toast.error(error.message);
+      return false;
+    }
+  },
   // =============== HANDLE UPDATE USER EMAIL ===============
   handleUpdateUserEmail: async (data) => {
     try {

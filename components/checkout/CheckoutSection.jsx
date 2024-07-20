@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import useCartStore from "@/store/cartStore";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const CheckoutSection = () => {
   const [isCartDetailsVisible, setIsCartDetailsVisible] = useState(true);
@@ -11,6 +13,43 @@ const CheckoutSection = () => {
   ] = useState(false);
 
   const [isOrderCompleteVisible, setIsOrderCompleteVisible] = useState(false);
+
+  const [formData, setFormData] = useState({
+    billingDetails: {
+      firstName: "",
+      lastName: "",
+      country: "",
+      streetAddress: "",
+      city: "",
+      zipcode: "",
+      province: "",
+      phone: "",
+      email: "",
+      createAccount: false,
+      shipDifferentAddress: false,
+      orderNotes: "",
+      paymentMethod: "",
+    },
+    shippingDetails: {
+      firstName: "",
+      lastName: "",
+      country: "",
+      streetAddress: "",
+      city: "",
+      zipcode: "",
+      province: "",
+      phone: "",
+      email: "",
+      createAccount: false,
+      shipDifferentAddress: false,
+      orderNotes: "",
+      paymentMethod: "",
+    },
+  });
+
+  const cartDetails = useCartStore((state) => state.cart);
+  const removeFromCart = useCartStore((state) => state.removeFromCart);
+  const updateQuantity = useCartStore((state) => state.updateQuantity);
 
   const handleVisibleSection = (section) => {
     switch (section) {
@@ -30,23 +69,66 @@ const CheckoutSection = () => {
         setIsOrderCompleteVisible(false);
     }
   };
+  // State to manage quantities
+  const [quantity, setQuantity] = useState({});
+
+  // Load quantities initially from cart
+  useEffect(() => {
+    const initialQuantities = {};
+    cartDetails.forEach((item) => {
+      initialQuantities[item.id] = item.quantity;
+    });
+    setQuantity(initialQuantities);
+  }, [cartDetails]);
+
+  const incrementQuantity = (id) => {
+    const newQuantity = { ...quantity };
+    newQuantity[id] = newQuantity[id] ? newQuantity[id] + 1 : 1;
+    setQuantity(newQuantity);
+    updateQuantity(id, newQuantity[id]);
+  };
+
+  const decrementQuantity = (id) => {
+    if (quantity[id] === 1) {
+      removeFromCart(id);
+      return;
+    }
+    const newQuantity = { ...quantity };
+    newQuantity[id] = newQuantity[id] - 1;
+    setQuantity(newQuantity);
+    updateQuantity(id, newQuantity[id]);
+  };
 
   return (
     <>
       <section className="shop-checkout container">
         <h2 className="page-title">Cart Details</h2>
+
         <CheckoutHeaderSection
           handleVisibleSection={handleVisibleSection}
           isShippingAndBillingDetailsVisible={
             isShippingAndBillingDetailsVisible
           }
         />
+
         {isCartDetailsVisible && (
-          <CartDetailsSection handleVisibleSection={handleVisibleSection} />
+          <CartDetailsSection
+            handleVisibleSection={handleVisibleSection}
+            cartDetails={cartDetails}
+            removeFromCart={removeFromCart}
+            incrementQuantity={incrementQuantity}
+            decrementQuantity={decrementQuantity}
+            quantity={quantity}
+          />
         )}
+
         {isShippingAndBillingDetailsVisible && (
-          <ShippingAndBillingDetailsSection />
+          <ShippingAndBillingDetailsSection
+            formData={formData}
+            setFormData={setFormData}
+          />
         )}
+
         {isOrderCompleteVisible && <OrderCompleteSection />}
       </section>
     </>
@@ -98,7 +180,14 @@ const CheckoutHeaderSection = ({
   );
 };
 
-const CartDetailsSection = ({ handleVisibleSection }) => {
+const CartDetailsSection = ({
+  handleVisibleSection,
+  cartDetails,
+  removeFromCart,
+  incrementQuantity,
+  decrementQuantity,
+  quantity,
+}) => {
   return (
     <>
       <div className="shopping-cart">
@@ -115,70 +204,88 @@ const CartDetailsSection = ({ handleVisibleSection }) => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  <div className="shopping-cart__product-item">
-                    <a href="./product1_simple.html">
-                      <img
-                        loading="lazy"
-                        src="../images/cart-item-3.jpg"
-                        width={120}
-                        height={120}
-                        alt=""
+              {cartDetails.map((product) => (
+                <tr key={product.id}>
+                  <td>
+                    <div className="shopping-cart__product-item">
+                      <Link href={product.id}>
+                        <img
+                          src={product.image}
+                          alt={product.title}
+                          className="shopping-cart__product-item__image"
+                        />
+                      </Link>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="shopping-cart__product-item__detail">
+                      <h4>
+                        <Link href={product.id}>{product.title}</Link>
+                      </h4>
+                      <ul className="shopping-cart__product-item__options">
+                        <li>Color: {product.color}</li>
+                        <li>Size: {product.size}</li>
+                      </ul>
+                    </div>
+                  </td>
+                  <td>
+                    <span className="shopping-cart__product-price">
+                      ${product.price}
+                    </span>
+                  </td>
+                  <td>
+                    <div className="qty-control position-relative qty-initialized">
+                      <input
+                        type="number"
+                        name="quantity"
+                        value={quantity[product.id] || 0}
+                        min={1}
+                        className="qty-control__number text-center"
+                        readOnly
                       />
-                    </a>
-                  </div>
-                </td>
-                <td>
-                  <div className="shopping-cart__product-item__detail">
-                    <h4>
-                      <a href="./product1_simple.html">Cobleknit Shawl</a>
-                    </h4>
-                    <ul className="shopping-cart__product-item__options">
-                      <li>Color: Yellow</li>
-                      <li>Size: L</li>
-                    </ul>
-                  </div>
-                </td>
-                <td>
-                  <span className="shopping-cart__product-price">$99</span>
-                </td>
-                <td>
-                  <div className="qty-control position-relative qty-initialized">
-                    <input
-                      type="number"
-                      name="quantity"
-                      defaultValue={3}
-                      min={1}
-                      className="qty-control__number text-center"
-                    />
-                    <div className="qty-control__reduce">-</div>
-                    <div className="qty-control__increase">+</div>
-                  </div>
-                  {/* .qty-control */}
-                </td>
-                <td>
-                  <span className="shopping-cart__subtotal">$297</span>
-                </td>
-                <td>
-                  <a href="#" className="remove-cart">
-                    <svg
-                      width={10}
-                      height={10}
-                      viewBox="0 0 10 10"
-                      fill="#767676"
-                      xmlns="http://www.w3.org/2000/svg"
+                      <div
+                        className="qty-control__reduce"
+                        onClick={() => decrementQuantity(product.id)}
+                      >
+                        -
+                      </div>
+                      <div
+                        className="qty-control__increase"
+                        onClick={() => incrementQuantity(product.id)}
+                      >
+                        +
+                      </div>
+                    </div>
+                    {/* .qty-control */}
+                  </td>
+                  <td>
+                    <span className="shopping-cart__subtotal">
+                      ${product.price * (quantity[product.id] || 0)}
+                    </span>
+                  </td>
+                  <td>
+                    <a
+                      onClick={() => removeFromCart(product.id)}
+                      className="remove-cart"
                     >
-                      <path d="M0.259435 8.85506L9.11449 0L10 0.885506L1.14494 9.74056L0.259435 8.85506Z" />
-                      <path d="M0.885506 0.0889838L9.74057 8.94404L8.85506 9.82955L0 0.97449L0.885506 0.0889838Z" />
-                    </svg>
-                  </a>
-                </td>
-              </tr>
+                      <svg
+                        width={10}
+                        height={10}
+                        viewBox="0 0 10 10"
+                        fill="#767676"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M0.259435 8.85506L9.11449 0L10 0.885506L1.14494 9.74056L0.259435 8.85506Z" />
+                        <path d="M0.885506 0.0889838L9.74057 8.94404L8.85506 9.82955L0 0.97449L0.885506 0.0889838Z" />
+                      </svg>
+                    </a>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
-          <div className="cart-table-footer">
-            <form action="./" className="position-relative bg-body">
+          {/* <div className="cart-table-footer">
+            <form className="position-relative bg-body">
               <input
                 className="form-control"
                 type="text"
@@ -192,7 +299,7 @@ const CartDetailsSection = ({ handleVisibleSection }) => {
               />
             </form>
             <button className="btn btn-light">UPDATE CART</button>
-          </div>
+          </div> */}
         </div>
         <div className="shopping-cart__totals-wrapper">
           <div className="sticky-content">
@@ -202,7 +309,12 @@ const CartDetailsSection = ({ handleVisibleSection }) => {
                 <tbody>
                   <tr>
                     <th>Subtotal</th>
-                    <td>$1300</td>
+                    <td>
+                      $
+                      {cartDetails.reduce((acc, item) => {
+                        return acc + item.price * (quantity[item.id] || 0);
+                      }, 0)}
+                    </td>
                   </tr>
                   <tr>
                     <th>Shipping</th>
@@ -255,208 +367,140 @@ const CartDetailsSection = ({ handleVisibleSection }) => {
   );
 };
 
-const ShippingAndBillingDetailsSection = () => {
+const ShippingAndBillingDetailsSection = ({ formData, setFormData }) => {
+  const formFields = [
+    {
+      label: "First Name",
+      type: "text",
+      name: "firstName",
+      placeholder: "First Name",
+    },
+    {
+      label: "Last Name",
+      type: "text",
+      name: "lastName",
+      placeholder: "Last Name",
+    },
+
+    {
+      label: "Country",
+      type: "text",
+      name: "country",
+      placeholder: "Country",
+    },
+    {
+      label: "Street Address",
+      type: "text",
+      name: "streetAddress",
+      placeholder: "Street Address",
+    },
+
+    {
+      label: "City",
+      type: "text",
+      name: "city",
+      placeholder: "City",
+    },
+    {
+      label: "Zipcode",
+      type: "text",
+      name: "zipcode",
+      placeholder: "Zipcode",
+    },
+    {
+      label: "landmark",
+      type: "text",
+      name: "landmark",
+      placeholder: "landmark",
+    },
+    {
+      label: "Province",
+      type: "text",
+      name: "province",
+      placeholder: "Province",
+    },
+    {
+      label: "Phone",
+      type: "text",
+      name: "phone",
+      placeholder: "Phone",
+    },
+    {
+      label: "Email",
+      type: "email",
+      name: "email",
+      placeholder: "Email",
+    },
+  ];
+
+  const handleChangeBillingDetails = (e) => {
+    setFormData({
+      ...formData,
+      billingDetails: {
+        ...formData.billingDetails,
+        [e.target.name]: e.target.value,
+      },
+    });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
   return (
     <>
+      <button onClick={handleSubmit}>hel</button>
       <form name="checkout-form" action="./shop_order_complete.html">
         <div className="checkout-form">
           <div className="billing-info__wrapper">
             <h4>BILLING DETAILS</h4>
-            <div className="row">
-              <div className="col-md-6">
-                <div className="form-floating my-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="checkout_first_name"
-                    placeholder="First Name"
-                  />
-                  <label htmlFor="checkout_first_name">First Name</label>
-                </div>
-              </div>
-              <div className="col-md-6">
-                <div className="form-floating my-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="checkout_last_name"
-                    placeholder="Last Name"
-                  />
-                  <label htmlFor="checkout_last_name">Last Name</label>
-                </div>
-              </div>
-              <div className="col-md-12">
-                <div className="form-floating my-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="checkout_company_name"
-                    placeholder="Company Name (optional)"
-                  />
-                  <label htmlFor="checkout_company_name">
-                    Company Name (optional)
-                  </label>
-                </div>
-              </div>
-              <div className="col-md-12">
-                <div className="search-field my-3">
-                  <div className="form-label-fixed hover-container">
-                    <label htmlFor="search-dropdown" className="form-label">
-                      Country / Region*
-                    </label>
-                    <div className="js-hover__open">
+            <form>
+              <div className="row">
+                {formFields.map((field) => (
+                  <div className="col-lg-6">
+                    <div className="form-floating my-3">
                       <input
-                        type="text"
-                        className="form-control form-control-lg search-field__actor search-field__arrow-down"
-                        id="search-dropdown"
-                        name="search-keyword"
-                        readOnly=""
-                        placeholder="Choose a location..."
+                        type={field.type}
+                        className="form-control"
+                        name={field.name}
+                        placeholder={field.placeholder}
+                        onChange={handleChangeBillingDetails}
+                        required
                       />
+                      <label htmlFor="checkout_first_name">{field.label}</label>
                     </div>
-                    <div className="filters-container js-hidden-content mt-2">
-                      <div className="search-field__input-wrapper">
-                        <input
-                          type="text"
-                          className="search-field__input form-control form-control-sm bg-lighter border-lighter"
-                          placeholder="Search"
-                        />
-                      </div>
-                      <ul className="search-suggestion list-unstyled">
-                        <li className="search-suggestion__item js-search-select">
-                          Australia
-                        </li>
-                        <li className="search-suggestion__item js-search-select">
-                          Canada
-                        </li>
-                        <li className="search-suggestion__item js-search-select">
-                          United Kingdom
-                        </li>
-                        <li className="search-suggestion__item js-search-select">
-                          United States
-                        </li>
-                        <li className="search-suggestion__item js-search-select">
-                          Turkey
-                        </li>
-                      </ul>
-                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="row">
+                <div className="col-md-12">
+                  <div className="mt-3">
+                    <textarea
+                      className="form-control form-control_gray"
+                      placeholder="Order Notes (optional)"
+                      cols={30}
+                      rows={8}
+                      value={formData.orderNotes}
+                      name="orderNotes"
+                      onChange={handleChangeBillingDetails}
+                    />
                   </div>
                 </div>
               </div>
-              <div className="col-md-12">
-                <div className="form-floating mt-3 mb-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="checkout_street_address"
-                    placeholder="Street Address *"
-                  />
-                  <label htmlFor="checkout_company_name">
-                    Street Address *
-                  </label>
-                </div>
-                <div className="form-floating mt-3 mb-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="checkout_street_address_2"
-                  />
-                </div>
-              </div>
-              <div className="col-md-12">
-                <div className="form-floating my-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="checkout_city"
-                    placeholder="Town / City *"
-                  />
-                  <label htmlFor="checkout_city">Town / City *</label>
-                </div>
-              </div>
-              <div className="col-md-12">
-                <div className="form-floating my-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="checkout_zipcode"
-                    placeholder="Postcode / ZIP *"
-                  />
-                  <label htmlFor="checkout_zipcode">Postcode / ZIP *</label>
-                </div>
-              </div>
-              <div className="col-md-12">
-                <div className="form-floating my-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="checkout_province"
-                    placeholder="Province *"
-                  />
-                  <label htmlFor="checkout_province">Province *</label>
-                </div>
-              </div>
-              <div className="col-md-12">
-                <div className="form-floating my-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="checkout_phone"
-                    placeholder="Phone *"
-                  />
-                  <label htmlFor="checkout_phone">Phone *</label>
-                </div>
-              </div>
-              <div className="col-md-12">
-                <div className="form-floating my-3">
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="checkout_email"
-                    placeholder="Your Mail *"
-                  />
-                  <label htmlFor="checkout_email">Your Mail *</label>
-                </div>
-              </div>
-              <div className="col-md-12">
-                <div className="form-check mt-3">
-                  <input
-                    className="form-check-input form-check-input_fill"
-                    type="checkbox"
-                    defaultValue=""
-                    id="create_account"
-                  />
-                  <label className="form-check-label" htmlFor="create_account">
-                    CREATE AN ACCOUNT?
-                  </label>
-                </div>
-                <div className="form-check mb-3">
-                  <input
-                    className="form-check-input form-check-input_fill"
-                    type="checkbox"
-                    defaultValue=""
-                    id="ship_different_address"
-                  />
-                  <label
-                    className="form-check-label"
-                    htmlFor="ship_different_address"
-                  >
-                    SHIP TO A DIFFERENT ADDRESS?
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-12">
-              <div className="mt-3">
-                <textarea
-                  className="form-control form-control_gray"
-                  placeholder="Order Notes (optional)"
-                  cols={30}
-                  rows={8}
-                  defaultValue={""}
+              <div className="form-check mb-3 mt-4">
+                <input
+                  className="form-check-input form-check-input_fill"
+                  type="checkbox"
+                  defaultValue=""
+                  id="ship_different_address"
                 />
+                <label
+                  className="form-check-label"
+                  htmlFor="ship_different_address"
+                >
+                  SHIP TO A DIFFERENT ADDRESS?
+                </label>
               </div>
-            </div>
+            </form>
           </div>
           <div className="checkout__totals-wrapper">
             <div className="sticky-content">

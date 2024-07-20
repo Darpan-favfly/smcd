@@ -2,6 +2,8 @@
 import { IoClose } from "react-icons/io5";
 import useCartStore from "@/store/cartStore";
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const CartSideBar = ({
   openCart,
@@ -15,6 +17,7 @@ const CartSideBar = ({
 
   // State to manage quantities
   const [quantity, setQuantity] = useState({});
+  const router = useRouter();
 
   // Load quantities initially from cart
   useEffect(() => {
@@ -41,6 +44,13 @@ const CartSideBar = ({
     newQuantity[id] = newQuantity[id] - 1;
     setQuantity(newQuantity);
     updateQuantity(id, newQuantity[id]);
+  };
+
+  const handleCheckout = (e) => {
+    e.preventDefault();
+    router.push("/checkout");
+    setOpenCart(false);
+    togglePageOverlay();
   };
 
   return (
@@ -141,14 +151,20 @@ const CartSideBar = ({
             <hr className="cart-drawer-divider" />
             <div className="d-flex justify-content-between">
               <h6 className="fs-base fw-medium">SUBTOTAL:</h6>
-              <span className="cart-subtotal fw-medium">$176.00</span>
+              <span className="cart-subtotal fw-medium">
+                $
+                {cartDetails.reduce(
+                  (acc, item) => acc + item.price * item.quantity,
+                  0
+                )}
+              </span>
             </div>
-            <a
-              href="./shop_checkout.html"
-              className="btn btn-primary mt-3 d-block"
+            <button
+              onClick={handleCheckout}
+              className="btn btn-primary mt-3 d-block w-100"
             >
               Checkout
-            </a>
+            </button>
           </div>
         )}
       </div>
