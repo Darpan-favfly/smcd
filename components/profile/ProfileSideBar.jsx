@@ -1,13 +1,21 @@
 "use client";
+import { userProfileStore } from "@/store/userStore";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
 const ProfileSideBar = () => {
   const pathName = usePathname();
+  const router = useRouter();
 
   const getMenuLinkClass = (path) => {
     return `menu-link menu-link_us-s${pathName === path ? " menu-link_active" : ""}`;
+  };
+  const { handleLogout } = userProfileStore();
+
+  const logout = async () => {
+    await handleLogout();
+    router.push("/");
   };
 
   return (
@@ -38,12 +46,13 @@ const ProfileSideBar = () => {
           </Link>
         </li>
         <li>
-          <Link
-            href="/profile/logout"
-            className={getMenuLinkClass("/profile/logout")}
+          <a
+            style={{ cursor: "pointer" }}
+            onClick={logout}
+            className={`${getMenuLinkClass("/profile/logout")}`}
           >
             Logout
-          </Link>
+          </a>
         </li>
       </ul>
     </div>

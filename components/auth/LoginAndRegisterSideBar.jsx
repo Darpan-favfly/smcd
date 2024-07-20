@@ -17,6 +17,7 @@ const LoginAndRegister = ({
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const user = userProfileStore((state) => state.userProfile);
 
   const {
     handleEmailPasswordSignUp,
@@ -49,6 +50,7 @@ const LoginAndRegister = ({
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    console.log({ email, password });
     await handleEmailPasswordLogin({ email, password });
     setIsSuccess(true);
     toggleAuthSideBar();
@@ -81,7 +83,7 @@ const LoginAndRegister = ({
               <form className="aside-content" onSubmit={handleLogin}>
                 <div className="form-floating mb-3">
                   <input
-                    onchange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value)}
                     name="email"
                     type="email"
                     className="form-control form-control_gray"

@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import CartSideBar from "../cart/CartSidebar";
 import useCartStore from "@/store/cartStore";
 import LoginAndRegister from "../auth/LoginAndRegisterSideBar";
+import { userProfileStore } from "@/store/userStore";
 
 const menuItems = [
   { name: "About", link: "/about" },
@@ -29,6 +30,9 @@ const HeaderComponent = () => {
   const cartDetails = useCartStore((state) => state.cart);
   const cartQuantity = cartDetails.length;
 
+  const user = userProfileStore((state) => state.userProfile);
+  const userFirstName = user?.name.split(" ")[0];
+
   const togglePageOverlay = () => {
     document
       .getElementById("pageOverlay")
@@ -46,8 +50,12 @@ const HeaderComponent = () => {
   };
 
   const toggleAuthSideBar = () => {
-    setOpenSignUp(!openSignUp);
-    togglePageOverlay();
+    if (user !== null) {
+      router.push("/profile/orders");
+    } else {
+      setOpenSignUp(!openSignUp);
+      togglePageOverlay();
+    }
   };
 
   const handleSearch = (e) => {
@@ -90,6 +98,7 @@ const HeaderComponent = () => {
               setQuery={setQuery}
               handleSearch={handleSearch}
               cartQuantity={cartQuantity}
+              userFirstName={userFirstName}
             />
           </div>
         </div>
@@ -147,6 +156,7 @@ const HeaderTools = ({
   handleSearch,
   cartQuantity,
   toggleAuthSideBar,
+  userFirstName,
 }) => (
   <div className="header-tools d-flex align-items-center">
     <div
@@ -210,10 +220,10 @@ const HeaderTools = ({
     </button>
     <button
       onClick={toggleAuthSideBar}
-      className="header-tools__item js-open-aside"
+      className="header-tools__item header-tools__user js-open-aside"
       data-aside="customerForms"
     >
-      <CiUser />
+      {userFirstName ? <span>Hi, {userFirstName}</span> : <CiUser />}
     </button>
   </div>
 );

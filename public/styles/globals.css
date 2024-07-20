@@ -21001,7 +21001,8 @@ a.add-to-wishlist.active .flaticon.flaticon-heart {
   font-weight: 700;
   text-transform: uppercase;
 }
-.my-account .account-nav {
+.my-account .account-nav,
+.my-account .account-nav button {
   list-style: none;
   padding: 0;
   padding-top: 2.5rem;
