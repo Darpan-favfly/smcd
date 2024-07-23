@@ -253,14 +253,40 @@ const userProfileStore = create((set, get) => ({
       return false;
     }
   },
-  handleUpdateUserAddress: async (data) => {
+  // =============== HANDLE UPDATE USER ADDRESS ===============
+  handleUpdateUserAddress: async (formData) => {
     try {
-      const { uid, address } = data;
+      const { uid, name, email } = data;
+
+      const user = auth.currentUser;
+
+      await updateProfile(user, {
+        displayName: name,
+      });
+
+      await updateEmail(user, email);
+
+      // ===== UPDATE USER-PROFILE =====
       const date = Date.now();
+
       await updateDoc(doc(db, "users", uid), {
-        address,
+        name,
+        email,
         updatedAt: date,
       });
+
+      set((state) => ({
+        userProfile: {
+          ...state.userProfile,
+          name,
+          email,
+          updatedAt: date,
+        },
+      }));
+
+      toast.success("Profile updated successfully");
+
+      return true;
     } catch (error) {
       console.error("Error updating user:", error);
       toast.error(error.message);
@@ -399,6 +425,24 @@ const userProfileStore = create((set, get) => ({
       toast.error("Something went wrong");
     }
   },
+
+  // =============== HANDLE UPDATE USER ADDRESS BY UID===============
+  updateUserAddress: async (formData, uid) => {
+    console.log("formData", formData, uid, "uid");
+    try {
+      const date = new Date();
+
+      await updateDoc(doc(db, "users", uid), {
+        address: formData,
+        updatedAt: date,
+      });
+
+      return true;
+    } catch (error) {
+      console.error("Error updating user address:", error);
+      return false;
+    }
+  },
 }));
 
 // =============== CREATE USER & USER-PROFILE =================
@@ -442,5 +486,6 @@ const createUser = async ({ uid, name, email }) => {
     return null;
   }
 };
+
 // =============== EXPORT STORES ===============
 export { userProfileStore };

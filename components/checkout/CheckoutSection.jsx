@@ -3,9 +3,13 @@
 import useCartStore from "@/store/cartStore";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { userProfileStore } from "@/store/userStore";
+import useOrderStore from "@/store/orderStore";
 
 const CheckoutSection = () => {
   const [isCartDetailsVisible, setIsCartDetailsVisible] = useState(true);
+  const [isDifferentShippingAddress, setIsDifferentShippingAddress] =
+    useState(false);
 
   const [
     isShippingAndBillingDetailsVisible,
@@ -13,6 +17,7 @@ const CheckoutSection = () => {
   ] = useState(false);
 
   const [isOrderCompleteVisible, setIsOrderCompleteVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     billingDetails: {
@@ -50,6 +55,11 @@ const CheckoutSection = () => {
   const cartDetails = useCartStore((state) => state.cart);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
   const updateQuantity = useCartStore((state) => state.updateQuantity);
+  const { updateUserAddress } = userProfileStore();
+  const uid = userProfileStore((state) => state?.userProfile?.uid);
+  const { getUserById } = userProfileStore();
+
+  const addOrder = useOrderStore((state) => state.addOrder);
 
   const handleVisibleSection = (section) => {
     switch (section) {
@@ -99,6 +109,33 @@ const CheckoutSection = () => {
     updateQuantity(id, newQuantity[id]);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const updatedUser = await updateUserAddress(formData, uid);
+
+    const order = {
+      userId: uid,
+      products: cartDetails.map((product) => ({
+        ...product,
+        orderDate: new Date().toISOString(),
+        orderStatus: "pending",
+      })),
+      orderTotal: cartDetails.reduce((acc, item) => {
+        return acc + item.price * item.quantity;
+      }, 0),
+      shippingDetails: formData.shippingDetails,
+      billingDetails: formData.billingDetails,
+    };
+
+    await addOrder(order);
+
+    setLoading(false);
+    setIsOrderCompleteVisible(true);
+    setIsShippingAndBillingDetailsVisible(false);
+  };
+
   return (
     <>
       <section className="shop-checkout container">
@@ -109,6 +146,7 @@ const CheckoutSection = () => {
           isShippingAndBillingDetailsVisible={
             isShippingAndBillingDetailsVisible
           }
+          isOrderCompleteVisible={isOrderCompleteVisible}
         />
 
         {isCartDetailsVisible && (
@@ -126,10 +164,16 @@ const CheckoutSection = () => {
           <ShippingAndBillingDetailsSection
             formData={formData}
             setFormData={setFormData}
+            handleSubmit={handleSubmit}
+            getUserById={getUserById}
+            uid={uid}
+            cartDetails={cartDetails}
           />
         )}
 
-        {isOrderCompleteVisible && <OrderCompleteSection />}
+        {isOrderCompleteVisible && (
+          <OrderCompleteSection cartDetails={cartDetails} />
+        )}
       </section>
     </>
   );
@@ -137,6 +181,7 @@ const CheckoutSection = () => {
 const CheckoutHeaderSection = ({
   handleVisibleSection,
   isShippingAndBillingDetailsVisible,
+  isOrderCompleteVisible,
 }) => {
   return (
     <>
@@ -154,7 +199,9 @@ const CheckoutHeaderSection = ({
         </a>
         <a
           className={`checkout-steps__item ${
-            isShippingAndBillingDetailsVisible ? "active" : ""
+            isShippingAndBillingDetailsVisible || isOrderCompleteVisible
+              ? "active"
+              : ""
           }`}
         >
           <span className="checkout-steps__item-number">02</span>
@@ -167,7 +214,9 @@ const CheckoutHeaderSection = ({
           onClick={() => {
             handleVisibleSection("orderComplete");
           }}
-          className="checkout-steps__item"
+          className={`checkout-steps__item ${
+            isOrderCompleteVisible ? "active" : ""
+          }`}
         >
           <span className="checkout-steps__item-number">03</span>
           <span className="checkout-steps__item-title">
@@ -367,7 +416,26 @@ const CartDetailsSection = ({
   );
 };
 
-const ShippingAndBillingDetailsSection = ({ formData, setFormData }) => {
+const ShippingAndBillingDetailsSection = ({
+  formData,
+  setFormData,
+  handleSubmit,
+  getUserById,
+  uid,
+  cartDetails,
+}) => {
+  const [showShippingAddress, setShowShippingAddress] = useState(false);
+  const [userDetails, setUserDetails] = useState({});
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      const user = await getUserById(uid);
+      setUserDetails(user);
+    };
+    fetchUserDetails();
+  }, []);
+
+  console.log("userDetails", userDetails);
+
   const formFields = [
     {
       label: "First Name",
@@ -433,23 +501,46 @@ const ShippingAndBillingDetailsSection = ({ formData, setFormData }) => {
     },
   ];
 
-  const handleChangeBillingDetails = (e) => {
-    setFormData({
-      ...formData,
+  const handleBillingChange = (event) => {
+    const { name, value, checked, type } = event.target;
+    const fieldValue = type === "checkbox" ? checked : value;
+
+    setFormData((prevFormData) => ({
+      ...prevFormData,
       billingDetails: {
-        ...formData.billingDetails,
-        [e.target.name]: e.target.value,
+        ...prevFormData.billingDetails,
+        [name]: fieldValue,
       },
-    });
+    }));
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
+
+  const handleShippingChange = (event) => {
+    const { name, value, checked, type } = event.target;
+    const fieldValue = type === "checkbox" ? checked : value;
+
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      shippingDetails: {
+        ...prevFormData.shippingDetails,
+        [name]: fieldValue,
+      },
+    }));
   };
+
+  const handleCheckboxChange = (event) => {
+    const { name, checked } = event.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      billingDetails: {
+        ...prevFormData.billingDetails,
+        [name]: checked,
+      },
+    }));
+  };
+
   return (
     <>
-      <button onClick={handleSubmit}>hel</button>
-      <form name="checkout-form" action="./shop_order_complete.html">
+      <form name="checkout-form">
         <div className="checkout-form">
           <div className="billing-info__wrapper">
             <h4>BILLING DETAILS</h4>
@@ -463,7 +554,11 @@ const ShippingAndBillingDetailsSection = ({ formData, setFormData }) => {
                         className="form-control"
                         name={field.name}
                         placeholder={field.placeholder}
-                        onChange={handleChangeBillingDetails}
+                        defaultValue={
+                          userDetails?.address?.billingDetails[field.name]
+                        }
+                        value={formData.billingDetails[field.name]}
+                        onChange={handleBillingChange}
                         required
                       />
                       <label htmlFor="checkout_first_name">{field.label}</label>
@@ -479,19 +574,50 @@ const ShippingAndBillingDetailsSection = ({ formData, setFormData }) => {
                       placeholder="Order Notes (optional)"
                       cols={30}
                       rows={8}
-                      value={formData.orderNotes}
+                      defaultValue={
+                        userDetails?.address?.billingDetails.orderNotes
+                      }
+                      value={formData.billingDetails.orderNotes}
                       name="orderNotes"
-                      onChange={handleChangeBillingDetails}
+                      onChange={handleBillingChange}
                     />
                   </div>
                 </div>
               </div>
+              {formData.billingDetails.shipDifferentAddress && (
+                <div className="shipping-info__wrapper">
+                  <h4>SHIPPING DETAILS</h4>
+                  <form>
+                    <div className="row">
+                      {formFields.map((field) => (
+                        <div className="col-lg-6">
+                          <div className="form-floating my-3">
+                            <input
+                              type={field.type}
+                              className="form-control"
+                              name={field.name}
+                              placeholder={field.placeholder}
+                              value={formData.shippingDetails[field.name]}
+                              onChange={handleShippingChange}
+                              required
+                            />
+                            <label htmlFor="checkout_first_name">
+                              {field.label}
+                            </label>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </form>
+                </div>
+              )}
               <div className="form-check mb-3 mt-4">
                 <input
                   className="form-check-input form-check-input_fill"
                   type="checkbox"
-                  defaultValue=""
-                  id="ship_different_address"
+                  name="shipDifferentAddress"
+                  checked={formData.billingDetails.shipDifferentAddress}
+                  onChange={handleCheckboxChange}
                 />
                 <label
                   className="form-check-label"
@@ -502,6 +628,7 @@ const ShippingAndBillingDetailsSection = ({ formData, setFormData }) => {
               </div>
             </form>
           </div>
+
           <div className="checkout__totals-wrapper">
             <div className="sticky-content">
               <div className="checkout__totals">
@@ -514,59 +641,47 @@ const ShippingAndBillingDetailsSection = ({ formData, setFormData }) => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Zessi Dresses x 2</td>
-                      <td>$32.50</td>
-                    </tr>
-                    <tr>
-                      <td>Kirby T-Shirt</td>
-                      <td>$29.90</td>
-                    </tr>
+                    {cartDetails.map((product) => (
+                      <tr key={product.id}>
+                        <td>{product.title}</td>
+                        <td>x {product.quantity}</td>
+                        <td>${product.price * product.quantity}</td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
                 <table className="checkout-totals">
                   <tbody>
                     <tr>
                       <th>SUBTOTAL</th>
-                      <td>$62.40</td>
+                      <td>
+                        $
+                        {cartDetails.reduce((acc, item) => {
+                          return acc + item.price * item.quantity;
+                        }, 0)}
+                      </td>
                     </tr>
                     <tr>
                       <th>SHIPPING</th>
                       <td>Free shipping</td>
                     </tr>
-                    <tr>
+                    {/* <tr>
                       <th>VAT</th>
                       <td>$19</td>
-                    </tr>
+                    </tr> */}
                     <tr>
                       <th>TOTAL</th>
-                      <td>$81.40</td>
+                      <td>
+                        $
+                        {cartDetails.reduce((acc, item) => {
+                          return acc + item.price * item.quantity;
+                        }, 0)}
+                      </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               <div className="checkout__payment-methods">
-                <div className="form-check">
-                  <input
-                    className="form-check-input form-check-input_fill"
-                    type="radio"
-                    name="checkout_payment_method"
-                    id="checkout_payment_method_1"
-                    defaultChecked=""
-                  />
-                  <label
-                    className="form-check-label"
-                    htmlFor="checkout_payment_method_1"
-                  >
-                    Direct bank transfer
-                    <span className="option-detail d-block">
-                      Make your payment directly into our bank account. Please
-                      use your Order ID as the payment reference.Your order will
-                      not be shipped until the funds have cleared in our
-                      account.
-                    </span>
-                  </label>
-                </div>
                 <div className="form-check">
                   <input
                     className="form-check-input form-check-input_fill"
@@ -597,18 +712,44 @@ const ShippingAndBillingDetailsSection = ({ formData, setFormData }) => {
                   .
                 </div>
               </div>
-              <button className="btn btn-primary btn-checkout">
+              <button
+                className="btn btn-primary btn-checkout"
+                onClick={handleSubmit}
+              >
                 PLACE ORDER
               </button>
             </div>
           </div>
         </div>
       </form>
+      {showShippingAddress && (
+        <div className="shipping-info__wrapper">
+          <h4>SHIPPING DETAILS</h4>
+          <form>
+            <div className="row">
+              {formFields.map((field) => (
+                <div className="col-lg-6">
+                  <div className="form-floating my-3">
+                    <input
+                      type="checkbox"
+                      name="shipDifferentAddress"
+                      checked={formData.billingDetails.shipDifferentAddress}
+                      onChange={handleCheckboxChange}
+                      value={userDetails?.address?.shippingDetails[field.name]}
+                    />
+                    <label htmlFor="checkout_first_name">{field.label}</label>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </form>
+        </div>
+      )}
     </>
   );
 };
 
-const OrderCompleteSection = () => {
+const OrderCompleteSection = ({ cartDetails }) => {
   return (
     <>
       <div className="order-complete">
