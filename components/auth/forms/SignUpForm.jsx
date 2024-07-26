@@ -1,31 +1,29 @@
-"use client";
 import { useState } from "react";
-import Input from "../ui/input/Input";
-import Button from "../ui/button/Button";
+import Input from "../../ui/input/Input";
+import Button from "../../ui/button/Button";
 import { userProfileStore } from "@/storage/userProfileStore";
 import { useRouter, usePathname } from "next/navigation";
 
-const AccountDetailsForm = () => {
-  // ====== INITIALIZING STORES ======
-  const { userProfile, handleUpdateUser } = userProfileStore();
-
-  // ===== DESTRUCTURE USER PROFILE =====
-  const { uid, name, email } = userProfile;
-
+const SignUpForm = ({ setIsOpen }) => {
   // ====== INITIALIZING FORM FIELDS ======
   const formFields = [
     {
       label: "Name",
       name: "name",
-      value: name || "",
+      value: "",
       type: "text",
     },
     {
       label: "Email",
       name: "email",
-      value: email || "",
+      value: "",
       type: "email",
-      disabled: true,
+    },
+    {
+      label: "Password",
+      name: "password",
+      value: "",
+      type: "password",
     },
   ];
 
@@ -37,6 +35,10 @@ const AccountDetailsForm = () => {
     }, {})
   );
 
+  // ====== INITIALIZING STORES ======
+  const { handleEmailPasswordSignUp, handleEmailPasswordLogin } =
+    userProfileStore();
+
   // ====== INITIALIZING HOOKS ======
   const router = useRouter();
   const pathname = usePathname();
@@ -44,15 +46,9 @@ const AccountDetailsForm = () => {
   // ===== HANDLE FORM SUBMISSION =====
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setLoading(true);
-
-    // ===== UPDATE PROFILE =====
-    await handleUpdateUser({
-      ...formData,
-      uid,
-    });
-
+    await handleEmailPasswordSignUp(formData);
+    setIsOpen(false);
     setLoading(false);
   };
 
@@ -65,7 +61,6 @@ const AccountDetailsForm = () => {
             label={field.label}
             name={field.name}
             value={formData[field.name]}
-            disabled={field.disabled}
             handleChange={(e) =>
               setFormData({ ...formData, [field.name]: e.target.value })
             }
@@ -73,10 +68,19 @@ const AccountDetailsForm = () => {
           />
         ))}
 
-        <Button type="submit" loading={loading} label="Update Profile" />
+        <Button type="submit" full={true} loading={loading} label="Sign Up" />
       </form>
+      <div className="customer-option mt-4 text-center">
+        <span className="text-secondary">Already have an account? </span>
+        <button
+          className="btn-text js-show-register"
+          onClick={() => router.push(`${pathname}?auth=login`)}
+        >
+          Login
+        </button>
+      </div>
     </>
   );
 };
 
-export default AccountDetailsForm;
+export default SignUpForm;

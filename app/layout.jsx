@@ -1,12 +1,15 @@
 // import { createClient } from "@/prismicio";
 // import localFont from "next/font/local";
 
+// ===== import nextjs-toploader =====
 import NextTopLoader from "nextjs-toploader";
-// import Footer from "@/components/footer/Footer";
-// import Header from "@/components/header/Header";
-import StyledJsxRegistry from "@/lib/StyleRegistry";
 
-import "@splidejs/react-splide/css";
+// ===== import components =====
+// import Footer from "@/components/footer/Footer";
+import Header from "@/components/layout/header/Header";
+import FooterComponent from "@/components/layout/footer/FooterComponent";
+
+import StyledJsxRegistry from "@/lib/StyleRegistry";
 
 // ===== prismic preview toolbar =====
 // import { PrismicPreview } from "@prismicio/next";
@@ -14,14 +17,9 @@ import "@splidejs/react-splide/css";
 
 // ===== Google Fonts import =====
 import { Jost, Lora } from "next/font/google";
-import HeaderComponent from "@/components/header/HeaderComponent";
-import FooterComponent from "@/components/footer/FooterComponent";
-import AppBar from "@/components/footer/AppBar";
-import CartSideBar from "@/components/cart/CartSidebar";
-import FirebaseAuthProvider from "@/lib/provider/authProvider/FirebaseAuthProvider";
 
-// import WhatsappButton from "@/components/WhatsappButton";
-// import Script from "next/script";
+import FirebaseAuthProvider from "@/lib/provider/authProvider/FirebaseAuthProvider";
+import { Toaster } from "react-hot-toast";
 
 // ===== initialize fonts =====
 const jost = Jost({
@@ -42,6 +40,10 @@ export const metadata = {
   title: "SMC Diamonds",
   description: "SMC Diamonds",
 };
+
+// ===== import splide css =====
+import "@splidejs/react-splide/css";
+import { Suspense } from "react";
 
 export default async function RootLayout({ children }) {
   // ===== create prismic client =====
@@ -98,43 +100,24 @@ export default async function RootLayout({ children }) {
         <link rel="stylesheet" href="/styles/styles.css" />
       </head>
       <body>
+        {/* // ===== nextjs-toploader ===== */}
         <NextTopLoader color="#DEA057" />
-        <HeaderComponent />
 
         <main className="theme-dark overflow-hidden">
           <StyledJsxRegistry>
             <FirebaseAuthProvider>
-              {/* <Header data={header?.data} /> */}
-              <div>{children}</div>
+              <Suspense>
+                <Header />
+                <div>{children}</div>
+                <FooterComponent />
+              </Suspense>
             </FirebaseAuthProvider>
-            {/* <Footer data={footer?.data} /> */}
-            {/* <WhatsappButton number={number?.[0]?.text} text={text?.[0]?.text} /> */}
           </StyledJsxRegistry>
+
+          {/* // ===== react-hot-toast ===== */}
+          <Toaster />
         </main>
-        <AppBar />
-        <FooterComponent />
-        <div className="page-overlay" id="pageOverlay" />
 
-        {/* <script
-          id="ruttl-site-embed-script"
-          src="https://app.ruttl.com/plugin.js?id=z8oD0qWJ7C4lozxdrV1o&e=1"
-          defer
-          async></script> */}
-
-        {/* Global Site Tag (gtag.js) - Google Analytics */}
-        {/* <Script
-          strategy="lazyOnload"
-          src="https://www.googletagmanager.com/gtag/js?id=G-EL06TRD4FP"
-        />
-        <Script strategy="lazyOnload">
-          {`
-					window.dataLayer = window.dataLayer || [];
-					function gtag(){dataLayer.push(arguments);}
-					gtag('js', new Date());
-
-					gtag('config', 'G-EL06TRD4FP');
-				`}
-        </Script> */}
         {/* <PrismicPreview repositoryName={repositoryName} /> */}
       </body>
     </html>

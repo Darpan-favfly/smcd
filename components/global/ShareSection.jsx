@@ -13,7 +13,7 @@ const ShareSection = ({ url }) => {
   return (
     <>
       <div className="share-links clearfix">
-        <div className="row justify-content-end">
+        <div className="row justify-content-start">
           <div className="col-sm-auto text-xl-end d-flex align-items-center">
             <span className="share-links-title me-2">Share:</span>
             <div className="social-links">

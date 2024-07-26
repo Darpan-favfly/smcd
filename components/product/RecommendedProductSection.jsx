@@ -181,7 +181,6 @@ const RecommendedProductsSection = () => {
           <Splide
             options={{
               height: "500px",
-              wheel: true,
               pagination: false,
               arrows: true,
               gap: "1rem",

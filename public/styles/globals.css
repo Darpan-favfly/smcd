@@ -11802,7 +11802,7 @@ img {
   background-color: rgba(34, 34, 34, 0.4);
   opacity: 0;
   visibility: hidden;
-  z-index: 6;
+  z-index: 99;
 }
 
 .page-overlay_visible {
@@ -15171,10 +15171,9 @@ textarea.form-control.is-invalid {
   opacity: 0.7;
   z-index: 1050;
 }
-@media (min-width: 576px) {
-  .aside {
-    padding: 0 1.25rem;
-  }
+
+.aside {
+  padding: 0 1.25rem;
 }
 
 .aside_visible {
@@ -15198,7 +15197,7 @@ textarea.form-control.is-invalid {
 .aside-header {
   margin-left: -1.25rem;
   margin-right: -1.25rem;
-  padding: 2.125rem 2.5rem 1.75rem;
+  padding: 20px 25px;
   background-color: #faf9f8;
 }
 
@@ -15377,7 +15376,7 @@ textarea.form-control.is-invalid {
 }
 
 .cart-drawer-items-list {
-  max-height: 27.675rem;
+  max-height: 29rem;
   overflow-y: auto;
   height: 100%;
 }
@@ -15392,8 +15391,10 @@ textarea.form-control.is-invalid {
 }
 
 .cart-drawer-item__img {
-  width: 7.5rem;
-  height: 7.5rem;
+  min-width: 80px;
+  min-height: 80px;
+  width: 80px;
+  height: 80px;
   object-fit: cover;
 }
 
@@ -15432,11 +15433,11 @@ textarea.form-control.is-invalid {
 .qty-control__increase {
   position: absolute;
   top: 0;
-  width: 0.75rem;
   padding: 0;
   cursor: pointer;
   user-select: none;
   -ms-user-select: none;
+  font-size: 1rem;
 }
 
 .qty-control__reduce {
@@ -17172,18 +17173,9 @@ textarea.form-control.is-invalid {
   margin-bottom: 0;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .navigation__item {
-    margin: 0 5px;
-  }
-  .navigation__item:hover::before {
-    display: block;
-    position: absolute;
-    top: 0;
-    width: 7.5rem;
-    height: 100%;
-    background-color: transparent;
-    content: "";
+    margin: 0 15px;
   }
 }
 
@@ -17203,28 +17195,19 @@ textarea.form-control.is-invalid {
   display: block;
   position: absolute;
   top: 100%;
-  left: 0.7rem;
+  left: 0;
   width: 0;
   height: 2px;
   transition: width 0.28s cubic-bezier(0.47, 0, 0.745, 0.715);
   background-color: currentColor;
 }
 .navigation__link:hover:after {
-  width: 2em;
-}
-@media (min-width: 992px) {
-  .navigation__link {
-    padding-right: 0.7rem;
-    padding-left: 0.7rem;
-  }
+  width: 80%;
 }
 @media (min-width: 1200px) {
   .navigation__link {
-    padding-right: 1rem;
-    padding-left: 1rem;
-  }
-  .navigation__link:after {
-    left: 1rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
   }
 }
 
@@ -17375,10 +17358,10 @@ textarea.form-control.is-invalid {
 }
 
 .header {
-  display: none;
   position: relative;
   background-color: #ffffff;
-  z-index: 2;
+  z-index: 50;
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.1);
 }
 .header .form-select {
   border: 0;
@@ -17393,11 +17376,7 @@ textarea.form-control.is-invalid {
 .header .form-select option {
   color: #222222;
 }
-@media (min-width: 992px) {
-  .header {
-    display: block;
-  }
-}
+
 .header.header-transparent-bg:not(.header_sticky-active) {
   background: transparent;
 }
@@ -17933,15 +17912,6 @@ textarea.form-control.is-invalid {
   transform: rotate(0);
   opacity: 1;
   visibility: visible;
-}
-
-.header_sticky {
-  top: 0;
-  left: 0;
-  width: 100%;
-  max-width: 100%;
-  z-index: 9;
-  transition: all 0.3s ease;
 }
 
 .header_sticky-active {
@@ -19688,7 +19658,6 @@ textarea.form-control.is-invalid {
 }
 .product-single__addtocart .btn-addtocart {
   height: 3.75rem;
-  text-transform: uppercase;
   font-size: 0.875rem;
   width: 17.5rem;
   font-weight: 500;
@@ -19894,7 +19863,6 @@ textarea.form-control.is-invalid {
   font-size: 0.875rem;
   font-weight: 500;
   min-width: 3rem;
-  text-transform: uppercase;
 }
 .product-single__swatches .product-swatch .swatch-list {
   display: flex;
@@ -20466,9 +20434,13 @@ a.add-to-wishlist.active .flaticon.flaticon-heart {
   top: 1rem;
 }
 
+.shop-checkout {
+  margin-top: 3.125rem;
+}
+
 .shop-checkout .page-title {
-  font-size: 2.1875rem;
-  margin-bottom: 3.125rem;
+  font-size: 1.8rem;
+
   text-transform: uppercase;
 }
 .shop-checkout .checkout-steps {
@@ -20825,7 +20797,7 @@ a.add-to-wishlist.active .flaticon.flaticon-heart {
   }
 }
 .checkout-form .billing-info__wrapper {
-  padding-top: 3.125rem;
+  padding-top: 2rem;
   flex-grow: 1;
 }
 .checkout-form .billing-info__wrapper .form-floating > label,
@@ -20833,7 +20805,7 @@ a.add-to-wishlist.active .flaticon.flaticon-heart {
   color: #767676;
 }
 .checkout-form .checkout__totals-wrapper .sticky-content {
-  padding-top: 3.125rem;
+  padding-top: 2rem;
 }
 .checkout-form .checkout__totals-wrapper .btn-checkout {
   width: 100%;
@@ -20878,7 +20850,7 @@ a.add-to-wishlist.active .flaticon.flaticon-heart {
 .checkout__totals {
   border: 1px solid #222;
   margin-bottom: 1.25rem;
-  padding: 2.5rem 2.5rem 0.5rem;
+  padding: 2.5rem 2.5rem 1rem;
   width: 26.25rem;
 }
 @media (max-width: 1199.98px) {
@@ -20910,11 +20882,11 @@ a.add-to-wishlist.active .flaticon.flaticon-heart {
 }
 .checkout__totals .checkout-cart-items tbody tr:last-child td {
   padding-bottom: 0.8125rem;
-  border-bottom: 1px solid #e4e4e4;
+  /* border-bottom: 1px solid #e4e4e4; */
 }
 .checkout__totals .checkout-totals th,
 .checkout__totals .checkout-totals td {
-  border-bottom: 1px solid #e4e4e4;
+  /* border-bottom: 1px solid #e4e4e4; */
   padding: 0.875rem 0;
   font-size: 0.875rem;
   font-weight: 500;
@@ -20999,7 +20971,6 @@ a.add-to-wishlist.active .flaticon.flaticon-heart {
 .my-account .page-title {
   font-size: 2.1875rem;
   font-weight: 700;
-  text-transform: uppercase;
 }
 .my-account .account-nav,
 .my-account .account-nav button {
@@ -21010,7 +20981,6 @@ a.add-to-wishlist.active .flaticon.flaticon-heart {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  text-transform: uppercase;
   font-size: 0.875rem;
   font-weight: 500;
 }
@@ -21077,7 +21047,6 @@ a.add-to-wishlist.active .flaticon.flaticon-heart {
   justify-content: space-between;
   gap: 1.5rem;
   line-height: 1.5rem;
-  text-transform: uppercase;
   margin-bottom: 0.875rem;
   font-weight: 500;
 }

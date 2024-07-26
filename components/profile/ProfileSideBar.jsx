@@ -1,61 +1,65 @@
 "use client";
-import { userProfileStore } from "@/store/userStore";
+import { userProfileStore } from "@/storage/userStore";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
 const ProfileSideBar = () => {
+  // ===== INITIALIZING STORES =====
+  const { handleLogout } = userProfileStore();
+
+  // ===== NAVIGATION LINKS =====
+  const navLinks = [
+    {
+      text: "Orders",
+      link: "/profile",
+    },
+    {
+      text: "Address",
+      link: "/profile/address",
+    },
+    {
+      text: "Account Details",
+      link: "/profile/account",
+    },
+    {
+      text: "Logout",
+      handleClick: async () => await handleLogout(),
+    },
+  ];
+
+  return (
+    <div className="account-nav">
+      {navLinks.map((link, index) => (
+        <NavLink key={index} data={link} />
+      ))}
+    </div>
+  );
+};
+
+const NavLink = ({ data: { text, link, handleClick } }) => {
+  // ===== INITIALIZING HOOKS =====
   const pathName = usePathname();
   const router = useRouter();
 
-  const getMenuLinkClass = (path) => {
-    return `menu-link menu-link_us-s${pathName === path ? " menu-link_active" : ""}`;
-  };
-  const { handleLogout } = userProfileStore();
-
-  const logout = async () => {
-    await handleLogout();
-    router.push("/");
-  };
-
   return (
-    <div className="col-lg-3">
-      <ul className="account-nav">
-        <li>
-          <Link
-            href="/profile/orders"
-            className={getMenuLinkClass("/profile/orders")}
-          >
-            Orders
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/profile/addresses"
-            className={getMenuLinkClass("/profile/addresses")}
-          >
-            Addresses
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/profile/account-details"
-            className={getMenuLinkClass("/profile/account-details")}
-          >
-            Account Details
-          </Link>
-        </li>
-        <li>
-          <a
-            style={{ cursor: "pointer" }}
-            onClick={logout}
-            className={`${getMenuLinkClass("/profile/logout")}`}
-          >
-            Logout
-          </a>
-        </li>
-      </ul>
-    </div>
+    <>
+      {handleClick ? (
+        <div
+          onClick={handleClick}
+          className={`menu-link menu-link_us-s cursor-pointer ${pathName === link ? "menu-link_active" : ""}`}
+        >
+          {text}
+        </div>
+      ) : (
+        <Link
+          href={link}
+          className={`menu-link menu-link_us-s cursor-pointer ${pathName === link ? "menu-link_active" : ""}`}
+        >
+          {text}
+        </Link>
+      )}
+    </>
   );
 };
 

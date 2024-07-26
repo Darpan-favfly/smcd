@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { Toaster } from "react-hot-toast";
-import { userProfileStore } from "@/store/userStore";
+import { userProfileStore } from "@/storage/userStore";
 
 const LoginAndRegister = ({
   openSignUp,

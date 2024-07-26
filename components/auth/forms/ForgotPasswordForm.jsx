@@ -1,31 +1,18 @@
-"use client";
 import { useState } from "react";
-import Input from "../ui/input/Input";
-import Button from "../ui/button/Button";
+import Input from "../../ui/input/Input";
+import Button from "../../ui/button/Button";
 import { userProfileStore } from "@/storage/userProfileStore";
 import { useRouter, usePathname } from "next/navigation";
+import toast from "react-hot-toast";
 
-const AccountDetailsForm = () => {
-  // ====== INITIALIZING STORES ======
-  const { userProfile, handleUpdateUser } = userProfileStore();
-
-  // ===== DESTRUCTURE USER PROFILE =====
-  const { uid, name, email } = userProfile;
-
+const ForgotPasswordForm = () => {
   // ====== INITIALIZING FORM FIELDS ======
   const formFields = [
     {
-      label: "Name",
-      name: "name",
-      value: name || "",
-      type: "text",
-    },
-    {
       label: "Email",
       name: "email",
-      value: email || "",
+      value: "",
       type: "email",
-      disabled: true,
     },
   ];
 
@@ -37,6 +24,9 @@ const AccountDetailsForm = () => {
     }, {})
   );
 
+  // ====== INITIALIZING STORES ======
+  const { checkUserExist, handleForgotPassword } = userProfileStore();
+
   // ====== INITIALIZING HOOKS ======
   const router = useRouter();
   const pathname = usePathname();
@@ -46,12 +36,17 @@ const AccountDetailsForm = () => {
     e.preventDefault();
 
     setLoading(true);
+    const { email } = formData;
 
-    // ===== UPDATE PROFILE =====
-    await handleUpdateUser({
-      ...formData,
-      uid,
-    });
+    const userExist = await checkUserExist(email);
+
+    if (!userExist) {
+      setLoading(false);
+      toast.error("User does not exist");
+      return;
+    }
+
+    await handleForgotPassword({ email });
 
     setLoading(false);
   };
@@ -65,7 +60,6 @@ const AccountDetailsForm = () => {
             label={field.label}
             name={field.name}
             value={formData[field.name]}
-            disabled={field.disabled}
             handleChange={(e) =>
               setFormData({ ...formData, [field.name]: e.target.value })
             }
@@ -73,10 +67,25 @@ const AccountDetailsForm = () => {
           />
         ))}
 
-        <Button type="submit" loading={loading} label="Update Profile" />
+        <Button
+          type="submit"
+          full={true}
+          loading={loading}
+          label="Reset Password"
+        />
       </form>
+
+      <div className="customer-option mt-4 text-center">
+        <span className="text-secondary">Don't have an account? </span>
+        <button
+          className="btn-text js-show-register"
+          onClick={() => router.push(`${pathname}?auth=signup`)}
+        >
+          Sign Up
+        </button>
+      </div>
     </>
   );
 };
 
-export default AccountDetailsForm;
+export default ForgotPasswordForm;

@@ -32,10 +32,7 @@ section {
 .features-icon {
   font-size: 60px;
 }
-.header_sticky {
-  position: sticky !important;
-  top: 0;
-}
+
 .countdown-timer {
   font-size: 24px;
 }
@@ -1059,4 +1056,47 @@ span.wishlist-amount.d-block.position-absolute.js-wishlist-count {
   .sidebar.fixed {
     top: 90px !important;
   }
+}
+
+.navigation__link.active:after {
+  width: 80%;
+}
+
+@media (max-width: 1200px) {
+  .navigation__item {
+    margin: 0 8px;
+    font-size: 12px;
+  }
+  .logo__image {
+    max-height: 30px;
+  }
+}
+
+@media (max-width: 991px) {
+  .header-fullwidth {
+    padding: 0 10px;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.animate-spin {
+  animation: spin 0.5s linear infinite;
+  font-size: 1.6rem;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
