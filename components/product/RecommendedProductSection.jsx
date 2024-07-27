@@ -5,6 +5,7 @@ import "@splidejs/react-splide/css";
 import { PiHeartStraightLight } from "react-icons/pi";
 import { IoEyeOutline } from "react-icons/io5";
 import Link from "next/link";
+import { cad } from "@/lib/converter/priceConverter";
 
 const RecommendedProductsSection = () => {
   const products = [
@@ -18,8 +19,8 @@ const RecommendedProductsSection = () => {
       labelDiscount: "10%",
       manufacturer: "Gold",
       name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
+      price: 60.0,
+      oldPrice: 70.0,
     },
     // Add more product objects here
     {
@@ -32,8 +33,8 @@ const RecommendedProductsSection = () => {
       labelDiscount: "10%",
       manufacturer: "Gold",
       name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
+      price: 60.0,
+      oldPrice: 70.0,
     },
     {
       id: 3,
@@ -45,8 +46,8 @@ const RecommendedProductsSection = () => {
       labelDiscount: "10%",
       manufacturer: "Gold",
       name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
+      price: 60.0,
+      oldPrice: 70.0,
     },
     {
       id: 4,
@@ -58,8 +59,8 @@ const RecommendedProductsSection = () => {
       labelDiscount: "10%",
       manufacturer: "Gold",
       name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
+      price: 60.0,
+      oldPrice: 70.0,
     },
     {
       id: 5,
@@ -71,8 +72,8 @@ const RecommendedProductsSection = () => {
       labelDiscount: "10%",
       manufacturer: "Gold",
       name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
+      price: 60.0,
+      oldPrice: 70.0,
     },
     {
       id: 6,
@@ -85,8 +86,8 @@ const RecommendedProductsSection = () => {
       labelDiscount: "10%",
       manufacturer: "Gold",
       name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
+      price: 60.0,
+      oldPrice: 70.0,
     },
     {
       id: 7,
@@ -99,8 +100,8 @@ const RecommendedProductsSection = () => {
       labelDiscount: "10%",
       manufacturer: "Gold",
       name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
+      price: 60.0,
+      oldPrice: 70.0,
     },
     {
       id: 8,
@@ -113,64 +114,8 @@ const RecommendedProductsSection = () => {
       labelDiscount: "10%",
       manufacturer: "Gold",
       name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
-    },
-    {
-      id: 9,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-14.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-12.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
-    },
-    {
-      id: 10,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-15.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-18.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
-    },
-    {
-      id: 11,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-16.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-15.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
-    },
-    {
-      id: 12,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-17.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-16.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: "$60.00",
-      oldPrice: "$70.00",
+      price: 60.0,
+      oldPrice: 70.0,
     },
   ];
   return (
@@ -254,12 +199,9 @@ const RecommendedProductsSection = () => {
                       <Link href="product-details.html">{product.name}</Link>
                     </h6>
                     <div className="price-box">
-                      <span className="price-regular">{product.price}</span>
-                      {product.oldPrice && (
-                        <span className="price-old">
-                          <del>{product.oldPrice}</del>
-                        </span>
-                      )}
+                      <span className="price-regular">
+                        {cad(product?.price)} - {cad(product?.oldPrice)}
+                      </span>
                     </div>
                   </div>
                 </div>

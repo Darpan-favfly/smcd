@@ -21,18 +21,18 @@
         },
         "type": "UID"
       },
-      "old_price": {
+      "min_price": {
         "type": "Text",
         "config": {
-          "label": "Old Price",
-          "placeholder": ""
+          "label": "Min Price",
+          "placeholder": "Min Price"
         }
       },
-      "new_price": {
+      "max_price": {
         "type": "Text",
         "config": {
-          "label": "New Price",
-          "placeholder": ""
+          "label": "Max Price",
+          "placeholder": "Max Price"
         }
       },
       "description": {

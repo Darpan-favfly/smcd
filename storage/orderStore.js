@@ -21,6 +21,7 @@ const orderStore = create((set, get) => ({
           userId,
           billingAddress,
           shippingAddress,
+          status: "pending",
           productDetails: cart[index],
           createdAt: date,
           updatedAt: date,

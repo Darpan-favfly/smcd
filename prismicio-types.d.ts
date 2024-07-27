@@ -897,26 +897,26 @@ interface ProductPageDocumentData {
   title: prismic.RichTextField;
 
   /**
-   * Old Price field in *Product Page*
+   * Min Price field in *Product Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: product_page.old_price
+   * - **Placeholder**: Min Price
+   * - **API ID Path**: product_page.min_price
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  old_price: prismic.KeyTextField;
+  min_price: prismic.KeyTextField;
 
   /**
-   * New Price field in *Product Page*
+   * Max Price field in *Product Page*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: product_page.new_price
+   * - **Placeholder**: Max Price
+   * - **API ID Path**: product_page.max_price
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  new_price: prismic.KeyTextField;
+  max_price: prismic.KeyTextField;
 
   /**
    * Description field in *Product Page*

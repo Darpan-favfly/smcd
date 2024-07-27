@@ -13,7 +13,7 @@ const ProductDetailsSection = ({ data }) => {
   // ===== INITIALIZING STORES =====
   const { addToCartItem } = cartStore();
 
-  const { id, uid, title, description, items, new_price, old_price } = data;
+  const { id, uid, title, description, items, min_price, max_price } = data;
 
   const [mainImage, setMainImage] = useState(items[0].image.url);
   const [url, setUrl] = useState("");
@@ -33,7 +33,8 @@ const ProductDetailsSection = ({ data }) => {
     id,
     uid,
     title: title[0].text,
-    price: new_price,
+    min_price,
+    max_price,
     image: mainImage,
     additionalDetails: {
       size: "XS",
@@ -127,21 +128,11 @@ const ProductDetailsSection = ({ data }) => {
             {/* // ===== PRODUCT DETAILS ===== */}
             <h1 className="product-single__name">{title[0].text}</h1>
             <div className="product-single__price">
-              {/* // ===== OLD PRICE ===== */}
-              {old_price && (
-                <span
-                  className="old-price me-2"
-                  style={{
-                    textDecoration: "line-through",
-                    color: "black",
-                  }}
-                >
-                  {cad(old_price)}
+              {/* // ===== PRICE ===== */}
+              {max_price && min_price && (
+                <span className="current-price">
+                  {cad(min_price)} - {cad(max_price)}
                 </span>
-              )}
-              {/* // ===== NEW PRICE ===== */}
-              {new_price && (
-                <span className="current-price">{cad(new_price)}</span>
               )}
             </div>
             <div className="product-single__short-desc">

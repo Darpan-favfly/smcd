@@ -6,6 +6,7 @@ import { IoEyeOutline } from "react-icons/io5";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import Link from "next/link";
+import { cad } from "@/lib/converter/priceConverter";
 
 const ProductListingSection = ({ data }) => {
   const [sort, setSort] = useState("Relevance");
@@ -16,11 +17,11 @@ const ProductListingSection = ({ data }) => {
 
   return (
     <section>
-      <div className="container">
+      {/* <div className="container">
         <div className="shop-top-bar d-flex justify-content-between align-items-center">
-          {/* <div className="top-bar-left">
+          <div className="top-bar-left">
             <p>Showing 1–16 of 21 results</p>
-          </div> */}
+          </div>
           <div className="top-bar-right flex  align-items-center justify-content-center">
             <span>Sort By: </span>
             <select
@@ -36,7 +37,7 @@ const ProductListingSection = ({ data }) => {
             </select>
           </div>{" "}
         </div>
-      </div>
+      </div> */}
 
       <div className="shop-main-wrapper section-padding">
         <div className="container">
@@ -62,62 +63,21 @@ const ProductListingSection = ({ data }) => {
                               style={{ borderRadius: "15px" }}
                             />
                           </Link>
-                          <div className="product-badge">
-                            {/* {product.labelNew && (
-                              <div className="product-label new">
-                                <span>new</span>
-                              </div>
-                            )} */}
-                            {/* {product.labelDiscount && (
-                              <div className="product-label discount">
-                                <span>{product.labelDiscount}</span>
-                              </div>
-                            )} */}
-                          </div>
-                          <div className="button-group">
-                            {/* <a
-                              className="d-flex justify-content-center align-items-center "
-                              href="wishlist.html "
-                              title="Add to wishlist"
-                            >
-                              <PiHeartStraightLight />
-                            </Link> */}
-                            {/* <a
-                              className="d-flex justify-content-center align-items-center"
-                              href="/slug"
-                              title="Add to Compare"
-                            >
-                              <IoEyeOutline />
-                            </Link> */}
-                          </div>
-                          {/* <div className="cart-hover">
-                            <button className="btn btn-cart">
-                              add to cart
-                            </button>
-                          </div> */}
                         </figure>
                         <div className="product-caption text-center">
-                          {/* <div className="product-identity">
-                            <p className="manufacturer-name">
-                              <Link href="/silver-diamond">
-                                {item.manufacturer}
-                              </Link>
-                            </p>
-                          </div> */}
                           <h6 className="product-name">
                             <Link href="/silver-diamond">
-                              {item.data.title[0].text}
+                              {item?.data?.title[0]?.text}
                             </Link>
                           </h6>
-                          <div className="price-box">
-                            <span className="price-regular">
-                              ${item.data.old_price}
-                            </span>
-
-                            {item.data.new_price && (
-                              <span className="price-old">
-                                <span>${item.data.new_price}</span>
-                              </span>
+                          <div className="price-box ">
+                            {item?.data?.max_price && item?.data?.min_price && (
+                              <div className="product-card__price d-flex justify-content-center">
+                                <span className="money price theme-color fw-bold font-heading">
+                                  {cad(item?.data?.min_price)} -{" "}
+                                  {cad(item?.data?.max_price)}
+                                </span>
+                              </div>
                             )}
                           </div>
                         </div>
