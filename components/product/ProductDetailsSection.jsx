@@ -104,7 +104,7 @@ const ProductDetailsSection = ({ data }) => {
                     {items.map((item, index) => (
                       <SplideSlide key={index}>
                         <div
-                          className={`product-single__image-item ${
+                          className={`product-single__image-item cursor-pointer ${
                             mainImage === item.image.url ? "active" : ""
                           }`}
                           onClick={() => setMainImage(item.image.url)}

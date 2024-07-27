@@ -4,6 +4,7 @@ import { create } from "zustand";
 import { db } from "@/lib/firebaseClient/firebase";
 import { collection, getDocs, query, where, addDoc } from "firebase/firestore";
 import toast from "react-hot-toast";
+import sortBy from "sort-by";
 
 // =============== USER PROFILE STORE ===============
 const orderStore = create((set, get) => ({
@@ -54,6 +55,8 @@ const orderStore = create((set, get) => ({
       querySnapshot.forEach((doc) => {
         orders.push({ id: doc.id, ...doc.data() });
       });
+
+      orders.sort(sortBy("-createdAt"));
 
       set({ orders });
       return orders;

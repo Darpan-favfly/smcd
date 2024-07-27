@@ -74,7 +74,9 @@ const CartItems = () => {
         {cart.map((item, index) => (
           <tr key={index}>
             <td>{item.title}</td>
-            <td className="text-end">{cad(item.price)}</td>
+            <td className="text-end">
+              {cad(item.min_price)} - {cad(item.max_price)}
+            </td>
           </tr>
         ))}
       </tbody>

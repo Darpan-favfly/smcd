@@ -158,6 +158,7 @@ const RecommendedProductsSection = () => {
                         className="sec-img"
                         src={product.secondaryImage}
                         alt="product"
+                        style={{ borderRadius: "15px" }}
                       />
                     </Link>
                     <div className="product-badge">
@@ -166,25 +167,6 @@ const RecommendedProductsSection = () => {
                           <span>new</span>
                         </div>
                       )}
-                    </div>
-                    <div className="button-group">
-                      <Link
-                        className="d-flex justify-content-center align-items-center"
-                        href="wishlist.html"
-                        title="Add to wishlist"
-                      >
-                        <PiHeartStraightLight />
-                      </Link>
-                      <Link
-                        className="d-flex justify-content-center align-items-center"
-                        href="compare.html"
-                        title="Add to Compare"
-                      >
-                        <IoEyeOutline />
-                      </Link>
-                    </div>
-                    <div className="cart-hover">
-                      <button className="btn btn-cart">add to cart</button>
                     </div>
                   </figure>
                   <div className="product-caption text-center">

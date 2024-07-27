@@ -69,7 +69,7 @@ const CartSidebar = ({ isOpen, setIsOpen }) => {
 };
 
 const CartItem = ({ data, index }) => {
-  const { title, uid, price, image, additionalDetails } = data;
+  const { title, uid, min_price, max_price, image, additionalDetails } = data;
 
   const url = `/${uid}`;
 
@@ -93,7 +93,13 @@ const CartItem = ({ data, index }) => {
           <h6 className="cart-drawer-item__title fw-normal">
             <Link href={url}>{title}</Link>
           </h6>
-          <div className="row mt-3">
+
+          <div className="d-flex align-items-center justify-content-between mt-1">
+            <span className="cart-drawer-item__price money price">
+              {cad(min_price)} - {cad(max_price)}
+            </span>
+          </div>
+          <div className="row mt-1">
             {Object.keys(additionalDetails).map((key) => (
               <p
                 key={key}
@@ -107,12 +113,6 @@ const CartItem = ({ data, index }) => {
               </p>
             ))}
           </div>
-
-          <div className="d-flex align-items-center justify-content-between mt-1">
-            <span className="cart-drawer-item__price money price">
-              {cad(price)}
-            </span>
-          </div>
         </div>
 
         {/* // ===== REMOVE BUTTON ===== */}
@@ -125,8 +125,14 @@ const CartItem = ({ data, index }) => {
       <hr className="cart-drawer-divider" />
 
       <style jsx>{`
+        .cart-drawer-item__img {
+          border-radius: 15px;
+        }
         .cart-drawer-item__option {
           font-size: 11px;
+        }
+        .price {
+          font-size: 14px;
         }
       `}</style>
     </>
