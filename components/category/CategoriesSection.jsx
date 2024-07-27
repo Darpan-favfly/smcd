@@ -18,7 +18,10 @@ const CategoriesSection = ({ slice }) => {
           <div className="row">
             <div className="col-lg-4" style={{ gap: 15, padding: 0 }}>
               {items.slice(0, 2).map((item, index) => (
-                <Link href={item ? item.link.url : "/"}>
+                <Link
+                  href={item ? item.link.url : "/"}
+                  className="overflow-hidden"
+                >
                   <PrismicNextImage
                     className="h-auto"
                     key={index}
@@ -29,7 +32,11 @@ const CategoriesSection = ({ slice }) => {
               ))}
             </div>
             <div className="col-lg-4 video-container" style={{ gap: 15 }}>
-              <Link href={link.url} style={{ height: "100%" }}>
+              <Link
+                href={link.url}
+                style={{ height: "100%" }}
+                className="overflow-hidden"
+              >
                 <video className="full-height-video" autoPlay muted loop>
                   <source src={video.url} type="video/mp4" />
                 </video>
@@ -37,7 +44,10 @@ const CategoriesSection = ({ slice }) => {
             </div>
             <div className="col-lg-4" style={{ gap: 15, padding: 0 }}>
               {items.slice(2, 4).map((item, index) => (
-                <Link href={item ? item.link.url : "/"}>
+                <Link
+                  href={item ? item.link.url : "/"}
+                  className="overflow-hidden"
+                >
                   <PrismicNextImage
                     className="h-auto"
                     key={index}

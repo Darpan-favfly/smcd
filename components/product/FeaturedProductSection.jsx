@@ -6,7 +6,7 @@ const FeaturedProductSection = ({ slice }) => {
   const { heading, sub_heading, items } = slice?.primary;
   return (
     <>
-      <section>
+      <section className="featured-products-section">
         <HeadingComponent
           data={{
             heading: heading[0].text,
@@ -22,7 +22,6 @@ const FeaturedProductSection = ({ slice }) => {
                     field={item.image}
                     alt={item.image.alt}
                     className="h-auto"
-                    style={{ borderRadius: "10px" }}
                   />
                 </Link>
               </div>
