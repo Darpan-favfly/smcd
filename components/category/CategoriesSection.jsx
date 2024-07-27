@@ -7,7 +7,7 @@ const CategoriesSection = ({ slice }) => {
 
   return (
     <>
-      <section className="section-category">
+      <section className="section-category categories-section">
         <HeadingComponent
           data={{
             heading: heading[0].text,
@@ -16,7 +16,8 @@ const CategoriesSection = ({ slice }) => {
         />
         <div className="container">
           <div className="row">
-            <div className="col-lg-4" style={{ gap: 15, padding: 0 }}>
+            {/* // ===== 1ST COLUMN ===== */}
+            <div className="col-sm-4 d-flex flex-sm-column category-col order-1 order-sm-0">
               {items.slice(0, 2).map((item, index) => (
                 <Link
                   href={item ? item.link.url : "/"}
@@ -31,7 +32,9 @@ const CategoriesSection = ({ slice }) => {
                 </Link>
               ))}
             </div>
-            <div className="col-lg-4 video-container" style={{ gap: 15 }}>
+
+            {/* // ===== 2ND COLUMN ===== */}
+            <div className="col-sm-4 video-container category-col order-0">
               <Link
                 href={link.url}
                 style={{ height: "100%" }}
@@ -42,7 +45,9 @@ const CategoriesSection = ({ slice }) => {
                 </video>
               </Link>
             </div>
-            <div className="col-lg-4" style={{ gap: 15, padding: 0 }}>
+
+            {/* // ===== 3RD COLUMN ===== */}
+            <div className="col-sm-4 d-flex flex-sm-column category-col">
               {items.slice(2, 4).map((item, index) => (
                 <Link
                   href={item ? item.link.url : "/"}

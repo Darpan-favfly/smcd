@@ -47,7 +47,7 @@ const AuthSliderSectionComponent = ({ isOpen, setIsOpen }) => {
         login: <LoginForm setIsOpen={setIsOpen} />,
         forgot: <ForgotPasswordForm />,
         reset: <ResetPasswordForm />,
-      }[auth] || <SignUpForm setIsOpen={setIsOpen} />}
+      }[auth] || <LoginForm setIsOpen={setIsOpen} />}
     </SliderComponent>
   );
 };

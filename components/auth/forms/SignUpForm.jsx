@@ -20,6 +20,12 @@ const SignUpForm = ({ setIsOpen }) => {
       type: "email",
     },
     {
+      label: "Phone",
+      name: "phone",
+      value: "",
+      type: "text",
+    },
+    {
       label: "Password",
       name: "password",
       value: "",
@@ -36,8 +42,7 @@ const SignUpForm = ({ setIsOpen }) => {
   );
 
   // ====== INITIALIZING STORES ======
-  const { handleEmailPasswordSignUp, handleEmailPasswordLogin } =
-    userProfileStore();
+  const { handleEmailPasswordSignUp } = userProfileStore();
 
   // ====== INITIALIZING HOOKS ======
   const router = useRouter();

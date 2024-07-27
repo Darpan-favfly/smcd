@@ -8,6 +8,15 @@ const HeroSection = ({ slice }) => {
     <section className="slideshow-md pt-0">
       <Splide
         options={{
+          type: "fade",
+          rewind: true,
+          arrows: false,
+          autoplay: true,
+          pagination: false,
+          pauseOnFocus: false,
+          pauseOnHover: false,
+          interval: 2000,
+          speed: 2000,
           breakpoints: {
             678: {
               arrows: false,
@@ -15,27 +24,34 @@ const HeroSection = ({ slice }) => {
           },
         }}
       >
-        {slice?.primary?.items.map((item, index) => {
-          return (
-            <SplideSlide key={index}>
-              <HeroItem data={item} />
-            </SplideSlide>
-          );
-        })}
+        {slice?.primary?.items.map((item, index) => (
+          <SplideSlide key={index}>
+            <HeroItem data={item} />
+          </SplideSlide>
+        ))}
       </Splide>
     </section>
   );
 };
 
 const HeroItem = ({ data }) => {
+  const {
+    image,
+    sub_heading,
+    heading,
+    description,
+    button_label,
+    button_link,
+  } = data;
+
   return (
     <>
       <div className="overflow-hidden position-relative h-100">
         <div className="slideshow-bg">
           <PrismicNextImage
-            field={data.image}
+            field={image}
             className="slideshow-bg__img object-fit-cover object-position-right"
-            alt={data.image.alt}
+            fallbackAlt={heading[0].text}
           />
         </div>
         <div
@@ -52,15 +68,15 @@ const HeroItem = ({ data }) => {
                 width: "max-content",
               }}
             >
-              {data.heading[0].text}
+              {sub_heading}
             </h6>
-            <h1 className="fw-normal mb-0">Newest Arrivals</h1>
-            <p>{data.description[0].text}</p>
+            <h1 className="fw-normal mb-0">{heading[0].text}</h1>
+            <p>{description[0].text}</p>
             <Link
-              href={data.button_link.url}
+              href={button_link.url}
               className="btn-link btn-link_sm default-underline text-uppercase fw-medium"
             >
-              {data.button_label}
+              {button_label}
             </Link>
           </div>
         </div>

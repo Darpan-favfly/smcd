@@ -36,7 +36,7 @@ const userProfileStore = create((set, get) => ({
   userLoading: true, // user loading state
 
   // =============== HANDLE EMAIL & PASSWORD SIGN-UP ===============
-  handleEmailPasswordSignUp: async ({ name, email, password }) => {
+  handleEmailPasswordSignUp: async ({ name, email, phone, password }) => {
     try {
       // ===== SIGN UP USER =====
       const userCredential = await createUserWithEmailAndPassword(
@@ -53,6 +53,7 @@ const userProfileStore = create((set, get) => ({
         uid,
         name,
         email,
+        phone,
       });
 
       if (res) {
@@ -396,7 +397,7 @@ const userProfileStore = create((set, get) => ({
 }));
 
 // =============== CREATE USER & USER-PROFILE =================
-const createUser = async ({ uid, email, name }) => {
+const createUser = async ({ uid, email, phone, name }) => {
   try {
     const date = new Date();
 
@@ -404,6 +405,7 @@ const createUser = async ({ uid, email, name }) => {
     await setDoc(doc(db, "users", uid), {
       name,
       email,
+      phone,
       createdAt: date,
       updatedAt: date,
       lastLoginAt: date,
@@ -415,6 +417,7 @@ const createUser = async ({ uid, email, name }) => {
       uid,
       email,
       name,
+      phone,
       createdAt: date,
       updatedAt: date,
       lastLoginAt: date,

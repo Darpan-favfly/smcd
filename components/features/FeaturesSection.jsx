@@ -2,9 +2,7 @@ import { PrismicNextImage } from "@prismicio/next";
 const FeaturesSection = ({ slice }) => {
   return (
     <>
-      <section className="service-promotion container">
-        {/* Optional HeadingComponent */}
-        {/* <HeadingComponent /> */}
+      <section className="service-promotion container py-0">
         <div className="row justify-content-between">
           {slice?.primary?.items?.map((item, index) => (
             <div key={index} className="col-md-3 text-center col-5">
