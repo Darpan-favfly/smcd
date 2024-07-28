@@ -94,10 +94,14 @@ export default async function RootLayout({ children }) {
         <meta name="theme-color" content="#ffffff" />
 
         {/* // =========== CSS =========== */}
-        <link rel="stylesheet" href="/styles/bootstrap.css" />
         <link rel="stylesheet" href="/styles/globals.css" />
-        <link rel="stylesheet" href="/styles/dark-theme.css" />
         <link rel="stylesheet" href="/styles/styles.css" />
+
+        {/* <!-- Calendly link widget begin --> */}
+        <link
+          href="https://assets.calendly.com/assets/external/widget.css"
+          rel="stylesheet"
+        ></link>
       </head>
       <body>
         {/* // ===== nextjs-toploader ===== */}
@@ -118,6 +122,11 @@ export default async function RootLayout({ children }) {
           <Toaster />
         </main>
 
+        <script
+          src="https://assets.calendly.com/assets/external/widget.js"
+          type="text/javascript"
+          async
+        ></script>
         {/* <PrismicPreview repositoryName={repositoryName} /> */}
       </body>
     </html>

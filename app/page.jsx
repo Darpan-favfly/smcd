@@ -1,8 +1,7 @@
-import OfferCtaSection from "@/components/cta/OfferCtaSection";
-import Seo from "@/lib/seo/Seo";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { SliceZone } from "@prismicio/react";
+import Seo from "@/lib/seo/Seo";
 
 const HomePage = async () => {
   const client = createClient();

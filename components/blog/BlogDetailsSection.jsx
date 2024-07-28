@@ -14,7 +14,6 @@ const BlogDetailsSection = ({ slice }) => {
               <div className="image-blog image-1">
                 <div className="position-relative" style={{ width: "100%" }}>
                   <PrismicNextImage
-                    alt="Groom Mehndi photoshoot ideas"
                     loading="lazy"
                     height={"auto"}
                     field={slice?.primary?.image}

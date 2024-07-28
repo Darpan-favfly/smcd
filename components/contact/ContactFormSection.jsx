@@ -1,8 +1,17 @@
 import { PrismicRichText } from "@prismicio/react";
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
 const ContactFormSection = ({ slice }) => {
-  const { heading, sub_heading, description, address, phone, email, form_id } =
-    slice.primary || {};
+  const {
+    heading,
+    sub_heading,
+    description,
+    address,
+    phone,
+    email,
+    form_id,
+    map_link,
+  } = slice.primary;
 
   return (
     <>
@@ -19,9 +28,11 @@ const ContactFormSection = ({ slice }) => {
                   <PrismicRichText field={description} />
                 </div>
               </div>
+
+              {/* // ===== CONTACT INFO SECTION ===== */}
               <div className="item">
                 <span className="icon contact-icon">
-                  <img src="https://images.prismic.io/complymyrera/ZlG-uiol0Zci9cS6_maps-and-flags.png?auto=format,compress" />
+                  <FaMapMarkerAlt />
                 </span>
                 <div className="cont">
                   <h5>Address</h5>
@@ -30,20 +41,24 @@ const ContactFormSection = ({ slice }) => {
               </div>
               <div className="item">
                 <span className="icon contact-icon">
-                  <img src="https://images.prismic.io/complymyrera/ZlG-uyol0Zci9cS7_call.png?auto=format,compress" />
+                  <FaPhoneAlt />
                 </span>
                 <div className="cont">
                   <h5>Phone</h5>
-                  <p>{phone}</p>
+                  <a href={`tel:${phone}`} target="_blank">
+                    <p>{phone}</p>
+                  </a>
                 </div>
               </div>
               <div className="item">
                 <span className="icon contact-icon">
-                  <img src="https://images.prismic.io/complymyrera/ZlG-uSol0Zci9cS5_email.png?auto=format,compress" />
+                  <FaEnvelope />
                 </span>
                 <div className="cont">
                   <h5>Email</h5>
-                  <p>{email}</p>
+                  <a href={`mailto:${email}`} target="_blank">
+                    <p>{email}</p>
+                  </a>
                 </div>
               </div>
             </div>
@@ -53,6 +68,7 @@ const ContactFormSection = ({ slice }) => {
                   <iframe
                     style={{ border: "none", width: "100%" }}
                     id="contact-form-5hj56y"
+                    className="br-15 overflow-hidden"
                     src={form_id}
                   />
                 </div>
@@ -61,6 +77,13 @@ const ContactFormSection = ({ slice }) => {
           </div>
         </div>
       </section>
+
+      {/* // ===== MAP EMBEDDED SECTION ===== */}
+      <div className="full-width">
+        <div className="no-spacing map">
+          <iframe src={map_link} frameBorder={0} className="google-maps" />
+        </div>
+      </div>
     </>
   );
 };

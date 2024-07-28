@@ -1,7 +1,7 @@
 import HeadingComponent from "../heading/HeadingComponent";
 import { createClient } from "@/prismicio";
 import dayjs from "dayjs";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { PrismicNextImage } from "@prismicio/next";
 import { FiCalendar } from "react-icons/fi";
 import Link from "next/link";
 
@@ -53,21 +53,16 @@ const BlogsSection = async ({ slice }) => {
 const BlogItem = ({ data }) => {
   const { uid } = data;
 
-  const { heading, description, featured_image, published_date } = data.data;
+  const { heading, featured_image, published_date } = data.data;
+
+  const url = `/blog/${uid}`;
 
   return (
     <>
       <div className="blog-grid__item">
-        <div className="blog-grid__item-image">
-          <PrismicNextImage
-            loading="lazy"
-            className="h-auto"
-            field={featured_image}
-            width={450}
-            alt=""
-            style={{ borderRadius: "10px" }}
-          />
-        </div>
+        <Link href={url} className="blog-grid__item-image d-inline-block mb-0">
+          <PrismicNextImage className="h-auto" field={featured_image} />
+        </Link>
         <div className="blog-grid__item-detail">
           <div className="blog-grid__item-meta">
             <span className="blog-grid__item-meta__date">
@@ -86,18 +81,15 @@ const BlogItem = ({ data }) => {
           </div>
           <div className="blog-grid__item-title">
             <div className="link-container">
-              <Link href={`/blog/${uid}`} className="blog-link">
+              <Link href={url} className="blog-link">
                 <h3>{heading[0].text}</h3>
               </Link>
             </div>
           </div>
           <div className="blog-grid__item-content">
-            {/* <p>{description}</p> */}
-            <div className="link-container">
-              <Link href={`blog/${uid}`} className="readmore-link">
-                Continue Reading
-              </Link>
-            </div>
+            <Link href={url} className="link-container readmore-link">
+              Continue Reading
+            </Link>
           </div>
         </div>
       </div>

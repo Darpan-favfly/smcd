@@ -26,14 +26,14 @@ const AboutSection = ({ slice }) => {
 const AboutItem = ({ data }) => {
   return (
     <div className="row">
-      <div className="col-lg-6 special-block-grid-left">
+      <div className="col-lg-6 pe-lg-0">
         <div
           className="special-block-wrapper"
           style={{
             backgroundColor: "rgb(28, 99, 146)",
             display: "flex",
             alignItems: "center",
-            minHeight: "auto",
+            height: "100%",
           }}
         >
           <div>
@@ -44,10 +44,9 @@ const AboutItem = ({ data }) => {
           </div>
         </div>
       </div>
-      <div className="col-lg-6 special-block-img-left flex-center d-flex">
+      <div className="col-lg-6 ps-lg-0 special-block-img-left flex-center d-flex">
         <PrismicNextImage
-          alt="Our Ethical Standards"
-          className="img-responsive"
+          className="img-responsive w-100 h-auto"
           field={data.image}
         />
       </div>

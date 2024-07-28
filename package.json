@@ -15,10 +15,10 @@
     "@prismicio/react": "^2.8.0",
     "@splidejs/react-splide": "^0.7.12",
     "dayjs": "^1.11.11",
+    "embla-carousel-autoplay": "^8.1.7",
+    "embla-carousel-react": "^8.1.7",
     "firebase": "^10.12.4",
-    "firebase-admin": "^12.2.0",
     "fslightbox-react": "^1.7.6",
-    "nanoid": "^5.0.7",
     "next": "14.2.4",
     "nextjs-toploader": "^1.6.12",
     "react": "^18",
@@ -28,14 +28,11 @@
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.12.0",
     "react-share": "^5.1.0",
-    "sort-by": "^1.2.0",
-    "uuid": "^9.0.1",
+    "sort-by": "^0.0.2",
     "zustand": "^4.5.4"
   },
   "devDependencies": {
     "@slicemachine/adapter-next": "^0.3.43",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.3",
     "slice-machine-ui": "^2.3.0"
   }
 }

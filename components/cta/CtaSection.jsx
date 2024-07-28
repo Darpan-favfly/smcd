@@ -12,23 +12,20 @@ const CtaSection = ({ slice }) => {
     left_image,
     right_image,
   } = slice?.primary;
+
   return (
     <>
-      <section className="lookbook-products container">
+      <section className="lookbook-products container cta-section">
         <div className="row position-relative">
           <div className="col-lg-6 col-sm-6 p-0 position-relative">
-            <PrismicNextImage
-              field={left_image}
-              alt={left_image.alt}
-              className="w-100 h-auto img-1"
-            />
+            <div className="overflow-hidden img-1">
+              <PrismicNextImage field={left_image} className="w-100 h-auto" />
+            </div>
           </div>
           <div className="col-lg-6 col-sm-6 p-0 position-relative">
-            <PrismicNextImage
-              field={right_image}
-              alt={right_image.alt}
-              className="w-100 h-auto img-2"
-            />
+            <div className="overflow-hidden img-2">
+              <PrismicNextImage field={right_image} className="w-100 h-auto" />
+            </div>
           </div>
           <div className="overlay position-absolute d-flex flex-column justify-content-center align-items-center text-center bg-white p-4">
             <h3 className="fs-22 fw-medium text-uppercase mb-2">

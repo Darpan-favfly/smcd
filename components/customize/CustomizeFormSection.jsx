@@ -2,6 +2,7 @@ import { PrismicNextImage } from "@prismicio/next";
 
 const CustomizeFormSection = ({ slice }) => {
   const { form_id, image } = slice?.primary;
+
   return (
     <>
       <section className="container mb-100">
@@ -20,13 +21,12 @@ const CustomizeFormSection = ({ slice }) => {
               <iframe
                 style={{ border: "none", width: "100%" }}
                 id="form-simple-form-uokpse"
-                src={form_id}
+                src={`https://opnform.com/forms/${form_id}`}
               />
             </div>
           </div>
-          <div className="col-lg-6 special-block-img-left flex-center d-flex">
+          <div className="col-lg-6 special-block-img-left flex-center d-flex ps-lg-0">
             <PrismicNextImage
-              alt="Our Ethical Standards"
               className="img-responsive h-auto w-100"
               field={image}
             />
