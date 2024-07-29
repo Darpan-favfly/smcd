@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const HeroSection = ({ slice }) => {
   return (
-    <section className="slideshow-md pt-0">
+    <section className="slideshow-md mt-4 mt-sm-0">
       <Splide
         options={{
           type: "fade",

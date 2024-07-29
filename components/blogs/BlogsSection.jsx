@@ -32,14 +32,14 @@ const BlogsSection = async ({ slice }) => {
   return (
     <>
       <section>
-        <HeadingComponent
-          data={{
-            sub_heading: sub_heading,
-            heading: heading[0].text,
-          }}
-        />
         <div className="container">
-          <div className="blog-grid row row-cols-2 row-cols-md-2 row-cols-xl-3">
+          <HeadingComponent
+            data={{
+              sub_heading: sub_heading,
+              heading: heading[0].text,
+            }}
+          />
+          <div className="blog-grid row row-cols-1 row-cols-md-2 row-cols-xl-3">
             {doc.map((item, index) => (
               <BlogItem key={index} data={item} />
             ))}
