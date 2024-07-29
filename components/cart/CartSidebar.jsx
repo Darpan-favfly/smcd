@@ -5,10 +5,12 @@ import { cartStore } from "@/storage/cartStore";
 import { cad } from "@/lib/converter/priceConverter";
 import { BsCart2 } from "react-icons/bs";
 import { useRouter } from "next/navigation";
+import { userProfileStore } from "@/storage/userProfileStore";
 
 const CartSidebar = ({ isOpen, setIsOpen }) => {
   // ===== INITIALIZING STORES =====
   const { cart } = cartStore();
+  const { userProfile } = userProfileStore();
 
   // ===== INITIALIZING ROUTER =====
   const router = useRouter();
@@ -53,16 +55,30 @@ const CartSidebar = ({ isOpen, setIsOpen }) => {
           )}
         </div>
 
-        <button
-          onClick={() => {
-            router.push("/checkout");
-            setIsOpen(false);
-          }}
-          className="btn btn-primary mt-3 d-block"
-          disabled={cart.length === 0}
-        >
-          Checkout
-        </button>
+        {userProfile ? (
+          <button
+            onClick={() => {
+              router.push("/checkout");
+              setIsOpen(false);
+            }}
+            className="btn btn-primary mt-3 d-block"
+            disabled={cart.length === 0}
+          >
+            Checkout
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              setIsOpen(false);
+
+              router.push("/?open=true");
+            }}
+            className="btn btn-primary mt-3 d-block"
+            disabled={cart.length === 0}
+          >
+            Login to Continue
+          </button>
+        )}
       </div>
     </SliderComponent>
   );

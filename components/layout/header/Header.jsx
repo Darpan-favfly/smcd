@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import UserProfileButton from "./buttons/UserProfileButton";
 import CartButton from "./buttons/CartButton";
-import SearchButton from "./buttons/SearchButton";
+import SearchButton, { MobileSearchBar } from "./buttons/SearchButton";
 import { HiBars3 } from "react-icons/hi2";
 import AuthSliderSectionComponent from "@/components/auth/AuthSliderSectionComponent";
 import { useState } from "react";
@@ -22,7 +22,7 @@ const Header = () => {
     { text: "Collections", link: "/collections" },
     { text: "Customize", link: "/customize" },
     { text: "Shop", link: "/shop" },
-    { text: "Blogs", link: "/blogs" },
+    { text: "Blogs", link: "/blog" },
     { text: "Contact", link: "/contact" },
     {
       text: "Appointment",
@@ -136,44 +136,7 @@ const MobileNav = ({ isOpen, setOpen, navLinks }) => {
       }}
     >
       <div className="container">
-        <form
-          action="search.html"
-          method="GET"
-          className="search-field position-relative mt-4 mb-3"
-        >
-          <div className="position-relative">
-            <input
-              className="search-field__input w-100 border rounded-1"
-              type="text"
-              name="search-keyword"
-              placeholder="Search products"
-            />
-            <button
-              className="btn-icon search-popup__submit pb-0 me-2"
-              type="submit"
-            >
-              <svg
-                className="d-block"
-                width={20}
-                height={20}
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <use href="#icon_search" />
-              </svg>
-            </button>
-            <button
-              className="btn-icon btn-close-lg search-popup__reset pb-0 me-2"
-              type="reset"
-            />
-          </div>
-          <div className="position-absolute start-0 top-100 m-0 w-100">
-            <div className="search-result" />
-          </div>
-        </form>
-      </div>
-      <div className="container">
+        <MobileSearchBar setOpen={setOpen} />
         <div className="overflow-hidden">
           <ul className="navigation__list list-unstyled position-relative">
             {navLinks.map((item, index) => (

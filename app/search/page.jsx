@@ -21,15 +21,18 @@ const SearchPage = async ({ searchParams }) => {
     const data = doc;
 
     return (
-      <>
+      <div className="mt-5 pt-5">
         {doc.length === 0 ? (
           <h4 className="text-center mt-5 mb-5">
             No results found for "{searchKey}"
           </h4>
         ) : (
-          <ProductListingSection data={data} />
+          <div className="container">
+            <h3>Result for : "{searchKey}"</h3>
+            <ProductListingSection data={data} />
+          </div>
         )}
-      </>
+      </div>
     );
   } catch (error) {
     console.error("Error fetching data:", error);

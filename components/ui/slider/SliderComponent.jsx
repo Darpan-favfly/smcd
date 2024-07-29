@@ -1,6 +1,10 @@
+import { usePathname, useRouter } from "next/navigation";
 import { IoClose } from "react-icons/io5";
 
 const SliderComponent = ({ isOpen, setIsOpen, title, children }) => {
+  const router = useRouter();
+  const pathname = usePathname();
+
   return (
     <>
       {isOpen && (
@@ -9,7 +13,10 @@ const SliderComponent = ({ isOpen, setIsOpen, title, children }) => {
           {isOpen && (
             <div
               className="page-overlay page-overlay_visible"
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                setIsOpen(false);
+                router.push(`/${pathname}`);
+              }}
             />
           )}
 
@@ -21,7 +28,10 @@ const SliderComponent = ({ isOpen, setIsOpen, title, children }) => {
               <h3 className="text-uppercase fs-6 mb-0">{title}</h3>
               <button
                 className="btn-close-lg js-close-aside ms-auto"
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  setIsOpen(false);
+                  router.push(`/${pathname}`);
+                }}
               >
                 <IoClose />
               </button>

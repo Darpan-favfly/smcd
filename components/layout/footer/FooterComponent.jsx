@@ -21,7 +21,7 @@ const menuItems = {
     { name: "About", link: "/about" },
     { name: "Collections", link: "/collection" },
     { name: "Customize", link: "/customize" },
-    { name: "Blogs", link: "/blogs" },
+    { name: "Blogs", link: "/blog" },
     { name: "Contact", link: "/contact" },
     { name: "Appointment", link: "#" },
   ],

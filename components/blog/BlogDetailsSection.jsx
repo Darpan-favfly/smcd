@@ -14,10 +14,9 @@ const BlogDetailsSection = ({ slice }) => {
               <div className="image-blog image-1">
                 <div className="position-relative" style={{ width: "100%" }}>
                   <PrismicNextImage
-                    loading="lazy"
-                    height={"auto"}
                     field={slice?.primary?.image}
                     style={{ width: "100%", borderRadius: "15px" }}
+                    className="h-auto"
                   />
                 </div>
               </div>

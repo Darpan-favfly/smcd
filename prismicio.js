@@ -17,7 +17,6 @@ export const repositoryName =
  */
 // TODO: Update the routes array to match your project's route structure.
 const routes = [
-  // Examples:
   {
     type: "home_page",
     path: "/",
@@ -48,7 +47,7 @@ const routes = [
   },
   {
     type: "blogs_page",
-    path: "/blogs",
+    path: "/blog",
   },
   {
     type: "blog_post",
@@ -86,27 +85,6 @@ const routes = [
     type: "terms_condition_page",
     path: "/terms-conditions",
   },
-
-  // {
-  //   type: "category_page",
-  //   path: "/categories/:slug",
-  // },
-  // {
-  //   type: "privacy_policy_page",
-  //   path: "/privacy-policy",
-  // },
-  // {
-  //   type: "terms_and_conditions_page",
-  //   path: "/terms-conditions",
-  // },
-  // {
-  //   type: "return_exchange_policy_page",
-  //   path: "/return-exchange-policy",
-  // },
-  // {
-  //   type: "shipping_policy_page",
-  //   path: "/shipping-policy",
-  // },
 ];
 
 /**

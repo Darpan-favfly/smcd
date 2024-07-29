@@ -11,7 +11,7 @@ const CountdownTimer = dynamic(
 );
 
 const OfferCtaSection = ({ slice }) => {
-  const targetDate = new Date("2024-07-02T06:50:00");
+  const targetDate = new Date("2024-08-02T06:50:00");
 
   const { heading, sub_heading, image, button_link, button_label } =
     slice?.primary || {};

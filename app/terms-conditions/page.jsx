@@ -1,3 +1,4 @@
+import Seo from "@/lib/seo/Seo";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { SliceZone } from "@prismicio/react";
@@ -11,5 +12,13 @@ const TermsConditionPage = async () => {
     </>
   );
 };
+
+export async function generateMetadata() {
+  const client = createClient();
+
+  const page = await client.getSingle("terms_condition_page");
+
+  return Seo(page);
+}
 
 export default TermsConditionPage;

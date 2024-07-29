@@ -1,5 +1,6 @@
 import ProductDetailsSection from "@/components/product/ProductDetailsSection";
 import RecommendedProductsSection from "@/components/product/RecommendedProductSection";
+import Seo from "@/lib/seo/Seo";
 import { createClient } from "@/prismicio";
 import { notFound } from "next/navigation";
 
@@ -8,11 +9,7 @@ const CustomPage = async ({ params }) => {
 
   const product = await client
     .getByUID("product_page", params.slug)
-    .catch(() => null);
-
-  if (product === null) {
-    notFound();
-  }
+    .catch(() => notFound());
 
   return (
     <>
@@ -23,5 +20,15 @@ const CustomPage = async ({ params }) => {
     </>
   );
 };
+
+export async function generateMetadata({ params }) {
+  const client = createClient();
+
+  const page = await client
+    .getByUID("product_page", params.slug)
+    .catch(() => notFound());
+
+  return Seo(page);
+}
 
 export default CustomPage;

@@ -107,7 +107,7 @@ export default async function RootLayout({ children }) {
         {/* // ===== nextjs-toploader ===== */}
         <NextTopLoader color="#DEA057" />
 
-        <main className="theme-dark overflow-hidden">
+        <main className="theme-dark">
           <StyledJsxRegistry>
             <FirebaseAuthProvider>
               <Suspense>

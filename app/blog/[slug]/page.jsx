@@ -16,10 +16,10 @@ const BlogPage = async ({ params }) => {
   }
   const doc = blog;
   return (
-    <section className="bg-gray">
-      <div className="container-xxl">
+    <section className="bg-gray mt-5">
+      <div className="container px-2">
         <div className="row gx-1">
-          <div className="col-lg-7 px-1 px-md-3">
+          <div className="col-lg-7 px-2 px-md-3">
             <div className="place__left">
               <div
                 className="blog-post d-flex flex-column pb-5"
@@ -31,7 +31,7 @@ const BlogPage = async ({ params }) => {
             </div>
           </div>
           <aside className="col-lg-4 mx-auto">
-            <div className="sidebar sidebar--shop sidebar--border fixed p-0 ps-lg-3 mb-5 pt-lg-4">
+            <div className="sidebar sidebar--shop sidebar--border fixed p-0 mb-5">
               <BookingWidget id="sticky-form" />
             </div>
           </aside>
@@ -55,15 +55,13 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const client = createClient();
 
-  const blog = await client
+  const page = await client
     .getByUID("blog_post", params.slug)
     .catch(() => null);
 
-  if (blog === null) {
+  if (page === null) {
     notFound();
   }
-
-  const page = blog;
 
   return Seo(page);
 }

@@ -13,6 +13,8 @@ const BillingDetailsForm = () => {
   const { cart } = cartStore();
   const { addOrder } = orderStore();
 
+  const router = useRouter();
+
   const { shippingAddress, billingAddress } = userProfile || {};
 
   // ====== INITIALIZING FORM FIELDS ======

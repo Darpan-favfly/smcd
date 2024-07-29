@@ -39,7 +39,7 @@ const BlogsSection = async ({ slice }) => {
           }}
         />
         <div className="container">
-          <div className="blog-grid row row-cols-2 row-cols-md-2 row-cols-xl-4">
+          <div className="blog-grid row row-cols-2 row-cols-md-2 row-cols-xl-3">
             {doc.map((item, index) => (
               <BlogItem key={index} data={item} />
             ))}

@@ -1,7 +1,7 @@
-import Seo from "@/lib/seo/Seo";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { SliceZone } from "@prismicio/react";
+import Seo from "@/lib/seo/Seo";
 
 const BlogsPage = async () => {
   const client = createClient();
@@ -13,6 +13,7 @@ const BlogsPage = async () => {
     </>
   );
 };
+
 export async function generateMetadata() {
   const client = createClient();
 

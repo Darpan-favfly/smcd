@@ -125,7 +125,6 @@ const RecommendedProductsSection = () => {
           <h2>Recommended Products</h2>
           <Splide
             options={{
-              height: "500px",
               pagination: false,
               arrows: true,
               gap: "1rem",
@@ -137,16 +136,13 @@ const RecommendedProductsSection = () => {
                 575: {
                   perPage: 2,
                 },
-                480: {
-                  perPage: 1,
-                },
               },
             }}
           >
             {products.map((product) => (
               <SplideSlide key={product.id}>
                 <div className="product-item">
-                  <figure className="product-thumb">
+                  <figure className="product-thumb mb-0">
                     <Link href="/silver-diamond">
                       <img
                         className="pri-img"
@@ -170,13 +166,6 @@ const RecommendedProductsSection = () => {
                     </div>
                   </figure>
                   <div className="product-caption text-center">
-                    <div className="product-identity">
-                      <p className="manufacturer-name">
-                        <Link href="product-details.html">
-                          {product.manufacturer}
-                        </Link>
-                      </p>
-                    </div>
                     <h6 className="product-name">
                       <Link href="product-details.html">{product.name}</Link>
                     </h6>
