@@ -26,7 +26,7 @@ const ProductListingSection = ({ data }) => {
   );
 };
 
-const ProductItem = ({ data }) => {
+const ProductItem = ({ data, fullCol }) => {
   const { title, items, max_price, min_price } = data?.data;
 
   const url = data?.url;
@@ -36,7 +36,7 @@ const ProductItem = ({ data }) => {
   };
 
   return (
-    <div className="col-md-3 col-6 ">
+    <div className={`${fullCol ? "" : "col-md-3 col-6"}`}>
       <div className="product-item">
         <Link
           href={url}
@@ -71,5 +71,7 @@ const ProductItem = ({ data }) => {
     </div>
   );
 };
+
+export { ProductItem };
 
 export default ProductListingSection;

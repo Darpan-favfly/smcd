@@ -145,7 +145,7 @@ const MobileNav = ({ isOpen, setOpen, navLinks }) => {
                   href={item.link}
                   className={`navigation__link ${pathname == item.link && "active"}`}
                   onClick={() => {
-                    data.handleClick && data.handleClick();
+                    item.handleClick && item.handleClick();
                     setOpen(false);
                   }}
                 >

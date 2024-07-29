@@ -121,6 +121,13 @@
             "placeholder": "",
             "select": null
           }
+        },
+        "end_date": {
+          "type": "Timestamp",
+          "config": {
+            "label": "End Date",
+            "placeholder": ""
+          }
         }
       },
       "items": {}

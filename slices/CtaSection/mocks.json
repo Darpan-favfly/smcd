@@ -91,7 +91,6 @@
 		"variation": "offer",
 		"primary": {
 			"image": {
-				"__TYPE__": "ImageContent",
 				"origin": {
 					"id": "main",
 					"url": "https://images.unsplash.com/photo-1593642633279-1796119d5482",
@@ -109,6 +108,9 @@
 					},
 					"background": "transparent"
 				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
 				"thumbnails": {}
 			},
 			"heading": {
@@ -144,6 +146,11 @@
 					"__TYPE__": "ExternalLink",
 					"url": "http://google.com"
 				}
+			},
+			"end_date": {
+				"__TYPE__": "FieldContent",
+				"type": "Timestamp",
+				"value": "2013-02-04T12:27:11Z"
 			}
 		},
 		"items": [

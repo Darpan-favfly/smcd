@@ -1997,6 +1997,16 @@ export interface CtaSectionSliceOfferPrimary {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   button_link: prismic.LinkField;
+
+  /**
+   * End Date field in *CtaSection → Offer → Primary*
+   *
+   * - **Field Type**: Timestamp
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cta_section.offer.primary.end_date
+   * - **Documentation**: https://prismic.io/docs/field#timestamp
+   */
+  end_date: prismic.TimestampField;
 }
 
 /**

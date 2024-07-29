@@ -1200,3 +1200,42 @@ form {
 .contact-icon {
   color: #fff;
 }
+.tt-logo {
+  position: relative;
+}
+.tt-logo:before {
+  content: "";
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: -100%;
+  width: 45px;
+  height: 23px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0,
+    #fff 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transition: 0s ease-in-out;
+  pointer-events: none;
+  -webkit-animation: lightning 4.3s infinite ease-in;
+  animation: lightning 4.3s infinite ease-in;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+}
+
+@keyframes lightning {
+  from {
+    left: 0;
+    top: 100%;
+  }
+  50% {
+    left: 50%;
+    top: 50%;
+  }
+  to {
+    left: 100%;
+    top: -100%;
+  }
+}

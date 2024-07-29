@@ -1,184 +1,19 @@
-"use client";
+import { createClient } from "@/prismicio";
+import ProductSlider from "./ProductSlider";
 
-import { Splide, SplideSlide } from "@splidejs/react-splide";
-import "@splidejs/react-splide/css";
-import { PiHeartStraightLight } from "react-icons/pi";
-import { IoEyeOutline } from "react-icons/io5";
-import Link from "next/link";
-import { cad } from "@/lib/converter/priceConverter";
+const RecommendedProductsSection = async () => {
+  const client = createClient();
 
-const RecommendedProductsSection = () => {
-  const products = [
-    {
-      id: 1,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-6.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-13.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: 60.0,
-      oldPrice: 70.0,
-    },
-    // Add more product objects here
-    {
-      id: 2,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-7.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-14.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: 60.0,
-      oldPrice: 70.0,
-    },
-    {
-      id: 3,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-8.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-15.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: 60.0,
-      oldPrice: 70.0,
-    },
-    {
-      id: 4,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-9.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-16.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: 60.0,
-      oldPrice: 70.0,
-    },
-    {
-      id: 5,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-10.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-17.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: 60.0,
-      oldPrice: 70.0,
-    },
-    {
-      id: 6,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-11.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-18.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: 60.0,
-      oldPrice: 70.0,
-    },
-    {
-      id: 7,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-12.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-18.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: 60.0,
-      oldPrice: 70.0,
-    },
-    {
-      id: 8,
-      primaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-13.jpg",
-      secondaryImage:
-        "https://htmldemo.net/corano/corano/assets/img/product/product-10.jpg",
-      labelNew: true,
-      labelDiscount: "10%",
-      labelDiscount: "10%",
-      manufacturer: "Gold",
-      name: "Diamond Exclusive Ornament",
-      price: 60.0,
-      oldPrice: 70.0,
-    },
-  ];
+  const doc = await client.getByType("product_page", {
+    pageSize: 12,
+  });
+
   return (
     <section>
       <div className="container">
         <div className="recommended-products-section">
-          <h2>Recommended Products</h2>
-          <Splide
-            options={{
-              pagination: false,
-              arrows: true,
-              gap: "1rem",
-              perPage: 4,
-              breakpoints: {
-                768: {
-                  perPage: 3,
-                },
-                575: {
-                  perPage: 2,
-                },
-              },
-            }}
-          >
-            {products.map((product) => (
-              <SplideSlide key={product.id}>
-                <div className="product-item">
-                  <figure className="product-thumb mb-0">
-                    <Link href="/silver-diamond">
-                      <img
-                        className="pri-img"
-                        src={product.primaryImage}
-                        alt="product"
-                        style={{ borderRadius: "15px" }}
-                      />
-                      <img
-                        className="sec-img"
-                        src={product.secondaryImage}
-                        alt="product"
-                        style={{ borderRadius: "15px" }}
-                      />
-                    </Link>
-                    <div className="product-badge">
-                      {product.labelNew && (
-                        <div className="product-label new">
-                          <span>new</span>
-                        </div>
-                      )}
-                    </div>
-                  </figure>
-                  <div className="product-caption text-center">
-                    <h6 className="product-name">
-                      <Link href="product-details.html">{product.name}</Link>
-                    </h6>
-                    <div className="price-box">
-                      <span className="price-regular">
-                        {cad(product?.price)} - {cad(product?.oldPrice)}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </SplideSlide>
-            ))}
-          </Splide>
+          <h2 className="mb-4">Recommended Products</h2>
+          <ProductSlider products={doc?.results} />
         </div>
       </div>
     </section>
