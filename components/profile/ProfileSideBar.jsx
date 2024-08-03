@@ -1,5 +1,5 @@
 "use client";
-import { userProfileStore } from "@/storage/userStore";
+import { userProfileStore } from "@/storage/userProfileStore";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";

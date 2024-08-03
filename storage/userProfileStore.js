@@ -394,6 +394,24 @@ const userProfileStore = create((set, get) => ({
       return false;
     }
   },
+
+  // =============== HANDLE LOGOUT ===============
+  handleLogout: async () => {
+    try {
+      await auth.signOut();
+
+      set({
+        user: null,
+        userProfile: null,
+        userLoading: false,
+      });
+
+      toast.success("Logout Successfully");
+    } catch (error) {
+      console.error("Error signing out:", error);
+      toast.error("Something went wrong");
+    }
+  },
 }));
 
 // =============== CREATE USER & USER-PROFILE =================

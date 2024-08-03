@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import { CiSearch } from "react-icons/ci";
 import { useState } from "react";
+import { IoMdClose } from "react-icons/io";
 
 const SearchButton = () => {
   // ===== INITIALIZING STATES =====
@@ -30,7 +31,7 @@ const SearchButton = () => {
         className="header-tools__item me-0"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <CiSearch />
+        {isOpen ? <IoMdClose /> : <CiSearch />}
       </button>
 
       {isOpen && (

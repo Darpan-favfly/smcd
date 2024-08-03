@@ -25,19 +25,19 @@ const AddressSection = () => {
               {billingAddress ? "Edit" : "Add"}
             </button>
           </div>
-          {billingAddress && (
+          {billingAddress?.address && (
             <div className="my-account__address-item__detail">
               <p>
-                {billingAddress.address}, {billingAddress.city},{" "}
-                {billingAddress.state}
+                {billingAddress?.address}, {billingAddress?.city},{" "}
+                {billingAddress?.state}
               </p>
               <p>
-                {billingAddress.country}, {billingAddress.zip}
+                {billingAddress?.country}, {billingAddress?.zip}
               </p>
               <br />
-              <p>{billingAddress.name}</p>
-              <p>{billingAddress.email}</p>
-              <p>{billingAddress.phone}</p>
+              <p>{billingAddress?.name}</p>
+              <p>{billingAddress?.email}</p>
+              <p>{billingAddress?.phone}</p>
             </div>
           )}
         </div>
@@ -50,19 +50,19 @@ const AddressSection = () => {
               {shippingAddress ? "Edit" : "Add"}
             </button>
           </div>
-          {billingAddress && (
+          {shippingAddress?.address && (
             <div className="my-account__address-item__detail">
               <p>
-                {billingAddress.address}, {billingAddress.city},{" "}
-                {billingAddress.state}
+                {shippingAddress?.address}, {shippingAddress?.city},{" "}
+                {shippingAddress?.state}
               </p>
               <p>
-                {billingAddress.country}, {billingAddress.zip}
+                {shippingAddress?.country}, {shippingAddress?.zip}
               </p>
               <br />
-              <p>{billingAddress.name}</p>
-              <p>{billingAddress.email}</p>
-              <p>{billingAddress.phone}</p>
+              <p>{shippingAddress?.name}</p>
+              <p>{shippingAddress?.email}</p>
+              <p>{shippingAddress?.phone}</p>
             </div>
           )}
         </div>

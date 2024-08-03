@@ -409,25 +409,7 @@ const userProfileStore = create((set, get) => ({
     }
   },
 
-  // =============== HANDLE LOGOUT ===============
-  handleLogout: async () => {
-    try {
-      await auth.signOut();
-
-      set({
-        user: null,
-        userProfile: null,
-        userLoading: false,
-      });
-
-      toast.success("Logout Successfully");
-    } catch (error) {
-      console.error("Error signing out:", error);
-      toast.error("Something went wrong");
-    }
-  },
-
-  // =============== HANDLE UPDATE USER ADDRESS BY UID===============
+  // =============== HANDLE UPDATE USER ADDRESS BY UID ===============
   updateUserAddress: async (formData, uid) => {
     console.log("formData", formData, uid, "uid");
     try {
