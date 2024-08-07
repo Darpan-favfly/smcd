@@ -374,7 +374,7 @@ p:last-child {
 }
 .product-single__image img {
   width: 100%;
-  height: 500px;
+  height: 350px;
   object-fit: cover;
   object-position: center;
 }
@@ -1237,5 +1237,11 @@ form {
   to {
     left: 100%;
     top: -100%;
+  }
+}
+
+@media (max-width: 991px) {
+  .product-single__image img {
+    height: auto;
   }
 }

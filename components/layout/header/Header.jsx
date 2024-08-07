@@ -76,15 +76,17 @@ const Header = () => {
               ))}
             </nav>
 
+            <div className="d-block d-lg-none w-[24px]" />
+
             {/* // ===== BUTTONS ===== */}
             <div className="header-tools d-flex align-items-center">
               {/* // ===== CART BUTTON ===== */}
               <SearchButton />
               {/* // ===== CART BUTTON ===== */}
-              <CartButton setIsOpen={setIsOpenCartSlider} />
+              {/* <CartButton setIsOpen={setIsOpenCartSlider} /> */}
 
               {/* // ===== USER PROFILE BUTTON ===== */}
-              <UserProfileButton setIsOpen={setIsOpenAuthSlider} />
+              {/* <UserProfileButton setIsOpen={setIsOpenAuthSlider} /> */}
             </div>
           </div>
         </div>

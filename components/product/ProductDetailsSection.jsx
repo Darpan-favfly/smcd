@@ -8,6 +8,8 @@ import ShareSection from "../global/ShareSection";
 import { PrismicRichText } from "@prismicio/react";
 import { cad } from "@/lib/converter/priceConverter";
 // import { FiMinus, FiPlus } from "react-icons/fi";
+import { FiPhoneCall } from "react-icons/fi";
+import ProductEnquiryModal from "./ProductEnquiryModal";
 
 const ProductDetailsSection = ({ data }) => {
   // ===== INITIALIZING STORES =====
@@ -48,6 +50,8 @@ const ProductDetailsSection = ({ data }) => {
   const [buttonText, setButtonText] = useState("Add to Cart");
   const [buttonColor, setButtonColor] = useState("btn-primary");
 
+  const [showModal, setShowModal] = useState(false);
+
   useEffect(() => {
     setUrl(window.location.href);
   }, []);
@@ -84,16 +88,16 @@ const ProductDetailsSection = ({ data }) => {
     <>
       <section className="product-single container">
         <div className="row">
-          <div className="col-lg-6">
+          <div className="col-lg-4">
             <div className="product-single__media">
-              <div className="product-single__image">
+              <div className="product-single__image w-100">
                 <img
                   loading="lazy"
                   src={mainImage}
                   style={{ width: "100%", borderRadius: "15px" }}
                   alt="Main Product"
                 />
-                <div className="product-single__thumbnail mt-3">
+                {/* <div className="product-single__thumbnail mt-3">
                   <Splide
                     options={{
                       perPage: 4,
@@ -120,11 +124,11 @@ const ProductDetailsSection = ({ data }) => {
                       </SplideSlide>
                     ))}
                   </Splide>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
-          <div className="col-lg-6">
+          <div className="col-lg-8 col-xl-6">
             {/* // ===== PRODUCT DETAILS ===== */}
             <h1 className="product-single__name">{title[0].text}</h1>
             <div className="product-single__price">
@@ -139,8 +143,8 @@ const ProductDetailsSection = ({ data }) => {
               <PrismicRichText field={description} />
             </div>
             {/* // ===== ADD TO CART FORM ===== */}
-            <form name="addtocart-form">
-              <div className="product-single__swatches">
+            {/* <form name="addtocart-form"> */}
+            {/* <div className="product-single__swatches">
                 {Object.entries(productVariants).map(([attribute, options]) => (
                   <div key={attribute} className="product-swatch text-swatches">
                     <label>
@@ -176,10 +180,10 @@ const ProductDetailsSection = ({ data }) => {
                     </div>
                   </div>
                 ))}
-              </div>
+              </div> */}
 
-              {/* // ===== ADD TO CART BUTTON ===== */}
-              <div className="product-single__addtocart">
+            {/* // ===== ADD TO CART BUTTON ===== */}
+            {/* <div className="product-single__addtocart">
                 <button
                   type="submit"
                   className={`btn ${buttonColor} btn-addtocart js-open-aside`}
@@ -189,12 +193,40 @@ const ProductDetailsSection = ({ data }) => {
                 >
                   {buttonText}
                 </button>
-              </div>
-            </form>
+              </div> */}
+            {/* </form> */}
+
+            <div className="product-single__addtocart">
+              <button
+                type="button"
+                onClick={() => setShowModal(true)}
+                className={`btn ${buttonColor} btn-addtocart js-open-aside`}
+                style={{
+                  borderRadius: "15px",
+                  transition: "all 0.3s",
+                  gap: "0.8rem",
+                }}
+              >
+                <i
+                  style={{
+                    fontSize: "1.2rem",
+                    position: "relative",
+                    top: "-2px",
+                  }}
+                >
+                  <FiPhoneCall />
+                </i>
+                Request A Callback
+              </button>
+            </div>
+
             <ShareSection url={url} />
           </div>
         </div>
       </section>
+
+      {/* // ===== PRODUCT ENQUIRY MODAL ===== */}
+      <ProductEnquiryModal showModal={showModal} setShowModal={setShowModal} />
 
       <style jsx>{`
         .product-single {
