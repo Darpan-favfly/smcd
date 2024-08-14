@@ -12,8 +12,8 @@ import FooterComponent from "@/components/layout/footer/FooterComponent";
 import StyledJsxRegistry from "@/lib/StyleRegistry";
 
 // ===== prismic preview toolbar =====
-// import { PrismicPreview } from "@prismicio/next";
-// import { repositoryName } from "@/prismicio";
+import { PrismicPreview } from "@prismicio/next";
+import { repositoryName } from "@/prismicio";
 
 // ===== Google Fonts import =====
 import { Jost, Lora } from "next/font/google";
@@ -127,7 +127,7 @@ export default async function RootLayout({ children }) {
           type="text/javascript"
           async
         ></script>
-        {/* <PrismicPreview repositoryName={repositoryName} /> */}
+        <PrismicPreview repositoryName={repositoryName} />
       </body>
     </html>
   );
