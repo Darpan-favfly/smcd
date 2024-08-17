@@ -27,7 +27,7 @@ const ProductListingSection = ({ data }) => {
 };
 
 const ProductItem = ({ data, fullCol }) => {
-  const { title, items, max_price, min_price } = data?.data;
+  const { title, image_items, max_price, min_price } = data?.data;
 
   const url = data?.url;
 
@@ -43,7 +43,7 @@ const ProductItem = ({ data, fullCol }) => {
           className="product-thumb  br-15 overflow-hidden d-inline-block"
         >
           <EmblaCarousel options={OPTIONS}>
-            {items.map((item, index) => (
+            {image_items.map((item, index) => (
               <div className="embla__slide" key={index}>
                 <PrismicNextImage
                   className="pri-img h-auto"

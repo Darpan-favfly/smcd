@@ -1245,3 +1245,7 @@ form {
     height: auto;
   }
 }
+
+.splide {
+  height: 100%;
+}

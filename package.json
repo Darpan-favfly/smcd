@@ -32,7 +32,7 @@
     "zustand": "^4.5.4"
   },
   "devDependencies": {
-    "@slicemachine/adapter-next": "^0.3.43",
-    "slice-machine-ui": "^2.3.0"
+    "@slicemachine/adapter-next": "^0.3.45",
+    "slice-machine-ui": "^2.4.1"
   }
 }

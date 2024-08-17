@@ -1,0 +1,152 @@
+
+{
+  /* <div className="qty-control position-relative qty-initialized">
+<input
+  type="number"
+  name="quantity"
+  value={product?.quantity}
+  readOnly
+  style={{ borderRadius: "15px" }}
+  className="qty-control__number text-center"
+/>
+<div
+  className="qty-control__reduce"
+  onClick={handleDecreaseQuantity}
+>
+  <FiMinus />
+</div>
+<div
+  className="qty-control__increase"
+  onClick={handleIncreaseQuantity}
+>
+  <FiPlus />
+</div>
+</div> */
+}
+
+{
+  /* // ===== ADD TO CART FORM ===== */
+}
+{
+  /* <form name="addtocart-form"> */
+}
+{
+  /* <div className="product-single__swatches">
+                {Object.entries(productVariants).map(([attribute, options]) => (
+                  <div key={attribute} className="product-swatch text-swatches">
+                    <label>
+                      {attribute
+                        .replace(/([A-Z])/g, " $1")
+                        .replace(/(^\w|\s\w)/g, (m) => m.toUpperCase())
+                        .trim()}
+                    </label>
+                    <div
+                      className="swatch-list"
+                      style={{ borderRadius: "15px" }}
+                    >
+                      {options.map((option, index) => (
+                        <label
+                          style={{ cursor: "pointer" }}
+                          key={index}
+                          className={`swatch js-swatch
+                            ${product?.additionalDetails[attribute] === option && "js-swatch-active"}
+                            `}
+                          onClick={() =>
+                            setProduct((prev) => ({
+                              ...prev,
+                              additionalDetails: {
+                                ...prev.additionalDetails,
+                                [attribute]: option,
+                              },
+                            }))
+                          }
+                        >
+                          {option}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div> */
+}
+
+{
+  /* // ===== ADD TO CART BUTTON ===== */
+}
+{
+  /* <div className="product-single__addtocart">
+                <button
+                  type="submit"
+                  className={`btn ${buttonColor} btn-addtocart js-open-aside`}
+                  style={{ borderRadius: "15px", transition: "all 0.3s" }}
+                  onClick={handleAddToCart}
+                  disabled={buttonText === "Added"}
+                >
+                  {buttonText}
+                </button>
+              </div> */
+}
+{
+  /* </form> */
+}
+
+// ===== PRODUCT VARIANTS =====
+// const productVariants = {
+//   size: ["XS", "S", "M", "L"],
+//   color: ["A", "B", "C", "D"],
+//   carat: ["A", "B", "C", "D"],
+//   goldColor: ["Yellow", "White", "Rose Gold"],
+//   caratTone: ["Yellow", "White", "Rose Gold"],
+//   cut: ["Excellent"],
+// };
+
+// ===== INITIALIZE STATES =====
+// const [product, setProduct] = useState({
+//   id,
+//   uid,
+//   title: title[0].text,
+//   min_price,
+//   max_price,
+//   image: mainImage,
+//   additionalDetails: {
+//     size: "XS",
+//     color: "A",
+//     carat: "A",
+//     goldColor: "Yellow",
+//     caratTone: "Yellow",
+//     cut: "Excellent",
+//   },
+// });
+// const [buttonText, setButtonText] = useState("Add to Cart");
+// const [buttonColor, setButtonColor] = useState("btn-primary");
+
+// ===== INCREASE QUANTITY =====
+// const handleIncreaseQuantity = () => {
+//   setProduct((prev) => ({
+//     ...prev,
+//     quantity: prev.quantity + 1,
+//   }));
+// };
+
+// ===== DECREASE QUANTITY =====
+// const handleDecreaseQuantity = () => {
+//   setProduct((prev) => ({
+//     ...prev,
+//     quantity: Math.max(1, prev.quantity - 1),
+//   }));
+// };
+
+// const handleAddToCart = (e) => {
+//   e.preventDefault();
+//   addToCartItem(product);
+//   toast.success("Product added to cart!");
+//   setButtonText("Added");
+//   setButtonColor("btn-success");
+//   setTimeout(() => {
+//     setButtonText("Add to Cart");
+//     setButtonColor("btn-primary");
+//   }, 2000);
+// };
+
+// ===== INITIALIZING STORES =====
+// const { addToCartItem } = cartStore();

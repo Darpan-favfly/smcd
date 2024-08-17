@@ -21,20 +21,6 @@
         },
         "type": "UID"
       },
-      "min_price": {
-        "type": "Text",
-        "config": {
-          "label": "Min Price",
-          "placeholder": "Min Price"
-        }
-      },
-      "max_price": {
-        "type": "Text",
-        "config": {
-          "label": "Max Price",
-          "placeholder": "Max Price"
-        }
-      },
       "description": {
         "type": "StructuredText",
         "config": {
@@ -44,10 +30,10 @@
           "multi": "paragraph,strong"
         }
       },
-      "items": {
+      "image_items": {
         "type": "Group",
         "config": {
-          "label": "Items",
+          "label": "Image Items",
           "repeat": true,
           "fields": {
             "image": {
@@ -55,10 +41,80 @@
               "config": {
                 "label": "Image",
                 "constraint": {
-                  "width": 1080,
-                  "height": 1028
+                  "width": 1500,
+                  "height": 1500
                 },
                 "thumbnails": []
+              }
+            },
+            "video": {
+              "type": "Link",
+              "config": {
+                "label": "Video",
+                "placeholder": "",
+                "select": "media"
+              }
+            },
+            "shape": {
+              "type": "Select",
+              "config": {
+                "label": "Shape",
+                "placeholder": "",
+                "options": [
+                  "Round",
+                  "Oval",
+                  "Emerald",
+                  "Pear",
+                  "Cushion",
+                  "Princess"
+                ]
+              }
+            },
+            "color": {
+              "type": "Select",
+              "config": {
+                "label": "Color",
+                "placeholder": "",
+                "options": ["White Gold", "Rose Gold", "Yellow Gold"]
+              }
+            }
+          }
+        }
+      },
+      "price_items": {
+        "type": "Group",
+        "config": {
+          "label": "Price Items",
+          "repeat": true,
+          "fields": {
+            "price": {
+              "type": "Number",
+              "config": {
+                "label": "Price",
+                "placeholder": ""
+              }
+            },
+            "carat": {
+              "type": "Number",
+              "config": {
+                "label": "Carat",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "sizes": {
+        "type": "Group",
+        "config": {
+          "label": "Sizes",
+          "repeat": true,
+          "fields": {
+            "number": {
+              "type": "Number",
+              "config": {
+                "label": "Number",
+                "placeholder": ""
               }
             }
           }
