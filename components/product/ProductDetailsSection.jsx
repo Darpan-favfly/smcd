@@ -34,8 +34,13 @@ const ProductDetailsSection = ({ data }) => {
   return (
     <>
       <section className="product-single container">
-        <div className="row">
-          <div className="col-lg-7">
+        <div
+          className="row"
+          style={{
+            rowGap: "2rem",
+          }}
+        >
+          <div className="col-xl-7">
             <ProductGallery
               image_items={image_items}
               activeShape={activeShape}
@@ -44,7 +49,7 @@ const ProductDetailsSection = ({ data }) => {
               setActiveImageIndex={setActiveImageIndex}
             />
           </div>
-          <div className="col-lg-8 col-xl-5">
+          <div className="col-xl-5">
             {/* // ===== PRODUCT DETAILS ===== */}
             <h1 className="product-single__name">{title[0].text}</h1>
             <div className="product-single__price mt-2">
@@ -134,8 +139,13 @@ const ProductGallery = ({
   setActiveImageIndex,
 }) => {
   return (
-    <div className="row">
-      <div className="product-single__thumbnail col-lg-1 pe-0">
+    <div
+      className="row flex-column-reverse flex-xl-row"
+      style={{
+        rowGap: "1rem",
+      }}
+    >
+      <div className="product-single__thumbnail col-xl-1 pe-0">
         <Splide
           options={{
             perPage: 5,
@@ -144,6 +154,12 @@ const ProductGallery = ({
             direction: "ttb",
             height: "100%",
             arrows: false,
+            breakpoints: {
+              1200: {
+                perPage: 4,
+                direction: "ltr",
+              },
+            },
           }}
         >
           {image_items
@@ -174,7 +190,7 @@ const ProductGallery = ({
             ))}
         </Splide>
       </div>
-      <div className="col-lg-11">
+      <div className="col-xl-11">
         <div
           style={{
             borderRadius: "15px",
@@ -343,19 +359,20 @@ const ProductOptions = ({
         .product-single__option {
           display: flex;
           gap: 1rem;
-          align-items: center;
         }
 
         .product-single__option label {
           font-weight: 600;
           color: #333;
           font-size: 1rem;
+          flex-shrink: 0;
         }
 
         .shapes {
           display: flex;
           align-items: center;
           gap: 1rem;
+          flex-wrap: wrap;
         }
 
         .shape {
