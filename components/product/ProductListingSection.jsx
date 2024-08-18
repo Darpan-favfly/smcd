@@ -43,7 +43,7 @@ const ProductItem = ({ data, fullCol }) => {
           className="product-thumb  br-15 overflow-hidden d-inline-block"
         >
           <EmblaCarousel options={OPTIONS}>
-            {image_items.map((item, index) => (
+            {image_items?.slice(0, 3).map((item, index) => (
               <div className="embla__slide" key={index}>
                 <PrismicNextImage
                   className="pri-img h-auto"

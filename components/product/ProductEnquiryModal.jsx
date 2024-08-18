@@ -1,7 +1,7 @@
 "use client";
 import { IoMdClose } from "react-icons/io";
 
-const ProductEnquiryModal = ({ showModal, setShowModal }) => {
+const ProductEnquiryModal = ({ showModal, setShowModal, data }) => {
   return (
     <>
       <div className={`modal-container px-2 ${!showModal && "d-none"}`}>
@@ -14,7 +14,7 @@ const ProductEnquiryModal = ({ showModal, setShowModal }) => {
           <iframe
             style={{ border: "none", width: "100%" }}
             id="smc-product-inquery-n9y35l"
-            src="https://opnform.com/forms/smc-product-inquery-n9y35l"
+            src={`https://opnform.com/forms/smc-product-inquery-n9y35l?e795b36d-a1fb-41c8-bd5e-d859feb03031=%2B1&49c99ee2-021a-4e44-8dc4-5b7f9e0b7b2e=${data}`}
           ></iframe>
         </div>
       </div>

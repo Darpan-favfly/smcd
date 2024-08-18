@@ -25,11 +25,13 @@ const ProductDetailsSection = ({ data }) => {
   );
   const [activeColor, setActiveColor] = useState(color[0]);
   const [activeCarat, setActiveCarat] = useState(carat[0]);
-  const [activeSize, setActiveSize] = useState(null);
+  const [activeSize, setActiveSize] = useState(sizes[0].number);
 
   useEffect(() => {
     setUrl(window.location.href);
   }, []);
+
+  const productData = `Query for: ${title[0].text} - Shape: ${activeShape}, Color: ${activeColor}, Carat: ${activeCarat}, Size: ${activeSize}, Product Url: ${url}`;
 
   return (
     <>
@@ -120,7 +122,11 @@ const ProductDetailsSection = ({ data }) => {
       </section>
 
       {/* // ===== PRODUCT ENQUIRY MODAL ===== */}
-      <ProductEnquiryModal showModal={showModal} setShowModal={setShowModal} />
+      <ProductEnquiryModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        data={productData}
+      />
 
       <style jsx>{`
         .product-single {

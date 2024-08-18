@@ -8,7 +8,7 @@ const ProductSlider = ({ products }) => {
   return (
     <Splide
       options={{
-        type: "loop",
+        type: "slide",
         pagination: false,
         arrows: true,
         gap: "1rem",
