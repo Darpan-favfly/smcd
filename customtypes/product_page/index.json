@@ -66,7 +66,11 @@
                   "Emerald",
                   "Pear",
                   "Cushion",
-                  "Princess"
+                  "Princess",
+                  "Asscher",
+                  "Heart",
+                  "Marquise",
+                  "Radiant"
                 ]
               }
             },
@@ -81,43 +85,11 @@
           }
         }
       },
-      "price_items": {
-        "type": "Group",
+      "price": {
+        "type": "Number",
         "config": {
-          "label": "Price Items",
-          "repeat": true,
-          "fields": {
-            "price": {
-              "type": "Number",
-              "config": {
-                "label": "Price",
-                "placeholder": ""
-              }
-            },
-            "carat": {
-              "type": "Number",
-              "config": {
-                "label": "Carat",
-                "placeholder": ""
-              }
-            }
-          }
-        }
-      },
-      "sizes": {
-        "type": "Group",
-        "config": {
-          "label": "Sizes",
-          "repeat": true,
-          "fields": {
-            "number": {
-              "type": "Number",
-              "config": {
-                "label": "Number",
-                "placeholder": ""
-              }
-            }
-          }
+          "label": "Price",
+          "placeholder": ""
         }
       },
       "category": {

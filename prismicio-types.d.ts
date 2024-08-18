@@ -897,7 +897,16 @@ export interface ProductPageDocumentDataImageItemsItem {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   shape: prismic.SelectField<
-    "Round" | "Oval" | "Emerald" | "Pear" | "Cushion" | "Princess"
+    | "Round"
+    | "Oval"
+    | "Emerald"
+    | "Pear"
+    | "Cushion"
+    | "Princess"
+    | "Asscher"
+    | "Heart"
+    | "Marquise"
+    | "Radiant"
   >;
 
   /**
@@ -909,46 +918,6 @@ export interface ProductPageDocumentDataImageItemsItem {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   color: prismic.SelectField<"White Gold" | "Rose Gold" | "Yellow Gold">;
-}
-
-/**
- * Item in *Product Page → Price Items*
- */
-export interface ProductPageDocumentDataPriceItemsItem {
-  /**
-   * Price field in *Product Page → Price Items*
-   *
-   * - **Field Type**: Number
-   * - **Placeholder**: *None*
-   * - **API ID Path**: product_page.price_items[].price
-   * - **Documentation**: https://prismic.io/docs/field#number
-   */
-  price: prismic.NumberField;
-
-  /**
-   * Carat field in *Product Page → Price Items*
-   *
-   * - **Field Type**: Number
-   * - **Placeholder**: *None*
-   * - **API ID Path**: product_page.price_items[].carat
-   * - **Documentation**: https://prismic.io/docs/field#number
-   */
-  carat: prismic.NumberField;
-}
-
-/**
- * Item in *Product Page → Sizes*
- */
-export interface ProductPageDocumentDataSizesItem {
-  /**
-   * Number field in *Product Page → Sizes*
-   *
-   * - **Field Type**: Number
-   * - **Placeholder**: *None*
-   * - **API ID Path**: product_page.sizes[].number
-   * - **Documentation**: https://prismic.io/docs/field#number
-   */
-  number: prismic.NumberField;
 }
 
 type ProductPageDocumentDataSlicesSlice = never;
@@ -993,28 +962,15 @@ interface ProductPageDocumentData {
   >;
 
   /**
-   * Price Items field in *Product Page*
+   * Price field in *Product Page*
    *
-   * - **Field Type**: Group
+   * - **Field Type**: Number
    * - **Placeholder**: *None*
-   * - **API ID Path**: product_page.price_items[]
+   * - **API ID Path**: product_page.price
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
+   * - **Documentation**: https://prismic.io/docs/field#number
    */
-  price_items: prismic.GroupField<
-    Simplify<ProductPageDocumentDataPriceItemsItem>
-  >;
-
-  /**
-   * Sizes field in *Product Page*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: product_page.sizes[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  sizes: prismic.GroupField<Simplify<ProductPageDocumentDataSizesItem>>;
+  price: prismic.NumberField;
 
   /**
    * Category field in *Product Page*
@@ -2913,8 +2869,6 @@ declare module "@prismicio/client" {
       ProductPageDocument,
       ProductPageDocumentData,
       ProductPageDocumentDataImageItemsItem,
-      ProductPageDocumentDataPriceItemsItem,
-      ProductPageDocumentDataSizesItem,
       ProductPageDocumentDataSlicesSlice,
       ReturnExchangePolicyDocument,
       ReturnExchangePolicyDocumentData,

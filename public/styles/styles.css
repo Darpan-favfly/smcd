@@ -1249,3 +1249,14 @@ form {
 .splide {
   height: 100%;
 }
+
+.product-card__price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product-card__price .label {
+  font-size: 0.8rem;
+  color: #2c2c2c;
+}

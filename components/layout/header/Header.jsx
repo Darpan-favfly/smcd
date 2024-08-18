@@ -63,8 +63,8 @@ const Header = () => {
             {/* // ===== LOGO ===== */}
             <Link href="/">
               <img
-                src="https://i.ibb.co/d2Vj1n7/Luxury-Jewellery-Branding-Logo-2.png"
-                alt="Uomo"
+                src="https://images.prismic.io/smcjewels/ZsHvvUaF0TcGJB-G_smc_logo.webp?auto=format,compress"
+                alt="SMC Diamonds"
                 className="logo__image"
               />
             </Link>

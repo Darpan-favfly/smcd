@@ -10,28 +10,26 @@ import ProductEnquiryModal from "./ProductEnquiryModal";
 import { PrismicNextImage } from "@prismicio/next";
 
 const ProductDetailsSection = ({ data }) => {
-  const { title, description, image_items, sizes, price_items } = data;
+  const { title, description, image_items, price } = data;
 
   const [url, setUrl] = useState("");
 
   const color = [...new Set(image_items?.map((item) => item.color))];
-  const carat = [...new Set(price_items?.map((item) => item.carat))];
+
+  const shapes = [...new Set(image_items?.map((item) => item.shape))];
 
   // ===== INITIALIZE STATES =====
   const [showModal, setShowModal] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
-  const [activeShape, setActiveShape] = useState(
-    [...new Set(image_items?.map((item) => item.shape))][0]
-  );
+
+  const [activeShape, setActiveShape] = useState(shapes[0]);
   const [activeColor, setActiveColor] = useState(color[0]);
-  const [activeCarat, setActiveCarat] = useState(carat[0]);
-  const [activeSize, setActiveSize] = useState(sizes[0].number);
 
   useEffect(() => {
     setUrl(window.location.href);
   }, []);
 
-  const productData = `Query for: ${title[0].text} - Shape: ${activeShape}, Color: ${activeColor}, Carat: ${activeCarat}, Size: ${activeSize}, Product Url: ${url}`;
+  const productData = `Query for: ${title[0].text} - Shape: ${activeShape}${activeColor && `, Color: ${activeColor}`}, Product Url: ${url}`;
 
   return (
     <>
@@ -66,12 +64,7 @@ const ProductDetailsSection = ({ data }) => {
               >
                 Starting at:
               </span>
-              <span className="current-price">
-                {cad(
-                  price_items?.filter((item) => item.carat == activeCarat)[0]
-                    .price
-                )}
-              </span>
+              <span className="current-price">{cad(price)}</span>
             </div>
             <div className="product-single__short-desc">
               <PrismicRichText field={description} />
@@ -83,13 +76,8 @@ const ProductDetailsSection = ({ data }) => {
               setActiveColor={setActiveColor}
               activeShape={activeShape}
               setActiveShape={setActiveShape}
-              activeSize={activeSize}
-              setActiveSize={setActiveSize}
-              activeCarat={activeCarat}
-              setActiveCarat={setActiveCarat}
-              carat={carat}
               color={color}
-              sizes={sizes?.map((size) => size.number)}
+              diamondShapes={shapes}
             />
 
             <div className="product-single__addtocart">
@@ -131,6 +119,12 @@ const ProductDetailsSection = ({ data }) => {
       <style jsx>{`
         .product-single {
           margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+          .product-single__addtocart .btn-addtocart {
+            width: 100%;
+          }
         }
       `}</style>
     </>
@@ -251,40 +245,55 @@ const ProductOptions = ({
   setActiveColor,
   activeShape,
   setActiveShape,
-  // activeSize,
-  setActiveSize,
   color,
-  sizes,
-  activeCarat,
-  setActiveCarat,
-  carat,
+  diamondShapes,
 }) => {
   const shapes = [
     {
+      name: "Asscher",
+      img: "https://smcjewels.cdn.prismic.io/smcjewels/ZsHi2kaF0TcGJB8t_asscher.svg",
+    },
+    {
+      name: "Heart",
+      img: "https://smcjewels.cdn.prismic.io/smcjewels/ZsHi3EaF0TcGJB8w_heart.svg",
+    },
+    {
       name: "Round",
-      img: "https://images.prismic.io/smcjewels/ZsAiBEaF0TcGJBDb_4339b675dbe739662e3331f2743d51b567c3e121745f370a7949484d50f7c798.png",
+      img: "https://smcjewels.cdn.prismic.io/smcjewels/ZsHi4kaF0TcGJB82_round.svg",
+    },
+    {
+      name: "Marquise",
+      img: "https://smcjewels.cdn.prismic.io/smcjewels/ZsHi3UaF0TcGJB8x_marquise.svg",
     },
     {
       name: "Oval",
-      img: "https://images.prismic.io/smcjewels/ZsAiKUaF0TcGJBDc_e2c01039861c211b17113a8670a97d0d0264d8f788722e302f18c07705f38781.png",
+      img: "https://smcjewels.cdn.prismic.io/smcjewels/ZsHi3kaF0TcGJB8y_oval.svg",
     },
     {
       name: "Emerald",
-      img: "https://images.prismic.io/smcjewels/ZsAiMUaF0TcGJBDd_dc10549706828e37304f3465b4791954c31d5eb81ff0ced95d2f2ecfc92ab841.png",
+      img: "https://smcjewels.cdn.prismic.io/smcjewels/ZsHi20aF0TcGJB8v_emerald.svg",
     },
     {
       name: "Pear",
-      img: "https://images.prismic.io/smcjewels/ZsAjk0aF0TcGJBDf_e3a5cfc3755418433392fb9a3b1c2eec01046aaadbcf9c501dc9e7baf79d086f.png",
+      img: "https://smcjewels.cdn.prismic.io/smcjewels/ZsHi30aF0TcGJB8z_pear.svg",
     },
     {
       name: "Cushion",
-      img: "https://images.prismic.io/smcjewels/ZsAjmkaF0TcGJBDg_745ed9f5d566f17f75f01c131203174a58877752381d1b4be4d618973250d60c.png",
+      img: "https://smcjewels.cdn.prismic.io/smcjewels/ZsHi2kaF0TcGJB8u_cushion.svg",
     },
     {
       name: "Princess",
-      img: "https://images.prismic.io/smcjewels/ZsAjwUaF0TcGJBDj_8450da4b1d7481c873fe9f81e8df82d17ccb8fde38bd578260d8bfc3d332c0f6.png",
+      img: "https://smcjewels.cdn.prismic.io/smcjewels/ZsHi4EaF0TcGJB80_princess.svg",
+    },
+    {
+      name: "Radiant",
+      img: "https://smcjewels.cdn.prismic.io/smcjewels/ZsHi4kaF0TcGJB81_radiant.svg",
     },
   ];
+
+  const filterShapes = shapes.filter((shape) =>
+    diamondShapes.includes(shape.name)
+  );
 
   const colorCodes = ["#C8C8C8", "#FFCFBC", "#E0BE77"];
 
@@ -310,32 +319,12 @@ const ProductOptions = ({
           </div>
         </div>
 
-        {/* // ===== PRODUCT SIZE ===== */}
-        <div className="product-single__option">
-          <label>Size :</label>
-          <select onChange={(e) => setActiveSize(e.target.value)}>
-            {sizes.map((size, index) => (
-              <option key={index}>{size}</option>
-            ))}
-          </select>
-        </div>
-
-        {/* // ===== PRODUCT CARAT ===== */}
-        <div className="product-single__option">
-          <label>Carat :</label>
-          <select onChange={(e) => setActiveCarat(e.target.value)}>
-            {carat.map((carat, index) => (
-              <option key={index}>{carat}</option>
-            ))}
-          </select>
-        </div>
-
         {/* // ===== PRODUCT SHAPE ===== */}
-        <div className="product-single__option">
+        <div className="product-single__option shape-container">
           <label>Shape :</label>
 
           <div className="shapes">
-            {shapes.map((shape, index) => (
+            {filterShapes.map((shape, index) => (
               <div
                 key={index}
                 className={`shape cursor-pointer ${
@@ -349,6 +338,16 @@ const ProductOptions = ({
                   alt={shape.name}
                   className="h-100"
                 />
+
+                <span
+                  style={{
+                    fontSize: "0.8rem",
+                    fontWeight: "600",
+                    color: "#333",
+                  }}
+                >
+                  {shape.name}
+                </span>
               </div>
             ))}
           </div>
@@ -366,8 +365,13 @@ const ProductOptions = ({
         .product-single__option {
           display: flex;
           gap: 1rem;
+          align-items: center;
         }
 
+        .product-single__option.shape-container {
+          flex-direction: column;
+          align-items: flex-start;
+        }
         .product-single__option label {
           font-weight: 600;
           color: #333;
@@ -376,16 +380,27 @@ const ProductOptions = ({
         }
 
         .shapes {
-          display: flex;
-          align-items: center;
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
           gap: 1rem;
-          flex-wrap: wrap;
         }
 
         .shape {
-          width: auto;
-          height: 50px;
           opacity: 0.5;
+          border: 1px solid #2c2c2c;
+          padding: 0.5rem;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          transition: all 0.3s;
+          flex-direction: column;
+        }
+
+        .shape img {
+          width: 60%;
+          height: auto;
+          object-fit: contain;
         }
 
         .shape.active {
@@ -408,6 +423,12 @@ const ProductOptions = ({
           font-size: 0.8rem;
           font-weight: 600;
           color: #333;
+        }
+
+        @media (max-width: 768px) {
+          .shapes {
+            grid-template-columns: repeat(3, 1fr);
+          }
         }
       `}</style>
     </>

@@ -27,7 +27,7 @@ const ProductListingSection = ({ data }) => {
 };
 
 const ProductItem = ({ data, fullCol }) => {
-  const { title, image_items, max_price, min_price } = data?.data;
+  const { title, image_items, price } = data?.data;
 
   const url = data?.url;
 
@@ -55,13 +55,14 @@ const ProductItem = ({ data, fullCol }) => {
         </Link>
         <div className="product-caption text-center">
           <h6 className="product-name">
-            <Link href="/silver-diamond">{title[0]?.text}</Link>
+            <Link href={url}>{title[0]?.text}</Link>
           </h6>
           <div className="price-box ">
-            {max_price && min_price && (
+            {price && (
               <div className="product-card__price d-flex justify-content-center">
+                <span className="me-2 label">Starting at: </span>
                 <span className="money price theme-color fw-bold font-heading">
-                  {cad(min_price)} - {cad(max_price)}
+                  {cad(price)}
                 </span>
               </div>
             )}
