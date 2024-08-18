@@ -184,6 +184,7 @@ const ProductGallery = ({
                     border: "1px solid #e5e5e5",
                     overflow: "hidden",
                     lineHeight: "0",
+                    aspectRatio: "1/1",
                   }}
                 >
                   {item.image?.url ? (
