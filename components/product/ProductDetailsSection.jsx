@@ -23,7 +23,7 @@ const ProductDetailsSection = ({ data }) => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   const [activeShape, setActiveShape] = useState(shapes[0]);
-  const [activeColor, setActiveColor] = useState(color[0]);
+  const [activeColor, setActiveColor] = useState("White Gold");
 
   useEffect(() => {
     setUrl(window.location.href);
@@ -326,7 +326,7 @@ const ProductOptions = ({
                   backgroundColor: color.code,
                   border: activeColor == color ? "2px solid #333" : "",
                 }}
-                onClick={() => setActiveColor(color)}
+                onClick={() => setActiveColor(color.name)}
               />
             ))}
           </div>
