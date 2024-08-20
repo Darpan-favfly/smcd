@@ -295,7 +295,20 @@ const ProductOptions = ({
     diamondShapes.includes(shape.name)
   );
 
-  const colorCodes = ["#C8C8C8", "#FFCFBC", "#E0BE77"];
+  const colorCodes = [
+    {
+      name: "White Gold",
+      code: "#C8C8C8",
+    },
+    {
+      name: "Rose Gold",
+      code: "#FFCFBC",
+    },
+    {
+      name: "Yellow Gold",
+      code: "#E0BE77",
+    },
+  ];
 
   return (
     <>
@@ -304,13 +317,13 @@ const ProductOptions = ({
         <div className="product-single__option">
           <label>Color :</label>
           <div className="colors">
-            {color.map((color, index) => (
+            {colorCodes.map((color, index) => (
               <div
-                title={color}
+                title={color.name}
                 key={index}
                 className={`color cursor-pointer`}
                 style={{
-                  backgroundColor: colorCodes[index],
+                  backgroundColor: color.code,
                   border: activeColor == color ? "2px solid #333" : "",
                 }}
                 onClick={() => setActiveColor(color)}
