@@ -324,7 +324,7 @@ const ProductOptions = ({
                 className={`color cursor-pointer`}
                 style={{
                   backgroundColor: color.code,
-                  border: activeColor == color ? "2px solid #333" : "",
+                  border: activeColor == color.name ? "2px solid #333" : "",
                 }}
                 onClick={() => setActiveColor(color.name)}
               />
