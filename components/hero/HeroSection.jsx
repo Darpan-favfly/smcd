@@ -15,7 +15,7 @@ const HeroSection = ({ slice }) => {
           pagination: false,
           pauseOnFocus: false,
           pauseOnHover: false,
-          interval: 2000,
+          interval: 3000,
           speed: 2000,
           breakpoints: {
             678: {
@@ -71,7 +71,14 @@ const HeroItem = ({ data }) => {
               {sub_heading}
             </h6>
             <h1 className="fw-normal mb-0">{heading[0].text}</h1>
-            <p>{description[0].text}</p>
+            <p
+              style={{
+                maxWidth: "700px",
+                lineHeight: "1.3",
+              }}
+            >
+              {description[0].text}
+            </p>
             <Link
               href={button_link.url}
               className="btn-link btn-link_sm default-underline text-uppercase fw-medium"

@@ -174,7 +174,7 @@ const ProductGallery = ({
                   }`}
                   onClick={() => setActiveImageIndex(index)}
                   style={{
-                    borderRadius: "15px",
+                    borderRadius: "10px",
                     border: "1px solid #e5e5e5",
                     overflow: "hidden",
                     lineHeight: "0",
@@ -236,6 +236,12 @@ const ProductGallery = ({
           )}
         </div>
       </div>
+
+      <style jsx>{`
+        .active {
+          border: 1px solid #333 !important;
+        }
+      `}</style>
     </div>
   );
 };

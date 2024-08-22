@@ -45,7 +45,7 @@ const Header = ({ data }) => {
             </button>
 
             {/* // ===== LOGO ===== */}
-            <Link href="/">
+            <Link href="/" onClick={() => setIsOpenNav(false)}>
               <PrismicNextImage field={logo} className="logo__image w-auto" />
             </Link>
 

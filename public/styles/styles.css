@@ -1260,3 +1260,15 @@ form {
   font-size: 0.8rem;
   color: #2c2c2c;
 }
+
+.blog_description a {
+  color: #b9a16b !important;
+}
+
+.blog_description a:hover {
+  text-decoration: underline;
+}
+
+strong {
+  font-weight: 600;
+}

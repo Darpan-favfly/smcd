@@ -37,10 +37,10 @@ const ProductItem = ({ data, fullCol }) => {
 
   return (
     <div className={`${fullCol ? "" : "col-md-3 col-6"}`}>
-      <div className="product-item">
+      <div className="product-item mb-0">
         <Link
           href={url}
-          className="product-thumb  br-15 overflow-hidden d-inline-block"
+          className="product-thumb br-15 overflow-hidden d-inline-block"
         >
           <EmblaCarousel options={OPTIONS}>
             {image_items?.slice(0, 3).map((item, index) => (
@@ -53,7 +53,7 @@ const ProductItem = ({ data, fullCol }) => {
             ))}
           </EmblaCarousel>
         </Link>
-        <div className="product-caption text-center">
+        <div className="product-caption text-center pt-0">
           <h6 className="product-name">
             <Link href={url}>{title[0]?.text}</Link>
           </h6>

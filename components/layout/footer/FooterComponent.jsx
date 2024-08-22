@@ -1,51 +1,11 @@
 "use client";
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaInstagram,
-  FaYoutube,
-  FaPinterestP,
-} from "react-icons/fa";
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import BrandMark from "../../favfly/BrandMark";
 import Link from "next/link";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 
-const socialMediaLinks = [
-  { href: "https://www.facebook.com", icon: <FaFacebookF /> },
-  { href: "https://www.twitter.com", icon: <FaTwitter /> },
-  { href: "https://www.instagram.com", icon: <FaInstagram /> },
-  { href: "https://www.youtube.com", icon: <FaYoutube /> },
-  { href: "https://www.pinterest.com", icon: <FaPinterestP /> },
-];
-
-const menuItems = {
-  company: [
-    { name: "About", link: "/about" },
-    { name: "Collections", link: "/collection" },
-    { name: "Customize", link: "/customize" },
-    { name: "Blogs", link: "/blog" },
-    { name: "Contact", link: "/contact" },
-    { name: "Appointment", link: "#" },
-  ],
-  shop: [
-    { name: "Summer Collection", link: "/collections/summer-collection" },
-    { name: "Diamond Rings", link: "/categories/diamond-rings" },
-    { name: "Men", link: "#" },
-    { name: "Women", link: "#" },
-    { name: "Shop All", link: "#" },
-  ],
-  policies: [
-    { name: "Privacy Policy", link: "/privacy-policy" },
-    { name: "Return & Exchange Policy", link: "/return-exchange-policy" },
-    { name: "Shipping Policy", link: "/shipping-policy" },
-    { name: "Terms & Condition", link: "/terms-conditions" },
-  ],
-};
-
 const FooterComponent = ({ data }) => {
-  console.log("data", data?.data);
-
   const {
     image,
     address,
