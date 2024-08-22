@@ -1,40 +1,24 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import UserProfileButton from "./buttons/UserProfileButton";
-import CartButton from "./buttons/CartButton";
+// import UserProfileButton from "./buttons/UserProfileButton";
+// import CartButton from "./buttons/CartButton";
 import SearchButton, { MobileSearchBar } from "./buttons/SearchButton";
 import { HiBars3 } from "react-icons/hi2";
 import AuthSliderSectionComponent from "@/components/auth/AuthSliderSectionComponent";
 import { useState } from "react";
 import CartSidebar from "@/components/cart/CartSidebar";
 import { IoMdClose } from "react-icons/io";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 
-const Header = () => {
+const Header = ({ data }) => {
   // ===== INITIALIZING STATES =====
   const [isOpenAuthSlider, setIsOpenAuthSlider] = useState(false);
   const [isOpenCartSlider, setIsOpenCartSlider] = useState(false);
   const [isOpenNav, setIsOpenNav] = useState(false);
 
   // ===== NAVIGATION LINKS =====
-  const navLinks = [
-    { text: "About", link: "/about" },
-    { text: "Collections", link: "/collections" },
-    { text: "Customize", link: "/customize" },
-    { text: "Shop", link: "/shop" },
-    { text: "Blogs", link: "/blog" },
-    { text: "Contact", link: "/contact" },
-    {
-      text: "Appointment",
-      link: "#",
-      handleClick: () => {
-        Calendly.initPopupWidget({
-          url: "https://calendly.com/favfly-darpan/appointment",
-        });
-        return false;
-      },
-    },
-  ];
+  const { logo, slices } = data?.data;
 
   return (
     <>
@@ -62,24 +46,31 @@ const Header = () => {
 
             {/* // ===== LOGO ===== */}
             <Link href="/">
-              <img
-                src="https://images.prismic.io/smcjewels/ZsHvvUaF0TcGJB-G_smc_logo.webp?auto=format,compress"
-                alt="SMC Diamonds"
-                className="logo__image"
-              />
+              <PrismicNextImage field={logo} className="logo__image w-auto" />
             </Link>
 
             {/* // ===== NAVIGATION LINKS ===== */}
             <nav className="navigation__list list-unstyled d-none d-lg-flex">
-              {navLinks.map((item, index) => (
+              {slices.map((item, index) => (
                 <NavLink key={index} data={item} />
               ))}
+              <a
+                className={`navigation__link navigation__item cursor-pointer`}
+                onClick={() => {
+                  Calendly.initPopupWidget({
+                    url: "https://calendly.com/favfly-darpan/appointment",
+                  });
+                  return false;
+                }}
+              >
+                Appointment
+              </a>
             </nav>
 
             <div className="d-block d-lg-none w-[24px]" />
 
             {/* // ===== BUTTONS ===== */}
-            <div className="header-tools d-flex align-items-center">
+            <div className="header-tools d-none d-lg-flex align-items-center">
               {/* // ===== CART BUTTON ===== */}
               <SearchButton />
               {/* // ===== CART BUTTON ===== */}
@@ -102,26 +93,23 @@ const Header = () => {
       <CartSidebar isOpen={isOpenCartSlider} setIsOpen={setIsOpenCartSlider} />
 
       {/* // ===== MOBILE NAVIGATION ===== */}
-      <MobileNav
-        isOpen={isOpenNav}
-        setOpen={setIsOpenNav}
-        navLinks={navLinks}
-      />
+      <MobileNav isOpen={isOpenNav} setOpen={setIsOpenNav} navLinks={slices} />
     </>
   );
 };
 
-const NavLink = ({ data }) => {
+const NavLink = ({ data: { primary } }) => {
   const pathname = usePathname();
 
+  const { title, link } = primary;
+
   return (
-    <Link
-      href={data.link}
-      onClick={data.handleClick}
-      className={`navigation__link navigation__item ${pathname == data.link && "active"}`}
+    <PrismicNextLink
+      field={link}
+      className={`navigation__link navigation__item ${pathname == link?.url && "active"}`}
     >
-      {data.text}
-    </Link>
+      {title}
+    </PrismicNextLink>
   );
 };
 
@@ -143,18 +131,31 @@ const MobileNav = ({ isOpen, setOpen, navLinks }) => {
           <ul className="navigation__list list-unstyled position-relative">
             {navLinks.map((item, index) => (
               <li key={index} className="navigation__item">
-                <Link
-                  href={item.link}
-                  className={`navigation__link ${pathname == item.link && "active"}`}
-                  onClick={() => {
-                    item.handleClick && item.handleClick();
-                    setOpen(false);
-                  }}
+                <PrismicNextLink
+                  field={item?.primary.link}
+                  onClick={() => setOpen(false)}
+                  className={`navigation__link ${pathname == item?.link?.url && "active"}`}
                 >
-                  {item.text}
-                </Link>
+                  {item?.primary.title}
+                </PrismicNextLink>
               </li>
             ))}
+
+            <li className="navigation__item">
+              <a
+                onClick={() => {
+                  Calendly.initPopupWidget({
+                    url: "https://calendly.com/favfly-darpan/appointment",
+                  });
+
+                  setOpen(false);
+                  return false;
+                }}
+                className={`navigation__link`}
+              >
+                Appointment
+              </a>
+            </li>
           </ul>
         </div>
       </div>

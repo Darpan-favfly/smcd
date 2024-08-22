@@ -1,4 +1,4 @@
-// import { createClient } from "@/prismicio";
+import { createClient } from "@/prismicio";
 // import localFont from "next/font/local";
 
 // ===== import nextjs-toploader =====
@@ -47,25 +47,16 @@ import { Suspense } from "react";
 
 export default async function RootLayout({ children }) {
   // ===== create prismic client =====
-  // const client = createClient();
+  const client = createClient();
 
   // ===== fetch header data =====
-  // const headerData = await client.getSingle("header");
+  const headerData = await client.getSingle("header");
 
   // ===== fetch footer data =====
-  // const footerData = await client.getSingle("footer");
-
-  // ===== fetch whatsapp data =====
-  // const whatsAppData = await client.getSingle("whatsapp_button");
+  const footerData = await client.getSingle("footer");
 
   // Wait for the promises to resolve
-  // const [header, footer, whatsApp] = await Promise.all([
-  //   headerData,
-  //   footerData,
-  //   whatsAppData,
-  // ]);
-
-  // const { number, text } = whatsApp?.data;
+  const [header, footer] = await Promise.all([headerData, footerData]);
 
   return (
     <html lang="en" className={`${jost.variable} ${lora.variable}`}>
@@ -111,9 +102,9 @@ export default async function RootLayout({ children }) {
           <StyledJsxRegistry>
             <FirebaseAuthProvider>
               <Suspense>
-                <Header />
+                <Header data={header} />
                 <div>{children}</div>
-                <FooterComponent />
+                <FooterComponent data={footer} />
               </Suspense>
             </FirebaseAuthProvider>
           </StyledJsxRegistry>

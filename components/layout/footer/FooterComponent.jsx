@@ -1,3 +1,4 @@
+"use client";
 import {
   FaFacebookF,
   FaTwitter,
@@ -7,6 +8,8 @@ import {
 } from "react-icons/fa";
 import BrandMark from "../../favfly/BrandMark";
 import Link from "next/link";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { PrismicRichText } from "@prismicio/react";
 
 const socialMediaLinks = [
   { href: "https://www.facebook.com", icon: <FaFacebookF /> },
@@ -40,7 +43,21 @@ const menuItems = {
   ],
 };
 
-const FooterComponent = () => {
+const FooterComponent = ({ data }) => {
+  console.log("data", data?.data);
+
+  const {
+    image,
+    address,
+    phone,
+    email,
+    facebook,
+    instagram,
+    company_items,
+    shop_items,
+    policy_items,
+  } = data?.data;
+
   return (
     <>
       <footer className="footer footer_type_2 bordered">
@@ -78,36 +95,51 @@ const FooterComponent = () => {
             <div className="footer-column footer-store-info font-heading col-12 mb-4 mb-lg-0">
               <div className="logo">
                 <Link href="/">
-                  <img
-                    src="https://i.ibb.co/d2Vj1n7/Luxury-Jewellery-Branding-Logo-2.png"
-                    alt="Uomo"
-                    className="logo__image d-block"
+                  <PrismicNextImage
+                    field={image}
+                    className="logo__image d-block w-auto"
                   />
                 </Link>
               </div>
-              <p className="footer-address body-color">
-                409 Granville St , Vancouver
-              </p>
-              <p className="m-0">
-                <strong className="fw-medium body-color">
-                  sale@smcjewels.com
-                </strong>
-              </p>
-              <p>
-                <strong className="fw-medium body-color">
-                  +1 246-345-0695
-                </strong>
-              </p>
+              <div
+                className="footer-address body-color"
+                style={{
+                  fontWeight: 500,
+                }}
+              >
+                <PrismicRichText field={address} />
+              </div>
+              <div
+                className="m-0 body-color"
+                style={{
+                  fontWeight: 500,
+                }}
+              >
+                <PrismicRichText field={email} />
+              </div>
+              <div
+                className="body-color"
+                style={{
+                  fontWeight: 500,
+                }}
+              >
+                <PrismicRichText field={phone} />
+              </div>
               <ul className="social-links list-unstyled d-flex flex-wrap mb-0">
-                {socialMediaLinks.map((link, index) => (
-                  <li key={index}>
-                    <Link href={link.href}>
-                      <div className="footer__social-link d-block">
-                        {link.icon}
-                      </div>
-                    </Link>
-                  </li>
-                ))}
+                <li>
+                  <PrismicNextLink field={facebook}>
+                    <div className="footer__social-link d-block">
+                      <FaFacebookF />
+                    </div>
+                  </PrismicNextLink>
+                </li>
+                <li>
+                  <PrismicNextLink field={instagram}>
+                    <div className="footer__social-link d-block">
+                      <FaInstagram />
+                    </div>
+                  </PrismicNextLink>
+                </li>
               </ul>
             </div>
 
@@ -116,13 +148,13 @@ const FooterComponent = () => {
                 Company
               </h6>
               <ul className="sub-menu__list list-unstyled font-heading">
-                {menuItems.company.map((item, index) => (
+                {company_items.map((item, index) => (
                   <li className="sub-menu__item" key={index}>
-                    <Link href={item.link}>
+                    <PrismicNextLink field={item?.link}>
                       <div className="menu-link menu-link_us-s">
-                        {item.name}
+                        {item.text}
                       </div>
-                    </Link>
+                    </PrismicNextLink>
                   </li>
                 ))}
               </ul>
@@ -131,13 +163,13 @@ const FooterComponent = () => {
             <div className="footer-column footer-menu mb-4 mb-lg-0">
               <h6 className="sub-menu__title text-uppercase font-base">Shop</h6>
               <ul className="sub-menu__list list-unstyled font-heading">
-                {menuItems.shop.map((item, index) => (
+                {shop_items.map((item, index) => (
                   <li className="sub-menu__item" key={index}>
-                    <Link href={item.link}>
+                    <PrismicNextLink field={item?.link}>
                       <div className="menu-link menu-link_us-s">
-                        {item.name}
+                        {item.text}
                       </div>
-                    </Link>
+                    </PrismicNextLink>
                   </li>
                 ))}
               </ul>
@@ -148,13 +180,13 @@ const FooterComponent = () => {
                 Our Policies
               </h6>
               <ul className="sub-menu__list list-unstyled font-heading">
-                {menuItems.policies.map((item, index) => (
+                {policy_items.map((item, index) => (
                   <li className="sub-menu__item" key={index}>
-                    <Link href={item.link}>
+                    <PrismicNextLink field={item?.link}>
                       <div className="menu-link menu-link_us-s">
-                        {item.name}
+                        {item.text}
                       </div>
-                    </Link>
+                    </PrismicNextLink>
                   </li>
                 ))}
               </ul>
@@ -164,7 +196,10 @@ const FooterComponent = () => {
 
         <div className="footer-bottom font-heading body-color">
           <div className="container d-md-flex align-items-center">
-            <span className="footer-copyright me-auto">©2024 SMC Jewels</span>
+            <span className="footer-copyright me-auto">
+              ©{new Date().getFullYear()}
+              SMC Jewels
+            </span>
             <div className="footer-settings d-md-flex align-items-center"></div>
           </div>
         </div>

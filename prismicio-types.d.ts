@@ -723,6 +723,248 @@ export type DealsPageDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Footer → Company Items*
+ */
+export interface FooterDocumentDataCompanyItemsItem {
+  /**
+   * Text field in *Footer → Company Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.company_items[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * Link field in *Footer → Company Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.company_items[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Item in *Footer → shop Items*
+ */
+export interface FooterDocumentDataShopItemsItem {
+  /**
+   * Text field in *Footer → shop Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.shop_items[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * Link field in *Footer → shop Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.shop_items[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Item in *Footer → Policy Items*
+ */
+export interface FooterDocumentDataPolicyItemsItem {
+  /**
+   * Text field in *Footer → Policy Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.policy_items[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * Link field in *Footer → Policy Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.policy_items[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Content for Footer documents
+ */
+interface FooterDocumentData {
+  /**
+   * Image field in *Footer*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Address field in *Footer*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.address
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  address: prismic.RichTextField;
+
+  /**
+   * Phone field in *Footer*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.phone
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  phone: prismic.RichTextField;
+
+  /**
+   * Email field in *Footer*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.email
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  email: prismic.RichTextField;
+
+  /**
+   * Facebook field in *Footer*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.facebook
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  facebook: prismic.LinkField;
+
+  /**
+   * Instagram field in *Footer*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.instagram
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  instagram: prismic.LinkField;
+
+  /**
+   * Company Items field in *Footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.company_items[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  company_items: prismic.GroupField<
+    Simplify<FooterDocumentDataCompanyItemsItem>
+  >;
+
+  /**
+   * shop Items field in *Footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.shop_items[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  shop_items: prismic.GroupField<Simplify<FooterDocumentDataShopItemsItem>>;
+
+  /**
+   * Policy Items field in *Footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.policy_items[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  policy_items: prismic.GroupField<Simplify<FooterDocumentDataPolicyItemsItem>>;
+}
+
+/**
+ * Footer document from Prismic
+ *
+ * - **API ID**: `footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<FooterDocumentData>,
+    "footer",
+    Lang
+  >;
+
+type HeaderDocumentDataSlicesSlice = NavItemSlice;
+
+/**
+ * Content for Header documents
+ */
+interface HeaderDocumentData {
+  /**
+   * Logo field in *Header*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: header.logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * Slice Zone field in *Header*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: header.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<HeaderDocumentDataSlicesSlice>;
+}
+
+/**
+ * Header document from Prismic
+ *
+ * - **API ID**: `header`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HeaderDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<HeaderDocumentData>,
+    "header",
+    Lang
+  >;
+
 type HomePageDocumentDataSlicesSlice =
   | FaqSectionSlice
   | BlogsSectionSlice
@@ -1341,6 +1583,8 @@ export type AllDocumentTypes =
   | ContactPageDocument
   | CustomizePageDocument
   | DealsPageDocument
+  | FooterDocument
+  | HeaderDocument
   | HomePageDocument
   | PrivacyPolicyPageDocument
   | ProductPageDocument
@@ -2766,6 +3010,61 @@ export type InstagramSectionSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *NavItem → Default → Primary*
+ */
+export interface NavItemSliceDefaultPrimary {
+  /**
+   * Title field in *NavItem → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav_item.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Link field in *NavItem → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nav_item.default.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Default variation for NavItem Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NavItemSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NavItemSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *NavItem*
+ */
+type NavItemSliceVariation = NavItemSliceDefault;
+
+/**
+ * NavItem Shared Slice
+ *
+ * - **API ID**: `nav_item`
+ * - **Description**: NavItem
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NavItemSlice = prismic.SharedSlice<
+  "nav_item",
+  NavItemSliceVariation
+>;
+
+/**
  * Primary content in *PolicySection → Default → Primary*
  */
 export interface PolicySectionSliceDefaultPrimary {
@@ -2860,6 +3159,14 @@ declare module "@prismicio/client" {
       DealsPageDocument,
       DealsPageDocumentData,
       DealsPageDocumentDataSlicesSlice,
+      FooterDocument,
+      FooterDocumentData,
+      FooterDocumentDataCompanyItemsItem,
+      FooterDocumentDataShopItemsItem,
+      FooterDocumentDataPolicyItemsItem,
+      HeaderDocument,
+      HeaderDocumentData,
+      HeaderDocumentDataSlicesSlice,
       HomePageDocument,
       HomePageDocumentData,
       HomePageDocumentDataSlicesSlice,
@@ -2952,6 +3259,10 @@ declare module "@prismicio/client" {
       InstagramSectionSliceDefaultPrimary,
       InstagramSectionSliceVariation,
       InstagramSectionSliceDefault,
+      NavItemSlice,
+      NavItemSliceDefaultPrimary,
+      NavItemSliceVariation,
+      NavItemSliceDefault,
       PolicySectionSlice,
       PolicySectionSliceDefaultPrimary,
       PolicySectionSliceVariation,
