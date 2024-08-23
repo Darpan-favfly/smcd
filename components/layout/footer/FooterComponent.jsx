@@ -30,7 +30,7 @@ const FooterComponent = ({ data }) => {
       <footer className="footer footer_type_2 bordered">
         <div className="footer-top container">
           <div className="block-newsletter">
-            <h3 className="block__title">Sign Up Now &amp; Get 10% Off</h3>
+            <h3 className="block__title">Join Now &amp; Get 10% Off</h3>
             <p className="h6 fs-base">
               Be the first to get the latest news about trends, promotions, and
               much more!

@@ -1281,3 +1281,7 @@ strong {
     border-bottom-right-radius: 0px;
   }
 }
+.policy-section p {
+  font-size: 15px;
+  line-height: 1.7;
+}
