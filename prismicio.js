@@ -47,7 +47,7 @@ const routes = [
   },
   {
     type: "blogs_page",
-    path: "/blog",
+    path: "/blogs",
   },
   {
     type: "blog_post",

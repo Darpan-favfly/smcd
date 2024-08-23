@@ -1,5 +1,12 @@
 "use client";
-import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaEnvelope,
+  FaPhone,
+} from "react-icons/fa";
 import BrandMark from "../../favfly/BrandMark";
 import Link from "next/link";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
@@ -58,34 +65,102 @@ const FooterComponent = ({ data }) => {
                   <PrismicNextImage
                     field={image}
                     className="logo__image d-block w-auto"
+                    style={{ maxHeight: 50, cursor: "pointer" }}
                   />
                 </Link>
               </div>
+
+              <div>
+                <h3
+                  style={{
+                    fontWeight: 500,
+                    fontSize: 20,
+                    color: "#000",
+                    marginBottom: 10,
+                  }}
+                >
+                  Forever begins with us 🤍
+                </h3>
+                <p
+                  style={{
+                    fontWeight: 400,
+                    fontSize: 14,
+                    color: "#000",
+                    marginBottom: "30px",
+                  }}
+                >
+                  SMC DIAMONDS offers high-quality, certified diamond jewelry at
+                  unbeatable prices. With a lifetime warranty and exceptional
+                  service, we help you celebrate forever.
+                </p>
+              </div>
+
               <div
                 className="footer-address body-color"
                 style={{
                   fontWeight: 500,
+                  gap: 10,
+                  display: "flex",
+                  marginBottom: "10px",
                 }}
               >
+                <i
+                  style={{
+                    fontSize: 16,
+                    color: "#424242",
+                    position: "relative",
+                    top: -2,
+                  }}
+                >
+                  <FaMapMarkerAlt />
+                </i>
+
                 <PrismicRichText field={address} />
               </div>
               <div
-                className="m-0 body-color"
+                className="body-color"
                 style={{
                   fontWeight: 500,
+                  gap: 10,
+                  display: "flex",
+                  marginBottom: "10px",
                 }}
               >
+                <i
+                  style={{
+                    fontSize: 16,
+                    color: "#424242",
+                    position: "relative",
+                    top: -2,
+                  }}
+                >
+                  <FaEnvelope />
+                </i>
+
                 <PrismicRichText field={email} />
               </div>
               <div
                 className="body-color"
                 style={{
                   fontWeight: 500,
+                  gap: 10,
+                  display: "flex",
+                  marginBottom: "10px",
                 }}
               >
+                <i
+                  style={{
+                    fontSize: 16,
+                    color: "#424242",
+                    position: "relative",
+                    top: -2,
+                  }}
+                >
+                  <FaPhoneAlt />
+                </i>
                 <PrismicRichText field={phone} />
               </div>
-              <ul className="social-links list-unstyled d-flex flex-wrap mb-0">
+              <ul className="social-links list-unstyled d-flex flex-wrap mb-0 ms-0">
                 <li>
                   <PrismicNextLink field={facebook}>
                     <div className="footer__social-link d-block">
