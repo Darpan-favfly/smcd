@@ -4,12 +4,15 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { SliceZone } from "@prismicio/react";
 
-const CategoriesProductPage = async () => {
+const CategoriesProductPage = async ({ params }) => {
   const client = createClient();
-  const doc = await client.getSingle("category_page");
+
+  const doc = await client
+    .getByUID("category_page", params.slug)
+    .catch(() => notFound());
+
   const uid = doc.uid;
   const products = await client.getAllByType("product_page", {
-    // filters: [prismic.filter.fulltext("my.product_page.title", searchKey)],
     fetchLinks: ["category.name", "category.uid"],
   });
 
@@ -24,10 +27,13 @@ const CategoriesProductPage = async () => {
     </>
   );
 };
-export async function generateMetadata() {
+
+export async function generateMetadata({ params }) {
   const client = createClient();
 
-  const page = await client.getSingle("category_page");
+  const page = await client
+    .getByUID("category_page", params.slug)
+    .catch(() => notFound());
 
   return Seo(page);
 }

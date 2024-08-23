@@ -3,13 +3,17 @@ import Seo from "@/lib/seo/Seo";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { SliceZone } from "@prismicio/react";
+import { notFound } from "next/navigation";
 
-const CollectionsProductPage = async () => {
+const CollectionsProductPage = async ({ params }) => {
   const client = createClient();
-  const doc = await client.getSingle("collection_page");
+
+  const doc = await client
+    .getByUID("collection_page", params.slug)
+    .catch(() => notFound());
+
   const uid = doc.uid;
   const products = await client.getAllByType("product_page", {
-    // filters: [prismic.filter.fulltext("my.product_page.title", searchKey)],
     fetchLinks: ["collection.name", "collection.uid"],
   });
 
@@ -24,10 +28,13 @@ const CollectionsProductPage = async () => {
     </>
   );
 };
-export async function generateMetadata() {
+
+export async function generateMetadata({ params }) {
   const client = createClient();
 
-  const page = await client.getSingle("collection_page");
+  const page = await client
+    .getByUID("collection_page", params.slug)
+    .catch(() => notFound());
 
   return Seo(page);
 }
