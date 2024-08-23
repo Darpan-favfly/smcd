@@ -1272,3 +1272,12 @@ form {
 strong {
   font-weight: 600;
 }
+
+@media (min-width: 991px) {
+  .swap-about .special-block-img-left img {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+}

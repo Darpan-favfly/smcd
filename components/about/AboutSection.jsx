@@ -15,42 +15,54 @@ const AboutSection = ({ slice }) => {
             sub_heading: sub_heading[0].text,
           }}
         />
-        {items.map((item, index) => (
-          <AboutItem key={index} data={item} />
-        ))}
+        <div className="d-flex flex-column mt-5" style={{ gap: "4rem" }}>
+          {items.map((item, index) => (
+            <AboutItem key={index} data={item} swap={index % 2 === 0} />
+          ))}
+        </div>
       </section>
     </>
   );
 };
 
-const AboutItem = ({ data }) => {
+const AboutItem = ({ data, swap }) => {
   return (
-    <div className="row">
-      <div className="col-lg-6 pe-lg-0">
-        <div
-          className="special-block-wrapper"
-          style={{
-            backgroundColor: "rgb(28, 99, 146)",
-            display: "flex",
-            alignItems: "center",
-            height: "100%",
-          }}
-        >
-          <div>
-            <h3 className="special-block under-bar-white">
-              {data.title[0].text}
-            </h3>
-            <PrismicRichText field={data.description} />
+    <>
+      <div className={`row ${swap && "swap-about"} `}>
+        <div className={`col-lg-6 ${swap ? "ps-lg-0" : "pe-lg-0"}`}>
+          <div
+            className="special-block-wrapper"
+            style={{
+              backgroundColor: "rgb(28, 99, 146)",
+              display: "flex",
+              alignItems: "center",
+              height: "100%",
+            }}
+          >
+            <div>
+              <h3 className="special-block under-bar-white">
+                {data.title[0].text}
+              </h3>
+              <PrismicRichText field={data.description} />
+            </div>
           </div>
         </div>
+        <div
+          className={`col-lg-6 ${swap ? "pe-lg-0" : "ps-lg-0"} special-block-img-left flex-center d-flex`}
+        >
+          <PrismicNextImage
+            className="img-responsive w-100 h-auto"
+            field={data.image}
+          />
+        </div>
       </div>
-      <div className="col-lg-6 ps-lg-0 special-block-img-left flex-center d-flex">
-        <PrismicNextImage
-          className="img-responsive w-100 h-auto"
-          field={data.image}
-        />
-      </div>
-    </div>
+
+      <style jsx>{`
+        .swap-about {
+          flex-direction: row-reverse;
+        }
+      `}</style>
+    </>
   );
 };
 export default AboutSection;
