@@ -1,6 +1,8 @@
 import { createClient } from "@/prismicio";
 // import localFont from "next/font/local";
 
+import { Suspense } from "react";
+
 // ===== import nextjs-toploader =====
 import NextTopLoader from "nextjs-toploader";
 
@@ -18,8 +20,8 @@ import { repositoryName } from "@/prismicio";
 // ===== Google Fonts import =====
 import { Jost, Lora } from "next/font/google";
 
-import FirebaseAuthProvider from "@/lib/provider/authProvider/FirebaseAuthProvider";
-import { Toaster } from "react-hot-toast";
+// import FirebaseAuthProvider from "@/lib/provider/authProvider/FirebaseAuthProvider";
+// import { Toaster } from "react-hot-toast";
 
 // ===== initialize fonts =====
 const jost = Jost({
@@ -43,7 +45,6 @@ export const metadata = {
 
 // ===== import splide css =====
 import "@splidejs/react-splide/css";
-import { Suspense } from "react";
 
 export default async function RootLayout({ children }) {
   // ===== create prismic client =====
@@ -100,17 +101,17 @@ export default async function RootLayout({ children }) {
 
         <main className="theme-dark">
           <StyledJsxRegistry>
-            <FirebaseAuthProvider>
-              <Suspense>
-                <Header data={header} />
-                <div>{children}</div>
-                <FooterComponent data={footer} />
-              </Suspense>
-            </FirebaseAuthProvider>
+            {/* <FirebaseAuthProvider> */}
+            <Suspense>
+              <Header data={header} />
+              <div>{children}</div>
+              <FooterComponent data={footer} />
+            </Suspense>
+            {/* </FirebaseAuthProvider> */}
           </StyledJsxRegistry>
 
           {/* // ===== react-hot-toast ===== */}
-          <Toaster />
+          {/* <Toaster /> */}
         </main>
 
         <script
