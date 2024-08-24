@@ -31,7 +31,7 @@ const routes = [
   },
   {
     type: "collection_page",
-    path: "/collections/:uid",
+    path: "/collection/:uid",
   },
   {
     type: "categories_page",
@@ -39,7 +39,7 @@ const routes = [
   },
   {
     type: "category_page",
-    path: "/categories/:uid",
+    path: "/category/:uid",
   },
   {
     type: "deals_page",
