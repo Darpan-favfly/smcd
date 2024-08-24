@@ -3,10 +3,9 @@ const BookingWidget = () => {
   return (
     <>
       <aside className="position-relative widget widget-shadow widget-reservation bg-white px-0 py-0 overflow-hidden">
-        {/* <h3 className="mb-0">Plan Your Forever Moment</h3> */}
         <iframe
           id="sticky-form"
-          src="https://opnform.com/forms/contact-form-5hj56y"
+          src="https://opnform.com/forms/smcd-blog-form-a98cwo"
           style={{ border: "none", width: "100%" }}
         />
         <style jsx>{`

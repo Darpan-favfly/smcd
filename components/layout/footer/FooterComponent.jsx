@@ -230,12 +230,8 @@ const FooterComponent = ({ data }) => {
         </div>
 
         <div className="footer-bottom font-heading body-color">
-          <div className="container d-md-flex align-items-center">
-            <span className="footer-copyright me-auto">
-              ©{new Date().getFullYear()}
-              SMC Jewels
-            </span>
-            <div className="footer-settings d-md-flex align-items-center"></div>
+          <div className="container text-center">
+            ©{new Date().getFullYear()} SMC Diamonds. All rights reserved.
           </div>
         </div>
         <BrandMark />

@@ -67,9 +67,9 @@ const ContactFormSection = ({ slice }) => {
                 <div className="booking-inner clearfix">
                   <iframe
                     style={{ border: "none", width: "100%" }}
-                    id="contact-form-5hj56y"
+                    id={form_id}
                     className="br-15 overflow-hidden"
-                    src={form_id}
+                    src={`https://opnform.com/forms/${form_id}`}
                   />
                 </div>
               </div>

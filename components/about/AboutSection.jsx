@@ -15,12 +15,24 @@ const AboutSection = ({ slice }) => {
             sub_heading: sub_heading[0].text,
           }}
         />
-        <div className="d-flex flex-column mt-5" style={{ gap: "4rem" }}>
+        <div className="d-flex flex-column mt-5 about-gap">
           {items.map((item, index) => (
             <AboutItem key={index} data={item} swap={index % 2 === 0} />
           ))}
         </div>
       </section>
+
+      <style jsx>{`
+        .about-gap {
+          gap: 50px;
+        }
+
+        @media (max-width: 992px) {
+          .about-gap {
+            gap: 30px;
+          }
+        }
+      `}</style>
     </>
   );
 };

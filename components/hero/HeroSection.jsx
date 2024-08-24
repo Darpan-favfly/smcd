@@ -1,5 +1,5 @@
 "use client";
-import { PrismicNextImage } from "@prismicio/next";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import Link from "next/link";
 
@@ -46,48 +46,47 @@ const HeroItem = ({ data }) => {
 
   return (
     <>
-      <div className="overflow-hidden position-relative h-100">
-        <div className="slideshow-bg">
-          <PrismicNextImage
-            field={image}
-            className="slideshow-bg__img object-fit-cover object-position-right"
-            fallbackAlt={heading[0].text}
-          />
-        </div>
-        <div
-          className="slideshow-text position-absolute top-50 mx-lg-5 px-lg-5 w-100"
-          style={{
-            transform: "translateY(-50%)",
-            right: 0,
-          }}
-        >
-          <div className="container text-end d-flex flex-column align-items-end justify-content-center">
-            <h6
-              className="text_dash text-uppercase fw-medium"
-              style={{
-                width: "max-content",
-              }}
-            >
-              {sub_heading}
-            </h6>
-            <h1 className="fw-normal mb-0">{heading[0].text}</h1>
-            <p
-              style={{
-                maxWidth: "700px",
-                lineHeight: "1.3",
-              }}
-            >
-              {description[0].text}
-            </p>
-            <Link
-              href={button_link.url}
-              className="btn-link btn-link_sm default-underline text-uppercase fw-medium"
-            >
-              {button_label}
-            </Link>
+      <PrismicNextLink field={button_link}>
+        <div className="overflow-hidden position-relative h-100">
+          <div className="slideshow-bg">
+            <PrismicNextImage
+              field={image}
+              className="slideshow-bg__img object-fit-cover object-position-right"
+              fallbackAlt={heading[0].text}
+            />
+          </div>
+          <div
+            className="slideshow-text position-absolute top-50 mx-lg-5 px-lg-5 w-100"
+            style={{
+              transform: "translateY(-50%)",
+              right: 0,
+            }}
+          >
+            <div className="container text-end d-flex flex-column align-items-end justify-content-center">
+              <h6
+                className="text_dash text-uppercase fw-medium"
+                style={{
+                  width: "max-content",
+                }}
+              >
+                {sub_heading}
+              </h6>
+              <h1 className="fw-normal mb-0">{heading[0].text}</h1>
+              <p
+                style={{
+                  maxWidth: "700px",
+                  lineHeight: "1.3",
+                }}
+              >
+                {description[0].text}
+              </p>
+              <span className="btn-link btn-link_sm default-underline text-uppercase fw-medium">
+                {button_label}
+              </span>
+            </div>
           </div>
         </div>
-      </div>
+      </PrismicNextLink>
       <style jsx>{`
         h6 {
           font-size: 20px;
@@ -160,6 +159,21 @@ const HeroItem = ({ data }) => {
           }
           .btn-link {
             font-size: 12px;
+          }
+        }
+
+        @media (max-width: 575px) {
+          h6 {
+            font-size: 10px !important;
+          }
+          h1 {
+            font-size: 1.5rem;
+          }
+          p {
+            display: none;
+          }
+          .btn-link {
+            font-size: 10px;
           }
         }
       `}</style>
