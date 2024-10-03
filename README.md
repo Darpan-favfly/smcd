@@ -1,4 +1,4 @@
-## Themes
+## Theme
 
 https://uomo-html.flexkitux.com/Demo20/index.html
 
@@ -26,5 +26,5 @@ Next js
 v"14.2.4"
 ```
 
-Deploy Link:
+Deploy Link:  
 https://api.vercel.com/v1/integrations/deploy/prj_yXwrdxntdKLHLL05vfLMgbTLbonW/s2RRLI8wsI
